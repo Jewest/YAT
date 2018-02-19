@@ -16,5 +16,22 @@ namespace YAT
         {
             InitializeComponent();
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // testing the adding off the user commands
+            macro myobject = new macro();
+            flowLayoutPanel1.Controls.Add(myobject);
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
