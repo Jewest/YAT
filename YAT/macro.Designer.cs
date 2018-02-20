@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // btnSend
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Location = new System.Drawing.Point(125, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSend.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSend.Location = new System.Drawing.Point(211, 0);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 25);
+            this.btnSend.TabIndex = 0;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.checkBox1.Location = new System.Drawing.Point(51, 0);
+            this.checkBox1.Location = new System.Drawing.Point(137, 0);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(74, 25);
             this.checkBox1.TabIndex = 1;
@@ -60,7 +60,7 @@
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(51, 20);
+            this.textBox1.Size = new System.Drawing.Size(137, 20);
             this.textBox1.TabIndex = 2;
             // 
             // macro
@@ -70,9 +70,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSend);
             this.Name = "macro";
-            this.Size = new System.Drawing.Size(200, 25);
+            this.Size = new System.Drawing.Size(286, 25);
             this.Load += new System.EventHandler(this.macro_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -81,7 +81,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
     }
