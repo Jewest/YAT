@@ -23,10 +23,7 @@ namespace YAT
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            // testing the adding off the user commands
-            macro myobject = new macro();            
-            myobject.Width = flowLayoutPanel1.Width - 25;            
-            flowLayoutPanel1.Controls.Add(myobject);            
+              
         }
 
         private void Form1_Shown(Object sender, EventArgs e)
@@ -54,13 +51,12 @@ namespace YAT
                     {
                         using (myStream)
                         {
-                          
-                            // Insert code to read the stream here.
-
                             //remove the current elements
+                            //                 
                             flowLayoutPanel1.Controls.Clear();
-
-                          
+                            
+                            // Insert code to read the stream here.
+                            
                             //close the stream
                             myStream.Close();
 
@@ -70,7 +66,7 @@ namespace YAT
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
+                }                
             }
         }
 
@@ -88,17 +84,40 @@ namespace YAT
                     // write the data here
                     // Serialize the object to a file.
                     XmlTextWriter writer = new XmlTextWriter(myStream, null);
+                    int itemcounter = 0;
                     // load the items
                     foreach (macro foundControl in flowLayoutPanel1.Controls)
                     {
+                        writer.WriteStartElement("item" + Convert.ToString(itemcounter++));
                         //XmlWriter
                         foundControl.WriteXml(writer);
+                        writer.WriteEndElement();
+
+                        
                     }
                     writer.Close();
                     
                     
                 }
             }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // testing the adding off the user commands
+            macro myobject = new macro();
+            myobject.Width = flowLayoutPanel1.Width - 25;
+            flowLayoutPanel1.Controls.Add(myobject);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
