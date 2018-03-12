@@ -54,11 +54,32 @@ namespace YAT
                             //remove the current elements
                             //                 
                             flowLayoutPanel1.Controls.Clear();
+
+                            XmlReaderSettings settings = new XmlReaderSettings();
+                            settings.Async = true;
                             
                             // Insert code to read the stream here.
-                            
+                            XmlReader reader = XmlReader.Create(myStream, settings);
+
+                            while (reader.Read())
+                            {
+                                if (reader.IsStartElement())
+                                {
+                                    if (reader.IsEmptyElement)
+                                        Console.WriteLine("<{0}/>", reader.Name);
+                                    else
+                                    {
+                                        Console.Write("<{0}> ", reader.Name);
+                                        reader.Read(); // Read the start tag.
+                                        if (reader.IsStartElement())  // Handle nested elements.
+                                            Console.Write("\r\n<{0}>", reader.Name);
+                                        Console.WriteLine(reader.ReadString());  //Read the text content of the element.
+                                    }
+                                }
+                            }
+
                             //close the stream
-                            myStream.Close();
+                            reader.Close();
 
                         }
                     }
@@ -81,10 +102,19 @@ namespace YAT
                 Stream myStream = null;
                 if((myStream = saveFile.OpenFile()) != null)
                 {
-                    // write the data here
+                    XmlWriterSettings settings = new XmlWriterSettings();
+                    settings.Indent = true;
+                    settings.OmitXmlDeclaration = true;
+                    settings.NewLineOnAttributes = true;
                     // Serialize the object to a file.
-                    XmlTextWriter writer = new XmlTextWriter(myStream, null);
+                    XmlWriter writer = XmlWriter.Create(myStream, settings);
+                    writer.WriteStartDocument();
+                    writer.WriteStartElement("Macro");
                     int itemcounter = 0;
+
+                    //write the number of elements
+                    writer.WriteAttributeString("count", Convert.ToString(flowLayoutPanel1.Controls.Count));
+
                     // load the items
                     foreach (macro foundControl in flowLayoutPanel1.Controls)
                     {
@@ -92,13 +122,14 @@ namespace YAT
                         //XmlWriter
                         foundControl.WriteXml(writer);
                         writer.WriteEndElement();
-
-                        
+                                                
                     }
+                    //close the document
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
                     writer.Close();
-                    
-                    
                 }
+                myStream.Close();
             }
 
         }

@@ -151,7 +151,8 @@ namespace YAT
 
         public void WriteXml(XmlWriter writer)
         {
-            writer.WriteString(textBox1.Text + ";" + numericUpDown1.ToString());
+            writer.WriteAttributeString("command", textBox1.Text);
+            writer.WriteAttributeString("time", numericUpDown1.Value.ToString());
         }
 
         public void ReadXml(XmlReader reader)
