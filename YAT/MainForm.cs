@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,7 @@ namespace YAT
             InitializeComponent();
         }
 
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-              
-        }
+        private SerialPort m_serialPort = new SerialPort();
 
         private void Form1_Shown(Object sender, EventArgs e)
         {
@@ -142,9 +139,36 @@ namespace YAT
             flowLayoutPanel1.Controls.Add(myobject);
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
+        private void btnQuit_Click(object sender, EventArgs e)
         {
+            // exit the program.         
+            System.Windows.Forms.Application.Exit();
+        }
 
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            //show about screen
+        }
+
+        private void btnRescan_Click(object sender, EventArgs e)
+        {
+            //scan all the serial ports
+            string[] ports = SerialPort.GetPortNames();
+
+            //remove the current items
+            cboSerialPorts.Items.Clear();
+
+            if (ports.Count() == 0)
+            {
+                //remove the current items
+                cboSerialPorts.Items.Add("No port");
+                
+            }
+            else
+            {
+                cboSerialPorts.Items.AddRange(ports);
+            }
+            cboSerialPorts.SelectedIndex = 0;
         }
     }
 }
