@@ -142,14 +142,6 @@ namespace YAT
             flowLayoutPanel1.Controls.Add(myobject);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
     }
 }
