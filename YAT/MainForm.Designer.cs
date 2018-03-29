@@ -30,13 +30,13 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.cboSerialPorts = new System.Windows.Forms.ComboBox();
+            this.btnQuit = new System.Windows.Forms.Button();
+            this.btnAbout = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.btnRescan = new System.Windows.Forms.Button();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.btnComs = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -61,7 +61,6 @@
             this.btnLoadMacro = new System.Windows.Forms.Button();
             this.btnSaveMacro = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,13 +78,13 @@
             this.radioButton25 = new System.Windows.Forms.RadioButton();
             this.radioButton26 = new System.Windows.Forms.RadioButton();
             this.radioButton27 = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,10 +96,10 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.MinimumSize = new System.Drawing.Size(0, 200);
+            this.groupBox1.MinimumSize = new System.Drawing.Size(0, 175);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1209, 200);
+            this.groupBox1.Size = new System.Drawing.Size(1209, 175);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
@@ -122,13 +121,14 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.comboBox1, 2, 1);
-            this.tableLayoutPanel6.Controls.Add(this.button4, 0, 5);
-            this.tableLayoutPanel6.Controls.Add(this.button7, 0, 3);
-            this.tableLayoutPanel6.Controls.Add(this.button6, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.button3, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.button2, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button5, 2, 4);
+            this.tableLayoutPanel6.Controls.Add(this.button1, 13, 0);
+            this.tableLayoutPanel6.Controls.Add(this.cboSerialPorts, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.btnQuit, 0, 5);
+            this.tableLayoutPanel6.Controls.Add(this.btnAbout, 0, 3);
+            this.tableLayoutPanel6.Controls.Add(this.btnHelp, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.btnRescan, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.btnConnect, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnComs, 2, 4);
             this.tableLayoutPanel6.Controls.Add(this.label1, 4, 0);
             this.tableLayoutPanel6.Controls.Add(this.radioButton1, 4, 1);
             this.tableLayoutPanel6.Controls.Add(this.radioButton2, 4, 2);
@@ -164,95 +164,95 @@
             this.tableLayoutPanel6.Location = new System.Drawing.Point(4, 19);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 7;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1201, 177);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1201, 152);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
-            // comboBox1
+            // cboSerialPorts
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(124, 30);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(92, 24);
-            this.comboBox1.TabIndex = 7;
+            this.cboSerialPorts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboSerialPorts.FormattingEnabled = true;
+            this.cboSerialPorts.Location = new System.Drawing.Point(124, 25);
+            this.cboSerialPorts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cboSerialPorts.Name = "cboSerialPorts";
+            this.cboSerialPorts.Size = new System.Drawing.Size(92, 24);
+            this.cboSerialPorts.TabIndex = 7;
             // 
-            // button4
+            // btnQuit
             // 
-            this.button4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(0, 150);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 30);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnQuit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnQuit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnQuit.Location = new System.Drawing.Point(0, 125);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(0);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(100, 25);
+            this.btnQuit.TabIndex = 6;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnAbout
             // 
-            this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button7.Location = new System.Drawing.Point(0, 90);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 30);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnAbout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAbout.Location = new System.Drawing.Point(0, 75);
+            this.btnAbout.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(100, 25);
+            this.btnAbout.TabIndex = 5;
+            this.btnAbout.Text = "About";
+            this.btnAbout.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnHelp
             // 
-            this.button6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.Location = new System.Drawing.Point(0, 60);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 30);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnHelp.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHelp.Location = new System.Drawing.Point(0, 50);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(0);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(100, 25);
+            this.btnHelp.TabIndex = 4;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnRescan
             // 
-            this.button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(0, 30);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 30);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRescan.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRescan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRescan.Location = new System.Drawing.Point(0, 25);
+            this.btnRescan.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRescan.Name = "btnRescan";
+            this.btnRescan.Size = new System.Drawing.Size(100, 25);
+            this.btnRescan.TabIndex = 2;
+            this.btnRescan.Text = "Rescan";
+            this.btnRescan.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnConnect
             // 
-            this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 30);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnConnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnConnect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConnect.Location = new System.Drawing.Point(0, 0);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(0);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(100, 25);
+            this.btnConnect.TabIndex = 1;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnComs
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.Location = new System.Drawing.Point(120, 120);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 30);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnComs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnComs.Location = new System.Drawing.Point(120, 100);
+            this.btnComs.Margin = new System.Windows.Forms.Padding(0);
+            this.btnComs.Name = "btnComs";
+            this.btnComs.Size = new System.Drawing.Size(100, 25);
+            this.btnComs.TabIndex = 8;
+            this.btnComs.Text = "COMs";
+            this.btnComs.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -260,7 +260,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(243, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 30);
+            this.label1.Size = new System.Drawing.Size(94, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Baudrate:";
             // 
@@ -268,10 +268,10 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton1.Location = new System.Drawing.Point(240, 30);
+            this.radioButton1.Location = new System.Drawing.Point(240, 25);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(100, 30);
+            this.radioButton1.Size = new System.Drawing.Size(100, 25);
             this.radioButton1.TabIndex = 10;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "600";
@@ -281,10 +281,10 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton2.Location = new System.Drawing.Point(240, 60);
+            this.radioButton2.Location = new System.Drawing.Point(240, 50);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(100, 30);
+            this.radioButton2.Size = new System.Drawing.Size(100, 25);
             this.radioButton2.TabIndex = 11;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "1200";
@@ -294,10 +294,10 @@
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton3.Location = new System.Drawing.Point(240, 90);
+            this.radioButton3.Location = new System.Drawing.Point(240, 75);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(100, 30);
+            this.radioButton3.Size = new System.Drawing.Size(100, 25);
             this.radioButton3.TabIndex = 12;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "2400";
@@ -307,10 +307,10 @@
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton4.Location = new System.Drawing.Point(240, 120);
+            this.radioButton4.Location = new System.Drawing.Point(240, 100);
             this.radioButton4.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(100, 30);
+            this.radioButton4.Size = new System.Drawing.Size(100, 25);
             this.radioButton4.TabIndex = 13;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "4800";
@@ -320,10 +320,10 @@
             // 
             this.radioButton13.AutoSize = true;
             this.radioButton13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton13.Location = new System.Drawing.Point(240, 150);
+            this.radioButton13.Location = new System.Drawing.Point(240, 125);
             this.radioButton13.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(100, 30);
+            this.radioButton13.Size = new System.Drawing.Size(100, 25);
             this.radioButton13.TabIndex = 14;
             this.radioButton13.TabStop = true;
             this.radioButton13.Text = "9600";
@@ -333,10 +333,10 @@
             // 
             this.radioButton5.AutoSize = true;
             this.radioButton5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton5.Location = new System.Drawing.Point(340, 30);
+            this.radioButton5.Location = new System.Drawing.Point(340, 25);
             this.radioButton5.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(100, 30);
+            this.radioButton5.Size = new System.Drawing.Size(100, 25);
             this.radioButton5.TabIndex = 15;
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "14400";
@@ -346,10 +346,10 @@
             // 
             this.radioButton7.AutoSize = true;
             this.radioButton7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton7.Location = new System.Drawing.Point(340, 60);
+            this.radioButton7.Location = new System.Drawing.Point(340, 50);
             this.radioButton7.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(100, 30);
+            this.radioButton7.Size = new System.Drawing.Size(100, 25);
             this.radioButton7.TabIndex = 16;
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "19200";
@@ -359,10 +359,10 @@
             // 
             this.radioButton9.AutoSize = true;
             this.radioButton9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton9.Location = new System.Drawing.Point(340, 90);
+            this.radioButton9.Location = new System.Drawing.Point(340, 75);
             this.radioButton9.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(100, 30);
+            this.radioButton9.Size = new System.Drawing.Size(100, 25);
             this.radioButton9.TabIndex = 17;
             this.radioButton9.TabStop = true;
             this.radioButton9.Text = "28800";
@@ -372,10 +372,10 @@
             // 
             this.radioButton11.AutoSize = true;
             this.radioButton11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton11.Location = new System.Drawing.Point(340, 120);
+            this.radioButton11.Location = new System.Drawing.Point(340, 100);
             this.radioButton11.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(100, 30);
+            this.radioButton11.Size = new System.Drawing.Size(100, 25);
             this.radioButton11.TabIndex = 18;
             this.radioButton11.TabStop = true;
             this.radioButton11.Text = "38400";
@@ -385,10 +385,10 @@
             // 
             this.radioButton14.AutoSize = true;
             this.radioButton14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton14.Location = new System.Drawing.Point(340, 150);
+            this.radioButton14.Location = new System.Drawing.Point(340, 125);
             this.radioButton14.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(100, 30);
+            this.radioButton14.Size = new System.Drawing.Size(100, 25);
             this.radioButton14.TabIndex = 19;
             this.radioButton14.TabStop = true;
             this.radioButton14.Text = "56000";
@@ -398,10 +398,10 @@
             // 
             this.radioButton6.AutoSize = true;
             this.radioButton6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton6.Location = new System.Drawing.Point(440, 30);
+            this.radioButton6.Location = new System.Drawing.Point(440, 25);
             this.radioButton6.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(100, 30);
+            this.radioButton6.Size = new System.Drawing.Size(100, 25);
             this.radioButton6.TabIndex = 20;
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "57600";
@@ -411,10 +411,10 @@
             // 
             this.radioButton8.AutoSize = true;
             this.radioButton8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton8.Location = new System.Drawing.Point(440, 60);
+            this.radioButton8.Location = new System.Drawing.Point(440, 50);
             this.radioButton8.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(100, 30);
+            this.radioButton8.Size = new System.Drawing.Size(100, 25);
             this.radioButton8.TabIndex = 21;
             this.radioButton8.TabStop = true;
             this.radioButton8.Text = "115200";
@@ -424,10 +424,10 @@
             // 
             this.radioButton10.AutoSize = true;
             this.radioButton10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton10.Location = new System.Drawing.Point(440, 90);
+            this.radioButton10.Location = new System.Drawing.Point(440, 75);
             this.radioButton10.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(100, 30);
+            this.radioButton10.Size = new System.Drawing.Size(100, 25);
             this.radioButton10.TabIndex = 22;
             this.radioButton10.TabStop = true;
             this.radioButton10.Text = "12800";
@@ -437,10 +437,10 @@
             // 
             this.radioButton12.AutoSize = true;
             this.radioButton12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton12.Location = new System.Drawing.Point(440, 120);
+            this.radioButton12.Location = new System.Drawing.Point(440, 100);
             this.radioButton12.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(100, 30);
+            this.radioButton12.Size = new System.Drawing.Size(100, 25);
             this.radioButton12.TabIndex = 23;
             this.radioButton12.TabStop = true;
             this.radioButton12.Text = "256000";
@@ -450,10 +450,10 @@
             // 
             this.radioButton15.AutoSize = true;
             this.radioButton15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton15.Location = new System.Drawing.Point(440, 150);
+            this.radioButton15.Location = new System.Drawing.Point(440, 125);
             this.radioButton15.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(100, 30);
+            this.radioButton15.Size = new System.Drawing.Size(100, 25);
             this.radioButton15.TabIndex = 24;
             this.radioButton15.TabStop = true;
             this.radioButton15.Text = "custom";
@@ -464,12 +464,12 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox2.Location = new System.Drawing.Point(0, 200);
+            this.groupBox2.Location = new System.Drawing.Point(0, 175);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.MinimumSize = new System.Drawing.Size(333, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(471, 632);
+            this.groupBox2.Size = new System.Drawing.Size(471, 657);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -481,7 +481,7 @@
             this.panel1.Location = new System.Drawing.Point(4, 81);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(463, 547);
+            this.panel1.Size = new System.Drawing.Size(463, 572);
             this.panel1.TabIndex = 2;
             // 
             // flowLayoutPanel1
@@ -491,7 +491,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(463, 547);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(463, 572);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // groupBox5
@@ -550,29 +550,16 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox3.Location = new System.Drawing.Point(471, 200);
+            this.groupBox3.Location = new System.Drawing.Point(471, 175);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(738, 632);
+            this.groupBox3.Size = new System.Drawing.Size(738, 657);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Location = new System.Drawing.Point(634, 19);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 609);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox4
             // 
@@ -603,16 +590,16 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(563, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 30);
+            this.label2.Size = new System.Drawing.Size(94, 25);
             this.label2.TabIndex = 25;
             this.label2.Text = "Databits:";
             // 
             // radioButton16
             // 
             this.radioButton16.AutoSize = true;
-            this.radioButton16.Location = new System.Drawing.Point(563, 33);
+            this.radioButton16.Location = new System.Drawing.Point(563, 28);
             this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(37, 21);
+            this.radioButton16.Size = new System.Drawing.Size(37, 19);
             this.radioButton16.TabIndex = 26;
             this.radioButton16.TabStop = true;
             this.radioButton16.Text = "5";
@@ -621,9 +608,9 @@
             // radioButton17
             // 
             this.radioButton17.AutoSize = true;
-            this.radioButton17.Location = new System.Drawing.Point(563, 63);
+            this.radioButton17.Location = new System.Drawing.Point(563, 53);
             this.radioButton17.Name = "radioButton17";
-            this.radioButton17.Size = new System.Drawing.Size(37, 21);
+            this.radioButton17.Size = new System.Drawing.Size(37, 19);
             this.radioButton17.TabIndex = 27;
             this.radioButton17.TabStop = true;
             this.radioButton17.Text = "6";
@@ -632,9 +619,9 @@
             // radioButton18
             // 
             this.radioButton18.AutoSize = true;
-            this.radioButton18.Location = new System.Drawing.Point(563, 93);
+            this.radioButton18.Location = new System.Drawing.Point(563, 78);
             this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(37, 21);
+            this.radioButton18.Size = new System.Drawing.Size(37, 19);
             this.radioButton18.TabIndex = 28;
             this.radioButton18.TabStop = true;
             this.radioButton18.Text = "7";
@@ -643,9 +630,9 @@
             // radioButton19
             // 
             this.radioButton19.AutoSize = true;
-            this.radioButton19.Location = new System.Drawing.Point(563, 123);
+            this.radioButton19.Location = new System.Drawing.Point(563, 103);
             this.radioButton19.Name = "radioButton19";
-            this.radioButton19.Size = new System.Drawing.Size(37, 21);
+            this.radioButton19.Size = new System.Drawing.Size(37, 19);
             this.radioButton19.TabIndex = 29;
             this.radioButton19.TabStop = true;
             this.radioButton19.Text = "8";
@@ -654,7 +641,8 @@
             // radioButton20
             // 
             this.radioButton20.AutoSize = true;
-            this.radioButton20.Location = new System.Drawing.Point(683, 33);
+            this.radioButton20.Location = new System.Drawing.Point(680, 25);
+            this.radioButton20.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton20.Name = "radioButton20";
             this.radioButton20.Size = new System.Drawing.Size(63, 21);
             this.radioButton20.TabIndex = 30;
@@ -665,7 +653,8 @@
             // radioButton21
             // 
             this.radioButton21.AutoSize = true;
-            this.radioButton21.Location = new System.Drawing.Point(683, 63);
+            this.radioButton21.Location = new System.Drawing.Point(680, 50);
+            this.radioButton21.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton21.Name = "radioButton21";
             this.radioButton21.Size = new System.Drawing.Size(56, 21);
             this.radioButton21.TabIndex = 31;
@@ -676,7 +665,8 @@
             // radioButton22
             // 
             this.radioButton22.AutoSize = true;
-            this.radioButton22.Location = new System.Drawing.Point(683, 93);
+            this.radioButton22.Location = new System.Drawing.Point(680, 75);
+            this.radioButton22.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton22.Name = "radioButton22";
             this.radioButton22.Size = new System.Drawing.Size(61, 21);
             this.radioButton22.TabIndex = 32;
@@ -687,7 +677,8 @@
             // radioButton23
             // 
             this.radioButton23.AutoSize = true;
-            this.radioButton23.Location = new System.Drawing.Point(683, 123);
+            this.radioButton23.Location = new System.Drawing.Point(680, 100);
+            this.radioButton23.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton23.Name = "radioButton23";
             this.radioButton23.Size = new System.Drawing.Size(60, 21);
             this.radioButton23.TabIndex = 33;
@@ -698,12 +689,14 @@
             // radioButton24
             // 
             this.radioButton24.AutoSize = true;
-            this.radioButton24.Location = new System.Drawing.Point(683, 153);
+            this.radioButton24.Location = new System.Drawing.Point(680, 125);
+            this.radioButton24.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton24.Name = "radioButton24";
             this.radioButton24.Size = new System.Drawing.Size(69, 21);
             this.radioButton24.TabIndex = 34;
             this.radioButton24.TabStop = true;
             this.radioButton24.Text = "Space";
+            this.radioButton24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton24.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -712,7 +705,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(683, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 30);
+            this.label3.Size = new System.Drawing.Size(94, 25);
             this.label3.TabIndex = 35;
             this.label3.Text = "Parity:";
             // 
@@ -728,9 +721,9 @@
             // radioButton25
             // 
             this.radioButton25.AutoSize = true;
-            this.radioButton25.Location = new System.Drawing.Point(803, 33);
+            this.radioButton25.Location = new System.Drawing.Point(803, 28);
             this.radioButton25.Name = "radioButton25";
-            this.radioButton25.Size = new System.Drawing.Size(37, 21);
+            this.radioButton25.Size = new System.Drawing.Size(37, 19);
             this.radioButton25.TabIndex = 37;
             this.radioButton25.TabStop = true;
             this.radioButton25.Text = "1";
@@ -739,9 +732,9 @@
             // radioButton26
             // 
             this.radioButton26.AutoSize = true;
-            this.radioButton26.Location = new System.Drawing.Point(803, 63);
+            this.radioButton26.Location = new System.Drawing.Point(803, 53);
             this.radioButton26.Name = "radioButton26";
-            this.radioButton26.Size = new System.Drawing.Size(49, 21);
+            this.radioButton26.Size = new System.Drawing.Size(49, 19);
             this.radioButton26.TabIndex = 38;
             this.radioButton26.TabStop = true;
             this.radioButton26.Text = "1.5";
@@ -750,13 +743,25 @@
             // radioButton27
             // 
             this.radioButton27.AutoSize = true;
-            this.radioButton27.Location = new System.Drawing.Point(803, 93);
+            this.radioButton27.Location = new System.Drawing.Point(803, 78);
             this.radioButton27.Name = "radioButton27";
-            this.radioButton27.Size = new System.Drawing.Size(37, 21);
+            this.radioButton27.Size = new System.Drawing.Size(37, 19);
             this.radioButton27.TabIndex = 39;
             this.radioButton27.TabStop = true;
             this.radioButton27.Text = "2";
             this.radioButton27.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(904, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(293, 17);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
@@ -778,7 +783,6 @@
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -797,16 +801,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnLoadMacro;
         private System.Windows.Forms.Button btnSaveMacro;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnAbout;
+        private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button btnRescan;
+        private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.ComboBox cboSerialPorts;
+        private System.Windows.Forms.Button btnComs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -838,6 +841,7 @@
         private System.Windows.Forms.RadioButton radioButton25;
         private System.Windows.Forms.RadioButton radioButton26;
         private System.Windows.Forms.RadioButton radioButton27;
+        private System.Windows.Forms.Button button1;
     }
 }
 
