@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("YAT")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("YAT, stand for: Yet Another Terminal. YAT is a free program trying to give the user the same handy tool as Terminal by Br@y++ and extra options.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("YAT")]

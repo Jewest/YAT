@@ -177,7 +177,7 @@ namespace YAT
             //scan all the serial ports
             string[] serialPorts = SerialPort.GetPortNames();
 
-            txtOutput.AppendText("Found these ports:\n");
+            txtOutput.AppendText(text: "Found these ports:\n");
             //loop the ports.
             if (serialPorts.Length > 0)
             {
@@ -187,6 +187,13 @@ namespace YAT
                 }
             }
 
+        }
+
+        private void btnAbout_Click_1(object sender, EventArgs e)
+        {
+            AboutBox showAbout = new AboutBox();
+
+            showAbout.ShowDialog(this);
         }
     }
 }
