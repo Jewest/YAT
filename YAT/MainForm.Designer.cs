@@ -289,6 +289,7 @@
             this.btnComs.TabIndex = 8;
             this.btnComs.Text = "COMs";
             this.btnComs.UseVisualStyleBackColor = true;
+            this.btnComs.Click += new System.EventHandler(this.btnComs_Click);
             // 
             // label1
             // 

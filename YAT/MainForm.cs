@@ -170,5 +170,23 @@ namespace YAT
             }
             cboSerialPorts.SelectedIndex = 0;
         }
+
+        private void btnComs_Click(object sender, EventArgs e)
+        {
+            //print the information about the coms here
+            //scan all the serial ports
+            string[] serialPorts = SerialPort.GetPortNames();
+
+            txtOutput.AppendText("Found these ports:\n");
+            //loop the ports.
+            if (serialPorts.Length > 0)
+            {
+                foreach (string port in serialPorts)
+                {
+                    txtOutput.AppendText(port + "\n");
+                }
+            }
+
+        }
     }
 }
