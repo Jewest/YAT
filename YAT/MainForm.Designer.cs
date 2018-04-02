@@ -769,12 +769,14 @@
             // 
             // txtOutput
             // 
-            this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOutput.Location = new System.Drawing.Point(3, 16);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(2);
+            this.txtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOutput.Location = new System.Drawing.Point(3, 31);
+            this.txtOutput.Margin = new System.Windows.Forms.Padding(3, 100, 3, 3);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(578, 513);
+            this.txtOutput.Size = new System.Drawing.Size(578, 498);
             this.txtOutput.TabIndex = 0;
             // 
             // statusStrip1
