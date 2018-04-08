@@ -27,7 +27,37 @@ namespace YAT
         {
             //set the correct name and version
             this.Text = Application.ProductName  + " " +   Application.ProductVersion;
+
+            // fill the comboboxes
+            cboDatabits.Items.Clear();
+            cboDatabits.Items.Add("5");
+            cboDatabits.Items.Add("6");
+            cboDatabits.Items.Add("7");
+            cboDatabits.Items.Add("8");
+            cboDatabits.SelectedIndex = cboDatabits.Items.Count - 1;
+
+            cboParity.Items.Clear();
+            cboParity.Items.Add("Odd");
+            cboParity.Items.Add("Even");
+            cboParity.Items.Add("Parity");
+            cboParity.Items.Add("None");
+            cboParity.SelectedIndex = cboParity.Items.Count - 1;
+
+            cboStopBits.Items.Clear();
+            cboStopBits.Items.Add("1");
+            cboStopBits.Items.Add("1.5");
+            cboStopBits.Items.Add("2");
+            cboStopBits.SelectedIndex = 0;
+
+            cboBaudRate.Items.Clear();
+
+            cboBaudRate.Items.Add(9600);
+            cboBaudRate.Items.Add(19200);
+            cboBaudRate.Items.Add(57600);
+
         }
+
+        
 
         private void btnLoadMacro_Click(object sender, EventArgs e)
         {
@@ -139,17 +169,6 @@ namespace YAT
             flowLayoutPanel1.Controls.Add(myobject);
         }
 
-        private void btnQuit_Click(object sender, EventArgs e)
-        {
-            // exit the program.         
-            System.Windows.Forms.Application.Exit();
-        }
-
-        private void btnAbout_Click(object sender, EventArgs e)
-        {
-            //show about screen
-        }
-
         private void btnRescan_Click(object sender, EventArgs e)
         {
             //scan all the serial ports
@@ -189,11 +208,27 @@ namespace YAT
 
         }
 
-        private void btnAbout_Click_1(object sender, EventArgs e)
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox showAbout = new AboutBox();
 
             showAbout.ShowDialog(this);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // exit the program.         
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void btnSaveMacro_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
