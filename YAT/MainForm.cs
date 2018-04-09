@@ -230,5 +230,11 @@ namespace YAT
         {
 
         }
+
+        private void btnAddTab_Click(object sender, EventArgs e)
+        {            
+            TabPage tp = new TabPage("Test");
+            tabMacro.TabPages.Add(tp);
+        }
     }
 }

@@ -50,10 +50,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLoadMacro = new System.Windows.Forms.Button();
             this.btnSaveMacro = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAddTab = new System.Windows.Forms.Button();
+            this.btnRemoveTab = new System.Windows.Forms.Button();
             this.tabMacro = new System.Windows.Forms.TabControl();
             this.general = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -63,7 +64,7 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnRenameTab = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -79,7 +80,7 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 356F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 372F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 1);
@@ -317,7 +318,7 @@
             this.groupBox2.Location = new System.Drawing.Point(3, 103);
             this.groupBox2.MinimumSize = new System.Drawing.Size(250, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(350, 530);
+            this.groupBox2.Size = new System.Drawing.Size(366, 530);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -329,7 +330,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 511);
+            this.panel1.Size = new System.Drawing.Size(360, 511);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -340,10 +341,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.btnLoadMacro, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnSaveMacro, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnSaveMacro, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnAddTab, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnRemoveTab, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.tabMacro, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -352,57 +354,63 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(344, 511);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(360, 511);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // btnLoadMacro
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnLoadMacro, 2);
             this.btnLoadMacro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLoadMacro.Location = new System.Drawing.Point(3, 3);
             this.btnLoadMacro.Name = "btnLoadMacro";
-            this.btnLoadMacro.Size = new System.Drawing.Size(80, 24);
+            this.btnLoadMacro.Size = new System.Drawing.Size(174, 24);
             this.btnLoadMacro.TabIndex = 0;
             this.btnLoadMacro.Text = "Load";
             this.btnLoadMacro.UseVisualStyleBackColor = true;
             // 
             // btnSaveMacro
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnSaveMacro, 2);
             this.btnSaveMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveMacro.Location = new System.Drawing.Point(89, 3);
+            this.btnSaveMacro.Location = new System.Drawing.Point(183, 3);
             this.btnSaveMacro.Name = "btnSaveMacro";
-            this.btnSaveMacro.Size = new System.Drawing.Size(80, 24);
+            this.btnSaveMacro.Size = new System.Drawing.Size(174, 24);
             this.btnSaveMacro.TabIndex = 1;
             this.btnSaveMacro.Text = "Save";
             this.btnSaveMacro.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAddTab
             // 
-            this.button2.Location = new System.Drawing.Point(3, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 19);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddTab.Location = new System.Drawing.Point(3, 33);
+            this.btnAddTab.Name = "btnAddTab";
+            this.btnAddTab.Size = new System.Drawing.Size(84, 24);
+            this.btnAddTab.TabIndex = 2;
+            this.btnAddTab.Text = "Add Tab";
+            this.btnAddTab.UseVisualStyleBackColor = true;
+            this.btnAddTab.Click += new System.EventHandler(this.btnAddTab_Click);
             // 
-            // button3
+            // btnRemoveTab
             // 
-            this.button3.Location = new System.Drawing.Point(89, 33);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 19);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRemoveTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRemoveTab.Location = new System.Drawing.Point(273, 33);
+            this.btnRemoveTab.Name = "btnRemoveTab";
+            this.btnRemoveTab.Size = new System.Drawing.Size(84, 24);
+            this.btnRemoveTab.TabIndex = 3;
+            this.btnRemoveTab.Text = "Remove Tab";
+            this.btnRemoveTab.UseVisualStyleBackColor = true;
             // 
             // tabMacro
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.tabMacro, 4);
             this.tabMacro.Controls.Add(this.general);
             this.tabMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabMacro.Location = new System.Drawing.Point(3, 63);
+            this.tabMacro.Location = new System.Drawing.Point(0, 63);
+            this.tabMacro.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.tabMacro.Name = "tabMacro";
             this.tableLayoutPanel1.SetRowSpan(this.tabMacro, 2);
             this.tabMacro.SelectedIndex = 0;
-            this.tabMacro.Size = new System.Drawing.Size(338, 445);
+            this.tabMacro.Size = new System.Drawing.Size(357, 445);
             this.tabMacro.TabIndex = 5;
             // 
             // general
@@ -411,19 +419,29 @@
             this.general.Location = new System.Drawing.Point(4, 22);
             this.general.Name = "general";
             this.general.Padding = new System.Windows.Forms.Padding(3);
-            this.general.Size = new System.Drawing.Size(330, 419);
+            this.general.Size = new System.Drawing.Size(349, 419);
             this.general.TabIndex = 0;
             this.general.Text = "General";
             this.general.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(343, 413);
+            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtOutput);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox3.Location = new System.Drawing.Point(359, 103);
+            this.groupBox3.Location = new System.Drawing.Point(375, 103);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(584, 530);
+            this.groupBox3.Size = new System.Drawing.Size(568, 530);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
@@ -437,7 +455,7 @@
             this.txtOutput.Margin = new System.Windows.Forms.Padding(3, 100, 3, 3);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(578, 496);
+            this.txtOutput.Size = new System.Drawing.Size(562, 496);
             this.txtOutput.TabIndex = 0;
             // 
             // statusStrip1
@@ -500,14 +518,15 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // flowLayoutPanel1
+            // btnRenameTab
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(324, 413);
-            this.flowLayoutPanel1.TabIndex = 5;
+            this.btnRenameTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRenameTab.Location = new System.Drawing.Point(93, 33);
+            this.btnRenameTab.Name = "btnRenameTab";
+            this.btnRenameTab.Size = new System.Drawing.Size(84, 24);
+            this.btnRenameTab.TabIndex = 6;
+            this.btnRenameTab.Text = "Rename Tab";
+            this.btnRenameTab.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -571,11 +590,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnLoadMacro;
         private System.Windows.Forms.Button btnSaveMacro;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAddTab;
+        private System.Windows.Forms.Button btnRemoveTab;
         private System.Windows.Forms.TabControl tabMacro;
         private System.Windows.Forms.TabPage general;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnRenameTab;
     }
 }
 
