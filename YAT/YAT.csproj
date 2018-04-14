@@ -66,6 +66,13 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AskController.cs" />
+    <Compile Include="View\frmAsk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAsk.Designer.cs">
+      <DependentUpon>frmAsk.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +105,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\frmAsk.resx">
+      <DependentUpon>frmAsk.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

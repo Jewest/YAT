@@ -55,6 +55,7 @@
             this.tabMacro = new System.Windows.Forms.TabControl();
             this.general = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnRenameTab = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -64,7 +65,6 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRenameTab = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -434,6 +434,16 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(343, 413);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
+            // btnRenameTab
+            // 
+            this.btnRenameTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRenameTab.Location = new System.Drawing.Point(93, 33);
+            this.btnRenameTab.Name = "btnRenameTab";
+            this.btnRenameTab.Size = new System.Drawing.Size(84, 24);
+            this.btnRenameTab.TabIndex = 6;
+            this.btnRenameTab.Text = "Rename Tab";
+            this.btnRenameTab.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtOutput);
@@ -517,16 +527,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // btnRenameTab
-            // 
-            this.btnRenameTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRenameTab.Location = new System.Drawing.Point(93, 33);
-            this.btnRenameTab.Name = "btnRenameTab";
-            this.btnRenameTab.Size = new System.Drawing.Size(84, 24);
-            this.btnRenameTab.TabIndex = 6;
-            this.btnRenameTab.Text = "Rename Tab";
-            this.btnRenameTab.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
