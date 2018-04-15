@@ -55,13 +55,13 @@ namespace YAT.View
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 261);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 129);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnOk
             // 
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOk.Location = new System.Drawing.Point(3, 234);
+            this.btnOk.Location = new System.Drawing.Point(3, 102);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(136, 24);
             this.btnOk.TabIndex = 0;
@@ -72,7 +72,7 @@ namespace YAT.View
             // btnCancel
             // 
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(145, 234);
+            this.btnCancel.Location = new System.Drawing.Point(145, 102);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(136, 24);
             this.btnCancel.TabIndex = 1;
@@ -84,7 +84,7 @@ namespace YAT.View
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txtNewName, 2);
             this.txtNewName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNewName.Location = new System.Drawing.Point(3, 184);
+            this.txtNewName.Location = new System.Drawing.Point(3, 52);
             this.txtNewName.Name = "txtNewName";
             this.txtNewName.Size = new System.Drawing.Size(278, 20);
             this.txtNewName.TabIndex = 2;
@@ -96,21 +96,23 @@ namespace YAT.View
             this.lblQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQuestion.Location = new System.Drawing.Point(3, 0);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(278, 181);
+            this.lblQuestion.Size = new System.Drawing.Size(278, 49);
             this.lblQuestion.TabIndex = 3;
             this.lblQuestion.Text = "label1";
+            this.lblQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmAsk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 129);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAsk";
             this.ShowIcon = false;
             this.Text = "frmAsk";
+            this.Shown += new System.EventHandler(this.frmAsk_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

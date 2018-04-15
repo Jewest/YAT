@@ -23,6 +23,19 @@ namespace YAT.View
             return m_result;
         }
 
+        public void SetDescriptionText(string description)
+        {
+            //set the text
+            lblQuestion.Text = description;
+        }
+
+        public void SetText(string textBox)
+        {
+            //copy the text
+            txtNewName.Text = textBox;
+           
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             m_result = "";
@@ -43,5 +56,12 @@ namespace YAT.View
 
             }
         }
+
+        private void frmAsk_Shown(object sender, EventArgs e)
+        {
+            //select all the text
+            txtNewName.SelectAll();
+            txtNewName.Focus();
+         }
     }
 }
