@@ -53,8 +53,6 @@
             this.btnAddTab = new System.Windows.Forms.Button();
             this.btnRemoveTab = new System.Windows.Forms.Button();
             this.tabMacro = new System.Windows.Forms.TabControl();
-            this.general = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRenameTab = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
@@ -71,8 +69,6 @@
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tabMacro.SuspendLayout();
-            this.general.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -399,11 +395,11 @@
             this.btnRemoveTab.TabIndex = 3;
             this.btnRemoveTab.Text = "Remove Tab";
             this.btnRemoveTab.UseVisualStyleBackColor = true;
+            this.btnRemoveTab.Click += new System.EventHandler(this.btnRemoveTab_Click);
             // 
             // tabMacro
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.tabMacro, 4);
-            this.tabMacro.Controls.Add(this.general);
             this.tabMacro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabMacro.Location = new System.Drawing.Point(0, 63);
             this.tabMacro.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
@@ -412,27 +408,6 @@
             this.tabMacro.SelectedIndex = 0;
             this.tabMacro.Size = new System.Drawing.Size(357, 445);
             this.tabMacro.TabIndex = 5;
-            // 
-            // general
-            // 
-            this.general.Controls.Add(this.flowLayoutPanel1);
-            this.general.Location = new System.Drawing.Point(4, 22);
-            this.general.Name = "general";
-            this.general.Padding = new System.Windows.Forms.Padding(3);
-            this.general.Size = new System.Drawing.Size(349, 419);
-            this.general.TabIndex = 0;
-            this.general.Text = "General";
-            this.general.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(343, 413);
-            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // btnRenameTab
             // 
@@ -548,8 +523,6 @@
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tabMacro.ResumeLayout(false);
-            this.general.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -594,8 +567,6 @@
         private System.Windows.Forms.Button btnAddTab;
         private System.Windows.Forms.Button btnRemoveTab;
         private System.Windows.Forms.TabControl tabMacro;
-        private System.Windows.Forms.TabPage general;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnRenameTab;
     }
 }

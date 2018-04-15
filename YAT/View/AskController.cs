@@ -19,7 +19,7 @@ namespace YAT.View
         public string GetNewName(string oldName)
         {
             frmAsk view = new frmAsk();
-            view.SetDescriptionText("Please insert the new desired text:");
+            view.SetDescriptionText("Please insert the new desired name:");
             view.SetText(oldName);
             view.ShowDialog(m_parentView);
 

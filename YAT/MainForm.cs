@@ -81,7 +81,7 @@ namespace YAT
                         {
                             //remove the current elements
                             //                 
-                            flowLayoutPanel1.Controls.Clear();
+                            //flowLayoutPanel1.Controls.Clear();
 
                             XmlReaderSettings settings = new XmlReaderSettings();
                             settings.Async = true;
@@ -141,14 +141,14 @@ namespace YAT
                     int itemcounter = 0;
 
                     //write the number of elements
-                    writer.WriteAttributeString("count", Convert.ToString(flowLayoutPanel1.Controls.Count));
+                   // writer.WriteAttributeString("count", Convert.ToString(flowLayoutPanel1.Controls.Count));
 
                     // load the items
-                    foreach (macro foundControl in flowLayoutPanel1.Controls)
+                   // foreach (macro foundControl in flowLayoutPanel1.Controls)
                     {
                         writer.WriteStartElement("item" + Convert.ToString(itemcounter++));
                         //XmlWriter
-                        foundControl.WriteXml(writer);
+                    //    foundControl.WriteXml(writer);
                         writer.WriteEndElement();
                                                 
                     }
@@ -162,12 +162,34 @@ namespace YAT
 
         }
 
+        private FlowLayoutPanel GetFlowLayoutPanelOnCurrentTab()
+        {
+            FlowLayoutPanel foundItem = null;
+
+            if(tabMacro.TabCount > 0)
+            {
+                TabPage selectPage = tabMacro.SelectedTab;
+                //check element
+                if(selectPage != null)
+                {
+                    foundItem = (FlowLayoutPanel)tabMacro.SelectedTab.Controls[0];
+                }                
+            }
+
+            return foundItem;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            // testing the adding off the user commands
-            macro myobject = new macro();
-            myobject.Width = flowLayoutPanel1.Width - 25;
-            flowLayoutPanel1.Controls.Add(myobject);
+            FlowLayoutPanel layout = GetFlowLayoutPanelOnCurrentTab();
+
+            if(layout != null)
+            {
+                // testing the adding off the user commands
+                macro myobject = new macro();
+                myobject.Width = layout.Width - 25;
+                layout.Controls.Add(myobject);
+            }
         }
 
         private void btnRescan_Click(object sender, EventArgs e)
@@ -235,7 +257,16 @@ namespace YAT
         private void btnAddTab_Click(object sender, EventArgs e)
         {            
             TabPage tp = new TabPage("Test");
+            FlowLayoutPanel fl_panel = new FlowLayoutPanel();
+            fl_panel.Dock = DockStyle.Fill;
+            fl_panel.AutoScroll = true;            
+            fl_panel.BringToFront();
+            tp.Controls.Add(fl_panel);
+
+            tp.UseVisualStyleBackColor = true;
             tabMacro.TabPages.Add(tp);
+
+            tabMacro.SelectedTab = tp;
         }
         
         
@@ -251,6 +282,16 @@ namespace YAT
             {
                 //copy the new name
                 tabMacro.SelectedTab.Text = newName;
+            }
+        }
+
+        private void btnRemoveTab_Click(object sender, EventArgs e)
+        {
+            //check for at least one tab
+            if (tabMacro.TabCount > 1)
+            {
+                //remove the selected tab
+                tabMacro.TabPages.Remove(tabMacro.SelectedTab);
             }
         }
     }
