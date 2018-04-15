@@ -443,6 +443,7 @@
             this.btnRenameTab.TabIndex = 6;
             this.btnRenameTab.Text = "Rename Tab";
             this.btnRenameTab.UseVisualStyleBackColor = true;
+            this.btnRenameTab.Click += new System.EventHandler(this.btnRenameTab_Click);
             // 
             // groupBox3
             // 

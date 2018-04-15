@@ -16,17 +16,13 @@ namespace YAT.View
             m_parentView = parentView;
         }
 
-        string GetNewName(string oldName)
+        public string GetNewName(string oldName)
         {
-            string newName = "";
-
             frmAsk view = new frmAsk();
 
             view.ShowDialog(m_parentView);
-
-
-
-            return newName;
+            
+            return view.GetResult();
         }
     }
 }

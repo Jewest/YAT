@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using YAT.View;
 
 namespace YAT
 {
@@ -235,6 +236,22 @@ namespace YAT
         {            
             TabPage tp = new TabPage("Test");
             tabMacro.TabPages.Add(tp);
+        }
+        
+        
+
+        private void btnRenameTab_Click(object sender, EventArgs e)
+        {
+            AskController getNewName = new AskController(this);
+            //get the new name
+            string newName = getNewName.GetNewName(tabMacro.SelectedTab.Text);
+
+            //check the length
+            if(newName.Length > 0)
+            {
+                //copy the new name
+                tabMacro.SelectedTab.Text = newName;
+            }
         }
     }
 }
