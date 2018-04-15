@@ -88,6 +88,7 @@ namespace YAT.View
             this.txtNewName.Name = "txtNewName";
             this.txtNewName.Size = new System.Drawing.Size(278, 20);
             this.txtNewName.TabIndex = 2;
+            this.txtNewName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNewName_KeyUp);
             // 
             // lblQuestion
             // 

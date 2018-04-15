@@ -32,7 +32,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.cboSerialPorts = new System.Windows.Forms.ComboBox();
             this.btnRescan = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -63,6 +62,7 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnNewMacro = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -124,7 +124,6 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.label5, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button1, 11, 0);
             this.tableLayoutPanel6.Controls.Add(this.cboSerialPorts, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.btnRescan, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.btnConnect, 0, 0);
@@ -160,17 +159,6 @@
             this.label5.Size = new System.Drawing.Size(71, 20);
             this.label5.TabIndex = 45;
             this.label5.Text = "Port:";
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(528, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(403, 14);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cboSerialPorts
             // 
@@ -337,11 +325,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.btnLoadMacro, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnSaveMacro, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnSaveMacro, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAddTab, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnRemoveTab, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.tabMacro, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnNewMacro, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -355,22 +344,20 @@
             // 
             // btnLoadMacro
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnLoadMacro, 2);
             this.btnLoadMacro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLoadMacro.Location = new System.Drawing.Point(3, 3);
             this.btnLoadMacro.Name = "btnLoadMacro";
-            this.btnLoadMacro.Size = new System.Drawing.Size(174, 24);
+            this.btnLoadMacro.Size = new System.Drawing.Size(84, 24);
             this.btnLoadMacro.TabIndex = 0;
             this.btnLoadMacro.Text = "Load";
             this.btnLoadMacro.UseVisualStyleBackColor = true;
             // 
             // btnSaveMacro
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnSaveMacro, 2);
             this.btnSaveMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveMacro.Location = new System.Drawing.Point(183, 3);
+            this.btnSaveMacro.Location = new System.Drawing.Point(93, 3);
             this.btnSaveMacro.Name = "btnSaveMacro";
-            this.btnSaveMacro.Size = new System.Drawing.Size(174, 24);
+            this.btnSaveMacro.Size = new System.Drawing.Size(84, 24);
             this.btnSaveMacro.TabIndex = 1;
             this.btnSaveMacro.Text = "Save";
             this.btnSaveMacro.UseVisualStyleBackColor = true;
@@ -504,6 +491,17 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // btnNewMacro
+            // 
+            this.btnNewMacro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNewMacro.Location = new System.Drawing.Point(183, 3);
+            this.btnNewMacro.Name = "btnNewMacro";
+            this.btnNewMacro.Size = new System.Drawing.Size(84, 24);
+            this.btnNewMacro.TabIndex = 7;
+            this.btnNewMacro.Text = "Add";
+            this.btnNewMacro.UseVisualStyleBackColor = true;
+            this.btnNewMacro.Click += new System.EventHandler(this.btnNewMacro_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,7 +534,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cboSerialPorts;
         private System.Windows.Forms.Button btnRescan;
         private System.Windows.Forms.Button btnConnect;
@@ -568,6 +565,7 @@
         private System.Windows.Forms.Button btnRemoveTab;
         private System.Windows.Forms.TabControl tabMacro;
         private System.Windows.Forms.Button btnRenameTab;
+        private System.Windows.Forms.Button btnNewMacro;
     }
 }
 

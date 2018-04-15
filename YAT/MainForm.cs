@@ -179,7 +179,7 @@ namespace YAT
             return foundItem;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnNewMacro_Click(object sender, EventArgs e)
         {
             FlowLayoutPanel layout = GetFlowLayoutPanelOnCurrentTab();
 
@@ -249,27 +249,30 @@ namespace YAT
             System.Windows.Forms.Application.Exit();
         }
 
-        private void btnSaveMacro_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAddTab_Click(object sender, EventArgs e)
-        {            
-            TabPage tp = new TabPage("Test");
-            FlowLayoutPanel fl_panel = new FlowLayoutPanel();
-            fl_panel.Dock = DockStyle.Fill;
-            fl_panel.AutoScroll = true;            
-            fl_panel.BringToFront();
-            tp.Controls.Add(fl_panel);
+        {
+            AskController getTabName = new AskController(this);
 
-            tp.UseVisualStyleBackColor = true;
-            tabMacro.TabPages.Add(tp);
+            //get the new name
+            string nameTab = getTabName.GetNewName("");
 
-            tabMacro.SelectedTab = tp;
+            if (nameTab.Length > 0)
+            {
+                TabPage tp = new TabPage(nameTab);
+                FlowLayoutPanel fl_panel = new FlowLayoutPanel();
+                fl_panel.Dock = DockStyle.Fill;
+                fl_panel.AutoScroll = true;
+                fl_panel.BringToFront();
+                //add the panel
+                tp.Controls.Add(fl_panel);
+                //make the back ground nice
+                tp.UseVisualStyleBackColor = true;
+
+                tabMacro.TabPages.Add(tp);
+                //select the tab
+                tabMacro.SelectedTab = tp;
+            }
         }
-        
-        
 
         private void btnRenameTab_Click(object sender, EventArgs e)
         {

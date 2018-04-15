@@ -63,5 +63,13 @@ namespace YAT.View
             txtNewName.SelectAll();
             txtNewName.Focus();
          }
+
+        private void txtNewName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
+            {
+                btnOk.Focus();
+            }
+        }
     }
 }
