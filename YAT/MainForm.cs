@@ -80,8 +80,7 @@ namespace YAT
                         using (myStream)
                         {
                             //remove the current elements
-                            //                 
-                            //flowLayoutPanel1.Controls.Clear();
+                            tabMacro.TabPages.Clear();
 
                             XmlReaderSettings settings = new XmlReaderSettings();
                             settings.Async = true;
@@ -144,11 +143,25 @@ namespace YAT
                    // writer.WriteAttributeString("count", Convert.ToString(flowLayoutPanel1.Controls.Count));
 
                     // load the items
-                   // foreach (macro foundControl in flowLayoutPanel1.Controls)
+                    foreach (TabPage foundtab in tabMacro.TabPages)
                     {
-                        writer.WriteStartElement("item" + Convert.ToString(itemcounter++));
+                        //writer.WriteStartElement("item" + Convert.ToString(itemcounter++));
+                        writer.WriteStartElement("Tab");
+                        writer.WriteAttributeString("Name", foundtab.Text);
+
+                        FlowLayoutPanel panel = (FlowLayoutPanel)foundtab.Controls[0];
+                        if(panel != null)
+                        {
+                            foreach(macro macroSetting in panel.Controls)
+                            {
+                                macroSetting.WriteXml(writer);
+                            }
+                        }
+
+
+
                         //XmlWriter
-                    //    foundControl.WriteXml(writer);
+                        //    foundControl.WriteXml(writer);
                         writer.WriteEndElement();
                                                 
                     }
@@ -236,11 +249,6 @@ namespace YAT
             AboutBox showAbout = new AboutBox();
 
             showAbout.ShowDialog(this);
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)

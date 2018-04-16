@@ -305,7 +305,7 @@
             this.groupBox2.Size = new System.Drawing.Size(366, 530);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Macro";
             // 
             // panel1
             // 
@@ -351,6 +351,7 @@
             this.btnLoadMacro.TabIndex = 0;
             this.btnLoadMacro.Text = "Load";
             this.btnLoadMacro.UseVisualStyleBackColor = true;
+            this.btnLoadMacro.Click += new System.EventHandler(this.btnLoadMacro_Click);
             // 
             // btnSaveMacro
             // 
@@ -361,6 +362,7 @@
             this.btnSaveMacro.TabIndex = 1;
             this.btnSaveMacro.Text = "Save";
             this.btnSaveMacro.UseVisualStyleBackColor = true;
+            this.btnSaveMacro.Click += new System.EventHandler(this.btnSaveMacro_Click);
             // 
             // btnAddTab
             // 
@@ -428,7 +430,7 @@
             this.groupBox3.Size = new System.Drawing.Size(568, 530);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.groupBox3.Text = "Reply";
             // 
             // txtOutput
             // 
@@ -510,8 +512,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip2);
             this.Name = "MainForm";
-            this.Text = "Yat";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Text = "Yat";            
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

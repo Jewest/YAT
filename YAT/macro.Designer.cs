@@ -151,8 +151,10 @@ namespace YAT
 
         public void WriteXml(XmlWriter writer)
         {
+            writer.WriteStartElement("Macro");
             writer.WriteAttributeString("command", textBox1.Text);
             writer.WriteAttributeString("time", numericUpDown1.Value.ToString());
+            writer.WriteEndElement();
         }
 
         public void ReadXml(XmlReader reader)
