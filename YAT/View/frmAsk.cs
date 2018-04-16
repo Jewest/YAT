@@ -42,9 +42,9 @@ namespace YAT.View
             this.Hide();
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private void ProcessInsertedValue()
         {
-            if(txtNewName.Text.Count() > 0)
+            if (txtNewName.Text.Count() > 0)
             {
                 m_result = txtNewName.Text;
                 this.Hide();
@@ -55,6 +55,11 @@ namespace YAT.View
                 MessageBox.Show(this, "Input is empty");
 
             }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            ProcessInsertedValue();
         }
 
         private void frmAsk_Shown(object sender, EventArgs e)
@@ -68,8 +73,14 @@ namespace YAT.View
         {
             if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
             {
-                btnOk.Focus();
+                //check if its correct and close
+                ProcessInsertedValue();
             }
+        }
+
+        private void txtNewName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

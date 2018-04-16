@@ -53,6 +53,7 @@
             this.btnRemoveTab = new System.Windows.Forms.Button();
             this.tabMacro = new System.Windows.Forms.TabControl();
             this.btnRenameTab = new System.Windows.Forms.Button();
+            this.btnNewMacro = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -62,7 +63,6 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnNewMacro = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -407,6 +407,17 @@
             this.btnRenameTab.UseVisualStyleBackColor = true;
             this.btnRenameTab.Click += new System.EventHandler(this.btnRenameTab_Click);
             // 
+            // btnNewMacro
+            // 
+            this.btnNewMacro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNewMacro.Location = new System.Drawing.Point(183, 3);
+            this.btnNewMacro.Name = "btnNewMacro";
+            this.btnNewMacro.Size = new System.Drawing.Size(84, 24);
+            this.btnNewMacro.TabIndex = 7;
+            this.btnNewMacro.Text = "Add";
+            this.btnNewMacro.UseVisualStyleBackColor = true;
+            this.btnNewMacro.Click += new System.EventHandler(this.btnNewMacro_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtOutput);
@@ -490,17 +501,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // btnNewMacro
-            // 
-            this.btnNewMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNewMacro.Location = new System.Drawing.Point(183, 3);
-            this.btnNewMacro.Name = "btnNewMacro";
-            this.btnNewMacro.Size = new System.Drawing.Size(84, 24);
-            this.btnNewMacro.TabIndex = 7;
-            this.btnNewMacro.Text = "Add";
-            this.btnNewMacro.UseVisualStyleBackColor = true;
-            this.btnNewMacro.Click += new System.EventHandler(this.btnNewMacro_Click);
             // 
             // MainForm
             // 
