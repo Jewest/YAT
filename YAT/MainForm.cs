@@ -83,25 +83,49 @@ namespace YAT
                             tabMacro.TabPages.Clear();
 
                             XmlReaderSettings settings = new XmlReaderSettings();
-                            settings.Async = true;
+                            settings.Async = false;
                             
                             // Insert code to read the stream here.
                             XmlReader reader = XmlReader.Create(myStream, settings);
+                            FlowLayoutPanel layout = null;
 
                             while (reader.Read())
                             {
-                                if (reader.IsStartElement())
+                                switch (reader.NodeType)
                                 {
-                                    if (reader.IsEmptyElement)
-                                        Console.WriteLine("<{0}/>", reader.Name);
-                                    else
-                                    {
-                                        Console.Write("<{0}> ", reader.Name);
-                                        reader.Read(); // Read the start tag.
-                                        if (reader.IsStartElement())  // Handle nested elements.
-                                            Console.Write("\r\n<{0}>", reader.Name);
-                                        Console.WriteLine(reader.ReadString());  //Read the text content of the element.
-                                    }
+                                    case XmlNodeType.Element:
+                                        switch(reader.Name)
+                                        {
+                                            case "Tab":
+                                                layout = (FlowLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name")).Controls[0];
+
+                                                break;
+                                            case "Macro":
+                                                macro macroSetting = new macro();
+                                                macroSetting.Width = layout.Width - 25;
+                                                layout.Controls.Add(macroSetting);
+                                                macroSetting.ReadXml(reader);
+                                                
+
+                                                break;
+                                            default:
+                                                Console.WriteLine("Start Element {0}", reader.Name);
+                                                break;
+                                        }
+
+                                        
+                                        break;
+                                    case XmlNodeType.Text:
+                                        Console.WriteLine("Text Node: {0}",
+                                                 reader.Value);
+                                        break;
+                                    case XmlNodeType.EndElement:
+                                        Console.WriteLine("End Element {0}", reader.Name);
+                                        break;
+                                    default:
+                                        Console.WriteLine("Other node {0} with value {1}",
+                                                        reader.NodeType, reader.Value);
+                                        break;
                                 }
                             }
 
@@ -136,16 +160,11 @@ namespace YAT
                     // Serialize the object to a file.
                     XmlWriter writer = XmlWriter.Create(myStream, settings);
                     writer.WriteStartDocument();
-                    writer.WriteStartElement("Macro");
-                    int itemcounter = 0;
-
-                    //write the number of elements
-                   // writer.WriteAttributeString("count", Convert.ToString(flowLayoutPanel1.Controls.Count));
-
+                    writer.WriteStartElement("YatMacro");
+                    
                     // load the items
                     foreach (TabPage foundtab in tabMacro.TabPages)
-                    {
-                        //writer.WriteStartElement("item" + Convert.ToString(itemcounter++));
+                    {                        
                         writer.WriteStartElement("Tab");
                         writer.WriteAttributeString("Name", foundtab.Text);
 
@@ -158,10 +177,7 @@ namespace YAT
                             }
                         }
 
-
-
                         //XmlWriter
-                        //    foundControl.WriteXml(writer);
                         writer.WriteEndElement();
                                                 
                     }
@@ -257,15 +273,9 @@ namespace YAT
             System.Windows.Forms.Application.Exit();
         }
 
-        private void btnAddTab_Click(object sender, EventArgs e)
+        private TabPage CreateNewAndAddTabPage(string nameTab)
         {
-            AskController getTabName = new AskController(this);
-
-            //get the new name
-            string nameTab = getTabName.GetNewName("");
-
-            if (nameTab.Length > 0)
-            {
+            
                 TabPage tp = new TabPage(nameTab);
                 FlowLayoutPanel fl_panel = new FlowLayoutPanel();
                 fl_panel.Dock = DockStyle.Fill;
@@ -277,8 +287,20 @@ namespace YAT
                 tp.UseVisualStyleBackColor = true;
 
                 tabMacro.TabPages.Add(tp);
+            return tp;      
+         }
+
+        private void btnAddTab_Click(object sender, EventArgs e)
+        {
+            AskController getTabName = new AskController(this);
+
+            //get the new name
+            string nameTab = getTabName.GetNewName("");
+
+            if (nameTab.Length > 0)
+            {
                 //select the tab
-                tabMacro.SelectedTab = tp;
+                tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab);
             }
         }
 
