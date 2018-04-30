@@ -55,7 +55,15 @@ namespace YAT
             cboBaudRate.Items.Add(9600);
             cboBaudRate.Items.Add(19200);
             cboBaudRate.Items.Add(57600);
+            cboBaudRate.SelectedIndex = 0;
 
+
+            //remove the current items
+            cboSerialPorts.Items.Clear();
+            cboSerialPorts.Items.Add("No port");
+            cboSerialPorts.SelectedIndex = 0;
+
+            UpdateButtonsAndStatus();
         }
 
         
@@ -329,6 +337,66 @@ namespace YAT
                     tabMacro.TabPages.Remove(tabMacro.SelectedTab);
                 }
             }
+        }
+
+        private void ReportConnectionStatus(string status)
+        {
+            toolStripCurrentStatusLabel.Text = status;
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            //connect with the serial port
+            if(m_serialPort.IsOpen)
+            {
+                m_serialPort.Close();                
+            }
+
+
+            if (cboSerialPorts.SelectedItem != null)
+            {
+                //get the data from the combo port
+                m_serialPort.PortName = cboSerialPorts.SelectedItem.ToString();
+
+                try
+                {
+                    m_serialPort.Open();
+                }
+                catch (Exception)
+                {                    
+                }
+                
+            }
+
+            //update the info
+            UpdateButtonsAndStatus();
+
+        }
+
+        private void UpdateButtonsAndStatus()
+        {
+            if(m_serialPort.IsOpen)
+            {
+                ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString());            
+            }
+            else
+            {
+                ReportConnectionStatus("Disconnected");            
+            }
+
+            btnDisconnect.Enabled = m_serialPort.IsOpen;
+            btnConnect.Enabled = !m_serialPort.IsOpen;
+
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            if(m_serialPort.IsOpen)
+            {
+                m_serialPort.Close();
+            }
+            //update the view
+            UpdateButtonsAndStatus();
         }
     }
 }
