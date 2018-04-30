@@ -21,8 +21,8 @@
 #ensure to install pyserial.
 import serial
 from serial.tools import list_ports
-
-
+import os
+import time
 
 def print_serial_ports():
 
@@ -37,14 +37,46 @@ def print_serial_ports():
 		print(port_no)
 
 	print("###Scanning ports.###")
+
+def clear_terminal():
+	os.system('cls')  # assuming windows
+	
+def run_responder():
+	clear_terminal()
+	#running the responder, as for the port.
+	port=input("Which comport?")
+	if(port.isnumeric()):
+		#try an open the serial port
+		ser = serial.Serial('COM' + port)  # open serial port
+		
+		if(ser.isOpen()):
+			#never ending loop, at the moment
+			while 1:
+				if(ser.inWaiting() > 0):
+					#read one char back and reply
+					readData = ser.read()
+					print(readData)					
+					ser.write(readData)
+				else:
+					#sleep for a while
+					time.sleep(0.1)
+				
+			ser.close()             # close port
+		else:
+			print("Unable to open port")
+		
+		
+		
+	
 	
 def main():
-
 	ans=True
-	while ans:
+	#loop till Q
+	while ans:		
 		#make the menu structure
 		print("""
 		L. List the serial ports.
+		R. Run the responder
 		Q. Quite
 		""")
 		ans=input("What would you like to do? ")
@@ -52,6 +84,8 @@ def main():
 			print_serial_ports()
 		elif ans == "Q":
 			ans = None
+		elif ans == "R":
+			run_responder()
 		else:
 			print("\n Not Valid Choice Try again")
 	
