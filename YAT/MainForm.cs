@@ -323,8 +323,11 @@ namespace YAT
             //check for at least one tab
             if (tabMacro.TabCount > 1)
             {
-                //remove the selected tab
-                tabMacro.TabPages.Remove(tabMacro.SelectedTab);
+                if (MessageBox.Show(this, "Are you sure you want to remove \"" +  tabMacro.SelectedTab.Text + "\"?", "Remove tab", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    //remove the selected tab
+                    tabMacro.TabPages.Remove(tabMacro.SelectedTab);
+                }
             }
         }
     }
