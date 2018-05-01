@@ -134,11 +134,9 @@ namespace YAT
                                                 break;
                                             case "Macro":
                                                 macro macroSetting = new macro();
-                                                macroSetting.Width = layout.Width - 25;
-                                                layout.Controls.Add(macroSetting);
+                                                macroSetting.Width = layout.Width - 25;                                                
                                                 macroSetting.ReadXml(reader);
-                                                
-
+                                                layout.Controls.Add(macroSetting);
                                                 break;
                                             default:
                                                 Console.WriteLine("Start Element {0}", reader.Name);

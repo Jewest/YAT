@@ -22,14 +22,9 @@ namespace YAT
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void btnSend_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
-        {
-
+            //send the data nowC:\projects\YAT.git\trunk\YAT\macro.cs
         }
     }
 }
