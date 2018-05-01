@@ -57,16 +57,40 @@ namespace YAT
             cboBaudRate.Items.Add(57600);
             cboBaudRate.SelectedIndex = 0;
 
+            //set the callback
+            m_serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
 
             //remove the current items
-            cboSerialPorts.Items.Clear();
-            cboSerialPorts.Items.Add("No port");
-            cboSerialPorts.SelectedIndex = 0;
+            ScanForSerialPorts();
 
             UpdateButtonsAndStatus();
         }
 
-        
+
+
+        // This delegate enables asynchronous calls for setting  
+        // the text property on a TextBox control.  
+        delegate void StringArgReturningVoidDelegate(string text);
+
+        private void UpdateReceivedInfo(string text)
+        {
+            if (txtOutput.InvokeRequired)
+            {
+                StringArgReturningVoidDelegate d = new StringArgReturningVoidDelegate(UpdateReceivedInfo);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                txtOutput.AppendText(text);
+            }
+        }
+
+        //callback for the serial port
+        private void dataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            UpdateReceivedInfo(m_serialPort.ReadExisting());
+        }
+
 
         private void btnLoadMacro_Click(object sender, EventArgs e)
         {
@@ -229,7 +253,7 @@ namespace YAT
             }
         }
 
-        private void btnRescan_Click(object sender, EventArgs e)
+        private void ScanForSerialPorts()
         {
             //scan all the serial ports
             string[] ports = SerialPort.GetPortNames();
@@ -241,13 +265,18 @@ namespace YAT
             {
                 //remove the current items
                 cboSerialPorts.Items.Add("No port");
-                
+
             }
             else
             {
                 cboSerialPorts.Items.AddRange(ports);
             }
             cboSerialPorts.SelectedIndex = 0;
+        }
+
+        private void btnRescan_Click(object sender, EventArgs e)
+        {
+            ScanForSerialPorts();
         }
 
         private void btnComs_Click(object sender, EventArgs e)

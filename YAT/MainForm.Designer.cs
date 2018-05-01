@@ -44,6 +44,7 @@
             this.cboParity = new System.Windows.Forms.ComboBox();
             this.cboStopBits = new System.Windows.Forms.ComboBox();
             this.cboBaudRate = new System.Windows.Forms.ComboBox();
+            this.btnDisconnect = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -57,14 +58,13 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripCurrentStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripCurrentStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnDisconnect = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -300,6 +300,18 @@
             this.cboBaudRate.Size = new System.Drawing.Size(69, 21);
             this.cboBaudRate.TabIndex = 44;
             // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDisconnect.Location = new System.Drawing.Point(0, 20);
+            this.btnDisconnect.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(75, 20);
+            this.btnDisconnect.TabIndex = 46;
+            this.btnDisconnect.Text = "Disconnect";
+            this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel1);
@@ -463,6 +475,12 @@
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripCurrentStatusLabel
+            // 
+            this.toolStripCurrentStatusLabel.Name = "toolStripCurrentStatusLabel";
+            this.toolStripCurrentStatusLabel.Size = new System.Drawing.Size(86, 20);
+            this.toolStripCurrentStatusLabel.Text = "Not connected";
+            // 
             // menuStrip2
             // 
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -511,24 +529,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // toolStripCurrentStatusLabel
-            // 
-            this.toolStripCurrentStatusLabel.Name = "toolStripCurrentStatusLabel";
-            this.toolStripCurrentStatusLabel.Size = new System.Drawing.Size(86, 20);
-            this.toolStripCurrentStatusLabel.Text = "Not connected";
-            // 
-            // btnDisconnect
-            // 
-            this.btnDisconnect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisconnect.Location = new System.Drawing.Point(0, 20);
-            this.btnDisconnect.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(75, 20);
-            this.btnDisconnect.TabIndex = 46;
-            this.btnDisconnect.Text = "Disconnect";
-            this.btnDisconnect.UseVisualStyleBackColor = true;
-            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // MainForm
             // 
