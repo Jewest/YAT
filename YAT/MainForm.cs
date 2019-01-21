@@ -136,7 +136,7 @@ namespace YAT
                                                 macro macroSetting = new macro();
                                                 macroSetting.Width = layout.Width - 25;                                                
                                                 macroSetting.ReadXml(reader);
-                                                layout.Controls.Add(macroSetting);
+                                                layout.Controls.AddRange( (macroSetting);
                                                 break;
                                             default:
                                                 Console.WriteLine("Start Element {0}", reader.Name);
