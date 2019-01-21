@@ -90,7 +90,7 @@
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(946, 652);
@@ -105,7 +105,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(940, 64);
+            this.groupBox1.Size = new System.Drawing.Size(940, 84);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
@@ -146,12 +146,10 @@
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(934, 45);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(934, 65);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // label5
@@ -161,7 +159,7 @@
             this.label5.Location = new System.Drawing.Point(182, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 20);
+            this.label5.Size = new System.Drawing.Size(71, 30);
             this.label5.TabIndex = 45;
             this.label5.Text = "Port:";
             // 
@@ -170,7 +168,7 @@
             this.cboSerialPorts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboSerialPorts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSerialPorts.FormattingEnabled = true;
-            this.cboSerialPorts.Location = new System.Drawing.Point(183, 20);
+            this.cboSerialPorts.Location = new System.Drawing.Point(183, 30);
             this.cboSerialPorts.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cboSerialPorts.Name = "cboSerialPorts";
             this.cboSerialPorts.Size = new System.Drawing.Size(69, 21);
@@ -183,7 +181,7 @@
             this.btnRescan.Location = new System.Drawing.Point(90, 0);
             this.btnRescan.Margin = new System.Windows.Forms.Padding(0);
             this.btnRescan.Name = "btnRescan";
-            this.btnRescan.Size = new System.Drawing.Size(75, 20);
+            this.btnRescan.Size = new System.Drawing.Size(75, 30);
             this.btnRescan.TabIndex = 2;
             this.btnRescan.Text = "Rescan";
             this.btnRescan.UseVisualStyleBackColor = true;
@@ -196,7 +194,7 @@
             this.btnConnect.Location = new System.Drawing.Point(0, 0);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(0);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 20);
+            this.btnConnect.Size = new System.Drawing.Size(75, 30);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -205,10 +203,10 @@
             // btnComs
             // 
             this.btnComs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnComs.Location = new System.Drawing.Point(90, 20);
+            this.btnComs.Location = new System.Drawing.Point(90, 30);
             this.btnComs.Margin = new System.Windows.Forms.Padding(0);
             this.btnComs.Name = "btnComs";
-            this.btnComs.Size = new System.Drawing.Size(75, 20);
+            this.btnComs.Size = new System.Drawing.Size(75, 30);
             this.btnComs.TabIndex = 8;
             this.btnComs.Text = "COMs";
             this.btnComs.UseVisualStyleBackColor = true;
@@ -221,7 +219,7 @@
             this.label1.Location = new System.Drawing.Point(272, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 20);
+            this.label1.Size = new System.Drawing.Size(71, 30);
             this.label1.TabIndex = 9;
             this.label1.Text = "Baudrate:";
             // 
@@ -232,7 +230,7 @@
             this.label2.Location = new System.Drawing.Point(362, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.Size = new System.Drawing.Size(71, 30);
             this.label2.TabIndex = 25;
             this.label2.Text = "Databits:";
             // 
@@ -243,7 +241,7 @@
             this.label3.Location = new System.Drawing.Point(452, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 20);
+            this.label3.Size = new System.Drawing.Size(71, 30);
             this.label3.TabIndex = 35;
             this.label3.Text = "Parity:";
             // 
@@ -262,7 +260,7 @@
             this.cboDatabits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboDatabits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDatabits.FormattingEnabled = true;
-            this.cboDatabits.Location = new System.Drawing.Point(363, 20);
+            this.cboDatabits.Location = new System.Drawing.Point(363, 30);
             this.cboDatabits.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cboDatabits.Name = "cboDatabits";
             this.cboDatabits.Size = new System.Drawing.Size(69, 21);
@@ -273,7 +271,7 @@
             this.cboParity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboParity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboParity.FormattingEnabled = true;
-            this.cboParity.Location = new System.Drawing.Point(453, 20);
+            this.cboParity.Location = new System.Drawing.Point(453, 30);
             this.cboParity.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cboParity.Name = "cboParity";
             this.cboParity.Size = new System.Drawing.Size(69, 21);
@@ -284,7 +282,7 @@
             this.cboStopBits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboStopBits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStopBits.FormattingEnabled = true;
-            this.cboStopBits.Location = new System.Drawing.Point(543, 20);
+            this.cboStopBits.Location = new System.Drawing.Point(543, 30);
             this.cboStopBits.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cboStopBits.Name = "cboStopBits";
             this.cboStopBits.Size = new System.Drawing.Size(69, 21);
@@ -295,19 +293,20 @@
             this.cboBaudRate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBaudRate.FormattingEnabled = true;
-            this.cboBaudRate.Location = new System.Drawing.Point(273, 20);
+            this.cboBaudRate.Location = new System.Drawing.Point(273, 30);
             this.cboBaudRate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(69, 21);
             this.cboBaudRate.TabIndex = 44;
+            this.cboBaudRate.SelectedIndexChanged += new System.EventHandler(this.cboBaudRate_SelectedIndexChanged);
             // 
             // btnDisconnect
             // 
             this.btnDisconnect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisconnect.Location = new System.Drawing.Point(0, 20);
+            this.btnDisconnect.Location = new System.Drawing.Point(0, 30);
             this.btnDisconnect.Margin = new System.Windows.Forms.Padding(0);
             this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(75, 20);
+            this.btnDisconnect.Size = new System.Drawing.Size(75, 30);
             this.btnDisconnect.TabIndex = 46;
             this.btnDisconnect.Text = "Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = true;
@@ -317,10 +316,10 @@
             // 
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 73);
+            this.groupBox2.Location = new System.Drawing.Point(3, 93);
             this.groupBox2.MinimumSize = new System.Drawing.Size(250, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(394, 551);
+            this.groupBox2.Size = new System.Drawing.Size(394, 531);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Macro";
@@ -332,7 +331,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(388, 532);
+            this.panel1.Size = new System.Drawing.Size(388, 512);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -357,7 +356,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(388, 532);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(388, 512);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // btnLoadMacro
@@ -413,7 +412,7 @@
             this.tabMacro.Name = "tabMacro";
             this.tableLayoutPanel1.SetRowSpan(this.tabMacro, 2);
             this.tabMacro.SelectedIndex = 0;
-            this.tabMacro.Size = new System.Drawing.Size(385, 466);
+            this.tabMacro.Size = new System.Drawing.Size(385, 446);
             this.tabMacro.TabIndex = 5;
             // 
             // btnRenameTab
@@ -443,9 +442,9 @@
             this.groupBox3.Controls.Add(this.txtOutput);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox3.Location = new System.Drawing.Point(403, 73);
+            this.groupBox3.Location = new System.Drawing.Point(403, 93);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(540, 551);
+            this.groupBox3.Size = new System.Drawing.Size(540, 531);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reply";
@@ -459,7 +458,7 @@
             this.txtOutput.Margin = new System.Windows.Forms.Padding(3, 100, 3, 3);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(534, 517);
+            this.txtOutput.Size = new System.Drawing.Size(534, 497);
             this.txtOutput.TabIndex = 0;
             // 
             // statusStrip1
@@ -506,8 +505,9 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
@@ -527,7 +527,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 

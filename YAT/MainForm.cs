@@ -55,6 +55,7 @@ namespace YAT
             cboBaudRate.Items.Add(9600);
             cboBaudRate.Items.Add(19200);
             cboBaudRate.Items.Add(57600);
+            cboBaudRate.Items.Add(115200);
             cboBaudRate.SelectedIndex = 0;
 
             //set the callback
@@ -112,6 +113,7 @@ namespace YAT
                         using (myStream)
                         {
                             //remove the current elements
+                            tabMacro.SuspendLayout();
                             tabMacro.TabPages.Clear();
 
                             XmlReaderSettings settings = new XmlReaderSettings();
@@ -120,6 +122,8 @@ namespace YAT
                             // Insert code to read the stream here.
                             XmlReader reader = XmlReader.Create(myStream, settings);
                             FlowLayoutPanel layout = null;
+                            //create a list
+                            List<macro> listToAdd = new List<macro>();
 
                             while (reader.Read())
                             {
@@ -128,15 +132,23 @@ namespace YAT
                                     case XmlNodeType.Element:
                                         switch(reader.Name)
                                         {
-                                            case "Tab":
-                                                layout = (FlowLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name")).Controls[0];
+                                            case "Tab":                                                
+                                                if(listToAdd.Count > 0)
+                                                {
+                                                    layout.Controls.AddRange(listToAdd.ToArray());
+                                                    listToAdd.Clear();
+                                                }
 
+
+                                                layout = (FlowLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name")).Controls[0];
+                                                
                                                 break;
                                             case "Macro":
                                                 macro macroSetting = new macro();
                                                 macroSetting.Width = layout.Width - 25;                                                
                                                 macroSetting.ReadXml(reader);
-                                                layout.Controls.AddRange( (macroSetting);
+                                                // add to the short list
+                                                listToAdd.Add(macroSetting);
                                                 break;
                                             default:
                                                 Console.WriteLine("Start Element {0}", reader.Name);
@@ -146,8 +158,7 @@ namespace YAT
                                         
                                         break;
                                     case XmlNodeType.Text:
-                                        Console.WriteLine("Text Node: {0}",
-                                                 reader.Value);
+                                        Console.WriteLine("Text Node: {0}", reader.Value);
                                         break;
                                     case XmlNodeType.EndElement:
                                         Console.WriteLine("End Element {0}", reader.Name);
@@ -159,9 +170,14 @@ namespace YAT
                                 }
                             }
 
+                            if (listToAdd.Count > 0)
+                            {
+                                layout.Controls.AddRange(listToAdd.ToArray());
+                            }
+
                             //close the stream
                             reader.Close();
-
+                            tabMacro.ResumeLayout();
                         }
                     }
                 }
@@ -424,6 +440,16 @@ namespace YAT
             }
             //update the view
             UpdateButtonsAndStatus();
+        }
+
+        private void cboBaudRate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
