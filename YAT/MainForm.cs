@@ -392,10 +392,6 @@ namespace YAT
         {
 
         }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+                
     }
 }
