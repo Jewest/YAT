@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboBoxItem.cs" />
     <Compile Include="View\AskController.cs" />
     <Compile Include="View\frmAsk.cs">
       <SubType>Form</SubType>

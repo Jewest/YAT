@@ -41,7 +41,29 @@ namespace YAT
             //remove the current items
             ScanForSerialPorts();
 
+
+            cboCommandTerminator.Items.Clear();
+
+
+            cboCommandTerminator.Items.Clear();
+            object[] list =
+                {
+                new ComboBoxItem<string>("None", ""),    
+                new ComboBoxItem<string>("CR", "\n"),
+                new ComboBoxItem<string>("CR + LF", "\n\r"),
+                new ComboBoxItem<string>("LF", "\r"),
+            };
+
+            cboCommandTerminator.Items.AddRange(list);
+            cboCommandTerminator.SelectedIndex = 0;
+
+
+
+
             UpdateButtonsAndStatus();
+
+            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default");
+            btnNewMacro.PerformClick();
         }
 
 
@@ -392,6 +414,15 @@ namespace YAT
         {
 
         }
-                
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
