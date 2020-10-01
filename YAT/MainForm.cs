@@ -29,27 +29,6 @@ namespace YAT
             //set the correct name and version
             this.Text = Application.ProductName  + " " +   Application.ProductVersion;
 
-            // fill the comboboxes
-            cboDatabits.Items.Clear();
-            cboDatabits.Items.Add("5");
-            cboDatabits.Items.Add("6");
-            cboDatabits.Items.Add("7");
-            cboDatabits.Items.Add("8");
-            cboDatabits.SelectedIndex = cboDatabits.Items.Count - 1;
-
-            cboParity.Items.Clear();
-            cboParity.Items.Add("Odd");
-            cboParity.Items.Add("Even");
-            cboParity.Items.Add("Parity");
-            cboParity.Items.Add("None");
-            cboParity.SelectedIndex = cboParity.Items.Count - 1;
-
-            cboStopBits.Items.Clear();
-            cboStopBits.Items.Add("1");
-            cboStopBits.Items.Add("1.5");
-            cboStopBits.Items.Add("2");
-            cboStopBits.SelectedIndex = 0;
-
             cboBaudRate.Items.Clear();
 
             cboBaudRate.Items.Add(9600);
