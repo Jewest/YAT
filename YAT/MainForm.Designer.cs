@@ -268,10 +268,10 @@
             // btnDisconnect
             // 
             this.btnDisconnect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisconnect.Location = new System.Drawing.Point(774, 0);
+            this.btnDisconnect.Location = new System.Drawing.Point(764, 0);
             this.btnDisconnect.Margin = new System.Windows.Forms.Padding(0);
             this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(160, 30);
+            this.btnDisconnect.Size = new System.Drawing.Size(170, 30);
             this.btnDisconnect.TabIndex = 46;
             this.btnDisconnect.Text = "Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = true;
@@ -282,10 +282,10 @@
             this.cboBaudRate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBaudRate.FormattingEnabled = true;
-            this.cboBaudRate.Location = new System.Drawing.Point(465, 0);
+            this.cboBaudRate.Location = new System.Drawing.Point(435, 0);
             this.cboBaudRate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cboBaudRate.Name = "cboBaudRate";
-            this.cboBaudRate.Size = new System.Drawing.Size(150, 21);
+            this.cboBaudRate.Size = new System.Drawing.Size(160, 21);
             this.cboBaudRate.TabIndex = 44;
             this.cboBaudRate.SelectedIndexChanged += new System.EventHandler(this.cboBaudRate_SelectedIndexChanged);
             // 
@@ -293,10 +293,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(389, 0);
+            this.label1.Location = new System.Drawing.Point(374, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 30);
+            this.label1.Size = new System.Drawing.Size(56, 30);
             this.label1.TabIndex = 9;
             this.label1.Text = "Baudrate:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -305,10 +305,10 @@
             // 
             this.btnConnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnConnect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnConnect.Location = new System.Drawing.Point(618, 0);
+            this.btnConnect.Location = new System.Drawing.Point(598, 0);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(0);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(156, 30);
+            this.btnConnect.Size = new System.Drawing.Size(166, 30);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -321,7 +321,7 @@
             this.btnRescan.Location = new System.Drawing.Point(0, 0);
             this.btnRescan.Margin = new System.Windows.Forms.Padding(0);
             this.btnRescan.Name = "btnRescan";
-            this.btnRescan.Size = new System.Drawing.Size(156, 30);
+            this.btnRescan.Size = new System.Drawing.Size(166, 30);
             this.btnRescan.TabIndex = 2;
             this.btnRescan.Text = "Rescan";
             this.btnRescan.UseVisualStyleBackColor = true;
@@ -332,20 +332,20 @@
             this.cboSerialPorts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboSerialPorts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSerialPorts.FormattingEnabled = true;
-            this.cboSerialPorts.Location = new System.Drawing.Point(234, 0);
+            this.cboSerialPorts.Location = new System.Drawing.Point(209, 0);
             this.cboSerialPorts.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cboSerialPorts.Name = "cboSerialPorts";
-            this.cboSerialPorts.Size = new System.Drawing.Size(150, 21);
+            this.cboSerialPorts.Size = new System.Drawing.Size(160, 21);
             this.cboSerialPorts.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(158, 0);
+            this.label5.Location = new System.Drawing.Point(168, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 30);
+            this.label5.Size = new System.Drawing.Size(36, 30);
             this.label5.TabIndex = 45;
             this.label5.Text = "Port:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -354,9 +354,9 @@
             // 
             this.tableLayoutPanel6.ColumnCount = 7;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));

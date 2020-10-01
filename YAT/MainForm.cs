@@ -31,11 +31,9 @@ namespace YAT
 
             cboBaudRate.Items.Clear();
 
-            cboBaudRate.Items.Add(9600);
-            cboBaudRate.Items.Add(19200);
-            cboBaudRate.Items.Add(57600);
+            cboBaudRate.Items.Add(19200);            
             cboBaudRate.Items.Add(115200);
-            cboBaudRate.SelectedIndex = 0;
+            cboBaudRate.SelectedIndex = 1;
 
             //set the callback
             m_serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
@@ -379,7 +377,7 @@ namespace YAT
             {
                 //get the data from the combo port
                 m_serialPort.PortName = cboSerialPorts.SelectedItem.ToString();
-
+                m_serialPort.BaudRate = Convert.ToInt32(cboBaudRate.SelectedItem.ToString());
                 try
                 {
                     m_serialPort.Open();
