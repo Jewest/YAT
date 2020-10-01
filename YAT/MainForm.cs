@@ -270,37 +270,6 @@ namespace YAT
             ScanForSerialPorts();
         }
 
-        private void btnComs_Click(object sender, EventArgs e)
-        {
-            //print the information about the coms here
-            //scan all the serial ports
-            string[] serialPorts = SerialPort.GetPortNames();
-
-            txtOutput.AppendText(text: "Found these ports:\n");
-            //loop the ports.
-            if (serialPorts.Length > 0)
-            {
-                foreach (string port in serialPorts)
-                {
-                    txtOutput.AppendText(port + "\n");
-                }
-            }
-
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox showAbout = new AboutBox();
-
-            showAbout.ShowDialog(this);
-        }
-
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // exit the program.         
-            System.Windows.Forms.Application.Exit();
-        }
-
         private TabPage CreateNewAndAddTabPage(string nameTab)
         {
             
