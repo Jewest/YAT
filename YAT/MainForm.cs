@@ -248,17 +248,21 @@ namespace YAT
             return foundItem;
         }
 
-        private void btnNewMacro_Click(object sender, EventArgs e)
+        private void AddMacroToPanel(FlowLayoutPanel layout)
         {
-            FlowLayoutPanel layout = GetFlowLayoutPanelOnCurrentTab();
-
-            if(layout != null)
+            if (layout != null)
             {
                 // testing the adding off the user commands
                 macro myobject = new macro();
                 myobject.Width = layout.Width - 25;
                 layout.Controls.Add(myobject);
             }
+        }
+
+
+        private void btnNewMacro_Click(object sender, EventArgs e)
+        {
+            AddMacroToPanel(GetFlowLayoutPanelOnCurrentTab());            
         }
 
         private void ScanForSerialPorts()
@@ -315,6 +319,7 @@ namespace YAT
             {
                 //select the tab
                 tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab);
+                AddMacroToPanel(GetFlowLayoutPanelOnCurrentTab());
             }
         }
 
