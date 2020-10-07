@@ -23,7 +23,7 @@ namespace YAT
         }
 
         private SerialPort m_serialPort = new SerialPort();
-
+        private Queue<string> m_ToSendList = new Queue<string>();
         private void Form1_Shown(Object sender, EventArgs e)
         {
             //set the correct name and version
@@ -57,18 +57,13 @@ namespace YAT
             cboCommandTerminator.Items.AddRange(list);
             cboCommandTerminator.SelectedIndex = 0;
 
-
-
-
             UpdateButtonsAndStatus();
 
             tabMacro.SelectedTab = CreateNewAndAddTabPage("Default");
             btnNewMacro.PerformClick();
         }
 
-
-
-        // This delegate enables asynchronous calls for setting  
+         // This delegate enables asynchronous calls for setting  
         // the text property on a TextBox control.  
         delegate void StringArgReturningVoidDelegate(string text);
 
@@ -368,7 +363,7 @@ namespace YAT
             {
                 //get the data from the combo port
                 m_serialPort.PortName = cboSerialPorts.SelectedItem.ToString();
-                m_serialPort.BaudRate = Convert.ToInt32(cboBaudRate.SelectedItem.ToString());
+                m_serialPort.BaudRate = Convert.ToInt32(cboBaudRate.SelectedItem.ToString());                
                 try
                 {
                     m_serialPort.Open();
@@ -425,6 +420,54 @@ namespace YAT
 
         }
 
+        private void btnDuplicateTab_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        public void SendCommand(string command)
+        {
+            if (m_serialPort.IsOpen == true)
+            {
+
+                if (m_ToSendList.Count() > 0)
+                {
+                    m_ToSendList.Enqueue(command);
+                }
+                else
+                {
+                    if(m_serialPort.BytesToWrite > 0)
+                    {
+                        m_ToSendList.Enqueue(command);
+                    }
+                    else
+                    {
+                        WriteStringToSerial(command);
+                    }
+                }
+
+            }
+        }
+
+        private void WriteStringToSerial(string command)
+        {
+            if(m_serialPort.IsOpen == true)
+            {
+                string terminator = "";
+                if (cboCommandTerminator.SelectedItem is ComboBoxItem<string>)
+                {
+                    ComboBoxItem<string> cast = cboCommandTerminator.SelectedItem as ComboBoxItem<string>;
+
+                    terminator = cast.Value;
+                }
+
+                string toSend = txtBoxPreFix.Text + command + terminator;
+            }
+        }
+
+        private void cboCommandTerminator_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

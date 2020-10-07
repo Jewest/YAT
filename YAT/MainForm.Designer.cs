@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboBaudRate = new System.Windows.Forms.ComboBox();
             this.btnDisconnect = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripCurrentStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -57,9 +58,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cboCommandTerminator = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxPreFix = new System.Windows.Forms.TextBox();
+            this.btnDuplicateTab = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -225,6 +226,17 @@
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBox1.Location = new System.Drawing.Point(619, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(152, 24);
+            this.checkBox1.TabIndex = 47;
+            this.checkBox1.Text = "Auto reconnect";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // statusStrip1
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.statusStrip1, 2);
@@ -299,6 +311,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tabMacro, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnNewMacro, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDuplicateTab, 2, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -433,7 +446,7 @@
             this.tableLayoutPanel3.Controls.Add(this.cboCommandTerminator, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txtBoxPreFix, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -451,6 +464,7 @@
             this.cboCommandTerminator.Name = "cboCommandTerminator";
             this.cboCommandTerminator.Size = new System.Drawing.Size(387, 21);
             this.cboCommandTerminator.TabIndex = 0;
+            this.cboCommandTerminator.SelectedIndexChanged += new System.EventHandler(this.cboCommandTerminator_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -464,17 +478,6 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Location = new System.Drawing.Point(619, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(152, 24);
-            this.checkBox1.TabIndex = 47;
-            this.checkBox1.Text = "Auto reconnect";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -486,13 +489,23 @@
             this.label3.Text = "Prefix:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // txtBoxPreFix
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(78, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(385, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtBoxPreFix.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBoxPreFix.Location = new System.Drawing.Point(78, 3);
+            this.txtBoxPreFix.Name = "txtBoxPreFix";
+            this.txtBoxPreFix.Size = new System.Drawing.Size(385, 20);
+            this.txtBoxPreFix.TabIndex = 3;
+            // 
+            // btnDuplicateTab
+            // 
+            this.btnDuplicateTab.Location = new System.Drawing.Point(155, 489);
+            this.btnDuplicateTab.Name = "btnDuplicateTab";
+            this.btnDuplicateTab.Size = new System.Drawing.Size(70, 23);
+            this.btnDuplicateTab.TabIndex = 8;
+            this.btnDuplicateTab.Text = "Duplicate";
+            this.btnDuplicateTab.UseVisualStyleBackColor = true;
+            this.btnDuplicateTab.Click += new System.EventHandler(this.btnDuplicateTab_Click);
             // 
             // MainForm
             // 
@@ -559,7 +572,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxPreFix;
+        private System.Windows.Forms.Button btnDuplicateTab;
     }
 }
 

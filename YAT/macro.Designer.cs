@@ -34,9 +34,9 @@ namespace YAT
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkSendCommand = new System.Windows.Forms.CheckBox();
             this.btnSend = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCommand = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +49,9 @@ namespace YAT
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.checkBox1, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chkSendCommand, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnSend, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtCommand, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -60,15 +60,15 @@ namespace YAT
             this.tableLayoutPanel1.Size = new System.Drawing.Size(288, 25);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // checkBox1
+            // chkSendCommand
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Location = new System.Drawing.Point(271, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(14, 19);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkSendCommand.AutoSize = true;
+            this.chkSendCommand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkSendCommand.Location = new System.Drawing.Point(271, 3);
+            this.chkSendCommand.Name = "chkSendCommand";
+            this.chkSendCommand.Size = new System.Drawing.Size(14, 19);
+            this.chkSendCommand.TabIndex = 8;
+            this.chkSendCommand.UseVisualStyleBackColor = true;
             // 
             // btnSend
             // 
@@ -84,14 +84,14 @@ namespace YAT
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // textBox1
+            // txtCommand
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtCommand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCommand.Location = new System.Drawing.Point(3, 3);
+            this.txtCommand.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.txtCommand.Name = "txtCommand";
+            this.txtCommand.Size = new System.Drawing.Size(200, 20);
+            this.txtCommand.TabIndex = 3;
             // 
             // macro
             // 
@@ -116,23 +116,23 @@ namespace YAT
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.CheckBox checkBox1;        
+        private System.Windows.Forms.CheckBox chkSendCommand;        
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCommand;
 
         // Xml Serialization Infrastructure
 
         public void WriteXml(XmlWriter writer)
         {
             writer.WriteStartElement("Macro");
-            writer.WriteAttributeString("command", textBox1.Text);            
+            writer.WriteAttributeString("command", txtCommand.Text);            
             writer.WriteEndElement();
         }
 
         public void ReadXml(XmlReader reader)
         {
             
-            textBox1.Text = reader.GetAttribute("command");            
+            txtCommand.Text = reader.GetAttribute("command");            
         }
 
         public XmlSchema GetSchema()

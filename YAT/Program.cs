@@ -16,7 +16,10 @@ namespace YAT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            g_mainView = new MainForm();
+            Application.Run(g_mainView);
         }
+
+        public static MainForm g_mainView = null;
     }
 }

@@ -24,7 +24,8 @@ namespace YAT
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            //send the data nowC:\projects\YAT.git\trunk\YAT\macro.cs
+            //send the data now
+            Program.g_mainView.SendCommand(txtCommand.Text);
         }
     }
 }
