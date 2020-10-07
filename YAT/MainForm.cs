@@ -470,7 +470,22 @@ namespace YAT
 
         private void btnSendAll_Click(object sender, EventArgs e)
         {
+            FlowLayoutPanel layout = GetFlowLayoutPanelOnCurrentTab();
 
+            if (layout != null)
+            {
+                if(layout.Controls.Count > 0)
+                {
+                    for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
+                    {
+                        if (layout.Controls[counter] is macro)
+                        {
+                            ((macro)layout.Controls[counter]).SendIfChecked();
+                        }
+                     }
+                }
+
+            }
         }
     }
 }

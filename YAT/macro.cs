@@ -27,5 +27,18 @@ namespace YAT
             //send the data now
             Program.g_mainView.SendCommand(txtCommand.Text);
         }
+
+        private void chkSendCommand_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void SendIfChecked()
+        {
+            if(chkSendCommand.Checked == true)
+            {
+                btnSend.PerformClick();
+            }
+        }
     }
 }

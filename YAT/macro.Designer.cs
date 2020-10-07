@@ -69,6 +69,7 @@ namespace YAT
             this.chkSendCommand.Size = new System.Drawing.Size(14, 19);
             this.chkSendCommand.TabIndex = 8;
             this.chkSendCommand.UseVisualStyleBackColor = true;
+            this.chkSendCommand.CheckedChanged += new System.EventHandler(this.chkSendCommand_CheckedChanged);
             // 
             // btnSend
             // 
