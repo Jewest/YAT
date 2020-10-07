@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -415,9 +416,10 @@
             // 
             // btnSendAll
             // 
+            this.btnSendAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSendAll.Location = new System.Drawing.Point(79, 3);
             this.btnSendAll.Name = "btnSendAll";
-            this.btnSendAll.Size = new System.Drawing.Size(70, 23);
+            this.btnSendAll.Size = new System.Drawing.Size(70, 24);
             this.btnSendAll.TabIndex = 9;
             this.btnSendAll.Text = "SendAll";
             this.btnSendAll.UseVisualStyleBackColor = true;
@@ -444,6 +446,7 @@
             this.txtOutput.Margin = new System.Windows.Forms.Padding(3, 100, 3, 3);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtOutput.Size = new System.Drawing.Size(617, 501);
             this.txtOutput.TabIndex = 0;
             // 
@@ -525,6 +528,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 676);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Yat";
             this.Load += new System.EventHandler(this.MainForm_Load);
