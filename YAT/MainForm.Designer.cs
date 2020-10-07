@@ -52,6 +52,7 @@
             this.tabMacro = new System.Windows.Forms.TabControl();
             this.btnRenameTab = new System.Windows.Forms.Button();
             this.btnNewMacro = new System.Windows.Forms.Button();
+            this.btnDuplicateTab = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -60,7 +61,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxPreFix = new System.Windows.Forms.TextBox();
-            this.btnDuplicateTab = new System.Windows.Forms.Button();
+            this.btnSendAll = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -312,6 +313,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnNewMacro, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDuplicateTab, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnSendAll, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -400,6 +402,16 @@
             this.btnNewMacro.UseVisualStyleBackColor = true;
             this.btnNewMacro.Click += new System.EventHandler(this.btnNewMacro_Click);
             // 
+            // btnDuplicateTab
+            // 
+            this.btnDuplicateTab.Location = new System.Drawing.Point(155, 489);
+            this.btnDuplicateTab.Name = "btnDuplicateTab";
+            this.btnDuplicateTab.Size = new System.Drawing.Size(70, 23);
+            this.btnDuplicateTab.TabIndex = 8;
+            this.btnDuplicateTab.Text = "Duplicate";
+            this.btnDuplicateTab.UseVisualStyleBackColor = true;
+            this.btnDuplicateTab.Click += new System.EventHandler(this.btnDuplicateTab_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtOutput);
@@ -463,8 +475,7 @@
             this.cboCommandTerminator.Location = new System.Drawing.Point(544, 3);
             this.cboCommandTerminator.Name = "cboCommandTerminator";
             this.cboCommandTerminator.Size = new System.Drawing.Size(387, 21);
-            this.cboCommandTerminator.TabIndex = 0;
-            this.cboCommandTerminator.SelectedIndexChanged += new System.EventHandler(this.cboCommandTerminator_SelectedIndexChanged);
+            this.cboCommandTerminator.TabIndex = 0;            
             // 
             // label2
             // 
@@ -497,15 +508,15 @@
             this.txtBoxPreFix.Size = new System.Drawing.Size(385, 20);
             this.txtBoxPreFix.TabIndex = 3;
             // 
-            // btnDuplicateTab
+            // btnSendAll
             // 
-            this.btnDuplicateTab.Location = new System.Drawing.Point(155, 489);
-            this.btnDuplicateTab.Name = "btnDuplicateTab";
-            this.btnDuplicateTab.Size = new System.Drawing.Size(70, 23);
-            this.btnDuplicateTab.TabIndex = 8;
-            this.btnDuplicateTab.Text = "Duplicate";
-            this.btnDuplicateTab.UseVisualStyleBackColor = true;
-            this.btnDuplicateTab.Click += new System.EventHandler(this.btnDuplicateTab_Click);
+            this.btnSendAll.Location = new System.Drawing.Point(231, 3);
+            this.btnSendAll.Name = "btnSendAll";
+            this.btnSendAll.Size = new System.Drawing.Size(73, 23);
+            this.btnSendAll.TabIndex = 9;
+            this.btnSendAll.Text = "SendAll";
+            this.btnSendAll.UseVisualStyleBackColor = true;
+            this.btnSendAll.Click += new System.EventHandler(this.btnSendAll_Click);
             // 
             // MainForm
             // 
@@ -574,6 +585,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBoxPreFix;
         private System.Windows.Forms.Button btnDuplicateTab;
+        private System.Windows.Forms.Button btnSendAll;
     }
 }
 

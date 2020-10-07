@@ -55,7 +55,7 @@ namespace YAT
             };
 
             cboCommandTerminator.Items.AddRange(list);
-            cboCommandTerminator.SelectedIndex = 0;
+            cboCommandTerminator.SelectedIndex = 2;
 
             UpdateButtonsAndStatus();
 
@@ -462,10 +462,13 @@ namespace YAT
                 }
 
                 string toSend = txtBoxPreFix.Text + command + terminator;
+
+                m_serialPort.Write(toSend);
+
             }
         }
 
-        private void cboCommandTerminator_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSendAll_Click(object sender, EventArgs e)
         {
 
         }
