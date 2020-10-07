@@ -125,14 +125,15 @@ namespace YAT
         public void WriteXml(XmlWriter writer)
         {
             writer.WriteStartElement("Macro");
-            writer.WriteAttributeString("command", txtCommand.Text);            
+            writer.WriteAttributeString("command", txtCommand.Text);
+            writer.WriteAttributeString("checked", chkSendCommand.Checked.ToString());
             writer.WriteEndElement();
         }
 
         public void ReadXml(XmlReader reader)
-        {
-            
-            txtCommand.Text = reader.GetAttribute("command");            
+        {            
+            txtCommand.Text = reader.GetAttribute("command");
+            chkSendCommand.Checked = Convert.ToBoolean(reader.GetAttribute("checked"));
         }
 
         public XmlSchema GetSchema()
