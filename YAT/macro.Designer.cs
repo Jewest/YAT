@@ -57,7 +57,7 @@ namespace YAT
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(288, 25);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(98, 25);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // chkSendCommand
@@ -91,7 +91,7 @@ namespace YAT
             this.txtCommand.Location = new System.Drawing.Point(3, 3);
             this.txtCommand.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(200, 20);
+            this.txtCommand.Size = new System.Drawing.Size(30, 20);
             this.txtCommand.TabIndex = 3;
             // 
             // macro
@@ -106,7 +106,7 @@ namespace YAT
             this.MaximumSize = new System.Drawing.Size(0, 25);
             this.MinimumSize = new System.Drawing.Size(50, 25);
             this.Name = "macro";
-            this.Size = new System.Drawing.Size(288, 25);
+            this.Size = new System.Drawing.Size(98, 25);
             this.Load += new System.EventHandler(this.macro_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -142,6 +142,11 @@ namespace YAT
             return (null);
         }
 
+        public void CloneSettings(macro other)
+        {
+            this.chkSendCommand.Checked = other.chkSendCommand.Checked;
+            this.txtCommand.Text = other.txtCommand.Text;
+        }
 
     }
 }

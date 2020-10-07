@@ -215,7 +215,6 @@
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(94, 21);
             this.cboBaudRate.TabIndex = 44;
-            this.cboBaudRate.SelectedIndexChanged += new System.EventHandler(this.cboBaudRate_SelectedIndexChanged);
             // 
             // btnDisconnect
             // 
@@ -407,9 +406,10 @@
             // 
             // btnDuplicateTab
             // 
+            this.btnDuplicateTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDuplicateTab.Location = new System.Drawing.Point(155, 489);
             this.btnDuplicateTab.Name = "btnDuplicateTab";
-            this.btnDuplicateTab.Size = new System.Drawing.Size(70, 23);
+            this.btnDuplicateTab.Size = new System.Drawing.Size(70, 24);
             this.btnDuplicateTab.TabIndex = 8;
             this.btnDuplicateTab.Text = "Duplicate";
             this.btnDuplicateTab.UseVisualStyleBackColor = true;
@@ -502,7 +502,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Terminator:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -532,7 +531,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Yat";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

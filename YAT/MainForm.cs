@@ -115,7 +115,7 @@ namespace YAT
                             
                             // Insert code to read the stream here.
                             XmlReader reader = XmlReader.Create(myStream, settings);
-                            FlowLayoutPanel layout = null;
+                            TableLayoutPanel layout = null;
                             //create a list
                             List<macro> listToAdd = new List<macro>();
 
@@ -134,12 +134,12 @@ namespace YAT
                                                 }
 
 
-                                                layout = (FlowLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name")).Controls[0];
+                                                layout = (TableLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name")).Controls[0];
                                                 
                                                 break;
                                             case "Macro":
                                                 macro macroSetting = new macro();
-                                                macroSetting.Width = layout.Width - 25;                                                
+                                                macroSetting.Dock = DockStyle.Fill;
                                                 macroSetting.ReadXml(reader);
                                                 // add to the short list
                                                 listToAdd.Add(macroSetting);
@@ -208,7 +208,7 @@ namespace YAT
                         writer.WriteStartElement("Tab");
                         writer.WriteAttributeString("Name", foundtab.Text);
 
-                        FlowLayoutPanel panel = (FlowLayoutPanel)foundtab.Controls[0];
+                        TableLayoutPanel panel = (TableLayoutPanel)foundtab.Controls[0];
                         if(panel != null)
                         {
                             foreach(macro macroSetting in panel.Controls)
@@ -231,9 +231,9 @@ namespace YAT
 
         }
 
-        private FlowLayoutPanel GetFlowLayoutPanelOnCurrentTab()
+        private TableLayoutPanel GetTableLayoutPanelOnCurrentTab()
         {
-            FlowLayoutPanel foundItem = null;
+            TableLayoutPanel foundItem = null;
 
             if(tabMacro.TabCount > 0)
             {
@@ -241,28 +241,34 @@ namespace YAT
                 //check element
                 if(selectPage != null)
                 {
-                    foundItem = (FlowLayoutPanel)tabMacro.SelectedTab.Controls[0];
+                    foundItem = (TableLayoutPanel)tabMacro.SelectedTab.Controls[0];
                 }                
             }
 
             return foundItem;
         }
 
-        private void AddMacroToPanel(FlowLayoutPanel layout)
+        private macro AddMacroToPanel(TableLayoutPanel layout)
         {
+            macro myobject =null;
+
             if (layout != null)
             {
                 // testing the adding off the user commands
-                macro myobject = new macro();
-                myobject.Width = layout.Width - 25;
+                myobject = new macro();
+                
+                myobject.Dock = DockStyle.Fill;
                 layout.Controls.Add(myobject);
             }
+
+            return myobject;
         }
+
 
 
         private void btnNewMacro_Click(object sender, EventArgs e)
         {
-            AddMacroToPanel(GetFlowLayoutPanelOnCurrentTab());            
+            AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());            
         }
 
         private void ScanForSerialPorts()
@@ -295,12 +301,13 @@ namespace YAT
         {
             
                 TabPage tp = new TabPage(nameTab);
-                FlowLayoutPanel fl_panel = new FlowLayoutPanel();
-                fl_panel.Dock = DockStyle.Fill;
-                fl_panel.AutoScroll = true;
-                fl_panel.BringToFront();
+            //FlowLayoutPanel fl_panel = new FlowLayoutPanel();
+            TableLayoutPanel tbPanel = new TableLayoutPanel();
+            tbPanel.Dock = DockStyle.Fill;
+            tbPanel.AutoScroll = true;
+            tbPanel.BringToFront();
                 //add the panel
-                tp.Controls.Add(fl_panel);
+                tp.Controls.Add(tbPanel);
                 //make the back ground nice
                 tp.UseVisualStyleBackColor = true;
 
@@ -319,7 +326,7 @@ namespace YAT
             {
                 //select the tab
                 tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab);
-                AddMacroToPanel(GetFlowLayoutPanelOnCurrentTab());
+                AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
             }
         }
 
@@ -397,8 +404,8 @@ namespace YAT
 
             btnDisconnect.Enabled = m_serialPort.IsOpen;
             btnConnect.Enabled = !m_serialPort.IsOpen;
-
-        }
+            btnSendAll.Enabled = m_serialPort.IsOpen;
+        }        
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
@@ -410,24 +417,46 @@ namespace YAT
             UpdateButtonsAndStatus();
         }
 
-        private void cboBaudRate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnDuplicateTab_Click(object sender, EventArgs e)
         {
+            AskController getTabName = new AskController(this);
 
+            //get the new name
+            string nameTab = getTabName.GetNewName("");
+
+            if (nameTab.Length > 0)
+            {
+                //select the tab
+                
+
+                TabPage clone = CreateNewAndAddTabPage(nameTab);
+
+                TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
+
+                if (layout != null)
+                {
+                    if (layout.Controls.Count > 0)
+                    {
+                        for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
+                        {
+                            if (layout.Controls[counter] is macro)
+                            {
+                                macro local = AddMacroToPanel((TableLayoutPanel)clone.Controls[0]);
+
+                                local.CloneSettings((macro)layout.Controls[counter]);
+                            }
+                        }
+                    }
+
+                }
+               
+
+                AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
+
+                tabMacro.SelectedTab = clone;
+
+            }
         }
 
         public void SendCommand(string command)
@@ -479,22 +508,27 @@ namespace YAT
 
         private void btnSendAll_Click(object sender, EventArgs e)
         {
-            FlowLayoutPanel layout = GetFlowLayoutPanelOnCurrentTab();
+            TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
 
-            if (layout != null)
+            if (m_serialPort.IsOpen == true)
             {
-                if(layout.Controls.Count > 0)
-                {
-                    for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
-                    {
-                        if (layout.Controls[counter] is macro)
-                        {
-                            ((macro)layout.Controls[counter]).SendIfChecked();
-                        }
-                     }
-                }
 
+                if (layout != null)
+                {
+                    if (layout.Controls.Count > 0)
+                    {
+                        for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
+                        {
+                            if (layout.Controls[counter] is macro)
+                            {
+                                ((macro)layout.Controls[counter]).SendIfChecked();
+                            }
+                        }
+                    }
+
+                }
             }
+            
         }
 
         private void cboSerialPorts_SelectedIndexChanged(object sender, EventArgs e)
