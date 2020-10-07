@@ -165,6 +165,7 @@
             this.cboSerialPorts.Name = "cboSerialPorts";
             this.cboSerialPorts.Size = new System.Drawing.Size(94, 21);
             this.cboSerialPorts.TabIndex = 7;
+            this.cboSerialPorts.SelectedIndexChanged += new System.EventHandler(this.cboSerialPorts_SelectedIndexChanged);
             // 
             // btnRescan
             // 

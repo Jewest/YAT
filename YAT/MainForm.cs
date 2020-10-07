@@ -462,9 +462,13 @@ namespace YAT
                 }
 
                 string toSend = txtBoxPreFix.Text + command + terminator;
-
-                m_serialPort.Write(toSend);
-
+                try
+                {
+                    m_serialPort.Write(toSend);
+                } catch
+                {
+                    UpdateButtonsAndStatus();
+                }
             }
         }
 
@@ -485,6 +489,15 @@ namespace YAT
                      }
                 }
 
+            }
+        }
+
+        private void cboSerialPorts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(m_serialPort.IsOpen == true)
+            {
+                btnDisconnect.PerformClick();
+                btnConnect.PerformClick();
             }
         }
     }
