@@ -24,6 +24,9 @@ namespace YAT
 
         private SerialPort m_serialPort = new SerialPort();
         private Queue<string> m_ToSendList = new Queue<string>();
+        private TabPage m_tabPagePlus = new TabPage("  +");
+
+
         private void Form1_Shown(Object sender, EventArgs e)
         {
             //set the correct name and version
@@ -70,7 +73,7 @@ namespace YAT
             cboTimerSendSelected.Items.AddRange(listTimer);
 
             UpdateButtonsAndStatus();
-
+            tabMacro.TabPages.Add(m_tabPagePlus);
             tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", true);
             AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
 
@@ -343,25 +346,10 @@ namespace YAT
             tp.Controls.Add(tbPanel);
                 //make the back ground nice
                 tp.UseVisualStyleBackColor = true;
-
-                tabMacro.TabPages.Add(tp);
+                tabMacro.TabPages.Insert(tabMacro.TabPages.Count - 1, tp);
             return tp;      
          }
 
-        private void btnAddTab_Click(object sender, EventArgs e)
-        {
-            AskController getTabName = new AskController(this);
-
-            //get the new name
-            string nameTab = getTabName.GetNewName("");
-
-            if (nameTab.Length > 0)
-            {
-                //select the tab
-                tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab, true);
-                AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
-            }
-        }
 
         private void btnRenameTab_Click(object sender, EventArgs e)
         {
@@ -605,6 +593,24 @@ namespace YAT
             txtOutput.AppendText("------------------------- Send selected -------------------------");
             txtOutput.AppendText(Environment.NewLine);
             btnSendAll.PerformClick();
+        }
+
+        private void tabMacro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabMacro.SelectedTab == m_tabPagePlus)
+            {
+                AskController getTabName = new AskController(this);
+
+                //get the new name
+                string nameTab = getTabName.GetNewName("");
+
+                if (nameTab.Length > 0)
+                {
+                    //select the tab
+                    tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab, true);
+                    AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
+                }
+            }
         }
     }
 }

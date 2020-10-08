@@ -49,7 +49,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLoadMacro = new System.Windows.Forms.Button();
             this.btnSaveMacro = new System.Windows.Forms.Button();
-            this.btnAddTab = new System.Windows.Forms.Button();
             this.btnRemoveTab = new System.Windows.Forms.Button();
             this.tabMacro = new System.Windows.Forms.TabControl();
             this.btnRenameTab = new System.Windows.Forms.Button();
@@ -314,7 +313,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.btnLoadMacro, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnSaveMacro, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnAddTab, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnRemoveTab, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.tabMacro, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 2);
@@ -358,17 +356,6 @@
             this.btnSaveMacro.UseVisualStyleBackColor = true;
             this.btnSaveMacro.Click += new System.EventHandler(this.btnSaveMacro_Click);
             // 
-            // btnAddTab
-            // 
-            this.btnAddTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddTab.Location = new System.Drawing.Point(3, 43);
-            this.btnAddTab.Name = "btnAddTab";
-            this.btnAddTab.Size = new System.Drawing.Size(70, 24);
-            this.btnAddTab.TabIndex = 2;
-            this.btnAddTab.Text = "Add tab";
-            this.btnAddTab.UseVisualStyleBackColor = true;
-            this.btnAddTab.Click += new System.EventHandler(this.btnAddTab_Click);
-            // 
             // btnRemoveTab
             // 
             this.btnRemoveTab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -390,6 +377,7 @@
             this.tabMacro.SelectedIndex = 0;
             this.tabMacro.Size = new System.Drawing.Size(304, 400);
             this.tabMacro.TabIndex = 5;
+            this.tabMacro.SelectedIndexChanged += new System.EventHandler(this.tabMacro_SelectedIndexChanged);
             // 
             // btnRenameTab
             // 
@@ -614,7 +602,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnLoadMacro;
         private System.Windows.Forms.Button btnSaveMacro;
-        private System.Windows.Forms.Button btnAddTab;
         private System.Windows.Forms.Button btnRemoveTab;
         private System.Windows.Forms.TabControl tabMacro;
         private System.Windows.Forms.Button btnRenameTab;
