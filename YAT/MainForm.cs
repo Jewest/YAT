@@ -61,9 +61,11 @@ namespace YAT
             object[] listTimer =
                {
                 new ComboBoxItem<int>("No Timer", 0),
-                new ComboBoxItem<int>("1 Hz", 1000),
-                new ComboBoxItem<int>("2 Hz", 500),
-                new ComboBoxItem<int>("5 Hz", 200),
+                new ComboBoxItem<int>("1 Hz int.", 1000),
+                new ComboBoxItem<int>("2 Hz int", 500),
+                new ComboBoxItem<int>("5 Hz int", 200),
+                new ComboBoxItem<int>("2 Sec int.", 2000),                
+                new ComboBoxItem<int>("5 Sec int.", 5000),
             };
             cboTimerSendSelected.Items.AddRange(listTimer);
 
