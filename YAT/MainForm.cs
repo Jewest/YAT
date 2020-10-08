@@ -57,6 +57,16 @@ namespace YAT
             cboCommandTerminator.Items.AddRange(list);
             cboCommandTerminator.SelectedIndex = 2;
 
+            cboTimerSendSelected.Items.Clear();
+            object[] listTimer =
+               {
+                new ComboBoxItem<int>("No Timer", 0),
+                new ComboBoxItem<int>("1 Hz", 1000),
+                new ComboBoxItem<int>("2 Hz", 500),
+                new ComboBoxItem<int>("5 Hz", 200),
+            };
+            cboTimerSendSelected.Items.AddRange(listTimer);
+
             UpdateButtonsAndStatus();
 
             tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", true);
@@ -426,6 +436,8 @@ namespace YAT
             btnDisconnect.Enabled = m_serialPort.IsOpen;
             btnConnect.Enabled = !m_serialPort.IsOpen;
             btnSendAll.Enabled = m_serialPort.IsOpen;
+            cboTimerSendSelected.SelectedIndex = 0;
+            cboTimerSendSelected.Enabled = m_serialPort.IsOpen;
         }        
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -556,6 +568,41 @@ namespace YAT
                 btnDisconnect.PerformClick();
                 btnConnect.PerformClick();
             }
+        }
+
+        private void btnClearLog_Click(object sender, EventArgs e)
+        {
+            txtOutput.Text = "";
+        }
+
+        private void cboTimerSendSelected_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if(cboTimerSendSelected.SelectedIndex == 0)
+            {
+                tmrSendAllCommands.Enabled = false;
+            }
+            else
+            {
+                tmrSendAllCommands.Enabled = false;
+
+                if (cboTimerSendSelected.SelectedItem is ComboBoxItem<int>)
+                {
+                    ComboBoxItem<int> cast = cboTimerSendSelected.SelectedItem as ComboBoxItem<int>;
+
+                    tmrSendAllCommands.Interval = cast.Value;
+                }
+
+
+                tmrSendAllCommands.Enabled = true;
+            }
+        }
+
+        private void tmrSendAllCommands_Tick(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("------------------------- Send selected -------------------------");
+            txtOutput.AppendText(Environment.NewLine);
+            btnSendAll.PerformClick();
         }
     }
 }
