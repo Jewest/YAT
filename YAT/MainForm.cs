@@ -59,8 +59,9 @@ namespace YAT
 
             UpdateButtonsAndStatus();
 
-            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default");
-            btnNewMacro.PerformClick();
+            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", true);
+            AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
+
         }
 
          // This delegate enables asynchronous calls for setting  
@@ -130,11 +131,12 @@ namespace YAT
                                                 if(listToAdd.Count > 0)
                                                 {
                                                     layout.Controls.AddRange(listToAdd.ToArray());
+                                                    layout.Controls.Add(CreateAddOneButton());
                                                     listToAdd.Clear();
                                                 }
 
 
-                                                layout = (TableLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name")).Controls[0];
+                                                layout = (TableLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name"), false).Controls[0];
                                                 
                                                 break;
                                             case "Macro":
@@ -167,6 +169,7 @@ namespace YAT
                             if (listToAdd.Count > 0)
                             {
                                 layout.Controls.AddRange(listToAdd.ToArray());
+                                layout.Controls.Add(CreateAddOneButton());
                             }
 
                             //close the stream
@@ -211,9 +214,13 @@ namespace YAT
                         TableLayoutPanel panel = (TableLayoutPanel)foundtab.Controls[0];
                         if(panel != null)
                         {
-                            foreach(macro macroSetting in panel.Controls)
+                            //foreach(macro macroSetting in panel.Controls)
+                            for (Int32 counter = 0; counter < panel.Controls.Count; counter++)
                             {
-                                macroSetting.WriteXml(writer);
+                                if (panel.Controls[counter] is macro)
+                                {
+                                    ((macro)panel.Controls[counter]).WriteXml(writer);
+                                }
                             }
                         }
 
@@ -258,7 +265,7 @@ namespace YAT
                 myobject = new macro();
                 
                 myobject.Dock = DockStyle.Fill;
-                layout.Controls.Add(myobject);
+                layout.Controls.Add(myobject,0, layout.Controls.Count-1);                
             }
 
             return myobject;
@@ -297,7 +304,16 @@ namespace YAT
             ScanForSerialPorts();
         }
 
-        private TabPage CreateNewAndAddTabPage(string nameTab)
+        private Button CreateAddOneButton()
+        {
+            Button macroAddButton = new Button();
+            macroAddButton.Click += new System.EventHandler(this.btnNewMacro_Click);
+            macroAddButton.Dock = DockStyle.Fill;
+            macroAddButton.Text = "+1";
+            return macroAddButton;
+        }
+
+        private TabPage CreateNewAndAddTabPage(string nameTab, bool addTheAddbutton)
         {
             
                 TabPage tp = new TabPage(nameTab);
@@ -306,8 +322,13 @@ namespace YAT
             tbPanel.Dock = DockStyle.Fill;
             tbPanel.AutoScroll = true;
             tbPanel.BringToFront();
-                //add the panel
-                tp.Controls.Add(tbPanel);
+
+            if (addTheAddbutton == true)
+            {
+                tbPanel.Controls.Add(CreateAddOneButton());
+            }
+            //add the panel
+            tp.Controls.Add(tbPanel);
                 //make the back ground nice
                 tp.UseVisualStyleBackColor = true;
 
@@ -325,7 +346,7 @@ namespace YAT
             if (nameTab.Length > 0)
             {
                 //select the tab
-                tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab);
+                tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab, true);
                 AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
             }
         }
@@ -430,7 +451,7 @@ namespace YAT
                 //select the tab
                 
 
-                TabPage clone = CreateNewAndAddTabPage(nameTab);
+                TabPage clone = CreateNewAndAddTabPage(nameTab, true);
 
                 TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
 

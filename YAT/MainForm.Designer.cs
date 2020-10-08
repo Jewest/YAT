@@ -52,17 +52,17 @@
             this.btnRemoveTab = new System.Windows.Forms.Button();
             this.tabMacro = new System.Windows.Forms.TabControl();
             this.btnRenameTab = new System.Windows.Forms.Button();
-            this.btnNewMacro = new System.Windows.Forms.Button();
             this.btnDuplicateTab = new System.Windows.Forms.Button();
             this.btnSendAll = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtOutput = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cboCommandTerminator = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxPreFix = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtOutput = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -77,6 +77,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -312,7 +313,6 @@
             this.tableLayoutPanel1.Controls.Add(this.btnRemoveTab, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.tabMacro, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnNewMacro, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDuplicateTab, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnSendAll, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -393,17 +393,6 @@
             this.btnRenameTab.UseVisualStyleBackColor = true;
             this.btnRenameTab.Click += new System.EventHandler(this.btnRenameTab_Click);
             // 
-            // btnNewMacro
-            // 
-            this.btnNewMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNewMacro.Location = new System.Drawing.Point(3, 3);
-            this.btnNewMacro.Name = "btnNewMacro";
-            this.btnNewMacro.Size = new System.Drawing.Size(70, 24);
-            this.btnNewMacro.TabIndex = 7;
-            this.btnNewMacro.Text = "Add";
-            this.btnNewMacro.UseVisualStyleBackColor = true;
-            this.btnNewMacro.Click += new System.EventHandler(this.btnNewMacro_Click);
-            // 
             // btnDuplicateTab
             // 
             this.btnDuplicateTab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -428,7 +417,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtOutput);
+            this.groupBox3.Controls.Add(this.tableLayoutPanel4);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
@@ -437,19 +426,6 @@
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reply";
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOutput.Location = new System.Drawing.Point(3, 31);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(3, 100, 3, 3);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtOutput.Size = new System.Drawing.Size(617, 501);
-            this.txtOutput.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -522,6 +498,31 @@
             this.txtBoxPreFix.Size = new System.Drawing.Size(385, 20);
             this.txtBoxPreFix.TabIndex = 3;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.txtOutput, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(617, 516);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // txtOutput
+            // 
+            this.tableLayoutPanel4.SetColumnSpan(this.txtOutput, 2);
+            this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtOutput.Location = new System.Drawing.Point(3, 33);
+            this.txtOutput.Multiline = true;
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(611, 480);
+            this.txtOutput.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,10 +548,11 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -578,9 +580,7 @@
         private System.Windows.Forms.Button btnRemoveTab;
         private System.Windows.Forms.TabControl tabMacro;
         private System.Windows.Forms.Button btnRenameTab;
-        private System.Windows.Forms.Button btnNewMacro;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ComboBox cboCommandTerminator;
@@ -590,6 +590,8 @@
         private System.Windows.Forms.TextBox txtBoxPreFix;
         private System.Windows.Forms.Button btnDuplicateTab;
         private System.Windows.Forms.Button btnSendAll;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TextBox txtOutput;
     }
 }
 
