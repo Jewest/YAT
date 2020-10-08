@@ -451,9 +451,6 @@ namespace YAT
 
                 }
                
-
-                AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
-
                 tabMacro.SelectedTab = clone;
 
             }
