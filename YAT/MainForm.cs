@@ -283,6 +283,27 @@ namespace YAT
             }
         }
 
+        void BackUpCurrentFile(string pathAndFilename)
+        {
+            if(File.Exists(pathAndFilename))
+            {
+                string backupFolder = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "Backup");
+
+                //check if the dir is existing
+                if(Directory.Exists(backupFolder) == false)
+                {
+                    Directory.CreateDirectory(backupFolder);
+                }
+
+                // the directory now exists
+                string newFile = Path.GetFileNameWithoutExtension(pathAndFilename) + "_" + DateTime.Now.ToString("s")  + Path.GetExtension(pathAndFilename);
+
+                newFile = newFile.Replace(":", "_");
+
+                File.Copy(pathAndFilename, Path.Combine(backupFolder, newFile));
+            }
+        }
+
 
         private void btnSaveMacro_Click(object sender, EventArgs e)
         {
@@ -293,7 +314,10 @@ namespace YAT
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 Stream myStream = null;
-                if((myStream = saveFile.OpenFile()) != null)
+
+                BackUpCurrentFile(m_filename);
+
+                if ((myStream = saveFile.OpenFile()) != null)
                 {
                     SaveFileInStream(myStream);
                 }
@@ -707,6 +731,7 @@ namespace YAT
                 {
                     if(m_filename.Length > 0)
                     {
+                        BackUpCurrentFile(m_filename);
                         using (FileStream fs = File.Open(m_filename,FileMode.Truncate))
                         {
                             SaveFileInStream(fs);
