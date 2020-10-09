@@ -313,22 +313,23 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.btnLoadMacro, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnSaveMacro, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnRemoveTab, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tabMacro, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnDuplicateTab, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnSendAll, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.cboTimerSendSelected, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnRemoveTab, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tabMacro, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnDuplicateTab, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnSendAll, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cboTimerSendSelected, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(307, 516);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -359,7 +360,7 @@
             // btnRemoveTab
             // 
             this.btnRemoveTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveTab.Location = new System.Drawing.Point(231, 43);
+            this.btnRemoveTab.Location = new System.Drawing.Point(231, 489);
             this.btnRemoveTab.Name = "btnRemoveTab";
             this.btnRemoveTab.Size = new System.Drawing.Size(73, 24);
             this.btnRemoveTab.TabIndex = 3;
@@ -371,18 +372,18 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.tabMacro, 4);
             this.tabMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabMacro.Location = new System.Drawing.Point(0, 113);
+            this.tabMacro.Location = new System.Drawing.Point(0, 73);
             this.tabMacro.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.tabMacro.Name = "tabMacro";
             this.tabMacro.SelectedIndex = 0;
-            this.tabMacro.Size = new System.Drawing.Size(304, 400);
+            this.tabMacro.Size = new System.Drawing.Size(304, 410);
             this.tabMacro.TabIndex = 5;
             this.tabMacro.SelectedIndexChanged += new System.EventHandler(this.tabMacro_SelectedIndexChanged);
             // 
             // btnRenameTab
             // 
             this.btnRenameTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRenameTab.Location = new System.Drawing.Point(79, 43);
+            this.btnRenameTab.Location = new System.Drawing.Point(79, 489);
             this.btnRenameTab.Name = "btnRenameTab";
             this.btnRenameTab.Size = new System.Drawing.Size(70, 24);
             this.btnRenameTab.TabIndex = 6;
@@ -393,7 +394,7 @@
             // btnDuplicateTab
             // 
             this.btnDuplicateTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDuplicateTab.Location = new System.Drawing.Point(155, 43);
+            this.btnDuplicateTab.Location = new System.Drawing.Point(3, 489);
             this.btnDuplicateTab.Name = "btnDuplicateTab";
             this.btnDuplicateTab.Size = new System.Drawing.Size(70, 24);
             this.btnDuplicateTab.TabIndex = 8;
@@ -405,7 +406,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btnSendAll, 2);
             this.btnSendAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSendAll.Location = new System.Drawing.Point(155, 83);
+            this.btnSendAll.Location = new System.Drawing.Point(155, 43);
             this.btnSendAll.Name = "btnSendAll";
             this.btnSendAll.Size = new System.Drawing.Size(149, 24);
             this.btnSendAll.TabIndex = 9;
@@ -539,7 +540,7 @@
             this.cboTimerSendSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboTimerSendSelected.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTimerSendSelected.FormattingEnabled = true;
-            this.cboTimerSendSelected.Location = new System.Drawing.Point(3, 83);
+            this.cboTimerSendSelected.Location = new System.Drawing.Point(3, 43);
             this.cboTimerSendSelected.Name = "cboTimerSendSelected";
             this.cboTimerSendSelected.Size = new System.Drawing.Size(146, 21);
             this.cboTimerSendSelected.TabIndex = 10;

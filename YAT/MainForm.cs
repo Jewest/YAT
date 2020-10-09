@@ -189,6 +189,10 @@ namespace YAT
 
                             //close the stream
                             reader.Close();
+
+                            tabMacro.TabPages.Add(m_tabPagePlus);
+                            tabMacro.SelectedIndex = 0;
+
                             tabMacro.ResumeLayout();
                         }
                     }
@@ -346,7 +350,14 @@ namespace YAT
             tp.Controls.Add(tbPanel);
                 //make the back ground nice
                 tp.UseVisualStyleBackColor = true;
+            if (tabMacro.TabPages.Count > 0)
+            {
                 tabMacro.TabPages.Insert(tabMacro.TabPages.Count - 1, tp);
+            }
+            else
+            {
+                tabMacro.TabPages.Add(tp);
+            }
             return tp;      
          }
 
