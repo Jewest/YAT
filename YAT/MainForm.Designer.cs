@@ -54,17 +54,17 @@
             this.btnRenameTab = new System.Windows.Forms.Button();
             this.btnDuplicateTab = new System.Windows.Forms.Button();
             this.btnSendAll = new System.Windows.Forms.Button();
+            this.cboTimerSendSelected = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.btnClearLog = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cboCommandTerminator = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxPreFix = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtOutput = new System.Windows.Forms.TextBox();
-            this.btnClearLog = new System.Windows.Forms.Button();
-            this.cboTimerSendSelected = new System.Windows.Forms.ComboBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -78,9 +78,9 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -306,18 +306,20 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.Controls.Add(this.btnLoadMacro, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnSaveMacro, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnSaveMacro, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnRemoveTab, 4, 4);
             this.tableLayoutPanel1.Controls.Add(this.tabMacro, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnRenameTab, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnDuplicateTab, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnSendAll, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnSendAll, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.cboTimerSendSelected, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -329,17 +331,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(307, 516);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // btnLoadMacro
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnLoadMacro, 2);
+            this.tableLayoutPanel1.SetColumnSpan(this.btnLoadMacro, 3);
             this.btnLoadMacro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLoadMacro.Location = new System.Drawing.Point(3, 3);
             this.btnLoadMacro.Name = "btnLoadMacro";
-            this.btnLoadMacro.Size = new System.Drawing.Size(146, 24);
+            this.btnLoadMacro.Size = new System.Drawing.Size(147, 24);
             this.btnLoadMacro.TabIndex = 0;
             this.btnLoadMacro.Text = "Load";
             this.btnLoadMacro.UseVisualStyleBackColor = true;
@@ -347,11 +348,11 @@
             // 
             // btnSaveMacro
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnSaveMacro, 2);
+            this.tableLayoutPanel1.SetColumnSpan(this.btnSaveMacro, 3);
             this.btnSaveMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveMacro.Location = new System.Drawing.Point(155, 3);
+            this.btnSaveMacro.Location = new System.Drawing.Point(156, 3);
             this.btnSaveMacro.Name = "btnSaveMacro";
-            this.btnSaveMacro.Size = new System.Drawing.Size(149, 24);
+            this.btnSaveMacro.Size = new System.Drawing.Size(148, 24);
             this.btnSaveMacro.TabIndex = 1;
             this.btnSaveMacro.Text = "Save";
             this.btnSaveMacro.UseVisualStyleBackColor = true;
@@ -359,10 +360,11 @@
             // 
             // btnRemoveTab
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnRemoveTab, 2);
             this.btnRemoveTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveTab.Location = new System.Drawing.Point(231, 489);
+            this.btnRemoveTab.Location = new System.Drawing.Point(207, 489);
             this.btnRemoveTab.Name = "btnRemoveTab";
-            this.btnRemoveTab.Size = new System.Drawing.Size(73, 24);
+            this.btnRemoveTab.Size = new System.Drawing.Size(97, 24);
             this.btnRemoveTab.TabIndex = 3;
             this.btnRemoveTab.Text = "Remove tab";
             this.btnRemoveTab.UseVisualStyleBackColor = true;
@@ -370,7 +372,7 @@
             // 
             // tabMacro
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tabMacro, 4);
+            this.tableLayoutPanel1.SetColumnSpan(this.tabMacro, 6);
             this.tabMacro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabMacro.Location = new System.Drawing.Point(0, 73);
             this.tabMacro.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
@@ -382,10 +384,11 @@
             // 
             // btnRenameTab
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnRenameTab, 2);
             this.btnRenameTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRenameTab.Location = new System.Drawing.Point(79, 489);
+            this.btnRenameTab.Location = new System.Drawing.Point(105, 489);
             this.btnRenameTab.Name = "btnRenameTab";
-            this.btnRenameTab.Size = new System.Drawing.Size(70, 24);
+            this.btnRenameTab.Size = new System.Drawing.Size(96, 24);
             this.btnRenameTab.TabIndex = 6;
             this.btnRenameTab.Text = "Rename tab";
             this.btnRenameTab.UseVisualStyleBackColor = true;
@@ -393,10 +396,11 @@
             // 
             // btnDuplicateTab
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnDuplicateTab, 2);
             this.btnDuplicateTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDuplicateTab.Location = new System.Drawing.Point(3, 489);
             this.btnDuplicateTab.Name = "btnDuplicateTab";
-            this.btnDuplicateTab.Size = new System.Drawing.Size(70, 24);
+            this.btnDuplicateTab.Size = new System.Drawing.Size(96, 24);
             this.btnDuplicateTab.TabIndex = 8;
             this.btnDuplicateTab.Text = "Duplicate tab";
             this.btnDuplicateTab.UseVisualStyleBackColor = true;
@@ -404,15 +408,27 @@
             // 
             // btnSendAll
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnSendAll, 2);
+            this.tableLayoutPanel1.SetColumnSpan(this.btnSendAll, 3);
             this.btnSendAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSendAll.Location = new System.Drawing.Point(155, 43);
+            this.btnSendAll.Location = new System.Drawing.Point(156, 43);
             this.btnSendAll.Name = "btnSendAll";
-            this.btnSendAll.Size = new System.Drawing.Size(149, 24);
+            this.btnSendAll.Size = new System.Drawing.Size(148, 24);
             this.btnSendAll.TabIndex = 9;
             this.btnSendAll.Text = "Send Selected";
             this.btnSendAll.UseVisualStyleBackColor = true;
             this.btnSendAll.Click += new System.EventHandler(this.btnSendAll_Click);
+            // 
+            // cboTimerSendSelected
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.cboTimerSendSelected, 3);
+            this.cboTimerSendSelected.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboTimerSendSelected.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTimerSendSelected.FormattingEnabled = true;
+            this.cboTimerSendSelected.Location = new System.Drawing.Point(3, 43);
+            this.cboTimerSendSelected.Name = "cboTimerSendSelected";
+            this.cboTimerSendSelected.Size = new System.Drawing.Size(147, 21);
+            this.cboTimerSendSelected.TabIndex = 10;
+            this.cboTimerSendSelected.SelectedIndexChanged += new System.EventHandler(this.cboTimerSendSelected_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -425,6 +441,43 @@
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reply";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.txtOutput, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnClearLog, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(617, 516);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // txtOutput
+            // 
+            this.tableLayoutPanel4.SetColumnSpan(this.txtOutput, 2);
+            this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtOutput.Location = new System.Drawing.Point(3, 33);
+            this.txtOutput.Multiline = true;
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(611, 480);
+            this.txtOutput.TabIndex = 1;
+            // 
+            // btnClearLog
+            // 
+            this.btnClearLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClearLog.Location = new System.Drawing.Point(3, 3);
+            this.btnClearLog.Name = "btnClearLog";
+            this.btnClearLog.Size = new System.Drawing.Size(302, 24);
+            this.btnClearLog.TabIndex = 2;
+            this.btnClearLog.Text = "Clear";
+            this.btnClearLog.UseVisualStyleBackColor = true;
+            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
             // groupBox4
             // 
@@ -497,55 +550,6 @@
             this.txtBoxPreFix.Size = new System.Drawing.Size(385, 20);
             this.txtBoxPreFix.TabIndex = 3;
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.txtOutput, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.btnClearLog, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(617, 516);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // txtOutput
-            // 
-            this.tableLayoutPanel4.SetColumnSpan(this.txtOutput, 2);
-            this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOutput.Location = new System.Drawing.Point(3, 33);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(611, 480);
-            this.txtOutput.TabIndex = 1;
-            // 
-            // btnClearLog
-            // 
-            this.btnClearLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearLog.Location = new System.Drawing.Point(3, 3);
-            this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(302, 24);
-            this.btnClearLog.TabIndex = 2;
-            this.btnClearLog.Text = "Clear";
-            this.btnClearLog.UseVisualStyleBackColor = true;
-            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
-            // 
-            // cboTimerSendSelected
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.cboTimerSendSelected, 2);
-            this.cboTimerSendSelected.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboTimerSendSelected.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTimerSendSelected.FormattingEnabled = true;
-            this.cboTimerSendSelected.Location = new System.Drawing.Point(3, 43);
-            this.cboTimerSendSelected.Name = "cboTimerSendSelected";
-            this.cboTimerSendSelected.Size = new System.Drawing.Size(146, 21);
-            this.cboTimerSendSelected.TabIndex = 10;
-            this.cboTimerSendSelected.SelectedIndexChanged += new System.EventHandler(this.cboTimerSendSelected_SelectedIndexChanged);
-            // 
             // tmrSendAllCommands
             // 
             this.tmrSendAllCommands.Tick += new System.EventHandler(this.tmrSendAllCommands_Tick);
@@ -559,6 +563,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Yat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -575,11 +580,11 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }

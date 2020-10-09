@@ -30,7 +30,7 @@ namespace YAT
 
         private void chkSendCommand_CheckedChanged(object sender, EventArgs e)
         {
-
+            Datachanged?.Invoke(this, e);
         }
 
         public void SendIfChecked()
@@ -39,6 +39,14 @@ namespace YAT
             {
                 btnSend.PerformClick();
             }
+        }
+
+        // declaring an event using built-in EventHandler
+        public event EventHandler Datachanged;
+
+        private void txtCommand_TextChanged(object sender, EventArgs e)
+        {
+            Datachanged?.Invoke(this, e);
         }
     }
 }

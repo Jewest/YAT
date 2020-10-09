@@ -25,7 +25,8 @@ namespace YAT
         private SerialPort m_serialPort = new SerialPort();
         private Queue<string> m_ToSendList = new Queue<string>();
         private TabPage m_tabPagePlus = new TabPage("  +");
-
+        private string m_filename = "";
+        private bool m_configurationIsDirty = false;
 
         private void Form1_Shown(Object sender, EventArgs e)
         {
@@ -74,7 +75,7 @@ namespace YAT
 
             UpdateButtonsAndStatus();
             tabMacro.TabPages.Add(m_tabPagePlus);
-            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", true);
+            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", true,false);
             AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
 
         }
@@ -102,6 +103,10 @@ namespace YAT
             UpdateReceivedInfo(m_serialPort.ReadExisting());
         }
 
+        public void MacroElementChanged(object sender, EventArgs e)
+        {
+            this.ReportDataDirty();
+        }
 
         private void btnLoadMacro_Click(object sender, EventArgs e)
         {
@@ -151,12 +156,13 @@ namespace YAT
                                                 }
 
 
-                                                layout = (TableLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name"), false).Controls[0];
+                                                layout = (TableLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name"), false, true).Controls[0];
                                                 
                                                 break;
                                             case "Macro":
                                                 macro macroSetting = new macro();
                                                 macroSetting.Dock = DockStyle.Fill;
+                                                macroSetting.Datachanged += MacroElementChanged;
                                                 macroSetting.ReadXml(reader);
                                                 // add to the short list
                                                 listToAdd.Add(macroSetting);
@@ -196,6 +202,7 @@ namespace YAT
                             tabMacro.ResumeLayout();
                         }
                     }
+                    UpdateFileName(openFileDialog1.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -203,6 +210,79 @@ namespace YAT
                 }                
             }
         }
+
+        private void UpdateTitleBar()
+        {
+            this.Text = Application.ProductName + " " + Application.ProductVersion;
+
+            this.Text += " - ";
+            
+            if (Path.GetFileName(m_filename).Length > 0)
+            {
+                this.Text += Path.GetFileName(m_filename);
+            }
+            
+            if (m_configurationIsDirty== true)
+            {
+                this.Text += "*";
+            }
+        }
+
+
+        private void UpdateFileName(string filename)
+        {
+            m_filename = filename;
+            m_configurationIsDirty = false;
+            UpdateTitleBar();
+        }
+
+
+        void SaveFileInStream(Stream myStream)
+        {
+            if(myStream != null)
+            {                
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                settings.OmitXmlDeclaration = true;
+                settings.NewLineOnAttributes = true;
+                // Serialize the object to a file.
+                XmlWriter writer = XmlWriter.Create(myStream, settings);
+                writer.WriteStartDocument();
+                writer.WriteStartElement("YatMacro");
+
+                // load the items
+                foreach (TabPage foundtab in tabMacro.TabPages)
+                {
+                    if (foundtab.Controls.Count > 0)
+                    {
+
+                        writer.WriteStartElement("Tab");
+                        writer.WriteAttributeString("Name", foundtab.Text);
+
+                        TableLayoutPanel panel = (TableLayoutPanel)foundtab.Controls[0];
+                        if (panel != null)
+                        {
+                            //foreach(macro macroSetting in panel.Controls)
+                            for (Int32 counter = 0; counter < panel.Controls.Count; counter++)
+                            {
+                                if (panel.Controls[counter] is macro)
+                                {
+                                    ((macro)panel.Controls[counter]).WriteXml(writer);
+                                }
+                            }
+                        }
+
+                        //XmlWriter
+                        writer.WriteEndElement();
+                    }
+                }
+                //close the document
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+                writer.Close();
+            }
+        }
+
 
         private void btnSaveMacro_Click(object sender, EventArgs e)
         {
@@ -215,47 +295,11 @@ namespace YAT
                 Stream myStream = null;
                 if((myStream = saveFile.OpenFile()) != null)
                 {
-                    XmlWriterSettings settings = new XmlWriterSettings();
-                    settings.Indent = true;
-                    settings.OmitXmlDeclaration = true;
-                    settings.NewLineOnAttributes = true;
-                    // Serialize the object to a file.
-                    XmlWriter writer = XmlWriter.Create(myStream, settings);
-                    writer.WriteStartDocument();
-                    writer.WriteStartElement("YatMacro");
-                    
-                    // load the items
-                    foreach (TabPage foundtab in tabMacro.TabPages)
-                    {
-                        if (foundtab.Controls.Count > 0)
-                        {
-
-                            writer.WriteStartElement("Tab");
-                            writer.WriteAttributeString("Name", foundtab.Text);
-
-                            TableLayoutPanel panel = (TableLayoutPanel)foundtab.Controls[0];
-                            if (panel != null)
-                            {
-                                //foreach(macro macroSetting in panel.Controls)
-                                for (Int32 counter = 0; counter < panel.Controls.Count; counter++)
-                                {
-                                    if (panel.Controls[counter] is macro)
-                                    {
-                                        ((macro)panel.Controls[counter]).WriteXml(writer);
-                                    }
-                                }
-                            }
-
-                            //XmlWriter
-                            writer.WriteEndElement();
-                        }                      
-                    }
-                    //close the document
-                    writer.WriteEndElement();
-                    writer.WriteEndDocument();
-                    writer.Close();
+                    SaveFileInStream(myStream);
                 }
                 myStream.Close();
+                UpdateFileName(saveFile.FileName);
+                
             }
 
         }
@@ -287,7 +331,8 @@ namespace YAT
                 myobject = new macro();
                 
                 myobject.Dock = DockStyle.Fill;
-                
+                myobject.Datachanged += MacroElementChanged;
+
                 layout.Controls.Add(myobject,0, layout.Controls.Count-1);
                 layout.VerticalScroll.Value = layout.VerticalScroll.Maximum - 1;
                 if(layout.HorizontalScroll.Visible == true)
@@ -344,7 +389,7 @@ namespace YAT
             return macroAddButton;
         }
 
-        private TabPage CreateNewAndAddTabPage(string nameTab, bool addTheAddbutton)
+        private TabPage CreateNewAndAddTabPage(string nameTab, bool addTheAddbutton, bool appendToEnd)
         {
             
                 TabPage tp = new TabPage(nameTab);
@@ -364,7 +409,7 @@ namespace YAT
             tp.Controls.Add(tbPanel);
             //make the back ground nice
             tp.UseVisualStyleBackColor = true;
-            if (tabMacro.TabPages.Count > 0)
+            if (appendToEnd == false)
             {
                 tabMacro.TabPages.Insert(tabMacro.TabPages.Count - 1, tp);
             }
@@ -387,6 +432,7 @@ namespace YAT
             {
                 //copy the new name
                 tabMacro.SelectedTab.Text = newName;
+                ReportDataDirty();
             }
         }
 
@@ -399,6 +445,7 @@ namespace YAT
                 {
                     //remove the selected tab
                     tabMacro.TabPages.Remove(tabMacro.SelectedTab);
+                    ReportDataDirty();
                 }
             }
         }
@@ -465,6 +512,15 @@ namespace YAT
             UpdateButtonsAndStatus();
         }
 
+        void ReportDataDirty()
+        {
+            if(m_configurationIsDirty == false)
+            {
+                m_configurationIsDirty = true;
+                UpdateTitleBar();
+            }
+        }
+
 
         private void btnDuplicateTab_Click(object sender, EventArgs e)
         {
@@ -478,7 +534,7 @@ namespace YAT
                 //select the tab
                 
 
-                TabPage clone = CreateNewAndAddTabPage(nameTab, true);
+                TabPage clone = CreateNewAndAddTabPage(nameTab, true,false);
 
                 TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
 
@@ -500,7 +556,7 @@ namespace YAT
                 }
                
                 tabMacro.SelectedTab = clone;
-
+                ReportDataDirty();
             }
         }
 
@@ -632,10 +688,33 @@ namespace YAT
                 if (nameTab.Length > 0)
                 {
                     //select the tab
-                    tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab, true);
+                    tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab, true,false);
                     AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
+                    ReportDataDirty();
                 }
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(m_configurationIsDirty == true)
+            {
+                if(MessageBox.Show("Configuration changed, do you want to save?", Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if(m_filename.Length > 0)
+                    {
+                        using (FileStream fs = File.Open(m_filename,FileMode.Truncate))
+                        {
+                            SaveFileInStream(fs);
+                        }
+                    }
+                    else
+                    {
+                        btnSaveMacro.PerformClick();
+                    }
+                }
+            }
+
         }
     }
 }
