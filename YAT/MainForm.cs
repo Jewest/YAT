@@ -226,26 +226,29 @@ namespace YAT
                     
                     // load the items
                     foreach (TabPage foundtab in tabMacro.TabPages)
-                    {                        
-                        writer.WriteStartElement("Tab");
-                        writer.WriteAttributeString("Name", foundtab.Text);
-
-                        TableLayoutPanel panel = (TableLayoutPanel)foundtab.Controls[0];
-                        if(panel != null)
+                    {
+                        if (foundtab.Controls.Count > 0)
                         {
-                            //foreach(macro macroSetting in panel.Controls)
-                            for (Int32 counter = 0; counter < panel.Controls.Count; counter++)
+
+                            writer.WriteStartElement("Tab");
+                            writer.WriteAttributeString("Name", foundtab.Text);
+
+                            TableLayoutPanel panel = (TableLayoutPanel)foundtab.Controls[0];
+                            if (panel != null)
                             {
-                                if (panel.Controls[counter] is macro)
+                                //foreach(macro macroSetting in panel.Controls)
+                                for (Int32 counter = 0; counter < panel.Controls.Count; counter++)
                                 {
-                                    ((macro)panel.Controls[counter]).WriteXml(writer);
+                                    if (panel.Controls[counter] is macro)
+                                    {
+                                        ((macro)panel.Controls[counter]).WriteXml(writer);
+                                    }
                                 }
                             }
-                        }
 
-                        //XmlWriter
-                        writer.WriteEndElement();
-                                                
+                            //XmlWriter
+                            writer.WriteEndElement();
+                        }                      
                     }
                     //close the document
                     writer.WriteEndElement();
@@ -284,8 +287,17 @@ namespace YAT
                 myobject = new macro();
                 
                 myobject.Dock = DockStyle.Fill;
-                layout.Controls.Add(myobject,0, layout.Controls.Count-1);                
+                
+                layout.Controls.Add(myobject,0, layout.Controls.Count-1);
+                layout.VerticalScroll.Value = layout.VerticalScroll.Maximum - 1;
+                if(layout.HorizontalScroll.Visible == true)
+                {
+                  //layout.
+                }
+
             }
+
+            
 
             return myobject;
         }
@@ -328,7 +340,7 @@ namespace YAT
             Button macroAddButton = new Button();
             macroAddButton.Click += new System.EventHandler(this.btnNewMacro_Click);
             macroAddButton.Dock = DockStyle.Fill;
-            macroAddButton.Text = "+1";
+            macroAddButton.Text = "+1";            
             return macroAddButton;
         }
 
@@ -339,7 +351,9 @@ namespace YAT
             //FlowLayoutPanel fl_panel = new FlowLayoutPanel();
             TableLayoutPanel tbPanel = new TableLayoutPanel();
             tbPanel.Dock = DockStyle.Fill;
+            tbPanel.VerticalScroll.Visible = true;
             tbPanel.AutoScroll = true;
+            
             tbPanel.BringToFront();
 
             if (addTheAddbutton == true)
@@ -348,8 +362,8 @@ namespace YAT
             }
             //add the panel
             tp.Controls.Add(tbPanel);
-                //make the back ground nice
-                tp.UseVisualStyleBackColor = true;
+            //make the back ground nice
+            tp.UseVisualStyleBackColor = true;
             if (tabMacro.TabPages.Count > 0)
             {
                 tabMacro.TabPages.Insert(tabMacro.TabPages.Count - 1, tp);
