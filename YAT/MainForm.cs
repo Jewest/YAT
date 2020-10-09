@@ -338,8 +338,7 @@ namespace YAT
                 if(layout.HorizontalScroll.Visible == true)
                 {
                   //layout.
-                }
-
+                }                
             }
 
             
@@ -351,7 +350,8 @@ namespace YAT
 
         private void btnNewMacro_Click(object sender, EventArgs e)
         {
-            AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());            
+            AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
+            ReportDataDirty();
         }
 
         private void ScanForSerialPorts()
@@ -691,6 +691,10 @@ namespace YAT
                     tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab, true,false);
                     AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
                     ReportDataDirty();
+                }
+                else
+                {
+                    tabMacro.SelectedIndex = 0;
                 }
             }
         }

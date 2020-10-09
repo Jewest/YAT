@@ -465,6 +465,7 @@
             this.txtOutput.Location = new System.Drawing.Point(3, 33);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtOutput.Size = new System.Drawing.Size(611, 480);
             this.txtOutput.TabIndex = 1;
             // 
