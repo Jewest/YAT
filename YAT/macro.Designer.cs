@@ -94,6 +94,7 @@ namespace YAT
             this.txtCommand.Size = new System.Drawing.Size(30, 20);
             this.txtCommand.TabIndex = 3;
             this.txtCommand.TextChanged += new System.EventHandler(this.txtCommand_TextChanged);
+            this.txtCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCommand_KeyDown);
             // 
             // macro
             // 

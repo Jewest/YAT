@@ -48,5 +48,14 @@ namespace YAT
         {
             Datachanged?.Invoke(this, e);
         }
+
+        private void txtCommand_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                btnSend.PerformClick();
+            }
+        }
     }
 }
