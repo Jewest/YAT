@@ -59,6 +59,8 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnClearLog = new System.Windows.Forms.Button();
+            this.lblCountTerminator = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cboCommandTerminator = new System.Windows.Forms.ComboBox();
@@ -444,11 +446,14 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel4.Controls.Add(this.txtOutput, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.btnClearLog, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblCountTerminator, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label4, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -457,10 +462,11 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(617, 516);
             this.tableLayoutPanel4.TabIndex = 0;
+            this.tableLayoutPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
             // 
             // txtOutput
             // 
-            this.tableLayoutPanel4.SetColumnSpan(this.txtOutput, 2);
+            this.tableLayoutPanel4.SetColumnSpan(this.txtOutput, 3);
             this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtOutput.Location = new System.Drawing.Point(3, 33);
             this.txtOutput.Multiline = true;
@@ -474,11 +480,33 @@
             this.btnClearLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClearLog.Location = new System.Drawing.Point(3, 3);
             this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(302, 24);
+            this.btnClearLog.Size = new System.Drawing.Size(277, 24);
             this.btnClearLog.TabIndex = 2;
             this.btnClearLog.Text = "Clear";
             this.btnClearLog.UseVisualStyleBackColor = true;
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
+            // 
+            // lblCountTerminator
+            // 
+            this.lblCountTerminator.AutoSize = true;
+            this.lblCountTerminator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCountTerminator.Location = new System.Drawing.Point(569, 0);
+            this.lblCountTerminator.Name = "lblCountTerminator";
+            this.lblCountTerminator.Size = new System.Drawing.Size(45, 30);
+            this.lblCountTerminator.TabIndex = 3;
+            this.lblCountTerminator.Text = "0";
+            this.lblCountTerminator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(286, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(277, 30);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Count:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBox4
             // 
@@ -627,6 +655,8 @@
         private System.Windows.Forms.Button btnClearLog;
         private System.Windows.Forms.ComboBox cboTimerSendSelected;
         private System.Windows.Forms.Timer tmrSendAllCommands;
+        private System.Windows.Forms.Label lblCountTerminator;
+        private System.Windows.Forms.Label label4;
     }
 }
 

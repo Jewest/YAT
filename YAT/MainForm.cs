@@ -37,6 +37,7 @@ namespace YAT
 
             cboBaudRate.Items.Add(19200);            
             cboBaudRate.Items.Add(115200);
+            cboBaudRate.Items.Add(921600);
             cboBaudRate.SelectedIndex = 1;
 
             //set the callback
@@ -94,6 +95,21 @@ namespace YAT
             else
             {
                 txtOutput.AppendText(text);
+
+                char[] testchars = txtOutput.Text.ToCharArray();
+                int count = 0;
+                int length = testchars.Length;
+                char testChar = '\n';
+                for (int n = length - 1; n >= 0; n--)
+                {
+                    if (testchars[n] == testChar)
+                    {
+                        count++;
+                    }
+                }
+
+                lblCountTerminator.Text = count.ToString();
+
             }
         }
 
@@ -497,8 +513,9 @@ namespace YAT
                 {
                     m_serialPort.Open();
                 }
-                catch (Exception)
-                {                    
+                catch (Exception exp)
+                {
+                    MessageBox.Show(exp.Message);
                 }
                 
             }
@@ -668,6 +685,7 @@ namespace YAT
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             txtOutput.Text = "";
+            lblCountTerminator.Text = "0";
         }
 
         private void cboTimerSendSelected_SelectedIndexChanged(object sender, EventArgs e)
@@ -743,6 +761,11 @@ namespace YAT
                     }
                 }
             }
+
+        }
+
+        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
