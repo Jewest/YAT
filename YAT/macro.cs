@@ -17,11 +17,6 @@ namespace YAT
             InitializeComponent();
         }
 
-        private void macro_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSend_Click(object sender, EventArgs e)
         {
             //send the data now
@@ -41,8 +36,14 @@ namespace YAT
             }
         }
 
+        public void SetChecked(bool checkedValue)
+        {
+            chkSendCommand.Checked = checkedValue;
+        }
+
         // declaring an event using built-in EventHandler
         public event EventHandler Datachanged;
+        public event EventHandler RemoveMe;
 
         private void txtCommand_TextChanged(object sender, EventArgs e)
         {
@@ -56,6 +57,47 @@ namespace YAT
                 e.Handled = true;
                 btnSend.PerformClick();
             }
+        }
+
+
+        void HandleRightMouseCLick(Control theControl, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+
+                MenuItem item = cm.MenuItems.Add("Remove");
+                item.Click += Item_Click;
+
+
+                cm.Show(theControl, e.Location);                
+            }
+        }
+
+        private void Item_Click(object sender, EventArgs e)
+        {
+            // remove this element
+            RemoveMe?.Invoke(this, e);
+        }
+
+        private void chkSendCommand_MouseDown(object sender, MouseEventArgs e)
+        {
+            HandleRightMouseCLick(chkSendCommand, e);
+        }
+
+        private void btnSend_MouseDown(object sender, MouseEventArgs e)
+        {
+            HandleRightMouseCLick(btnSend, e);
+        }
+
+        private void txtCommand_MouseDown(object sender, MouseEventArgs e)
+        {
+            HandleRightMouseCLick(txtCommand, e);
+        }
+
+        private void tableLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            HandleRightMouseCLick(tableLayoutPanel1, e);
         }
     }
 }

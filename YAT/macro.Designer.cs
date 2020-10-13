@@ -46,9 +46,8 @@ namespace YAT
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.Controls.Add(this.chkSendCommand, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnSend, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtCommand, 0, 0);
@@ -57,19 +56,23 @@ namespace YAT
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(118, 25);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(198, 25);
             this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tableLayoutPanel1_MouseDown);
             // 
             // chkSendCommand
             // 
             this.chkSendCommand.AutoSize = true;
             this.chkSendCommand.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkSendCommand.Location = new System.Drawing.Point(101, 3);
+            this.chkSendCommand.Location = new System.Drawing.Point(126, 3);
+            this.chkSendCommand.MinimumSize = new System.Drawing.Size(50, 0);
             this.chkSendCommand.Name = "chkSendCommand";
-            this.chkSendCommand.Size = new System.Drawing.Size(14, 19);
+            this.chkSendCommand.Size = new System.Drawing.Size(69, 19);
             this.chkSendCommand.TabIndex = 8;
+            this.chkSendCommand.Text = "Select";
             this.chkSendCommand.UseVisualStyleBackColor = true;
             this.chkSendCommand.CheckedChanged += new System.EventHandler(this.chkSendCommand_CheckedChanged);
+            this.chkSendCommand.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chkSendCommand_MouseDown);
             // 
             // btnSend
             // 
@@ -79,11 +82,12 @@ namespace YAT
             this.btnSend.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnSend.Name = "btnSend";
             this.btnSend.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.btnSend.Size = new System.Drawing.Size(59, 25);
+            this.btnSend.Size = new System.Drawing.Size(84, 25);
             this.btnSend.TabIndex = 4;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            this.btnSend.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSend_MouseDown);
             // 
             // txtCommand
             // 
@@ -95,6 +99,7 @@ namespace YAT
             this.txtCommand.TabIndex = 3;
             this.txtCommand.TextChanged += new System.EventHandler(this.txtCommand_TextChanged);
             this.txtCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCommand_KeyDown);
+            this.txtCommand.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCommand_MouseDown);
             // 
             // macro
             // 
@@ -108,8 +113,7 @@ namespace YAT
             this.MaximumSize = new System.Drawing.Size(0, 25);
             this.MinimumSize = new System.Drawing.Size(50, 25);
             this.Name = "macro";
-            this.Size = new System.Drawing.Size(118, 25);
-            this.Load += new System.EventHandler(this.macro_Load);
+            this.Size = new System.Drawing.Size(198, 25);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -118,7 +122,9 @@ namespace YAT
         }
 
         #endregion
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;        
+
+
         private System.Windows.Forms.CheckBox chkSendCommand;        
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox txtCommand;

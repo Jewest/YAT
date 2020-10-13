@@ -124,6 +124,34 @@ namespace YAT
             this.ReportDataDirty();
         }
 
+        public void MacroElementRemoveMe(object sender, EventArgs e)
+        {
+            //test the object
+            if(sender is macro)
+            {
+                TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
+
+                    if (layout != null)
+                    {
+                        if (layout.Controls.Count > 0)
+                        {
+                            for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
+                            {
+                                if (layout.Controls[counter] is macro)
+                                {
+                                    if (((macro)layout.Controls[counter]) == ((macro)sender))
+                                    {
+                                        layout.Controls.Remove(layout.Controls[counter]);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+             
+            }
+        }
+
         private void btnLoadMacro_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -179,6 +207,8 @@ namespace YAT
                                                 macro macroSetting = new macro();
                                                 macroSetting.Dock = DockStyle.Fill;
                                                 macroSetting.Datachanged += MacroElementChanged;
+                                                macroSetting.RemoveMe += MacroElementRemoveMe;
+
                                                 macroSetting.ReadXml(reader);
                                                 // add to the short list
                                                 listToAdd.Add(macroSetting);
@@ -326,6 +356,13 @@ namespace YAT
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.InitialDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
             saveFile.Filter = "YAT Macro files (*.ymf)|*.ymf";
+
+            if(m_filename.Length > 0)
+            {
+                saveFile.FileName = Path.GetFileName(m_filename);
+                saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
+            }
+
             // check for the correct result
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
@@ -372,6 +409,7 @@ namespace YAT
                 
                 myobject.Dock = DockStyle.Fill;
                 myobject.Datachanged += MacroElementChanged;
+                myobject.RemoveMe += MacroElementRemoveMe;
 
                 layout.Controls.Add(myobject,0, layout.Controls.Count-1);
                 layout.VerticalScroll.Value = layout.VerticalScroll.Maximum - 1;
@@ -425,6 +463,7 @@ namespace YAT
             Button macroAddButton = new Button();
             macroAddButton.Click += new System.EventHandler(this.btnNewMacro_Click);
             macroAddButton.Dock = DockStyle.Fill;
+            macroAddButton.Height = 30;
             macroAddButton.Text = "+1";            
             return macroAddButton;
         }
@@ -768,5 +807,25 @@ namespace YAT
         {
 
         }
+
+        private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
+            
+            if (layout != null)
+            {
+                if (layout.Controls.Count > 0)
+                {
+                    for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
+                    {
+                        if (layout.Controls[counter] is macro)
+                        {
+                            ((macro)layout.Controls[counter]).SetChecked(chkSelectAll.Checked);
+                        }
+                    }
+                }
+            }            
+        }
+
     }
 }

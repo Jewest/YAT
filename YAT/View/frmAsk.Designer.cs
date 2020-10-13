@@ -112,7 +112,7 @@ namespace YAT.View
             this.MinimizeBox = false;
             this.Name = "frmAsk";
             this.ShowIcon = false;
-            this.Text = "frmAsk";
+            this.Text = "Please insert the information";
             this.Shown += new System.EventHandler(this.frmAsk_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
