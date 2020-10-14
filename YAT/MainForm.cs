@@ -211,9 +211,7 @@ namespace YAT
                             // Insert code to read the stream here.
                             XmlReader reader = XmlReader.Create(myStream, settings);
                             TableLayoutPanel layout = null;
-                            //create a list
-                            List<macro> listToAdd = new List<macro>();
-
+                            
                             while (reader.Read())
                             {
                                 switch (reader.NodeType)
@@ -222,26 +220,14 @@ namespace YAT
                                         switch(reader.Name)
                                         {
                                             case "Tab":                                                
-                                                if(listToAdd.Count > 0)
-                                                {
-                                                    layout.Controls.AddRange(listToAdd.ToArray());
-                                                    layout.Controls.Add(CreateAddOneButton());
-                                                    listToAdd.Clear();
-                                                }
-
-
-                                                layout = (TableLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name"), true).Controls[0];
+                                                // create a new tab
+                                                CreateNewAndAddTabPage(reader.GetAttribute("Name"), true);
                                                 
                                                 break;
                                             case "Macro":
-                                                macro macroSetting = new macro();
-                                                macroSetting.Dock = DockStyle.Fill;
-                                                macroSetting.Datachanged += MacroElementChanged;
-                                                macroSetting.RemoveMe += MacroElementRemoveMe;
-
-                                                macroSetting.ReadXml(reader);
-                                                // add to the short list
-                                                listToAdd.Add(macroSetting);
+                                                //add to the last one
+                                                macro macroSetting = AddMacroToPanel(tabMacro.TabPages.Count - 1,false);
+                                                macroSetting.ReadXml(reader);                                                
                                                 break;
                                             default:
                                                 Console.WriteLine("Start Element {0}", reader.Name);
@@ -262,18 +248,19 @@ namespace YAT
                                         break;
                                 }
                             }
-
-                            if (listToAdd.Count > 0)
-                            {
-                                layout.Controls.AddRange(listToAdd.ToArray());
-                                layout.Controls.Add(CreateAddOneButton());
-                            }
-
+                            
                             //close the stream
                             reader.Close();
 
                             tabMacro.TabPages.Add(m_tabPagePlus);
                             tabMacro.SelectedIndex = 0;
+                            
+                            for(int counter = 0; counter < tabMacro.TabPages.Count - 2; counter++)
+                            {
+                                UpdateGrid(counter);
+                            }
+
+
 
                             tabMacro.ResumeLayout();
                         }
