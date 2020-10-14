@@ -539,7 +539,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(477, 516);
-            this.tableLayoutPanel4.TabIndex = 0;            
+            this.tableLayoutPanel4.TabIndex = 0;
             // 
             // txtOutput
             // 
