@@ -22,11 +22,24 @@ namespace YAT
             InitializeComponent();
         }
 
+        private class MacroTab
+        {
+
+            public MacroTab()
+            {
+                elements = new List<macro>();
+            }
+
+            public string name;
+            public List<macro> elements;
+        }
+
         private SerialPort m_serialPort = new SerialPort();
         private Queue<string> m_ToSendList = new Queue<string>();
         private TabPage m_tabPagePlus = new TabPage("  +");
         private string m_filename = "";
         private bool m_configurationIsDirty = false;
+        private List<MacroTab> m_ConfiguredMacro = new List<MacroTab>();
 
         private void Form1_Shown(Object sender, EventArgs e)
         {
@@ -76,9 +89,10 @@ namespace YAT
 
             UpdateButtonsAndStatus();
             tabMacro.TabPages.Add(m_tabPagePlus);
-            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", true,false);
-            AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
-
+            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default",false);
+            
+            AddMacroToPanel(GetCurrentSelectedTab(), true);
+            
         }
 
          // This delegate enables asynchronous calls for setting  
@@ -124,31 +138,47 @@ namespace YAT
             this.ReportDataDirty();
         }
 
+        private void UpdateGrid(int indexValue)
+        {
+            TableLayoutPanel layout = GetTableLayoutPanelOnTab(indexValue);
+
+            if (layout != null)
+            {
+                layout.Controls.Clear();
+                layout.Controls.AddRange(m_ConfiguredMacro[indexValue].elements.ToArray());
+                layout.Controls.Add(CreateAddOneButton());
+            }
+        }
+
+
         public void MacroElementRemoveMe(object sender, EventArgs e)
         {
             //test the object
             if(sender is macro)
             {
-                TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
+                int index = GetCurrentSelectedTab();
 
-                    if (layout != null)
+                if (index < m_ConfiguredMacro.Count)
+                {
+                    MacroTab tab = m_ConfiguredMacro[index];
+
+                    for (Int32 counter = 0; counter < tab.elements.Count; counter++)
                     {
-                        if (layout.Controls.Count > 0)
+                        if (tab.elements[counter] is macro)
                         {
-                            for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
+                            if (((macro)tab.elements[counter]) == ((macro)sender))
                             {
-                                if (layout.Controls[counter] is macro)
-                                {
-                                    if (((macro)layout.Controls[counter]) == ((macro)sender))
-                                    {
-                                        layout.Controls.Remove(layout.Controls[counter]);
-                                    }
-                                }
+                                tab.elements.RemoveAt(counter);
+                                counter = Int32.MaxValue - 2;
+                                UpdateGrid(index);
                             }
-                        }
 
-                    }
-             
+
+                            //set the counter to the max
+                            
+                        }
+                    }                   
+                }             
             }
         }
 
@@ -200,7 +230,7 @@ namespace YAT
                                                 }
 
 
-                                                layout = (TableLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name"), false, true).Controls[0];
+                                                layout = (TableLayoutPanel)CreateNewAndAddTabPage(reader.GetAttribute("Name"), true).Controls[0];
                                                 
                                                 break;
                                             case "Macro":
@@ -381,28 +411,39 @@ namespace YAT
 
         }
 
-        private TableLayoutPanel GetTableLayoutPanelOnCurrentTab()
+
+        private  int GetCurrentSelectedTab()
+        {
+            return tabMacro.SelectedIndex;
+        }
+
+        private TableLayoutPanel GetTableLayoutPanelOnTab(int index)
         {
             TableLayoutPanel foundItem = null;
-
-            if(tabMacro.TabCount > 0)
+            if (index < tabMacro.TabCount)
             {
-                TabPage selectPage = tabMacro.SelectedTab;
+                TabPage selectPage = tabMacro.TabPages[index];
                 //check element
-                if(selectPage != null)
+                if (selectPage != null)
                 {
-                    foundItem = (TableLayoutPanel)tabMacro.SelectedTab.Controls[0];
-                }                
+                    foundItem = (TableLayoutPanel)selectPage.Controls[0];
+                }
             }
 
             return foundItem;
         }
 
-        private macro AddMacroToPanel(TableLayoutPanel layout)
+
+        private TableLayoutPanel GetTableLayoutPanelOnCurrentTab()
+        {            
+            return GetTableLayoutPanelOnTab(tabMacro.SelectedIndex); ;
+        }
+
+        private macro AddMacroToPanel(int index, bool updateView)
         {
             macro myobject =null;
 
-            if (layout != null)
+            if (index < m_ConfiguredMacro.Count)
             {
                 // testing the adding off the user commands
                 myobject = new macro();
@@ -411,15 +452,16 @@ namespace YAT
                 myobject.Datachanged += MacroElementChanged;
                 myobject.RemoveMe += MacroElementRemoveMe;
 
-                layout.Controls.Add(myobject,0, layout.Controls.Count-1);
-                layout.VerticalScroll.Value = layout.VerticalScroll.Maximum - 1;
-                if(layout.HorizontalScroll.Visible == true)
-                {
-                  //layout.
-                }                
+                m_ConfiguredMacro[index].elements.Add(myobject);
+
+             //   layout.Controls.Add(myobject,0, layout.Controls.Count-1);
+             //   layout.VerticalScroll.Value = layout.VerticalScroll.Maximum - 1;              
             }
 
-            
+            if(updateView == true)
+            {
+                UpdateGrid(index);
+            }
 
             return myobject;
         }
@@ -428,7 +470,7 @@ namespace YAT
 
         private void btnNewMacro_Click(object sender, EventArgs e)
         {
-            AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
+            AddMacroToPanel(GetCurrentSelectedTab(), true);
             ReportDataDirty();
         }
 
@@ -468,10 +510,10 @@ namespace YAT
             return macroAddButton;
         }
 
-        private TabPage CreateNewAndAddTabPage(string nameTab, bool addTheAddbutton, bool appendToEnd)
+        private TabPage CreateNewAndAddTabPage(string nameTab, bool appendToEnd)
         {
             
-                TabPage tp = new TabPage(nameTab);
+            TabPage tp = new TabPage(nameTab);
             //FlowLayoutPanel fl_panel = new FlowLayoutPanel();
             TableLayoutPanel tbPanel = new TableLayoutPanel();
             tbPanel.Dock = DockStyle.Fill;
@@ -480,10 +522,11 @@ namespace YAT
             
             tbPanel.BringToFront();
 
-            if (addTheAddbutton == true)
-            {
-                tbPanel.Controls.Add(CreateAddOneButton());
-            }
+            MacroTab newElement = new MacroTab();
+            newElement.name = nameTab;
+
+            m_ConfiguredMacro.Add(newElement);
+
             //add the panel
             tp.Controls.Add(tbPanel);
             //make the back ground nice
@@ -614,7 +657,7 @@ namespace YAT
                 //select the tab
                 
 
-                TabPage clone = CreateNewAndAddTabPage(nameTab, true,false);
+                TabPage clone = CreateNewAndAddTabPage(nameTab, false);
 
                 TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
 
@@ -626,7 +669,7 @@ namespace YAT
                         {
                             if (layout.Controls[counter] is macro)
                             {
-                                macro local = AddMacroToPanel((TableLayoutPanel)clone.Controls[0]);
+                                macro local = AddMacroToPanel(GetCurrentSelectedTab(), false);
 
                                 local.CloneSettings((macro)layout.Controls[counter]);
                             }
@@ -636,6 +679,7 @@ namespace YAT
                 }
                
                 tabMacro.SelectedTab = clone;
+                UpdateGrid(GetCurrentSelectedTab());
                 ReportDataDirty();
             }
         }
@@ -769,8 +813,8 @@ namespace YAT
                 if (nameTab.Length > 0)
                 {
                     //select the tab
-                    tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab, true,false);
-                    AddMacroToPanel(GetTableLayoutPanelOnCurrentTab());
+                    tabMacro.SelectedTab = CreateNewAndAddTabPage(nameTab, false);
+                    AddMacroToPanel(GetCurrentSelectedTab(), true);
                     ReportDataDirty();
                 }
                 else
@@ -803,10 +847,7 @@ namespace YAT
 
         }
 
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
         {
@@ -827,5 +868,9 @@ namespace YAT
             }            
         }
 
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
