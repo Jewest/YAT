@@ -87,12 +87,22 @@ namespace YAT
             };
             cboTimerSendSelected.Items.AddRange(listTimer);
 
-            UpdateButtonsAndStatus();
+            SetupDefaultTab();
+
+
+        }
+
+        void SetupDefaultTab()
+        {
+            tabMacro.TabPages.Clear();
+            m_ConfiguredMacro.Clear();
+            m_filename = "";
+
             tabMacro.TabPages.Add(m_tabPagePlus);
-            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default",false);
-            
+            tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", false);
+
             AddMacroToPanel(GetCurrentSelectedTab(), true);
-            
+            UpdateButtonsAndStatus();
         }
 
          // This delegate enables asynchronous calls for setting  
@@ -552,6 +562,7 @@ namespace YAT
             {
                 if (MessageBox.Show(this, "Are you sure you want to remove \"" +  tabMacro.SelectedTab.Text + "\"?", "Remove tab", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    m_ConfiguredMacro.RemoveAt(tabMacro.SelectedIndex);
                     //remove the selected tab
                     tabMacro.TabPages.Remove(tabMacro.SelectedTab);
                     ReportDataDirty();
@@ -803,16 +814,21 @@ namespace YAT
             }
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+
+        void CheckConfigurationAndSave()
         {
-            if(m_configurationIsDirty == true)
+            if (m_configurationIsDirty == true)
             {
-                if(MessageBox.Show("Configuration changed, do you want to save?", Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {                    
-                    btnSaveMacro.PerformClick();                    
+                if (MessageBox.Show("Configuration changed, do you want to save?", Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    btnSaveMacro.PerformClick();
                 }
             }
+        }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CheckConfigurationAndSave();
         }
 
 
@@ -838,6 +854,21 @@ namespace YAT
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            CheckConfigurationAndSave();
+            SetupDefaultTab();
+        }
+
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            string backupFile = m_filename;
+            m_filename = "";
+            btnSaveMacro.PerformClick();
+
+            if(m_filename.Length == 0)
+            {
+                m_filename = backupFile;
+            }
+
 
         }
     }

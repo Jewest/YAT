@@ -73,6 +73,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxPreFix = new System.Windows.Forms.TextBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
+            this.btnSaveAs = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -461,13 +462,15 @@
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.ColumnCount = 3;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.ColumnCount = 4;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
             this.tableLayoutPanel8.Controls.Add(this.btnSaveMacro, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.btnLoadMacro, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.btnNew, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnNew, 3, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnSaveAs, 2, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
@@ -480,9 +483,9 @@
             // btnSaveMacro
             // 
             this.btnSaveMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveMacro.Location = new System.Drawing.Point(152, 3);
+            this.btnSaveMacro.Location = new System.Drawing.Point(114, 3);
             this.btnSaveMacro.Name = "btnSaveMacro";
-            this.btnSaveMacro.Size = new System.Drawing.Size(143, 24);
+            this.btnSaveMacro.Size = new System.Drawing.Size(105, 24);
             this.btnSaveMacro.TabIndex = 2;
             this.btnSaveMacro.Text = "Save";
             this.btnSaveMacro.UseVisualStyleBackColor = true;
@@ -493,7 +496,7 @@
             this.btnLoadMacro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLoadMacro.Location = new System.Drawing.Point(3, 3);
             this.btnLoadMacro.Name = "btnLoadMacro";
-            this.btnLoadMacro.Size = new System.Drawing.Size(143, 24);
+            this.btnLoadMacro.Size = new System.Drawing.Size(105, 24);
             this.btnLoadMacro.TabIndex = 1;
             this.btnLoadMacro.Text = "Load";
             this.btnLoadMacro.UseVisualStyleBackColor = true;
@@ -502,11 +505,11 @@
             // btnNew
             // 
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNew.Location = new System.Drawing.Point(301, 3);
+            this.btnNew.Location = new System.Drawing.Point(336, 3);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(143, 24);
+            this.btnNew.Size = new System.Drawing.Size(108, 24);
             this.btnNew.TabIndex = 3;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Clear configuration";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -660,6 +663,17 @@
             // 
             this.tmrSendAllCommands.Tick += new System.EventHandler(this.tmrSendAllCommands_Tick);
             // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSaveAs.Location = new System.Drawing.Point(225, 3);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(105, 24);
+            this.btnSaveAs.TabIndex = 4;
+            this.btnSaveAs.Text = "Save as";
+            this.btnSaveAs.UseVisualStyleBackColor = true;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -743,6 +757,7 @@
         private System.Windows.Forms.Button btnSaveMacro;
         private System.Windows.Forms.Button btnLoadMacro;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnSaveAs;
     }
 }
 
