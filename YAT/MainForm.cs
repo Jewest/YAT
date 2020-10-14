@@ -204,14 +204,14 @@ namespace YAT
                             //remove the current elements
                             tabMacro.SuspendLayout();
                             tabMacro.TabPages.Clear();
+                            m_ConfiguredMacro.Clear();
 
                             XmlReaderSettings settings = new XmlReaderSettings();
                             settings.Async = false;
                             
                             // Insert code to read the stream here.
                             XmlReader reader = XmlReader.Create(myStream, settings);
-                            TableLayoutPanel layout = null;
-                            
+                                                        
                             while (reader.Read())
                             {
                                 switch (reader.NodeType)
@@ -255,7 +255,7 @@ namespace YAT
                             tabMacro.TabPages.Add(m_tabPagePlus);
                             tabMacro.SelectedIndex = 0;
                             
-                            for(int counter = 0; counter < tabMacro.TabPages.Count - 2; counter++)
+                            for(int counter = 0; counter < tabMacro.TabPages.Count - 1; counter++)
                             {
                                 UpdateGrid(counter);
                             }
@@ -314,26 +314,20 @@ namespace YAT
                 writer.WriteStartElement("YatMacro");
 
                 // load the items
-                foreach (TabPage foundtab in tabMacro.TabPages)
+                foreach (MacroTab foundtab in m_ConfiguredMacro)
                 {
-                    if (foundtab.Controls.Count > 0)
+                    if (foundtab.elements.Count > 0)
                     {
 
                         writer.WriteStartElement("Tab");
-                        writer.WriteAttributeString("Name", foundtab.Text);
+                        writer.WriteAttributeString("Name", foundtab.name);
 
-                        TableLayoutPanel panel = (TableLayoutPanel)foundtab.Controls[0];
-                        if (panel != null)
+                        //foreach(macro macroSetting in panel.Controls)
+                        for (Int32 counter = 0; counter < foundtab.elements.Count; counter++)
                         {
-                            //foreach(macro macroSetting in panel.Controls)
-                            for (Int32 counter = 0; counter < panel.Controls.Count; counter++)
-                            {
-                                if (panel.Controls[counter] is macro)
-                                {
-                                    ((macro)panel.Controls[counter]).WriteXml(writer);
-                                }
-                            }
+                            foundtab.elements[counter].WriteXml(writer);                                
                         }
+  
 
                         //XmlWriter
                         writer.WriteEndElement();
