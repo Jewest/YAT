@@ -646,27 +646,19 @@ namespace YAT
 
                 TabPage clone = CreateNewAndAddTabPage(nameTab, false);
 
-                TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
-
-                if (layout != null)
+                int currentIndex = GetCurrentSelectedTab();
+                // -2 as + tab = 1, and the count is 0 based.
+                int cloneIndex = tabMacro.TabPages.Count - 2;
+                
+                
+                for (Int32 counter = 0; counter < m_ConfiguredMacro[currentIndex].elements.Count; counter++)
                 {
-                    if (layout.Controls.Count > 0)
-                    {
-                        for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
-                        {
-                            if (layout.Controls[counter] is macro)
-                            {
-                                macro local = AddMacroToPanel(GetCurrentSelectedTab(), false);
-
-                                local.CloneSettings((macro)layout.Controls[counter]);
-                            }
-                        }
-                    }
-
+                    macro local = AddMacroToPanel(cloneIndex, false);
+                    local.CloneSettings(m_ConfiguredMacro[currentIndex].elements[counter]);                    
                 }
-               
-                tabMacro.SelectedTab = clone;
-                UpdateGrid(GetCurrentSelectedTab());
+                //select the clone
+                tabMacro.SelectedIndex = cloneIndex;
+                UpdateGrid(cloneIndex);
                 ReportDataDirty();
             }
         }
