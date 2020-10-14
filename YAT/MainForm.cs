@@ -540,6 +540,7 @@ namespace YAT
             {
                 //copy the new name
                 tabMacro.SelectedTab.Text = newName;
+                m_ConfiguredMacro[tabMacro.SelectedIndex].name = newName;
                 ReportDataDirty();
             }
         }
