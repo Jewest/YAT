@@ -11,7 +11,7 @@ namespace YAT
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        private string m_buttonName = "";
         /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
@@ -136,6 +136,7 @@ namespace YAT
             writer.WriteStartElement("Macro");
             writer.WriteAttributeString("command", txtCommand.Text);
             writer.WriteAttributeString("checked", chkSendCommand.Checked.ToString());
+            writer.WriteAttributeString("name" , btnSend.Text);
             writer.WriteEndElement();
         }
 
@@ -143,6 +144,16 @@ namespace YAT
         {            
             txtCommand.Text = reader.GetAttribute("command");
             chkSendCommand.Checked = Convert.ToBoolean(reader.GetAttribute("checked"));
+            m_buttonName = reader.GetAttribute("name");
+
+            if (m_buttonName != null)
+            {
+                if (m_buttonName.Length > 0)
+                {
+                    btnSend.Text = m_buttonName;
+                }
+            }
+
         }
 
         public XmlSchema GetSchema()

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YAT.View;
 
 namespace YAT
 {
@@ -66,9 +67,16 @@ namespace YAT
             {
                 ContextMenu cm = new ContextMenu();
 
+                if (theControl is Button)
+                {
+                    MenuItem item2 = cm.MenuItems.Add("Rename");
+                    item2.Click += Item_Rename;
+                }
+
                 MenuItem item = cm.MenuItems.Add("Remove");
                 item.Click += Item_Click;
 
+               
 
                 cm.Show(theControl, e.Location);                
             }
@@ -78,6 +86,36 @@ namespace YAT
         {
             // remove this element
             RemoveMe?.Invoke(this, e);
+        }
+
+
+        private void Item_Rename(object sender, EventArgs e)
+        {
+            // insert the rename 
+            AskController getNewName = new AskController(this.ParentForm);
+            //get the new name
+            string newName = getNewName.GetNewName(m_buttonName);
+
+            //check the length
+            if (newName.Length > 0)
+            {
+                if (btnSend.Text != newName)
+                {
+                    btnSend.Text = newName;
+                    //raise change
+                    Datachanged?.Invoke(this, e);
+                }
+            }
+            else
+            {
+                if (btnSend.Text != "Send")
+                {
+                    btnSend.Text = "Send";
+                    //raise change
+                    Datachanged?.Invoke(this, e);
+                }
+            }
+
         }
 
         private void chkSendCommand_MouseDown(object sender, MouseEventArgs e)

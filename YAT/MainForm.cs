@@ -154,10 +154,17 @@ namespace YAT
 
             if (layout != null)
             {
+                layout.Visible = false;
+                layout.SuspendLayout();
                 layout.Controls.Clear();
-                layout.Controls.AddRange(m_ConfiguredMacro[indexValue].elements.ToArray());
+
+                layout.Controls.AddRange(m_ConfiguredMacro[indexValue].elements.ToArray());              
                 layout.Controls.Add(CreateAddOneButton());
+                                            
+                layout.ResumeLayout();                
+                layout.Visible = true;
             }
+
         }
 
 
@@ -468,6 +475,14 @@ namespace YAT
         {
             AddMacroToPanel(GetCurrentSelectedTab(), true);
             ReportDataDirty();
+
+            TableLayoutPanel layout = GetTableLayoutPanelOnTab(GetCurrentSelectedTab());
+            if(layout != null)
+            {
+                layout.VerticalScroll.Value = layout.VerticalScroll.Maximum;
+                layout.Update();
+            }
+
         }
 
         private void ScanForSerialPorts()
