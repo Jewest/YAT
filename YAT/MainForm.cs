@@ -87,6 +87,11 @@ namespace YAT
             };
             cboTimerSendSelected.Items.AddRange(listTimer);
 
+            cboDecodeType.Items.Clear();
+            cboDecodeType.Items.Add("Ascii");
+            cboDecodeType.Items.Add("Hex");
+            cboDecodeType.SelectedIndex = 0;
+
             SetupDefaultTab();
 
 
@@ -118,15 +123,34 @@ namespace YAT
             }
             else
             {
-                txtOutput.AppendText(text);
-
-                char[] testchars = txtOutput.Text.ToCharArray();
-                int count = 0;
-                int length = testchars.Length;
-                char testChar = '\n';
-                for (int n = length - 1; n >= 0; n--)
+                
+                if (cboDecodeType.SelectedIndex == 1)
                 {
-                    if (testchars[n] == testChar)
+                    char[] arrayChars = text.ToCharArray();
+                    string addData = "";
+                    // add 
+                    for (int counter = 0; counter < arrayChars.Length; counter++)
+                    {
+                        int value = arrayChars[counter];
+                       
+                        addData += " 0x";                       
+                        addData += value.ToString("X2");
+                    }
+
+                    txtOutput.AppendText(addData);
+                }
+                else
+                {
+                    txtOutput.AppendText(text);
+                }
+
+                int count = 0;
+                char[] testchars = txtOutput.Text.ToCharArray();
+                char testChar = '\n';
+                int length = testchars.Length;
+                for (int counter = length - 1; counter >= 0; counter--)
+                {
+                    if (testchars[counter] == testChar)
                     {
                         count++;
                     }
