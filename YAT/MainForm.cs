@@ -178,24 +178,24 @@ namespace YAT
             TableLayoutPanel layout = GetTableLayoutPanelOnTab(indexValue);
 
             if (layout != null)
-            {
+            {   
                 layout.Visible = false;
                 layout.SuspendLayout();
-                layout.Controls.Clear();
-
-                //layout.Controls.AddRange(m_ConfiguredMacro[indexValue].elements.ToArray());              
-               macro[] elements = m_ConfiguredMacro[indexValue].elements.ToArray();
+                layout.Controls.Clear();                
+                macro[] elements = m_ConfiguredMacro[indexValue].elements.ToArray();
 
                 layout.RowCount = elements.Length;
 
                 for (int counter = 0; counter < layout.RowCount; counter++)
                 {
+
                     layout.Controls.Add(elements[counter], 0, counter);
+
                 }
 
                 layout.Controls.Add(CreateAddOneButton());
                 layout.ResumeLayout();
-                layout.Visible = true;
+                layout.Visible = true;                
             }
 
         }
@@ -609,6 +609,7 @@ namespace YAT
             {
                 tabMacro.TabPages.Add(tp);
             }
+
             return tp;      
          }
 
@@ -727,24 +728,26 @@ namespace YAT
             if (nameTab.Length > 0)
             {
                 //select the tab
-                
-
                 TabPage clone = CreateNewAndAddTabPage(nameTab, false);
 
                 int currentIndex = GetCurrentSelectedTab();
                 // -2 as + tab = 1, and the count is 0 based.
                 int cloneIndex = tabMacro.TabPages.Count - 2;
-                
-                
+
                 for (Int32 counter = 0; counter < m_ConfiguredMacro[currentIndex].elements.Count; counter++)
                 {
-                    macro local = AddMacroToPanel(cloneIndex, false);
-                    local.CloneSettings(m_ConfiguredMacro[currentIndex].elements[counter]);                    
+                    macro local = CreateNewMacro(); ;
+                    local.CloneSettings(m_ConfiguredMacro[currentIndex].elements[counter]);
+                    m_ConfiguredMacro[cloneIndex].elements.Add(local);
                 }
+
+                UpdateGrid(cloneIndex);
+
                 //select the clone
                 tabMacro.SelectedIndex = cloneIndex;
-                UpdateGrid(cloneIndex);
-                ReportDataDirty();
+
+                ReportDataDirty();                
+
             }
         }
 
