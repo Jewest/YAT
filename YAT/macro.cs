@@ -43,6 +43,7 @@ namespace YAT
         }
 
         // declaring an event using built-in EventHandler
+        public event EventHandler InsertBeforeMe;
         public event EventHandler Datachanged;
         public event EventHandler RemoveMe;
 
@@ -72,11 +73,12 @@ namespace YAT
                     MenuItem item2 = cm.MenuItems.Add("Rename");
                     item2.Click += Item_Rename;
                 }
+                
+                MenuItem item3 = cm.MenuItems.Add("Insert Before");
+                item3.Click += Item_InsertBefore;
 
                 MenuItem item = cm.MenuItems.Add("Remove");
                 item.Click += Item_Click;
-
-               
 
                 cm.Show(theControl, e.Location);                
             }
@@ -115,7 +117,12 @@ namespace YAT
                     Datachanged?.Invoke(this, e);
                 }
             }
+        }
 
+        private void Item_InsertBefore(object sender, EventArgs e)
+        {
+            // remove this element
+            InsertBeforeMe?.Invoke(this, e);
         }
 
         private void chkSendCommand_MouseDown(object sender, MouseEventArgs e)

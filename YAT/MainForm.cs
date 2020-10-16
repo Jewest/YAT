@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -182,10 +183,18 @@ namespace YAT
                 layout.SuspendLayout();
                 layout.Controls.Clear();
 
-                layout.Controls.AddRange(m_ConfiguredMacro[indexValue].elements.ToArray());              
+                //layout.Controls.AddRange(m_ConfiguredMacro[indexValue].elements.ToArray());              
+               macro[] elements = m_ConfiguredMacro[indexValue].elements.ToArray();
+
+                layout.RowCount = elements.Length;
+
+                for (int counter = 0; counter < layout.RowCount; counter++)
+                {
+                    layout.Controls.Add(elements[counter], 0, counter);
+                }
+
                 layout.Controls.Add(CreateAddOneButton());
-                                            
-                layout.ResumeLayout();                
+                layout.ResumeLayout();
                 layout.Visible = true;
             }
 
@@ -223,6 +232,29 @@ namespace YAT
             }
         }
 
+        public void MacroElementInsertBeforeMe(object sender, EventArgs e)
+        {
+            int index = GetCurrentSelectedTab();
+
+            if (index < m_ConfiguredMacro.Count)
+            {
+                MacroTab tab = m_ConfiguredMacro[index];
+
+                for (Int32 counter = 0; counter < tab.elements.Count; counter++)
+                {
+                    if (tab.elements[counter] is macro)
+                    {
+                        if (((macro)tab.elements[counter]) == ((macro)sender))
+                        {
+                            tab.elements.Insert(counter, CreateNewMacro());
+                           
+                            UpdateGrid(index);
+                            counter++;
+                        }
+                    }
+				}
+            }
+		}
         private void btnLoadMacro_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -463,7 +495,18 @@ namespace YAT
 
         private TableLayoutPanel GetTableLayoutPanelOnCurrentTab()
         {            
-            return GetTableLayoutPanelOnTab(tabMacro.SelectedIndex); ;
+            return GetTableLayoutPanelOnTab(tabMacro.SelectedIndex); 
+        }
+
+
+        private macro CreateNewMacro()
+        {
+            macro myobject = new macro();
+            myobject.Dock = DockStyle.Fill;
+            myobject.Datachanged += MacroElementChanged;
+            myobject.RemoveMe += MacroElementRemoveMe;
+            myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
+            return myobject;
         }
 
         private macro AddMacroToPanel(int index, bool updateView)
@@ -473,16 +516,8 @@ namespace YAT
             if (index < m_ConfiguredMacro.Count)
             {
                 // testing the adding off the user commands
-                myobject = new macro();
-                
-                myobject.Dock = DockStyle.Fill;
-                myobject.Datachanged += MacroElementChanged;
-                myobject.RemoveMe += MacroElementRemoveMe;
-
+                myobject = CreateNewMacro();
                 m_ConfiguredMacro[index].elements.Add(myobject);
-
-             //   layout.Controls.Add(myobject,0, layout.Controls.Count-1);
-             //   layout.VerticalScroll.Value = layout.VerticalScroll.Maximum - 1;              
             }
 
             if(updateView == true)
