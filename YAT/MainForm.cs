@@ -439,13 +439,14 @@ namespace YAT
         {
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.InitialDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+            saveFile.RestoreDirectory = true;
             saveFile.Filter = "YAT Macro files (*.ymf)|*.ymf";
             bool saveData = false;
 
             if(m_filename.Length > 0)
             {
-                saveFile.FileName = Path.GetFileName(m_filename);
-                saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
+                saveFile.FileName = m_filename;
+                saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);                
                 saveData = true;
             }
             else if (saveFile.ShowDialog() == DialogResult.OK)
@@ -457,10 +458,12 @@ namespace YAT
             {
                 Stream myStream = null;
 
-                BackUpCurrentFile(m_filename);
-
+                BackUpCurrentFile(m_filename);                
                 if ((myStream = saveFile.OpenFile()) != null)
                 {
+                    FileStream fs = myStream as FileStream;
+                    if (fs != null) Console.WriteLine(fs.Name);
+
                     SaveFileInStream(myStream);
                 }
                 myStream.Close();
