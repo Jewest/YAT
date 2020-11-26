@@ -60,12 +60,14 @@
             this.btnSaveMacro = new System.Windows.Forms.Button();
             this.btnLoadMacro = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
+            this.btnSaveAs = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnClearLog = new System.Windows.Forms.Button();
             this.lblCountTerminator = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cboDecodeType = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cboCommandTerminator = new System.Windows.Forms.ComboBox();
@@ -73,8 +75,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxPreFix = new System.Windows.Forms.TextBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
-            this.btnSaveAs = new System.Windows.Forms.Button();
-            this.cboDecodeType = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -514,6 +514,17 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSaveAs.Location = new System.Drawing.Point(225, 3);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(105, 24);
+            this.btnSaveAs.TabIndex = 4;
+            this.btnSaveAs.Text = "Save as";
+            this.btnSaveAs.UseVisualStyleBackColor = true;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tableLayoutPanel4);
@@ -592,6 +603,16 @@
             this.label4.Text = "Count:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // cboDecodeType
+            // 
+            this.cboDecodeType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboDecodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDecodeType.FormattingEnabled = true;
+            this.cboDecodeType.Location = new System.Drawing.Point(191, 3);
+            this.cboDecodeType.Name = "cboDecodeType";
+            this.cboDecodeType.Size = new System.Drawing.Size(182, 21);
+            this.cboDecodeType.TabIndex = 5;
+            // 
             // groupBox4
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.groupBox4, 2);
@@ -666,27 +687,6 @@
             // tmrSendAllCommands
             // 
             this.tmrSendAllCommands.Tick += new System.EventHandler(this.tmrSendAllCommands_Tick);
-            // 
-            // btnSaveAs
-            // 
-            this.btnSaveAs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveAs.Location = new System.Drawing.Point(225, 3);
-            this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.Size = new System.Drawing.Size(105, 24);
-            this.btnSaveAs.TabIndex = 4;
-            this.btnSaveAs.Text = "Save as";
-            this.btnSaveAs.UseVisualStyleBackColor = true;
-            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
-            // 
-            // cboDecodeType
-            // 
-            this.cboDecodeType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboDecodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDecodeType.FormattingEnabled = true;
-            this.cboDecodeType.Location = new System.Drawing.Point(191, 3);
-            this.cboDecodeType.Name = "cboDecodeType";
-            this.cboDecodeType.Size = new System.Drawing.Size(182, 21);
-            this.cboDecodeType.TabIndex = 5;
             // 
             // MainForm
             // 

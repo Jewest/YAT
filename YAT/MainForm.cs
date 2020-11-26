@@ -181,7 +181,13 @@ namespace YAT
             {   
                 layout.Visible = false;
                 layout.SuspendLayout();
-                layout.Controls.Clear();                
+                layout.Controls.Clear();
+
+                layout.ColumnCount = 3;
+                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0F));
+                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
+                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 75));
+
                 macro[] elements = m_ConfiguredMacro[indexValue].elements.ToArray();
 
                 layout.RowCount = elements.Length;
@@ -189,11 +195,28 @@ namespace YAT
                 for (int counter = 0; counter < layout.RowCount; counter++)
                 {
 
-                    layout.Controls.Add(elements[counter], 0, counter);
+                    // layout.Controls.Add(elements[counter], 0, counter);                    
+                    TextBox localTxtBox = new TextBox();
+                    localTxtBox.Dock = DockStyle.Fill;
+
+                    CheckBox chkBox = new CheckBox();
+                    chkBox.Dock = DockStyle.Fill;
+                    chkBox.Text = "Select";
+
+                    Button btnSend = new Button();
+                    btnSend.Text = "Send";
+                    btnSend.Dock = DockStyle.Fill;
+
+                    layout.Controls.Add(localTxtBox, 0, counter);                    
+                    layout.Controls.Add(btnSend, 1, counter);
+                    layout.Controls.Add(chkBox, 2, counter);
+
+                    elements[counter].AttachToTextBox(ref localTxtBox);
 
                 }
 
-                layout.Controls.Add(CreateAddOneButton());
+                layout.RowCount = layout.RowCount + 1;
+                layout.Controls.Add(CreateAddOneButton(),0, layout.RowCount-1);
                 layout.ResumeLayout();
                 layout.Visible = true;                
             }
@@ -579,7 +602,7 @@ namespace YAT
             macroAddButton.Click += new System.EventHandler(this.btnNewMacro_Click);
             macroAddButton.Dock = DockStyle.Fill;
             macroAddButton.Height = 30;
-            macroAddButton.Text = "+1";            
+            macroAddButton.Text = "+1";              
             return macroAddButton;
         }
 

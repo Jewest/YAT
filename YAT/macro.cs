@@ -144,5 +144,11 @@ namespace YAT
         {
             HandleRightMouseCLick(tableLayoutPanel1, e);
         }
+
+        public void AttachToTextBox(ref TextBox textBox)
+        {
+            textBox.Text = txtCommand.Text;
+            textBox.TextChanged += this.txtCommand_TextChanged;            
+        }
     }
 }
