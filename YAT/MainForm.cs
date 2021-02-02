@@ -216,7 +216,14 @@ namespace YAT
                 }
 
                 layout.RowCount = layout.RowCount + 1;
-                layout.Controls.Add(CreateAddOneButton(),0, layout.RowCount-1);
+                Button button = CreateAddOneButton();
+                layout.Controls.Add(button, 0, layout.RowCount-1);
+                layout.SetColumnSpan(button, 1);
+
+                button = CreateAddTenButton();
+                layout.Controls.Add(button, 1, layout.RowCount - 1);
+                layout.SetColumnSpan(button, 2);
+
                 layout.ResumeLayout();
                 layout.Visible = true;                
             }
@@ -558,20 +565,32 @@ namespace YAT
             return myobject;
         }
 
-
-
-        private void btnNewMacro_Click(object sender, EventArgs e)
+        private void AddElements(int count)
         {
+            for(int counter = 0; counter < count -1; counter++)
+            {
+                AddMacroToPanel(GetCurrentSelectedTab(), false);
+            }
+
             AddMacroToPanel(GetCurrentSelectedTab(), true);
             ReportDataDirty();
 
             TableLayoutPanel layout = GetTableLayoutPanelOnTab(GetCurrentSelectedTab());
-            if(layout != null)
+            if (layout != null)
             {
                 layout.VerticalScroll.Value = layout.VerticalScroll.Maximum;
                 layout.Update();
             }
+        }
 
+        private void btn10NewMacro_Click(object sender, EventArgs e)
+        {
+            AddElements(10);
+        }
+
+        private void btnNewMacro_Click(object sender, EventArgs e)
+        {
+            AddElements(1);
         }
 
         private void ScanForSerialPorts()
@@ -604,9 +623,19 @@ namespace YAT
         {
             Button macroAddButton = new Button();
             macroAddButton.Click += new System.EventHandler(this.btnNewMacro_Click);
-            macroAddButton.Dock = DockStyle.Fill;
+            macroAddButton.Dock = DockStyle.Fill;            
             macroAddButton.Height = 30;
             macroAddButton.Text = "+1";                
+            return macroAddButton;
+        }
+
+        private Button CreateAddTenButton()
+        {
+            Button macroAddButton = new Button();
+            macroAddButton.Click += new System.EventHandler(this.btn10NewMacro_Click);
+            macroAddButton.Dock = DockStyle.Fill;
+            macroAddButton.Height = 30;
+            macroAddButton.Text = "+10";
             return macroAddButton;
         }
 
