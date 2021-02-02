@@ -211,7 +211,7 @@ namespace YAT
                     layout.Controls.Add(btnSend, 1, counter);
                     layout.Controls.Add(chkBox, 2, counter);
 
-                    elements[counter].AttachToTextBox(ref localTxtBox);
+                    elements[counter].AttachTo(btnSend, chkBox, localTxtBox);
 
                 }
 
@@ -527,8 +527,7 @@ namespace YAT
 
         private macro CreateNewMacro()
         {
-            macro myobject = new macro();
-            myobject.Dock = DockStyle.Fill;
+            macro myobject = new macro();            
             myobject.Datachanged += MacroElementChanged;
             myobject.RemoveMe += MacroElementRemoveMe;
             myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
@@ -602,7 +601,7 @@ namespace YAT
             macroAddButton.Click += new System.EventHandler(this.btnNewMacro_Click);
             macroAddButton.Dock = DockStyle.Fill;
             macroAddButton.Height = 30;
-            macroAddButton.Text = "+1";              
+            macroAddButton.Text = "+1";                
             return macroAddButton;
         }
 

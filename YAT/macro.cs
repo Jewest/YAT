@@ -11,11 +11,11 @@ using YAT.View;
 
 namespace YAT
 {
-    public partial class macro : UserControl
+    public partial class macro
     {
         public macro()
         {
-            InitializeComponent();
+            
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace YAT
         private void Item_Rename(object sender, EventArgs e)
         {
             // insert the rename 
-            AskController getNewName = new AskController(this.ParentForm);
+            AskController getNewName = new AskController(Program.g_mainView);
             //get the new name
             string newName = getNewName.GetNewName(m_buttonName);
 
@@ -142,13 +142,8 @@ namespace YAT
 
         private void tableLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
         {
-            HandleRightMouseCLick(tableLayoutPanel1, e);
+           // HandleRightMouseCLick(tableLayoutPanel1, e);
         }
-
-        public void AttachToTextBox(ref TextBox textBox)
-        {
-            textBox.Text = txtCommand.Text;
-            textBox.TextChanged += this.txtCommand_TextChanged;            
-        }
+         
     }
 }
