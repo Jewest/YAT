@@ -1031,9 +1031,11 @@ namespace YAT
                 return;
             }
 
-            Swap(m_DraggedTab, tab);
-            tabMacro.SelectedTab = m_DraggedTab;
-            ReportDataDirty();
+            if (Swap(m_DraggedTab, tab) == true)
+            {
+                tabMacro.SelectedTab = m_DraggedTab;
+                ReportDataDirty();
+            }
         }
 
         private TabPage TabAt(Point position)
@@ -1052,12 +1054,25 @@ namespace YAT
             return null;
         }
 
-        private void Swap(TabPage a, TabPage b)
+        private bool Swap(TabPage a, TabPage b)
         {
             int i = tabMacro.TabPages.IndexOf(a);
             int j = tabMacro.TabPages.IndexOf(b);
-            tabMacro.TabPages[i] = b;
-            tabMacro.TabPages[j] = a;
+            bool swapped = false;
+
+            if ((i >= 0) && (j >= 0))
+            {
+                // swap the inter data as well
+                MacroTab copy =  m_ConfiguredMacro[i];
+                m_ConfiguredMacro[i] = m_ConfiguredMacro[j];
+                m_ConfiguredMacro[j] = copy;
+
+                tabMacro.TabPages[i] = b;
+                tabMacro.TabPages[j] = a;
+                swapped = true;
+            }
+
+            return swapped;
         }
 
     }
