@@ -28,11 +28,11 @@ namespace YAT
 
             public MacroTab()
             {
-                elements = new List<macro>();
+                elements = new List<MacroData>();
             }
 
             public string name;
-            public List<macro> elements;
+            public List<MacroData> elements;
         }
 
         private SerialPort m_serialPort = new SerialPort();
@@ -181,19 +181,42 @@ namespace YAT
             {   
                 layout.Visible = false;
                 layout.SuspendLayout();
-                layout.Controls.Clear();                
-                macro[] elements = m_ConfiguredMacro[indexValue].elements.ToArray();
+                layout.Controls.Clear();
+
+                layout.ColumnCount = 3;
+                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0F));
+                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
+                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 75));
+
+                MacroData[] elements = m_ConfiguredMacro[indexValue].elements.ToArray();
 
                 layout.RowCount = elements.Length;
 
                 for (int counter = 0; counter < layout.RowCount; counter++)
                 {
 
-                    layout.Controls.Add(elements[counter], 0, counter);
+                    // layout.Controls.Add(elements[counter], 0, counter);                    
+                    TextBox localTxtBox = new TextBox();
+                    localTxtBox.Dock = DockStyle.Fill;
+
+                    CheckBox chkBox = new CheckBox();
+                    chkBox.Dock = DockStyle.Fill;
+                    chkBox.Text = "Select";
+
+                    Button btnSend = new Button();
+                    btnSend.Text = "Send";
+                    btnSend.Dock = DockStyle.Fill;
+
+                    layout.Controls.Add(localTxtBox, 0, counter);                    
+                    layout.Controls.Add(btnSend, 1, counter);
+                    layout.Controls.Add(chkBox, 2, counter);
+
+                    elements[counter].AttachTo(btnSend, chkBox, localTxtBox);
 
                 }
 
-                layout.Controls.Add(CreateAddOneButton());
+                layout.RowCount = layout.RowCount + 1;
+                layout.Controls.Add(CreateAddOneButton(),0, layout.RowCount-1);
                 layout.ResumeLayout();
                 layout.Visible = true;                
             }
@@ -204,7 +227,7 @@ namespace YAT
         public void MacroElementRemoveMe(object sender, EventArgs e)
         {
             //test the object
-            if(sender is macro)
+            if(sender is MacroData)
             {
                 int index = GetCurrentSelectedTab();
 
@@ -214,9 +237,9 @@ namespace YAT
 
                     for (Int32 counter = 0; counter < tab.elements.Count; counter++)
                     {
-                        if (tab.elements[counter] is macro)
+                        if (tab.elements[counter] is MacroData)
                         {
-                            if (((macro)tab.elements[counter]) == ((macro)sender))
+                            if (((MacroData)tab.elements[counter]) == ((MacroData)sender))
                             {
                                 tab.elements.RemoveAt(counter);
                                 counter = Int32.MaxValue - 2;
@@ -242,9 +265,9 @@ namespace YAT
 
                 for (Int32 counter = 0; counter < tab.elements.Count; counter++)
                 {
-                    if (tab.elements[counter] is macro)
+                    if (tab.elements[counter] is MacroData)
                     {
-                        if (((macro)tab.elements[counter]) == ((macro)sender))
+                        if (((MacroData)tab.elements[counter]) == ((MacroData)sender))
                         {
                             tab.elements.Insert(counter, CreateNewMacro());
                            
@@ -299,7 +322,7 @@ namespace YAT
                                                 break;
                                             case "Macro":
                                                 //add to the last one
-                                                macro macroSetting = AddMacroToPanel(tabMacro.TabPages.Count - 1,false);
+                                                MacroData macroSetting = AddMacroToPanel(tabMacro.TabPages.Count - 1,false);
                                                 macroSetting.ReadXml(reader);                                                
                                                 break;
                                             default:
@@ -496,25 +519,29 @@ namespace YAT
         }
 
 
-        private TableLayoutPanel GetTableLayoutPanelOnCurrentTab()
-        {            
-            return GetTableLayoutPanelOnTab(tabMacro.SelectedIndex); 
+       // private TableLayoutPanel GetTableLayoutPanelOnCurrentTab()
+        //{            
+            //return GetTableLayoutPanelOnTab(tabMacro.SelectedIndex); 
+        //}
+
+        private List<MacroData> GetMacroLayoutOnCurrentTab()
+        {
+            return m_ConfiguredMacro[tabMacro.SelectedIndex].elements;
         }
 
 
-        private macro CreateNewMacro()
+        private MacroData CreateNewMacro()
         {
-            macro myobject = new macro();
-            myobject.Dock = DockStyle.Fill;
+            MacroData myobject = new MacroData();            
             myobject.Datachanged += MacroElementChanged;
             myobject.RemoveMe += MacroElementRemoveMe;
             myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
             return myobject;
         }
 
-        private macro AddMacroToPanel(int index, bool updateView)
+        private MacroData AddMacroToPanel(int index, bool updateView)
         {
-            macro myobject =null;
+            MacroData myobject =null;
 
             if (index < m_ConfiguredMacro.Count)
             {
@@ -579,7 +606,7 @@ namespace YAT
             macroAddButton.Click += new System.EventHandler(this.btnNewMacro_Click);
             macroAddButton.Dock = DockStyle.Fill;
             macroAddButton.Height = 30;
-            macroAddButton.Text = "+1";            
+            macroAddButton.Text = "+1";                
             return macroAddButton;
         }
 
@@ -739,7 +766,7 @@ namespace YAT
 
                 for (Int32 counter = 0; counter < m_ConfiguredMacro[currentIndex].elements.Count; counter++)
                 {
-                    macro local = CreateNewMacro(); ;
+                    MacroData local = CreateNewMacro(); ;
                     local.CloneSettings(m_ConfiguredMacro[currentIndex].elements[counter]);
                     m_ConfiguredMacro[cloneIndex].elements.Add(local);
                 }
@@ -803,20 +830,20 @@ namespace YAT
 
         private void btnSendAll_Click(object sender, EventArgs e)
         {
-            TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
+            List<MacroData> macroDataList = GetMacroLayoutOnCurrentTab();
 
             if (m_serialPort.IsOpen == true)
             {
 
-                if (layout != null)
+                if (macroDataList != null)
                 {
-                    if (layout.Controls.Count > 0)
+                    if (macroDataList.Count > 0)
                     {
-                        for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
+                        for (Int32 counter = 0; counter < macroDataList.Count; counter++)
                         {
-                            if (layout.Controls[counter] is macro)
+                            if (macroDataList[counter] is not null)
                             {
-                                ((macro)layout.Controls[counter]).SendIfChecked();
+                                macroDataList[counter].SendIfChecked();
                             }
                         }
                     }
@@ -915,21 +942,24 @@ namespace YAT
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
         {
-            TableLayoutPanel layout = GetTableLayoutPanelOnCurrentTab();
-            
-            if (layout != null)
-            {
-                if (layout.Controls.Count > 0)
+              List<MacroData> macroDataList = GetMacroLayoutOnCurrentTab();          
+
+                if (macroDataList != null)
                 {
-                    for (Int32 counter = 0; counter < layout.Controls.Count; counter++)
+                    if (macroDataList.Count > 0)
                     {
-                        if (layout.Controls[counter] is macro)
+                        for (Int32 counter = 0; counter < macroDataList.Count; counter++)
                         {
-                            ((macro)layout.Controls[counter]).SetChecked(chkSelectAll.Checked);
+                            if (macroDataList[counter] is not null)
+                            {
+                                macroDataList[counter].SetChecked(chkSelectAll.Checked);
+                            }
                         }
                     }
+
                 }
-            }            
+           
+
         }
 
         private void btnNew_Click(object sender, EventArgs e)
