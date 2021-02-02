@@ -355,6 +355,8 @@
             this.tabMacro.Size = new System.Drawing.Size(444, 410);
             this.tabMacro.TabIndex = 5;
             this.tabMacro.SelectedIndexChanged += new System.EventHandler(this.tabMacro_SelectedIndexChanged);
+            this.tabMacro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabMacro_MouseDown);
+            this.tabMacro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabMacro_MouseMove);
             // 
             // tableLayoutPanel5
             // 

@@ -981,5 +981,55 @@ namespace YAT
 
 
         }
+
+        private TabPage m_DraggedTab;
+        private void tabMacro_MouseDown(object sender, MouseEventArgs e)
+        {
+            m_DraggedTab = TabAt(e.Location);
+        }
+
+        private void tabMacro_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left || m_DraggedTab == null)
+            {
+                return;
+            }
+
+            TabPage tab = TabAt(e.Location);
+
+            if (tab == null || tab == m_DraggedTab)
+            {
+                return;
+            }
+
+            Swap(m_DraggedTab, tab);
+            tabMacro.SelectedTab = m_DraggedTab;
+            ReportDataDirty();
+        }
+
+        private TabPage TabAt(Point position)
+        {
+            // -1 as the last one is the +
+            int count = tabMacro.TabCount - 1;
+
+            for (int i = 0; i < count; i++)
+            {
+                if (tabMacro.GetTabRect(i).Contains(position))
+                {
+                    return tabMacro.TabPages[i];
+                }
+            }
+
+            return null;
+        }
+
+        private void Swap(TabPage a, TabPage b)
+        {
+            int i = tabMacro.TabPages.IndexOf(a);
+            int j = tabMacro.TabPages.IndexOf(b);
+            tabMacro.TabPages[i] = b;
+            tabMacro.TabPages[j] = a;
+        }
+
     }
 }
