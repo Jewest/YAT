@@ -77,6 +77,7 @@ namespace YAT
         public void SetChecked(bool checkedValue)
         {
             m_valueChecked = checkedValue;
+            UpdateControls();
         }
 
         // declaring an event using built-in EventHandler

@@ -291,7 +291,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Size = new System.Drawing.Size(940, 535);
-            this.splitContainer1.SplitterDistance = 453;
+            this.splitContainer1.SplitterDistance = 452;
             this.splitContainer1.TabIndex = 7;
             // 
             // groupBox2
@@ -301,7 +301,7 @@
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.MinimumSize = new System.Drawing.Size(250, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(453, 535);
+            this.groupBox2.Size = new System.Drawing.Size(452, 535);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Commands";
@@ -313,7 +313,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(447, 516);
+            this.panel1.Size = new System.Drawing.Size(446, 516);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -342,7 +342,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(447, 516);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(446, 516);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tabMacro
@@ -352,7 +352,7 @@
             this.tabMacro.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.tabMacro.Name = "tabMacro";
             this.tabMacro.SelectedIndex = 0;
-            this.tabMacro.Size = new System.Drawing.Size(444, 410);
+            this.tabMacro.Size = new System.Drawing.Size(443, 410);
             this.tabMacro.TabIndex = 5;
             this.tabMacro.SelectedIndexChanged += new System.EventHandler(this.tabMacro_SelectedIndexChanged);
             this.tabMacro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabMacro_MouseDown);
@@ -374,15 +374,15 @@
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(447, 30);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(446, 30);
             this.tableLayoutPanel5.TabIndex = 12;
             // 
             // btnRemoveTab
             // 
             this.btnRemoveTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveTab.Location = new System.Drawing.Point(301, 3);
+            this.btnRemoveTab.Location = new System.Drawing.Point(299, 3);
             this.btnRemoveTab.Name = "btnRemoveTab";
-            this.btnRemoveTab.Size = new System.Drawing.Size(143, 24);
+            this.btnRemoveTab.Size = new System.Drawing.Size(144, 24);
             this.btnRemoveTab.TabIndex = 11;
             this.btnRemoveTab.Text = "Remove tab";
             this.btnRemoveTab.UseVisualStyleBackColor = true;
@@ -391,9 +391,9 @@
             // btnRenameTab
             // 
             this.btnRenameTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRenameTab.Location = new System.Drawing.Point(152, 3);
+            this.btnRenameTab.Location = new System.Drawing.Point(151, 3);
             this.btnRenameTab.Name = "btnRenameTab";
-            this.btnRenameTab.Size = new System.Drawing.Size(143, 24);
+            this.btnRenameTab.Size = new System.Drawing.Size(142, 24);
             this.btnRenameTab.TabIndex = 10;
             this.btnRenameTab.Text = "Rename tab";
             this.btnRenameTab.UseVisualStyleBackColor = true;
@@ -404,7 +404,7 @@
             this.btnDuplicateTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDuplicateTab.Location = new System.Drawing.Point(3, 3);
             this.btnDuplicateTab.Name = "btnDuplicateTab";
-            this.btnDuplicateTab.Size = new System.Drawing.Size(143, 24);
+            this.btnDuplicateTab.Size = new System.Drawing.Size(142, 24);
             this.btnDuplicateTab.TabIndex = 9;
             this.btnDuplicateTab.Text = "Duplicate tab";
             this.btnDuplicateTab.UseVisualStyleBackColor = true;
@@ -416,7 +416,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tableLayoutPanel7.Controls.Add(this.cboTimerSendSelected, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.btnSendAll, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.chkSelectAll, 3, 0);
@@ -426,7 +426,7 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(447, 30);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(446, 30);
             this.tableLayoutPanel7.TabIndex = 13;
             // 
             // cboTimerSendSelected
@@ -436,14 +436,14 @@
             this.cboTimerSendSelected.FormattingEnabled = true;
             this.cboTimerSendSelected.Location = new System.Drawing.Point(3, 3);
             this.cboTimerSendSelected.Name = "cboTimerSendSelected";
-            this.cboTimerSendSelected.Size = new System.Drawing.Size(130, 21);
+            this.cboTimerSendSelected.Size = new System.Drawing.Size(129, 21);
             this.cboTimerSendSelected.TabIndex = 14;
             this.cboTimerSendSelected.SelectedIndexChanged += new System.EventHandler(this.cboTimerSendSelected_SelectedIndexChanged);
             // 
             // btnSendAll
             // 
             this.btnSendAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSendAll.Location = new System.Drawing.Point(275, 3);
+            this.btnSendAll.Location = new System.Drawing.Point(273, 3);
             this.btnSendAll.Name = "btnSendAll";
             this.btnSendAll.Size = new System.Drawing.Size(84, 24);
             this.btnSendAll.TabIndex = 13;
@@ -455,9 +455,9 @@
             // 
             this.chkSelectAll.AutoSize = true;
             this.chkSelectAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkSelectAll.Location = new System.Drawing.Point(365, 3);
+            this.chkSelectAll.Location = new System.Drawing.Point(363, 3);
             this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(79, 24);
+            this.chkSelectAll.Size = new System.Drawing.Size(80, 24);
             this.chkSelectAll.TabIndex = 12;
             this.chkSelectAll.Text = "Select all";
             this.chkSelectAll.UseVisualStyleBackColor = true;
@@ -480,7 +480,7 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(447, 30);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(446, 30);
             this.tableLayoutPanel8.TabIndex = 14;
             // 
             // btnSaveMacro
@@ -510,7 +510,7 @@
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnNew.Location = new System.Drawing.Point(336, 3);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(108, 24);
+            this.btnNew.Size = new System.Drawing.Size(107, 24);
             this.btnNew.TabIndex = 3;
             this.btnNew.Text = "Clear configuration";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -534,7 +534,7 @@
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(483, 535);
+            this.groupBox3.Size = new System.Drawing.Size(484, 535);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reply";
@@ -545,7 +545,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tableLayoutPanel4.Controls.Add(this.txtOutput, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.btnClearLog, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblCountTerminator, 3, 0);
@@ -557,7 +557,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(477, 516);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(478, 516);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // txtOutput
@@ -569,7 +569,7 @@
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.ReadOnly = true;
             this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOutput.Size = new System.Drawing.Size(471, 480);
+            this.txtOutput.Size = new System.Drawing.Size(472, 480);
             this.txtOutput.TabIndex = 1;
             // 
             // btnClearLog
@@ -589,7 +589,7 @@
             this.lblCountTerminator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCountTerminator.Location = new System.Drawing.Point(429, 0);
             this.lblCountTerminator.Name = "lblCountTerminator";
-            this.lblCountTerminator.Size = new System.Drawing.Size(45, 30);
+            this.lblCountTerminator.Size = new System.Drawing.Size(46, 30);
             this.lblCountTerminator.TabIndex = 3;
             this.lblCountTerminator.Text = "0";
             this.lblCountTerminator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
