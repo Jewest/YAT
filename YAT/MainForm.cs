@@ -1163,7 +1163,7 @@ namespace YAT
                             break;
                         case Direction.Unknown:
                             e.CellStyle.ForeColor = Color.LightBlue;
-                            e.CellStyle.BackColor = Color.Black;
+                            e.CellStyle.BackColor = Color.Gray;
                             break;
 
                     }
