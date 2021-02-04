@@ -63,7 +63,6 @@
             this.btnSaveAs = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnClearLog = new System.Windows.Forms.Button();
             this.lblCountTerminator = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -75,6 +74,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxPreFix = new System.Windows.Forms.TextBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
+            this.dataGridViewLog = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -93,6 +93,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -546,11 +547,11 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel4.Controls.Add(this.txtOutput, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.btnClearLog, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblCountTerminator, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.cboDecodeType, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.dataGridViewLog, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -559,18 +560,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(478, 516);
             this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // txtOutput
-            // 
-            this.tableLayoutPanel4.SetColumnSpan(this.txtOutput, 4);
-            this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOutput.Location = new System.Drawing.Point(3, 33);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOutput.Size = new System.Drawing.Size(472, 480);
-            this.txtOutput.TabIndex = 1;
             // 
             // btnClearLog
             // 
@@ -690,6 +679,19 @@
             // 
             this.tmrSendAllCommands.Tick += new System.EventHandler(this.tmrSendAllCommands_Tick);
             // 
+            // dataGridViewLog
+            // 
+            this.dataGridViewLog.AllowUserToAddRows = false;
+            this.dataGridViewLog.AllowUserToDeleteRows = false;
+            this.dataGridViewLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel4.SetColumnSpan(this.dataGridViewLog, 4);
+            this.dataGridViewLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewLog.Location = new System.Drawing.Point(3, 33);
+            this.dataGridViewLog.Name = "dataGridViewLog";
+            this.dataGridViewLog.ReadOnly = true;
+            this.dataGridViewLog.Size = new System.Drawing.Size(472, 480);
+            this.dataGridViewLog.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -725,6 +727,7 @@
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -756,7 +759,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBoxPreFix;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Button btnClearLog;
         private System.Windows.Forms.Timer tmrSendAllCommands;
         private System.Windows.Forms.Label lblCountTerminator;
@@ -775,6 +777,7 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.ComboBox cboDecodeType;
+        private System.Windows.Forms.DataGridView dataGridViewLog;
     }
 }
 

@@ -41,6 +41,7 @@ namespace YAT
         private string m_filename = "";
         private bool m_configurationIsDirty = false;
         private List<MacroTab> m_ConfiguredMacro = new List<MacroTab>();
+        private System.Data.DataTable m_dataTableLog = new DataTable();
 
         private void Form1_Shown(Object sender, EventArgs e)
         {
@@ -69,7 +70,7 @@ namespace YAT
                 {
                 new ComboBoxItem<string>("None", ""),    
                 new ComboBoxItem<string>("CR", "\n"),
-                new ComboBoxItem<string>("CR + LF", "\n\r"),
+                new ComboBoxItem<string>("CR + LF", "\r\n"),
                 new ComboBoxItem<string>("LF", "\r"),
             };
 
@@ -95,7 +96,14 @@ namespace YAT
 
             SetupDefaultTab();
 
+            m_dataTableLog.Columns.Add("Time");
+            m_dataTableLog.Columns.Add("Data");
 
+
+            dataGridViewLog.DataSource = new System.Windows.Forms.BindingSource { DataSource = m_dataTableLog };
+            //dataGridViewLog.DataSource = m_dataTableLog;
+            dataGridViewLog.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridViewLog.ColumnHeadersVisible = true;
         }
 
         void SetupDefaultTab()
@@ -111,13 +119,40 @@ namespace YAT
             UpdateButtonsAndStatus(true);
         }
 
+        private enum Direction
+        {
+            Unknown,
+            Sending,
+            Receiving
+        }
+
+
+        void AddToLog(string data, Direction inOut)
+        {
+            string header = "";
+
+            header = DateTime.Now.ToString("yyyyMMddHHmmssfff"); // case sensitive
+            
+            if(inOut == Direction.Unknown)
+            {
+                header = "";
+            }
+
+            
+            DataRow newData =  m_dataTableLog.NewRow();
+            newData[0] = header;
+            newData[1] = data;
+            m_dataTableLog.Rows.Add(newData);
+            //m_dataTableLog.AcceptChanges();
+        }
+
          // This delegate enables asynchronous calls for setting  
         // the text property on a TextBox control.  
         delegate void StringArgReturningVoidDelegate(string text);
 
         private void UpdateReceivedInfo(string text)
         {
-            if (txtOutput.InvokeRequired)
+            if (dataGridViewLog.InvokeRequired == true)
             {
                 StringArgReturningVoidDelegate d = new StringArgReturningVoidDelegate(UpdateReceivedInfo);
                 this.Invoke(d, new object[] { text });
@@ -138,14 +173,16 @@ namespace YAT
                         addData += value.ToString("X2");
                     }
 
-                    txtOutput.AppendText(addData);
+                    AddToLog(addData, Direction.Receiving);
                 }
                 else
                 {
-                    txtOutput.AppendText(text);
+                    AddToLog(text, Direction.Receiving);
                 }
 
                 int count = 0;
+
+                /*
                 char[] testchars = txtOutput.Text.ToCharArray();
                 char testChar = '\n';
                 int length = testchars.Length;
@@ -156,6 +193,7 @@ namespace YAT
                         count++;
                     }
                 }
+                */
 
                 lblCountTerminator.Text = count.ToString();
 
@@ -853,6 +891,7 @@ namespace YAT
                 try
                 {
                     m_serialPort.Write(toSend);
+                    AddToLog(toSend, Direction.Sending);
                 } catch
                 {
                     UpdateButtonsAndStatus(false);
@@ -896,7 +935,7 @@ namespace YAT
 
         private void btnClearLog_Click(object sender, EventArgs e)
         {
-            txtOutput.Text = "";
+            m_dataTableLog.Clear();            
             lblCountTerminator.Text = "0";
         }
 
@@ -927,8 +966,7 @@ namespace YAT
         {
             if (m_serialPort.IsOpen == true)
             {
-                txtOutput.AppendText("------------------------- Send selected -------------------------");
-                txtOutput.AppendText(Environment.NewLine);
+                AddToLog("------------------------- Send selected -------------------------", Direction.Unknown);                
                 btnSendAll.PerformClick();
             }
         }
