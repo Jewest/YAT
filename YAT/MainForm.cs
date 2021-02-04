@@ -98,12 +98,16 @@ namespace YAT
 
             m_dataTableLog.Columns.Add("Time");
             m_dataTableLog.Columns.Add("Data");
+            m_dataTableLog.Columns.Add("dataIndex", typeof(Direction));
 
 
             dataGridViewLog.DataSource = new System.Windows.Forms.BindingSource { DataSource = m_dataTableLog };
             //dataGridViewLog.DataSource = m_dataTableLog;
             dataGridViewLog.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewLog.ColumnHeadersVisible = true;
+            dataGridViewLog.RowHeadersVisible = false;
+            // hide the 3th collumn, as this is only an index
+            dataGridViewLog.Columns[2].Visible = false;
         }
 
         void SetupDefaultTab()
@@ -131,9 +135,10 @@ namespace YAT
         {
             string header = "";
 
-            header = DateTime.Now.ToString("yyyyMMddHHmmssfff"); // case sensitive
-            
-            if(inOut == Direction.Unknown)
+            //header = DateTime.Now.ToString("yyyyMMddHHmmss.fff"); // case sensitive
+            header = DateTime.Now.ToString("HH:mm:ss.fff"); // case sensitive
+
+            if (inOut == Direction.Unknown)
             {
                 header = "";
             }
@@ -142,6 +147,7 @@ namespace YAT
             DataRow newData =  m_dataTableLog.NewRow();
             newData[0] = header;
             newData[1] = data;
+            newData[2] = inOut;
             m_dataTableLog.Rows.Add(newData);
             //m_dataTableLog.AcceptChanges();
         }
@@ -1119,5 +1125,33 @@ namespace YAT
             return swapped;
         }
 
+        private void dataGridViewLog_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataRowView row = dataGridViewLog.Rows[e.RowIndex].DataBoundItem as DataRowView;
+
+            if (row is not null)
+            {
+                if (row.Row.ItemArray[2] is not null)
+                {
+                    switch ((Direction)row.Row.ItemArray[2])
+                    {
+                        case Direction.Sending:
+
+                            e.CellStyle.ForeColor = Color.Black;
+                            e.CellStyle.BackColor = Color.White;
+                            break;
+                        case Direction.Receiving:
+                            e.CellStyle.ForeColor = Color.Black;
+                            e.CellStyle.BackColor = Color.Gray;
+                            break;
+                        case Direction.Unknown:
+                            e.CellStyle.ForeColor = Color.Green;
+                            e.CellStyle.BackColor = Color.Black;
+                            break;
+
+                    }
+                }
+            }
+        }
     }
 }
