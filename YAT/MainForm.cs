@@ -100,14 +100,22 @@ namespace YAT
             m_dataTableLog.Columns.Add("Data");
             m_dataTableLog.Columns.Add("dataIndex", typeof(Direction));
 
+           
 
             dataGridViewLog.DataSource = new System.Windows.Forms.BindingSource { DataSource = m_dataTableLog };
-            //dataGridViewLog.DataSource = m_dataTableLog;
+
+            foreach (DataGridViewColumn column in dataGridViewLog.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            // hide the 3th collumn, as this is only an index
+            dataGridViewLog.Columns[2].Visible = false;
+
             dataGridViewLog.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewLog.ColumnHeadersVisible = true;
             dataGridViewLog.RowHeadersVisible = false;
-            // hide the 3th collumn, as this is only an index
-            dataGridViewLog.Columns[2].Visible = false;
+            
+            
         }
 
         void SetupDefaultTab()
@@ -149,10 +157,19 @@ namespace YAT
             newData[1] = data;
             newData[2] = inOut;
             m_dataTableLog.Rows.Add(newData);
-            //m_dataTableLog.AcceptChanges();
+
+
+
+            if (dataGridViewLog.Rows[m_dataTableLog.Rows.Count - 1].Displayed == false)
+            {
+
+                dataGridViewLog.FirstDisplayedScrollingRowIndex = m_dataTableLog.Rows.Count - 1;
+
+            }
+
         }
 
-         // This delegate enables asynchronous calls for setting  
+        // This delegate enables asynchronous calls for setting  
         // the text property on a TextBox control.  
         delegate void StringArgReturningVoidDelegate(string text);
 
@@ -1142,10 +1159,10 @@ namespace YAT
                             break;
                         case Direction.Receiving:
                             e.CellStyle.ForeColor = Color.Black;
-                            e.CellStyle.BackColor = Color.Gray;
+                            e.CellStyle.BackColor = Color.LightGray;
                             break;
                         case Direction.Unknown:
-                            e.CellStyle.ForeColor = Color.Green;
+                            e.CellStyle.ForeColor = Color.LightBlue;
                             e.CellStyle.BackColor = Color.Black;
                             break;
 
