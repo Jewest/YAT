@@ -108,7 +108,7 @@ namespace YAT
             tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", false);
 
             AddMacroToPanel(GetCurrentSelectedTab(), true);
-            UpdateButtonsAndStatus();
+            UpdateButtonsAndStatus(true);
         }
 
          // This delegate enables asynchronous calls for setting  
@@ -735,11 +735,11 @@ namespace YAT
             }
 
             //update the info
-            UpdateButtonsAndStatus();
+            UpdateButtonsAndStatus(false);
 
         }
 
-        private void UpdateButtonsAndStatus()
+        private void UpdateButtonsAndStatus(bool changeTimer)
         {
             if(m_serialPort.IsOpen)
             {
@@ -753,7 +753,10 @@ namespace YAT
             btnDisconnect.Enabled = m_serialPort.IsOpen;
             btnConnect.Enabled = !m_serialPort.IsOpen;
             btnSendAll.Enabled = m_serialPort.IsOpen;
-            cboTimerSendSelected.SelectedIndex = 0;
+            if (changeTimer == true)
+            {
+                cboTimerSendSelected.SelectedIndex = 0;
+            }
             cboTimerSendSelected.Enabled = m_serialPort.IsOpen;
         }        
 
@@ -764,7 +767,7 @@ namespace YAT
                 m_serialPort.Close();
             }
             //update the view
-            UpdateButtonsAndStatus();
+            UpdateButtonsAndStatus(false);
         }
 
         void ReportDataDirty()
@@ -852,7 +855,7 @@ namespace YAT
                     m_serialPort.Write(toSend);
                 } catch
                 {
-                    UpdateButtonsAndStatus();
+                    UpdateButtonsAndStatus(false);
                 }
             }
         }
@@ -922,9 +925,12 @@ namespace YAT
 
         private void tmrSendAllCommands_Tick(object sender, EventArgs e)
         {
-            txtOutput.AppendText("------------------------- Send selected -------------------------");
-            txtOutput.AppendText(Environment.NewLine);
-            btnSendAll.PerformClick();
+            if (m_serialPort.IsOpen == true)
+            {
+                txtOutput.AppendText("------------------------- Send selected -------------------------");
+                txtOutput.AppendText(Environment.NewLine);
+                btnSendAll.PerformClick();
+            }
         }
 
         private void tabMacro_SelectedIndexChanged(object sender, EventArgs e)
