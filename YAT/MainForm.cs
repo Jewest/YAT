@@ -46,11 +46,11 @@ namespace YAT
         private void Form1_Shown(Object sender, EventArgs e)
         {
             //set the correct name and version
-            this.Text = Application.ProductName  + " " +   Application.ProductVersion;
+            this.Text = Application.ProductName + " " + Application.ProductVersion;
 
             cboBaudRate.Items.Clear();
 
-            cboBaudRate.Items.Add(19200);            
+            cboBaudRate.Items.Add(19200);
             cboBaudRate.Items.Add(115200);
             cboBaudRate.Items.Add(921600);
             cboBaudRate.SelectedIndex = 1;
@@ -68,7 +68,7 @@ namespace YAT
             cboCommandTerminator.Items.Clear();
             object[] list =
                 {
-                new ComboBoxItem<string>("None", ""),    
+                new ComboBoxItem<string>("None", ""),
                 new ComboBoxItem<string>("CR", "\n"),
                 new ComboBoxItem<string>("CR + LF", "\r\n"),
                 new ComboBoxItem<string>("LF", "\r"),
@@ -84,7 +84,7 @@ namespace YAT
                 new ComboBoxItem<int>("1 Hz int.", 1000),
                 new ComboBoxItem<int>("2 Hz int", 500),
                 new ComboBoxItem<int>("5 Hz int", 200),
-                new ComboBoxItem<int>("2 Sec int.", 2000),                
+                new ComboBoxItem<int>("2 Sec int.", 2000),
                 new ComboBoxItem<int>("5 Sec int.", 5000),
             };
             cboTimerSendSelected.Items.AddRange(listTimer);
@@ -100,7 +100,7 @@ namespace YAT
             m_dataTableLog.Columns.Add("Data");
             m_dataTableLog.Columns.Add("dataIndex", typeof(Direction));
 
-           
+
 
             dataGridViewLog.DataSource = new System.Windows.Forms.BindingSource { DataSource = m_dataTableLog };
 
@@ -114,8 +114,8 @@ namespace YAT
             dataGridViewLog.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewLog.ColumnHeadersVisible = true;
             dataGridViewLog.RowHeadersVisible = false;
-            
-            
+
+
         }
 
         void SetupDefaultTab()
@@ -151,8 +151,8 @@ namespace YAT
                 header = "";
             }
 
-            
-            DataRow newData =  m_dataTableLog.NewRow();
+
+            DataRow newData = m_dataTableLog.NewRow();
             newData[0] = header;
             newData[1] = data;
             newData[2] = inOut;
@@ -182,7 +182,7 @@ namespace YAT
             }
             else
             {
-                
+
                 if (cboDecodeType.SelectedIndex == 1)
                 {
                     char[] arrayChars = text.ToCharArray();
@@ -191,8 +191,8 @@ namespace YAT
                     for (int counter = 0; counter < arrayChars.Length; counter++)
                     {
                         int value = arrayChars[counter];
-                       
-                        addData += " 0x";                       
+
+                        addData += " 0x";
                         addData += value.ToString("X2");
                     }
 
@@ -232,6 +232,72 @@ namespace YAT
         public void MacroElementChanged(object sender, EventArgs e)
         {
             this.ReportDataDirty();
+        }
+
+
+        private MacroTab GetCurrentMacroTab()
+
+        {
+            MacroTab tab = null;
+
+            int index = GetCurrentSelectedTab();
+
+            if (index < m_ConfiguredMacro.Count)
+            {
+                tab = m_ConfiguredMacro[index];
+            }
+
+            return tab;
+        }
+
+
+        public void MacroSetFocusBefore(object sender, EventArgs e)
+        {
+            if(sender is MacroData)
+            {
+                MacroTab tab = GetCurrentMacroTab();
+
+                if(tab is not null)
+                {
+                    int index = tab.elements.IndexOf((MacroData)sender);
+
+                    if(index > 0)
+                    {
+                        index--;
+                    }
+
+                    if(index >= 0)
+                    {
+                        tab.elements[index].SetFocusToTextBox();
+                    }
+                }
+
+                
+            }
+        }
+
+        public void MacroSetFocusAfter(object sender, EventArgs e)
+        {
+            if (sender is MacroData)
+            {
+                MacroTab tab = GetCurrentMacroTab();
+
+                if (tab is not null)
+                {
+                    int index = tab.elements.IndexOf((MacroData)sender);
+
+                    if ((index >= 0) && (index < tab.elements.Count-1))
+                    {
+                        index++;
+                    }
+
+                    if (index >= 0)
+                    {
+                        tab.elements[index].SetFocusToTextBox();
+                    }
+
+                }
+            }
         }
 
         private void UpdateGrid(int indexValue)
@@ -604,6 +670,8 @@ namespace YAT
             myobject.Datachanged += MacroElementChanged;
             myobject.RemoveMe += MacroElementRemoveMe;
             myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
+            myobject.SetFocusAfterMe += MacroSetFocusAfter;
+            myobject.SetFocusBeforeMe += MacroSetFocusBefore;
             return myobject;
         }
 

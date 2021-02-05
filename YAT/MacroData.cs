@@ -84,6 +84,8 @@ namespace YAT
         public event EventHandler InsertBeforeMe;
         public event EventHandler Datachanged;
         public event EventHandler RemoveMe;
+        public event EventHandler SetFocusBeforeMe;
+        public event EventHandler SetFocusAfterMe;
 
         private void txtCommand_TextChanged(object sender, EventArgs e)
         {
@@ -106,10 +108,23 @@ namespace YAT
             if (e.KeyCode == Keys.Enter)
             {
                 e.Handled = true;
+                e.SuppressKeyPress = true;
                 if (btnSend is not null)
                 {
                     btnSend.PerformClick();
                 }
+            }
+            else if(e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                SetFocusBeforeMe?.Invoke(this, e);
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                SetFocusAfterMe?.Invoke(this, e);
             }
         }
 
@@ -242,6 +257,14 @@ namespace YAT
             }
 
             m_updatingControl = false;
+        }
+
+        public void SetFocusToTextBox()
+        {
+            if(this.txtCommand is not null)
+            {
+                this.txtCommand.Focus();
+            }
         }
 
     }
