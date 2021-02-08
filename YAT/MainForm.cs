@@ -1068,12 +1068,71 @@ namespace YAT
             }
         }
 
+        private int m_tabCounter = -1;
+        private int m_lastMacroIndex = 0;
+
+        private void FindNextElementAndUpdateVar()
+        {
+            bool foundItem = false;
+
+            while(foundItem == false)
+            {
+               
+                if (m_tabCounter == -1)
+                {
+                    if(m_ConfiguredMacro.Count > 0)
+                    {
+                        m_tabCounter++;
+                    }
+                    else
+                    {
+                        // done 
+                        foundItem = true;
+                    }
+                }
+                else if(m_tabCounter >= m_ConfiguredMacro.Count)
+                {
+                    m_tabCounter = -1;
+                    // done 
+                    foundItem = true;
+                }
+                else if (m_lastMacroIndex >= m_ConfiguredMacro[m_tabCounter].elements.Count)
+                {
+                    m_tabCounter++;
+                    m_lastMacroIndex = 0;
+                }
+                else
+                {
+                   // check if possible
+                   if(m_ConfiguredMacro[m_tabCounter].elements[m_lastMacroIndex].GetChecked() == true)
+                    {
+                        m_ConfiguredMacro[m_tabCounter].elements[m_lastMacroIndex].SendIfChecked();
+                        foundItem = true;
+                    }
+                  
+                    m_lastMacroIndex++;
+                   
+
+                }
+            }
+            
+            
+            
+        }
+
         private void tmrSendAllCommands_Tick(object sender, EventArgs e)
         {
             if (m_serialPort.IsOpen == true)
             {
-                AddToLog("------------------------- Send selected -------------------------", Direction.Unknown);                
-                btnSendAll.PerformClick();
+                if (m_tabCounter == -1)
+                {
+                    AddToLog("------------------------- Send selected -------------------------", Direction.Unknown);
+                    
+                }
+
+                FindNextElementAndUpdateVar();
+
+
             }
         }
 
