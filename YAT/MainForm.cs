@@ -591,8 +591,7 @@ namespace YAT
             }
         }
 
-
-        private void btnSaveMacro_Click(object sender, EventArgs e)
+        private void SaveFile(bool isSaveAS)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.InitialDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
@@ -600,22 +599,31 @@ namespace YAT
             saveFile.Filter = "YAT Macro files (*.ymf)|*.ymf";
             bool saveData = false;
 
-            if(m_filename.Length > 0)
+            if ((m_filename.Length > 0) && (isSaveAS == false))
             {
                 saveFile.FileName = m_filename;
-                saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);                
+                saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
                 saveData = true;
+            }
+            else if (isSaveAS == true)
+            {
+                saveFile.FileName = Path.GetFileName(m_filename);
+                saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    saveData = true;
+                }
             }
             else if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 saveData = true;
             }
 
-            if(saveData == true)
+            if (saveData == true)
             {
                 Stream myStream = null;
 
-                BackUpCurrentFile(m_filename);                
+                BackUpCurrentFile(m_filename);
                 if ((myStream = saveFile.OpenFile()) != null)
                 {
                     FileStream fs = myStream as FileStream;
@@ -625,9 +633,16 @@ namespace YAT
                 }
                 myStream.Close();
                 UpdateFileName(saveFile.FileName);
-                
-            }
 
+            }
+        }
+
+
+        private void btnSaveMacro_Click(object sender, EventArgs e)
+        {
+            btnSaveMacro.Enabled = false;
+            SaveFile(false);
+            btnSaveMacro.Enabled = true;
         }
 
 
@@ -1134,9 +1149,10 @@ namespace YAT
 
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
-            string backupFile = m_filename;
-            m_filename = "";
-            btnSaveMacro.PerformClick();
+            string backupFile = m_filename;            
+            ///
+            SaveFile(true);
+            
 
             if(m_filename.Length == 0)
             {
