@@ -1314,6 +1314,24 @@ namespace YAT
             }
         }
 
+        private void chkBoxLogValue_CheckedChanged(object sender, EventArgs e)
+        {
+            tmrLog.Enabled = chkBoxLogValue.Checked;
 
+            if(chkBoxLogValue.Checked == true)
+            {
+                if (tmrSendAllCommands.Enabled == true)
+                {
+                    cboTimerSendSelected.SelectedIndex = 0;
+                }
+            }
+
+
+        }
+
+        private void tmrLog_Tick(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
