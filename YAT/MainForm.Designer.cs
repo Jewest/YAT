@@ -75,6 +75,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxPreFix = new System.Windows.Forms.TextBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
+            this.chkShowSend = new System.Windows.Forms.CheckBox();
+            this.chkShowHeaderTimer = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -552,12 +554,15 @@
             this.tableLayoutPanel4.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.cboDecodeType, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.dataGridViewLog, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.chkShowSend, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.chkShowHeaderTimer, 1, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(478, 516);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
@@ -614,7 +619,7 @@
             this.dataGridViewLog.Location = new System.Drawing.Point(3, 33);
             this.dataGridViewLog.Name = "dataGridViewLog";
             this.dataGridViewLog.ReadOnly = true;
-            this.dataGridViewLog.Size = new System.Drawing.Size(472, 480);
+            this.dataGridViewLog.Size = new System.Drawing.Size(472, 450);
             this.dataGridViewLog.TabIndex = 6;
             this.dataGridViewLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewLog_CellFormatting);
             // 
@@ -692,6 +697,33 @@
             // tmrSendAllCommands
             // 
             this.tmrSendAllCommands.Tick += new System.EventHandler(this.tmrSendAllCommands_Tick);
+            // 
+            // chkShowSend
+            // 
+            this.chkShowSend.AutoSize = true;
+            this.chkShowSend.Checked = true;
+            this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowSend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkShowSend.Location = new System.Drawing.Point(3, 489);
+            this.chkShowSend.Name = "chkShowSend";
+            this.chkShowSend.Size = new System.Drawing.Size(182, 24);
+            this.chkShowSend.TabIndex = 7;
+            this.chkShowSend.Text = "Show send command";
+            this.chkShowSend.UseVisualStyleBackColor = true;
+            this.chkShowSend.CheckedChanged += new System.EventHandler(this.chkShowSend_CheckedChanged);
+            // 
+            // chkShowHeaderTimer
+            // 
+            this.chkShowHeaderTimer.AutoSize = true;
+            this.chkShowHeaderTimer.Checked = true;
+            this.chkShowHeaderTimer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowHeaderTimer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkShowHeaderTimer.Location = new System.Drawing.Point(191, 489);
+            this.chkShowHeaderTimer.Name = "chkShowHeaderTimer";
+            this.chkShowHeaderTimer.Size = new System.Drawing.Size(182, 24);
+            this.chkShowHeaderTimer.TabIndex = 8;
+            this.chkShowHeaderTimer.Text = "Show header timer";
+            this.chkShowHeaderTimer.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -779,6 +811,8 @@
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.ComboBox cboDecodeType;
         private System.Windows.Forms.DataGridView dataGridViewLog;
+        private System.Windows.Forms.CheckBox chkShowSend;
+        private System.Windows.Forms.CheckBox chkShowHeaderTimer;
     }
 }
 

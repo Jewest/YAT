@@ -151,13 +151,18 @@ namespace YAT
                 header = "";
             }
 
-
-            DataRow newData = m_dataTableLog.NewRow();
-            newData[0] = header;
-            newData[1] = data;
-            newData[2] = inOut;
-            m_dataTableLog.Rows.Add(newData);
-
+            if ((inOut == Direction.Sending) && (chkShowSend.Checked == false))
+            {
+                // do nothing the end user does not want to see this
+            }
+            else
+            {
+                DataRow newData = m_dataTableLog.NewRow();
+                newData[0] = header;
+                newData[1] = data;
+                newData[2] = inOut;
+                m_dataTableLog.Rows.Add(newData);
+            }
 
 
             if (dataGridViewLog.Rows[m_dataTableLog.Rows.Count - 1].Displayed == false)
@@ -1126,7 +1131,11 @@ namespace YAT
             {
                 if (m_tabCounter == -1)
                 {
-                    AddToLog("------------------------- Send selected -------------------------", Direction.Unknown);
+                    //only show when the end user wants to
+                    if (chkShowHeaderTimer.Checked == true)
+                    {
+                        AddToLog("------------------------- Send selected -------------------------", Direction.Unknown);
+                    }
                     
                 }
 
@@ -1312,6 +1321,11 @@ namespace YAT
                     }
                 }
             }
+        }
+
+        private void chkShowSend_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
