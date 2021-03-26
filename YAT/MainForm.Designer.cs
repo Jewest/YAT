@@ -68,6 +68,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cboDecodeType = new System.Windows.Forms.ComboBox();
             this.dataGridViewLog = new System.Windows.Forms.DataGridView();
+            this.chkShowSend = new System.Windows.Forms.CheckBox();
+            this.chkShowHeaderTimer = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cboCommandTerminator = new System.Windows.Forms.ComboBox();
@@ -75,8 +77,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxPreFix = new System.Windows.Forms.TextBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
-            this.chkShowSend = new System.Windows.Forms.CheckBox();
-            this.chkShowHeaderTimer = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -621,7 +621,36 @@
             this.dataGridViewLog.ReadOnly = true;
             this.dataGridViewLog.Size = new System.Drawing.Size(472, 450);
             this.dataGridViewLog.TabIndex = 6;
+            this.dataGridViewLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLog_CellContentClick);
             this.dataGridViewLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewLog_CellFormatting);
+            this.dataGridViewLog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewLog_MouseClick);
+            // 
+            // chkShowSend
+            // 
+            this.chkShowSend.AutoSize = true;
+            this.chkShowSend.Checked = true;
+            this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowSend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkShowSend.Location = new System.Drawing.Point(3, 489);
+            this.chkShowSend.Name = "chkShowSend";
+            this.chkShowSend.Size = new System.Drawing.Size(182, 24);
+            this.chkShowSend.TabIndex = 7;
+            this.chkShowSend.Text = "Show send command";
+            this.chkShowSend.UseVisualStyleBackColor = true;
+            this.chkShowSend.CheckedChanged += new System.EventHandler(this.chkShowSend_CheckedChanged);
+            // 
+            // chkShowHeaderTimer
+            // 
+            this.chkShowHeaderTimer.AutoSize = true;
+            this.chkShowHeaderTimer.Checked = true;
+            this.chkShowHeaderTimer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowHeaderTimer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkShowHeaderTimer.Location = new System.Drawing.Point(191, 489);
+            this.chkShowHeaderTimer.Name = "chkShowHeaderTimer";
+            this.chkShowHeaderTimer.Size = new System.Drawing.Size(182, 24);
+            this.chkShowHeaderTimer.TabIndex = 8;
+            this.chkShowHeaderTimer.Text = "Show header timer";
+            this.chkShowHeaderTimer.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -697,33 +726,6 @@
             // tmrSendAllCommands
             // 
             this.tmrSendAllCommands.Tick += new System.EventHandler(this.tmrSendAllCommands_Tick);
-            // 
-            // chkShowSend
-            // 
-            this.chkShowSend.AutoSize = true;
-            this.chkShowSend.Checked = true;
-            this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowSend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkShowSend.Location = new System.Drawing.Point(3, 489);
-            this.chkShowSend.Name = "chkShowSend";
-            this.chkShowSend.Size = new System.Drawing.Size(182, 24);
-            this.chkShowSend.TabIndex = 7;
-            this.chkShowSend.Text = "Show send command";
-            this.chkShowSend.UseVisualStyleBackColor = true;
-            this.chkShowSend.CheckedChanged += new System.EventHandler(this.chkShowSend_CheckedChanged);
-            // 
-            // chkShowHeaderTimer
-            // 
-            this.chkShowHeaderTimer.AutoSize = true;
-            this.chkShowHeaderTimer.Checked = true;
-            this.chkShowHeaderTimer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowHeaderTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkShowHeaderTimer.Location = new System.Drawing.Point(191, 489);
-            this.chkShowHeaderTimer.Name = "chkShowHeaderTimer";
-            this.chkShowHeaderTimer.Size = new System.Drawing.Size(182, 24);
-            this.chkShowHeaderTimer.TabIndex = 8;
-            this.chkShowHeaderTimer.Text = "Show header timer";
-            this.chkShowHeaderTimer.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

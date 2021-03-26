@@ -205,6 +205,10 @@ namespace YAT
                 }
                 else
                 {
+
+                    text = text.Replace("\r", "");
+                    text = text.Replace("\n", "");
+
                     AddToLog(text, Direction.Receiving);
                 }
 
@@ -1002,6 +1006,10 @@ namespace YAT
                 try
                 {
                     m_serialPort.Write(toSend);
+
+                    toSend = toSend.Replace("\r", "");
+                    toSend = toSend.Replace("\n", "");
+
                     AddToLog(toSend, Direction.Sending);
                 } catch
                 {
@@ -1327,5 +1335,97 @@ namespace YAT
         {
 
         }
+
+        private void dataGridViewLog_MouseClick(object sender, MouseEventArgs e)
+        {
+            //check for right mouse click
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+
+                MenuItem item3 = cm.MenuItems.Add("Copy to clipboard(All)");
+                item3.Click += CopyLogToClipBoardAll;
+
+                MenuItem item = cm.MenuItems.Add("Copy to clipboard(only data)");
+                item.Click += CopyLogToClipBoardOnlyData;
+
+                cm.Show(dataGridViewLog, e.Location);
+            }
+        }
+
+
+
+
+        private void CopyLogToClipBoardAll(object sender, EventArgs e)
+        {
+            // build the string
+
+            //m_dataTableLog.ToString
+            System.Windows.Forms.Clipboard.SetText(m_dataTableLog.ToCSV(";"));
+            //System.Windows.Forms.Clipboard.SetText("String to be copied to Clipboard");
+        }
+
+        private void CopyLogToClipBoardOnlyData(object sender, EventArgs e)
+        {
+            DataTable copyVersion = m_dataTableLog.Copy();
+
+            copyVersion.Columns.Remove(copyVersion.Columns[2]);
+            copyVersion.Columns.Remove(copyVersion.Columns[0]);
+
+            System.Windows.Forms.Clipboard.SetText(copyVersion.ToCSV(";"));
+        }
+
+        private void dataGridViewLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
+
+
+    public static class CSVUtlity 
+    {
+        public static string ToCSV(this DataTable dtDataTable, string seperator)
+        {
+            string csvString = "";
+             //headers    
+             for (int i = 0; i < dtDataTable.Columns.Count; i++)
+             {
+                 csvString += dtDataTable.Columns[i];
+                 if (i < dtDataTable.Columns.Count - 1)
+                 {
+                     csvString += seperator;
+                 }
+             }
+             csvString +=  "\r\n";
+             foreach (DataRow dr in dtDataTable.Rows)
+             {
+                 for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                 {
+                     if (!Convert.IsDBNull(dr[i]))
+                     {
+                         string value = dr[i].ToString();
+                         if (value.Contains(seperator))
+                         {
+                             value = String.Format("\"{0}\"", value);
+                            csvString += value;
+                         }
+                         else
+                         {
+                            csvString += dr[i].ToString();                            
+                         }
+                     }
+                     if (i < dtDataTable.Columns.Count - 1)
+                     {
+                        csvString += seperator;
+                    }
+                 }
+                 csvString += "\r\n";
+             }
+
+            return csvString;
+        }
+
+    }
+
+
 }
