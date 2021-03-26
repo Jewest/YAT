@@ -687,6 +687,17 @@ namespace YAT
             return m_ConfiguredMacro[tabMacro.SelectedIndex].elements;
         }
 
+        private MacroData CreateNewMacro(string buttonName, string command)
+        {
+            MacroData myobject = new MacroData(buttonName, command);
+            myobject.Datachanged += MacroElementChanged;
+            myobject.RemoveMe += MacroElementRemoveMe;
+            myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
+            myobject.SetFocusAfterMe += MacroSetFocusAfter;
+            myobject.SetFocusBeforeMe += MacroSetFocusBefore;
+            return myobject;
+        }
+
 
         private MacroData CreateNewMacro()
         {
@@ -1377,6 +1388,71 @@ namespace YAT
 
         private void dataGridViewLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void terminalToolStripMenuItemImportTerminalpp_Click(object sender, EventArgs e)
+        {
+            // import the terminal ++
+
+            var filePath = string.Empty;
+            var fileContent = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "terminal++ files (*.tmf)|*.tmf";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        //dummy read for the header
+                        if (reader.ReadLine() != "# Terminal macro file v2")
+                        {
+
+                        }
+                        else
+                        {
+
+                            CreateNewAndAddTabPage("Import", false);
+
+                            // -2 as + tab = 1, and the count is 0 based.
+                            int cloneIndex = tabMacro.TabPages.Count - 2;
+
+                            for (int counter = 1; counter <= 24; counter++)
+                            {
+                                string lineButton = reader.ReadLine();
+                                string lineCommand = reader.ReadLine();
+
+                                //remove the terminators
+                                lineCommand = lineCommand.Replace("$0D","");
+                                lineCommand = lineCommand.Replace("$0d", "");
+                                lineCommand = lineCommand.Replace("$0A", "");
+                                lineCommand = lineCommand.Replace("$0a", "");
+
+                                MacroData local = CreateNewMacro(lineButton, lineCommand);  
+                                m_ConfiguredMacro[cloneIndex].elements.Add(local);
+                            }
+
+                            UpdateGrid(cloneIndex);
+
+                            //select the clone
+                            tabMacro.SelectedIndex = cloneIndex;
+
+                        }
+                    }
+                }
+            }
+
 
         }
     }

@@ -22,8 +22,19 @@ namespace YAT
         private System.Windows.Forms.Button btnSend = null;
         private System.Windows.Forms.TextBox txtCommand = null;
 
-        // Xml Serialization Infrastructure
+        public MacroData()
+        {
+         
+        }
 
+
+        public MacroData(string buttonName, string command)
+        {
+            m_buttonName = buttonName;
+            m_command = command;
+        }
+
+        // Xml Serialization Infrastructure
         public void WriteXml(XmlWriter writer)
         {
             writer.WriteStartElement("Macro");
@@ -227,8 +238,11 @@ namespace YAT
         {
             this.m_command = other.m_command;
             this.m_valueChecked = other.m_valueChecked;
+            this.m_buttonName = other.m_buttonName;
+
             UpdateControls();
         }
+
 
         public void AttachTo(Button sendButton, CheckBox chkBox, TextBox textBox)
         {
