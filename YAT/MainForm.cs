@@ -1331,7 +1331,14 @@ namespace YAT
 
         private void tmrLog_Tick(object sender, EventArgs e)
         {
-            
+            if (m_serialPort.IsOpen == false)
+            {
+                chkBoxLogValue.Checked = false;
+            }
+            else
+            {
+
+            }
         }
     }
 }
