@@ -81,11 +81,11 @@
             this.dataGridViewLog = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chrtLoggingData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSendGraphCommand = new System.Windows.Forms.TextBox();
+            this.txtDecodeValue = new System.Windows.Forms.TextBox();
             this.chkBoxLogValue = new System.Windows.Forms.CheckBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
             this.tmrLog = new System.Windows.Forms.Timer(this.components);
@@ -112,7 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -750,11 +750,11 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanel9.Controls.Add(this.chart1, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.chrtLoggingData, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.label6, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.label7, 2, 1);
-            this.tableLayoutPanel9.Controls.Add(this.textBox1, 1, 1);
-            this.tableLayoutPanel9.Controls.Add(this.textBox2, 3, 1);
+            this.tableLayoutPanel9.Controls.Add(this.txtSendGraphCommand, 1, 1);
+            this.tableLayoutPanel9.Controls.Add(this.txtDecodeValue, 3, 1);
             this.tableLayoutPanel9.Controls.Add(this.chkBoxLogValue, 4, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
@@ -765,23 +765,23 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(926, 503);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
-            // chart1
+            // chrtLoggingData
             // 
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.tableLayoutPanel9.SetColumnSpan(this.chart1, 5);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chrtLoggingData.ChartAreas.Add(chartArea1);
+            this.tableLayoutPanel9.SetColumnSpan(this.chrtLoggingData, 5);
+            this.chrtLoggingData.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(3, 3);
-            this.chart1.Name = "chart1";
+            this.chrtLoggingData.Legends.Add(legend1);
+            this.chrtLoggingData.Location = new System.Drawing.Point(3, 3);
+            this.chrtLoggingData.Name = "chrtLoggingData";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(920, 467);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            this.chrtLoggingData.Series.Add(series1);
+            this.chrtLoggingData.Size = new System.Drawing.Size(920, 467);
+            this.chrtLoggingData.TabIndex = 0;
+            this.chrtLoggingData.Text = "chart1";
             // 
             // label6
             // 
@@ -805,21 +805,21 @@
             this.label7.Text = "Decode:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // txtSendGraphCommand
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(53, 476);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(344, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtSendGraphCommand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSendGraphCommand.Location = new System.Drawing.Point(53, 476);
+            this.txtSendGraphCommand.Name = "txtSendGraphCommand";
+            this.txtSendGraphCommand.Size = new System.Drawing.Size(344, 20);
+            this.txtSendGraphCommand.TabIndex = 3;
             // 
-            // textBox2
+            // txtDecodeValue
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(478, 476);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(344, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtDecodeValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDecodeValue.Location = new System.Drawing.Point(478, 476);
+            this.txtDecodeValue.Name = "txtDecodeValue";
+            this.txtDecodeValue.Size = new System.Drawing.Size(344, 20);
+            this.txtDecodeValue.TabIndex = 4;
             // 
             // chkBoxLogValue
             // 
@@ -885,7 +885,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -940,12 +940,12 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chrtLoggingData;
         private System.Windows.Forms.Timer tmrLog;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtSendGraphCommand;
+        private System.Windows.Forms.TextBox txtDecodeValue;
         private System.Windows.Forms.CheckBox chkBoxLogValue;
     }
 }

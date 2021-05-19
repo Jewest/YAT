@@ -9,6 +9,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -220,13 +221,21 @@ namespace YAT
 
                 lblCountTerminator.Text = count.ToString();
 
+                DecodeToLoggingGraph(text);
             }
         }
 
         //callback for the serial port
         private void dataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            UpdateReceivedInfo(m_serialPort.ReadExisting());
+            string data = m_serialPort.ReadExisting();
+            
+            UpdateReceivedInfo(data);
+
+            if(chkBoxLogValue.Checked == true)
+            {
+
+            }
         }
 
         public void MacroElementChanged(object sender, EventArgs e)
@@ -981,19 +990,23 @@ namespace YAT
             }
         }
 
+        private string GetTerminationString()
+        {
+            string terminator = "";
+            if (cboCommandTerminator.SelectedItem is ComboBoxItem<string>)
+            {
+                ComboBoxItem<string> cast = cboCommandTerminator.SelectedItem as ComboBoxItem<string>;
+
+                terminator = cast.Value;
+            }
+            return terminator;
+        }
+
         private void WriteStringToSerial(string command)
         {
             if(m_serialPort.IsOpen == true)
             {
-                string terminator = "";
-                if (cboCommandTerminator.SelectedItem is ComboBoxItem<string>)
-                {
-                    ComboBoxItem<string> cast = cboCommandTerminator.SelectedItem as ComboBoxItem<string>;
-
-                    terminator = cast.Value;
-                }
-
-                string toSend = txtBoxPreFix.Text + command + terminator;
+                string toSend = txtBoxPreFix.Text + command + GetTerminationString();
                 try
                 {
                     m_serialPort.Write(toSend);
@@ -1314,6 +1327,15 @@ namespace YAT
             }
         }
 
+        void SetupLoggingGraph()
+        {
+            //clear the points
+            chrtLoggingData.Series[0].Points.Clear();
+            chrtLoggingData.ChartAreas[0].AxisX.Maximum = 10;
+            chrtLoggingData.ChartAreas[0].AxisY.IsStartedFromZero = false;
+        }
+
+
         private void chkBoxLogValue_CheckedChanged(object sender, EventArgs e)
         {
             tmrLog.Enabled = chkBoxLogValue.Checked;
@@ -1324,9 +1346,12 @@ namespace YAT
                 {
                     cboTimerSendSelected.SelectedIndex = 0;
                 }
+
+                SetupLoggingGraph();
             }
-
-
+            //clear the data
+            m_unusedData = "";
+            
         }
 
         private void tmrLog_Tick(object sender, EventArgs e)
@@ -1337,8 +1362,59 @@ namespace YAT
             }
             else
             {
-
+                SendCommand(txtSendGraphCommand.Text);
             }
         }
+        string m_unusedData = "";
+        private void DecodeToLoggingGraph(string dataToDecode)
+        {
+            if (chkBoxLogValue.Checked == true)
+            {
+                m_unusedData += dataToDecode;
+
+                if (m_unusedData.Contains(GetTerminationString()) == true)
+                {
+                    //check if we can decode
+                    if (txtDecodeValue.TextLength > 0)
+                    {
+                        try
+                        {
+                            
+                            Match m = Regex.Match(m_unusedData, txtDecodeValue.Text, RegexOptions.IgnoreCase);
+                            if (m.Success == true)
+                            {
+                                string data = m.Groups[0].Value;
+                                double value = 0;
+                                try
+                                {
+                                    value = double.Parse(data);
+
+                                    // add point to the chart
+                                    chrtLoggingData.Series[0].Points.AddY(value);
+
+                                    if(chrtLoggingData.Series[0].Points.Count > chrtLoggingData.ChartAreas[0].AxisX.Maximum)
+                                    {
+                                        chrtLoggingData.ChartAreas[0].AxisX.Maximum += 10;
+                                    }
+
+                                }
+                                catch(Exception)
+                                {
+
+                                }
+
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+
+                    m_unusedData = m_unusedData.Substring(m_unusedData.LastIndexOf(GetTerminationString()));
+                }
+            }
+        }
+
     }
 }
