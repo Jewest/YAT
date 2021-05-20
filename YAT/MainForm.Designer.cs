@@ -857,6 +857,7 @@
             this.txtDecodeValue.Name = "txtDecodeValue";
             this.txtDecodeValue.Size = new System.Drawing.Size(520, 26);
             this.txtDecodeValue.TabIndex = 4;
+            this.txtDecodeValue.Text = "(-?\\d+.\\d+)";
             // 
             // chkBoxLogValue
             // 
