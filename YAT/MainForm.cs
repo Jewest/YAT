@@ -13,6 +13,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using YAT.View;
 
@@ -222,7 +223,16 @@ namespace YAT
 
                 lblCountTerminator.Text = count.ToString();
 
-                DecodeToLoggingGraph(text);
+                if (m_useHighTekst == true)
+                {
+                    DecodeToLoggingGraph(text,chrtLoggingData1);
+                }
+                else
+                {
+                    
+                        DecodeToLoggingGraph(text, chrtLoggingData2);
+                   
+                }
             }
         }
 
@@ -1331,17 +1341,22 @@ namespace YAT
         void SetupLoggingGraph()
         {
             //clear the points
-            chrtLoggingData.Series[0].Points.Clear();
-            chrtLoggingData.ChartAreas[0].AxisX.Maximum = 10;
-            chrtLoggingData.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            chrtLoggingData1.Series[0].Points.Clear();
+            chrtLoggingData1.ChartAreas[0].AxisX.Maximum = 10;
+            chrtLoggingData1.ChartAreas[0].AxisY.IsStartedFromZero = false;
+
+
+            chrtLoggingData2.Series[0].Points.Clear();
+            chrtLoggingData2.ChartAreas[0].AxisX.Maximum = 10;
+            chrtLoggingData2.ChartAreas[0].AxisY.IsStartedFromZero = false;
         }
 
 
         private void chkBoxLogValue_CheckedChanged(object sender, EventArgs e)
         {
             tmrLog.Enabled = chkBoxLogValue.Checked;
-
-            if(chkBoxLogValue.Checked == true)
+            
+            if (chkBoxLogValue.Checked == true)
             {
                 if (tmrSendAllCommands.Enabled == true)
                 {
@@ -1355,6 +1370,8 @@ namespace YAT
             
         }
 
+        bool m_useHighTekst = true;
+
         private void tmrLog_Tick(object sender, EventArgs e)
         {
             if (m_serialPort.IsOpen == false)
@@ -1363,11 +1380,18 @@ namespace YAT
             }
             else
             {
-                SendCommand(txtSendGraphCommand.Text);
+                if (m_useHighTekst == true)
+                {
+                    SendCommand(txtSendGraphCommand1.Text);
+                }
+                else
+                {
+                    SendCommand(txtSendGraphCommand2.Text);
+                }
             }
         }
         string m_unusedData = "";
-        private void DecodeToLoggingGraph(string dataToDecode)
+        private void DecodeToLoggingGraph(string dataToDecode, Chart currentChart)
         {
             if (chkBoxLogValue.Checked == true)
             {
@@ -1376,12 +1400,12 @@ namespace YAT
                 if (m_unusedData.Contains(GetTerminationString()) == true)
                 {
                     //check if we can decode
-                    if (txtDecodeValue.TextLength > 0)
+                    if (txtDecodeValue1.TextLength > 0)
                     {
                         try
                         {
                             
-                            Match m = Regex.Match(m_unusedData, txtDecodeValue.Text, RegexOptions.IgnoreCase);
+                            Match m = Regex.Match(m_unusedData, txtDecodeValue1.Text, RegexOptions.IgnoreCase);
                             if (m.Success == true)
                             {
                                 string data = m.Groups[0].Value;
@@ -1391,11 +1415,11 @@ namespace YAT
                                     value = double.Parse(data, CultureInfo.InvariantCulture);
 
                                     // add point to the chart
-                                    chrtLoggingData.Series[0].Points.AddY(value);
+                                    currentChart.Series[0].Points.AddY(value);
 
-                                    if(chrtLoggingData.Series[0].Points.Count > chrtLoggingData.ChartAreas[0].AxisX.Maximum)
+                                    if(currentChart.Series[0].Points.Count > currentChart.ChartAreas[0].AxisX.Maximum)
                                     {
-                                        chrtLoggingData.ChartAreas[0].AxisX.Maximum += 10;
+                                        currentChart.ChartAreas[0].AxisX.Maximum += 10;
                                     }
 
                                 }
@@ -1409,10 +1433,11 @@ namespace YAT
                         catch (Exception)
                         {
 
-                        }
+                        }                        
                     }
 
-                    m_unusedData = m_unusedData.Substring(m_unusedData.LastIndexOf(GetTerminationString()));
+                    m_unusedData = "";
+                    m_useHighTekst = !m_useHighTekst;
                 }
             }
         }
