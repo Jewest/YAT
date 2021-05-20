@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -1387,7 +1388,7 @@ namespace YAT
                                 double value = 0;
                                 try
                                 {
-                                    value = double.Parse(data);
+                                    value = double.Parse(data, CultureInfo.InvariantCulture);
 
                                     // add point to the chart
                                     chrtLoggingData.Series[0].Points.AddY(value);
