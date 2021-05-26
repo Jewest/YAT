@@ -5,12 +5,15 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using YAT.View;
 
@@ -229,13 +232,30 @@ namespace YAT
 
                 lblCountTerminator.Text = count.ToString();
 
+                if (m_useHighTekst == true)
+                {
+                    DecodeToLoggingGraph(text,chrtLoggingData1);
+                }
+                else
+                {
+                    
+                        DecodeToLoggingGraph(text, chrtLoggingData2);
+                   
+                }
             }
         }
 
         //callback for the serial port
         private void dataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            UpdateReceivedInfo(m_serialPort.ReadExisting());
+            string data = m_serialPort.ReadExisting();
+            
+            UpdateReceivedInfo(data);
+
+            if(chkBoxLogValue.Checked == true)
+            {
+
+            }
         }
 
         public void MacroElementChanged(object sender, EventArgs e)
@@ -1001,19 +1021,23 @@ namespace YAT
             }
         }
 
+        private string GetTerminationString()
+        {
+            string terminator = "";
+            if (cboCommandTerminator.SelectedItem is ComboBoxItem<string>)
+            {
+                ComboBoxItem<string> cast = cboCommandTerminator.SelectedItem as ComboBoxItem<string>;
+
+                terminator = cast.Value;
+            }
+            return terminator;
+        }
+
         private void WriteStringToSerial(string command)
         {
             if(m_serialPort.IsOpen == true)
             {
-                string terminator = "";
-                if (cboCommandTerminator.SelectedItem is ComboBoxItem<string>)
-                {
-                    ComboBoxItem<string> cast = cboCommandTerminator.SelectedItem as ComboBoxItem<string>;
-
-                    terminator = cast.Value;
-                }
-
-                string toSend = txtBoxPreFix.Text + command + terminator;
+                string toSend = txtBoxPreFix.Text + command + GetTerminationString();
                 try
                 {
                     m_serialPort.Write(toSend);
@@ -1342,6 +1366,114 @@ namespace YAT
             }
         }
 
+
+        void SetupLoggingGraph()
+        {
+            //clear the points
+            chrtLoggingData1.Series[0].Points.Clear();
+            chrtLoggingData1.ChartAreas[0].AxisX.Maximum = 10;
+            chrtLoggingData1.ChartAreas[0].AxisY.IsStartedFromZero = false;
+
+
+            chrtLoggingData2.Series[0].Points.Clear();
+            chrtLoggingData2.ChartAreas[0].AxisX.Maximum = 10;
+            chrtLoggingData2.ChartAreas[0].AxisY.IsStartedFromZero = false;
+        }
+
+
+        private void chkBoxLogValue_CheckedChanged(object sender, EventArgs e)
+        {
+            tmrLog.Enabled = chkBoxLogValue.Checked;
+            
+            if (chkBoxLogValue.Checked == true)
+            {
+                if (tmrSendAllCommands.Enabled == true)
+                {
+                    cboTimerSendSelected.SelectedIndex = 0;
+                }
+
+                SetupLoggingGraph();
+            }
+            //clear the data
+            m_unusedData = "";
+            
+        }
+
+        bool m_useHighTekst = true;
+
+        private void tmrLog_Tick(object sender, EventArgs e)
+        {
+            if (m_serialPort.IsOpen == false)
+            {
+                chkBoxLogValue.Checked = false;
+            }
+            else
+            {
+                if (m_useHighTekst == true)
+                {
+                    SendCommand(txtSendGraphCommand1.Text);
+                }
+                else
+                {
+                    SendCommand(txtSendGraphCommand2.Text);
+                }
+            }
+        }
+        string m_unusedData = "";
+        private void DecodeToLoggingGraph(string dataToDecode, Chart currentChart)
+        {
+            if (chkBoxLogValue.Checked == true)
+            {
+                m_unusedData += dataToDecode;
+
+                if (m_unusedData.Contains(GetTerminationString()) == true)
+                {
+                    //check if we can decode
+                    if (txtDecodeValue1.TextLength > 0)
+                    {
+                        try
+                        {
+                            
+                            Match m = Regex.Match(m_unusedData, txtDecodeValue1.Text, RegexOptions.IgnoreCase);
+                            if (m.Success == true)
+                            {
+                                string data = m.Groups[0].Value;
+                                double value = 0;
+                                try
+                                {
+                                    value = double.Parse(data, CultureInfo.InvariantCulture);
+
+                                    // add point to the chart
+                                    currentChart.Series[0].Points.AddY(value);
+
+                                    if(currentChart.Series[0].Points.Count > currentChart.ChartAreas[0].AxisX.Maximum)
+                                    {
+                                        currentChart.ChartAreas[0].AxisX.Maximum += 10;
+                                    }
+
+                                }
+                                catch(Exception)
+                                {
+
+                                }
+
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }                        
+                    }
+
+                    m_unusedData = "";
+                    m_useHighTekst = !m_useHighTekst;
+                }
+            }
+        }
+
+        private void chrtLoggingData1_Click(object sender, EventArgs e)
+        {
+
         private void chkShowSend_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -1452,6 +1584,7 @@ namespace YAT
                     }
                 }
             }
+
 
 
         }
