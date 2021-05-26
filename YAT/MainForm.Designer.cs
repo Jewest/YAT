@@ -848,7 +848,7 @@
             this.txtDecodeValue2.Name = "txtDecodeValue2";
             this.txtDecodeValue2.Size = new System.Drawing.Size(341, 20);
             this.txtDecodeValue2.TabIndex = 4;
-            this.txtDecodeValue2.Text = "(-?\\d+.\\d+)";
+            this.txtDecodeValue2.Text = "(-?\\d+(.\\d+)?)";
             // 
             // tableLayoutPanel9
             // 
@@ -928,7 +928,7 @@
             this.txtDecodeValue1.Name = "txtDecodeValue1";
             this.txtDecodeValue1.Size = new System.Drawing.Size(341, 20);
             this.txtDecodeValue1.TabIndex = 4;
-            this.txtDecodeValue1.Text = "(-?\\d+.\\d+)";
+            this.txtDecodeValue1.Text = "(-?\\d+(.\\d+)?)";
             // 
             // chkBoxLogValue
             // 
