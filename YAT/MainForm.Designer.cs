@@ -804,7 +804,10 @@
             this.chrtLoggingData2.Location = new System.Drawing.Point(3, 3);
             this.chrtLoggingData2.Name = "chrtLoggingData2";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
+            series1.MarkerSize = 10;
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Series1";
             this.chrtLoggingData2.Series.Add(series1);
             this.chrtLoggingData2.Size = new System.Drawing.Size(914, 210);
@@ -884,12 +887,16 @@
             this.chrtLoggingData1.Location = new System.Drawing.Point(3, 3);
             this.chrtLoggingData1.Name = "chrtLoggingData1";
             series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Legend = "Legend1";
+            series2.MarkerSize = 10;
+            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series2.Name = "Series1";
             this.chrtLoggingData1.Series.Add(series2);
             this.chrtLoggingData1.Size = new System.Drawing.Size(914, 209);
             this.chrtLoggingData1.TabIndex = 0;
             this.chrtLoggingData1.Text = "chart1";
+            this.chrtLoggingData1.Click += new System.EventHandler(this.chrtLoggingData1_Click);
             // 
             // label6
             // 

@@ -1442,5 +1442,9 @@ namespace YAT
             }
         }
 
+        private void chrtLoggingData1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
