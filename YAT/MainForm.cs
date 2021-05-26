@@ -154,13 +154,18 @@ namespace YAT
                 header = "";
             }
 
-
-            DataRow newData = m_dataTableLog.NewRow();
-            newData[0] = header;
-            newData[1] = data;
-            newData[2] = inOut;
-            m_dataTableLog.Rows.Add(newData);
-
+            if ((inOut == Direction.Sending) && (chkShowSend.Checked == false))
+            {
+                // do nothing the end user does not want to see this
+            }
+            else
+            {
+                DataRow newData = m_dataTableLog.NewRow();
+                newData[0] = header;
+                newData[1] = data;
+                newData[2] = inOut;
+                m_dataTableLog.Rows.Add(newData);
+            }
 
 
             if (dataGridViewLog.Rows[m_dataTableLog.Rows.Count - 1].Displayed == false)
@@ -203,6 +208,10 @@ namespace YAT
                 }
                 else
                 {
+
+                    text = text.Replace("\r", "");
+                    text = text.Replace("\n", "");
+
                     AddToLog(text, Direction.Receiving);
                 }
 
@@ -698,6 +707,17 @@ namespace YAT
             return m_ConfiguredMacro[tabMacro.SelectedIndex].elements;
         }
 
+        private MacroData CreateNewMacro(string buttonName, string command)
+        {
+            MacroData myobject = new MacroData(buttonName, command);
+            myobject.Datachanged += MacroElementChanged;
+            myobject.RemoveMe += MacroElementRemoveMe;
+            myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
+            myobject.SetFocusAfterMe += MacroSetFocusAfter;
+            myobject.SetFocusBeforeMe += MacroSetFocusBefore;
+            return myobject;
+        }
+
 
         private MacroData CreateNewMacro()
         {
@@ -1021,6 +1041,10 @@ namespace YAT
                 try
                 {
                     m_serialPort.Write(toSend);
+
+                    toSend = toSend.Replace("\r", "");
+                    toSend = toSend.Replace("\n", "");
+
                     AddToLog(toSend, Direction.Sending);
                 } catch
                 {
@@ -1150,7 +1174,11 @@ namespace YAT
             {
                 if (m_tabCounter == -1)
                 {
-                    AddToLog("------------------------- Send selected -------------------------", Direction.Unknown);
+                    //only show when the end user wants to
+                    if (chkShowHeaderTimer.Checked == true)
+                    {
+                        AddToLog("------------------------- Send selected -------------------------", Direction.Unknown);
+                    }
                     
                 }
 
@@ -1338,6 +1366,7 @@ namespace YAT
             }
         }
 
+
         void SetupLoggingGraph()
         {
             //clear the points
@@ -1445,6 +1474,167 @@ namespace YAT
         private void chrtLoggingData1_Click(object sender, EventArgs e)
         {
 
+        private void chkShowSend_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewLog_MouseClick(object sender, MouseEventArgs e)
+        {
+            //check for right mouse click
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+
+                MenuItem item3 = cm.MenuItems.Add("Copy to clipboard(All)");
+                item3.Click += CopyLogToClipBoardAll;
+
+                MenuItem item = cm.MenuItems.Add("Copy to clipboard(only data)");
+                item.Click += CopyLogToClipBoardOnlyData;
+
+                cm.Show(dataGridViewLog, e.Location);
+            }
+        }
+
+
+
+
+        private void CopyLogToClipBoardAll(object sender, EventArgs e)
+        {
+            // build the string
+
+            //m_dataTableLog.ToString
+            System.Windows.Forms.Clipboard.SetText(m_dataTableLog.ToCSV(";"));
+            //System.Windows.Forms.Clipboard.SetText("String to be copied to Clipboard");
+        }
+
+        private void CopyLogToClipBoardOnlyData(object sender, EventArgs e)
+        {
+            DataTable copyVersion = m_dataTableLog.Copy();
+
+            copyVersion.Columns.Remove(copyVersion.Columns[2]);
+            copyVersion.Columns.Remove(copyVersion.Columns[0]);
+
+            System.Windows.Forms.Clipboard.SetText(copyVersion.ToCSV(";"));
+        }
+
+        private void dataGridViewLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void terminalToolStripMenuItemImportTerminalpp_Click(object sender, EventArgs e)
+        {
+            // import the terminal ++
+
+            var filePath = string.Empty;
+            var fileContent = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "terminal++ files (*.tmf)|*.tmf";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        //dummy read for the header
+                        if (reader.ReadLine() != "# Terminal macro file v2")
+                        {
+
+                        }
+                        else
+                        {
+
+                            CreateNewAndAddTabPage("Import", false);
+
+                            // -2 as + tab = 1, and the count is 0 based.
+                            int cloneIndex = tabMacro.TabPages.Count - 2;
+
+                            for (int counter = 1; counter <= 24; counter++)
+                            {
+                                string lineButton = reader.ReadLine();
+                                string lineCommand = reader.ReadLine();
+
+                                //remove the terminators
+                                lineCommand = lineCommand.Replace("$0D","");
+                                lineCommand = lineCommand.Replace("$0d", "");
+                                lineCommand = lineCommand.Replace("$0A", "");
+                                lineCommand = lineCommand.Replace("$0a", "");
+
+                                MacroData local = CreateNewMacro(lineButton, lineCommand);  
+                                m_ConfiguredMacro[cloneIndex].elements.Add(local);
+                            }
+
+                            UpdateGrid(cloneIndex);
+
+                            //select the clone
+                            tabMacro.SelectedIndex = cloneIndex;
+
+                        }
+                    }
+                }
+            }
+
+
+
         }
     }
+
+
+    public static class CSVUtlity 
+    {
+        public static string ToCSV(this DataTable dtDataTable, string seperator)
+        {
+            string csvString = "";
+             //headers    
+             for (int i = 0; i < dtDataTable.Columns.Count; i++)
+             {
+                 csvString += dtDataTable.Columns[i];
+                 if (i < dtDataTable.Columns.Count - 1)
+                 {
+                     csvString += seperator;
+                 }
+             }
+             csvString +=  "\r\n";
+             foreach (DataRow dr in dtDataTable.Rows)
+             {
+                 for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                 {
+                     if (!Convert.IsDBNull(dr[i]))
+                     {
+                         string value = dr[i].ToString();
+                         if (value.Contains(seperator))
+                         {
+                             value = String.Format("\"{0}\"", value);
+                            csvString += value;
+                         }
+                         else
+                         {
+                            csvString += dr[i].ToString();                            
+                         }
+                     }
+                     if (i < dtDataTable.Columns.Count - 1)
+                     {
+                        csvString += seperator;
+                    }
+                 }
+                 csvString += "\r\n";
+             }
+
+            return csvString;
+        }
+
+    }
+
+
 }

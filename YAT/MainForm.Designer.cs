@@ -82,6 +82,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cboDecodeType = new System.Windows.Forms.ComboBox();
             this.dataGridViewLog = new System.Windows.Forms.DataGridView();
+
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
@@ -99,6 +100,21 @@
             this.chkBoxLogValue = new System.Windows.Forms.CheckBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
             this.tmrLog = new System.Windows.Forms.Timer(this.components);
+
+            this.chkShowSend = new System.Windows.Forms.CheckBox();
+            this.chkShowHeaderTimer = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.cboCommandTerminator = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBoxPreFix = new System.Windows.Forms.TextBox();
+            this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
+            this.mnustrForm = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.terminalToolStripMenuItemImportTerminalpp = new System.Windows.Forms.ToolStripMenuItem();
+
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -120,12 +136,18 @@
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
+
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData2)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData1)).BeginInit();
+
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.mnustrForm.SuspendLayout();
+
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -138,7 +160,7 @@
             this.tableLayoutPanel2.Controls.Add(this.groupBox4, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.tabctl, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
@@ -146,8 +168,10 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(946, 676);
+
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // groupBox1
@@ -297,7 +321,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripCurrentStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 651);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 627);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
             this.statusStrip1.Size = new System.Drawing.Size(946, 25);
@@ -419,6 +443,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Size = new System.Drawing.Size(926, 503);
             this.splitContainer1.SplitterDistance = 444;
+
             this.splitContainer1.TabIndex = 7;
             // 
             // groupBox2
@@ -429,6 +454,7 @@
             this.groupBox2.MinimumSize = new System.Drawing.Size(250, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(444, 503);
+
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Commands";
@@ -441,6 +467,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(438, 484);
+
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -470,6 +497,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 484);
+
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tabMacro
@@ -480,6 +508,7 @@
             this.tabMacro.Name = "tabMacro";
             this.tabMacro.SelectedIndex = 0;
             this.tabMacro.Size = new System.Drawing.Size(435, 378);
+
             this.tabMacro.TabIndex = 5;
             this.tabMacro.SelectedIndexChanged += new System.EventHandler(this.tabMacro_SelectedIndexChanged);
             this.tabMacro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabMacro_MouseDown);
@@ -496,6 +525,7 @@
             this.tableLayoutPanel5.Controls.Add(this.btnDuplicateTab, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 454);
+
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
@@ -662,6 +692,7 @@
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(478, 503);
+
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reply";
@@ -678,13 +709,17 @@
             this.tableLayoutPanel4.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.cboDecodeType, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.dataGridViewLog, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.chkShowSend, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.chkShowHeaderTimer, 1, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(472, 484);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(478, 492);
+
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // btnClearLog
@@ -741,8 +776,38 @@
             this.dataGridViewLog.Name = "dataGridViewLog";
             this.dataGridViewLog.ReadOnly = true;
             this.dataGridViewLog.Size = new System.Drawing.Size(466, 448);
+
             this.dataGridViewLog.TabIndex = 6;
+            this.dataGridViewLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLog_CellContentClick);
             this.dataGridViewLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewLog_CellFormatting);
+            this.dataGridViewLog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewLog_MouseClick);
+            // 
+            // chkShowSend
+            // 
+            this.chkShowSend.AutoSize = true;
+            this.chkShowSend.Checked = true;
+            this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowSend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkShowSend.Location = new System.Drawing.Point(3, 465);
+            this.chkShowSend.Name = "chkShowSend";
+            this.chkShowSend.Size = new System.Drawing.Size(182, 24);
+            this.chkShowSend.TabIndex = 7;
+            this.chkShowSend.Text = "Show send command";
+            this.chkShowSend.UseVisualStyleBackColor = true;
+            this.chkShowSend.CheckedChanged += new System.EventHandler(this.chkShowSend_CheckedChanged);
+            // 
+            // chkShowHeaderTimer
+            // 
+            this.chkShowHeaderTimer.AutoSize = true;
+            this.chkShowHeaderTimer.Checked = true;
+            this.chkShowHeaderTimer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowHeaderTimer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkShowHeaderTimer.Location = new System.Drawing.Point(191, 465);
+            this.chkShowHeaderTimer.Name = "chkShowHeaderTimer";
+            this.chkShowHeaderTimer.Size = new System.Drawing.Size(182, 24);
+            this.chkShowHeaderTimer.TabIndex = 8;
+            this.chkShowHeaderTimer.Text = "Show header timer";
+            this.chkShowHeaderTimer.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -955,10 +1020,45 @@
             // 
             this.tmrSendAllCommands.Tick += new System.EventHandler(this.tmrSendAllCommands_Tick);
             // 
+
             // tmrLog
             // 
             this.tmrLog.Interval = 1000;
             this.tmrLog.Tick += new System.EventHandler(this.tmrLog_Tick);
+
+            // mnustrForm
+            // 
+            this.mnustrForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.mnustrForm.Location = new System.Drawing.Point(0, 0);
+            this.mnustrForm.Name = "mnustrForm";
+            this.mnustrForm.Size = new System.Drawing.Size(946, 24);
+            this.mnustrForm.TabIndex = 7;
+            this.mnustrForm.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.terminalToolStripMenuItemImportTerminalpp});
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Text = "Import";
+            // 
+            // terminalToolStripMenuItemImportTerminalpp
+            // 
+            this.terminalToolStripMenuItemImportTerminalpp.Name = "terminalToolStripMenuItemImportTerminalpp";
+            this.terminalToolStripMenuItemImportTerminalpp.Size = new System.Drawing.Size(180, 22);
+            this.terminalToolStripMenuItemImportTerminalpp.Text = "Terminal++";
+            this.terminalToolStripMenuItemImportTerminalpp.Click += new System.EventHandler(this.terminalToolStripMenuItemImportTerminalpp_Click);
+
             // 
             // MainForm
             // 
@@ -966,7 +1066,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 676);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.mnustrForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.mnustrForm;
             this.Name = "MainForm";
             this.Text = "Yat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -998,6 +1100,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).EndInit();
+
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
@@ -1006,7 +1109,15 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData1)).EndInit();
+
+            this.groupBox4.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.mnustrForm.ResumeLayout(false);
+            this.mnustrForm.PerformLayout();
+
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1056,6 +1167,7 @@
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.ComboBox cboDecodeType;
         private System.Windows.Forms.DataGridView dataGridViewLog;
+
         private System.Windows.Forms.TabControl tabctl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1074,6 +1186,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtSendGraphCommand2;
         private System.Windows.Forms.TextBox txtDecodeValue2;
+
+        private System.Windows.Forms.CheckBox chkShowSend;
+        private System.Windows.Forms.CheckBox chkShowHeaderTimer;
+        private System.Windows.Forms.MenuStrip mnustrForm;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem terminalToolStripMenuItemImportTerminalpp;
+
     }
 }
 
