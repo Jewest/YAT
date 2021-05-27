@@ -1383,6 +1383,18 @@ namespace YAT
 
         private void chkBoxLogValue_CheckedChanged(object sender, EventArgs e)
         {
+            if(chkBoxLogValue.Checked == true)
+            {
+                try
+                {
+                    tmrLog.Interval = Int32.Parse(txtTimerSpeed.Text);
+                }
+                catch(Exception)
+                {
+
+                }
+            }
+            
             tmrLog.Enabled = chkBoxLogValue.Checked;
             
             if (chkBoxLogValue.Checked == true)
@@ -1466,7 +1478,14 @@ namespace YAT
                     }
 
                     m_unusedData = "";
-                    m_useHighTekst = !m_useHighTekst;
+                    if (chkGraphSelection.Checked == true)
+                    {
+                        m_useHighTekst = !m_useHighTekst;
+                    }
+                    else
+                    {
+                        m_useHighTekst = true;
+                    }
                 }
             }
         }

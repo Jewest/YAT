@@ -82,7 +82,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cboDecodeType = new System.Windows.Forms.ComboBox();
             this.dataGridViewLog = new System.Windows.Forms.DataGridView();
-
+            this.chkShowSend = new System.Windows.Forms.CheckBox();
+            this.chkShowHeaderTimer = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
@@ -98,23 +99,16 @@
             this.txtSendGraphCommand1 = new System.Windows.Forms.TextBox();
             this.txtDecodeValue1 = new System.Windows.Forms.TextBox();
             this.chkBoxLogValue = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.chkGraphSelection = new System.Windows.Forms.CheckBox();
+            this.txtTimerSpeed = new System.Windows.Forms.TextBox();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
             this.tmrLog = new System.Windows.Forms.Timer(this.components);
-
-            this.chkShowSend = new System.Windows.Forms.CheckBox();
-            this.chkShowHeaderTimer = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.cboCommandTerminator = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtBoxPreFix = new System.Windows.Forms.TextBox();
-            this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
             this.mnustrForm = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terminalToolStripMenuItemImportTerminalpp = new System.Windows.Forms.ToolStripMenuItem();
-
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -136,18 +130,14 @@
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
-
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData2)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData1)).BeginInit();
-
-            this.groupBox4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
             this.mnustrForm.SuspendLayout();
-
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -168,10 +158,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(946, 676);
-
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(946, 652);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // groupBox1
@@ -414,7 +402,7 @@
             this.tabctl.Location = new System.Drawing.Point(3, 113);
             this.tabctl.Name = "tabctl";
             this.tabctl.SelectedIndex = 0;
-            this.tabctl.Size = new System.Drawing.Size(940, 535);
+            this.tabctl.Size = new System.Drawing.Size(940, 511);
             this.tabctl.TabIndex = 9;
             // 
             // tabPage1
@@ -423,7 +411,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(932, 509);
+            this.tabPage1.Size = new System.Drawing.Size(932, 485);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Commands";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -441,9 +429,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Size = new System.Drawing.Size(926, 503);
+            this.splitContainer1.Size = new System.Drawing.Size(926, 479);
             this.splitContainer1.SplitterDistance = 444;
-
             this.splitContainer1.TabIndex = 7;
             // 
             // groupBox2
@@ -453,8 +440,7 @@
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.MinimumSize = new System.Drawing.Size(250, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(444, 503);
-
+            this.groupBox2.Size = new System.Drawing.Size(444, 479);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Commands";
@@ -466,8 +452,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(438, 484);
-
+            this.panel1.Size = new System.Drawing.Size(438, 460);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -496,8 +481,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 484);
-
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 460);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tabMacro
@@ -507,8 +491,7 @@
             this.tabMacro.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.tabMacro.Name = "tabMacro";
             this.tabMacro.SelectedIndex = 0;
-            this.tabMacro.Size = new System.Drawing.Size(435, 378);
-
+            this.tabMacro.Size = new System.Drawing.Size(435, 354);
             this.tabMacro.TabIndex = 5;
             this.tabMacro.SelectedIndexChanged += new System.EventHandler(this.tabMacro_SelectedIndexChanged);
             this.tabMacro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabMacro_MouseDown);
@@ -524,8 +507,7 @@
             this.tableLayoutPanel5.Controls.Add(this.btnRenameTab, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnDuplicateTab, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 454);
-
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 430);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
@@ -691,8 +673,7 @@
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(478, 503);
-
+            this.groupBox3.Size = new System.Drawing.Size(478, 479);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reply";
@@ -718,8 +699,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(478, 492);
-
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(472, 460);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // btnClearLog
@@ -775,8 +755,7 @@
             this.dataGridViewLog.Location = new System.Drawing.Point(3, 33);
             this.dataGridViewLog.Name = "dataGridViewLog";
             this.dataGridViewLog.ReadOnly = true;
-            this.dataGridViewLog.Size = new System.Drawing.Size(466, 448);
-
+            this.dataGridViewLog.Size = new System.Drawing.Size(466, 394);
             this.dataGridViewLog.TabIndex = 6;
             this.dataGridViewLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLog_CellContentClick);
             this.dataGridViewLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewLog_CellFormatting);
@@ -788,9 +767,9 @@
             this.chkShowSend.Checked = true;
             this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowSend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkShowSend.Location = new System.Drawing.Point(3, 465);
+            this.chkShowSend.Location = new System.Drawing.Point(3, 433);
             this.chkShowSend.Name = "chkShowSend";
-            this.chkShowSend.Size = new System.Drawing.Size(182, 24);
+            this.chkShowSend.Size = new System.Drawing.Size(178, 24);
             this.chkShowSend.TabIndex = 7;
             this.chkShowSend.Text = "Show send command";
             this.chkShowSend.UseVisualStyleBackColor = true;
@@ -802,12 +781,13 @@
             this.chkShowHeaderTimer.Checked = true;
             this.chkShowHeaderTimer.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowHeaderTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkShowHeaderTimer.Location = new System.Drawing.Point(191, 465);
+            this.chkShowHeaderTimer.Location = new System.Drawing.Point(187, 433);
             this.chkShowHeaderTimer.Name = "chkShowHeaderTimer";
-            this.chkShowHeaderTimer.Size = new System.Drawing.Size(182, 24);
+            this.chkShowHeaderTimer.Size = new System.Drawing.Size(178, 24);
             this.chkShowHeaderTimer.TabIndex = 8;
             this.chkShowHeaderTimer.Text = "Show header timer";
             this.chkShowHeaderTimer.UseVisualStyleBackColor = true;
+            this.chkShowHeaderTimer.CheckedChanged += new System.EventHandler(this.chkShowHeaderTimer_CheckedChanged);
             // 
             // tabPage2
             // 
@@ -815,7 +795,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(932, 509);
+            this.tabPage2.Size = new System.Drawing.Size(932, 485);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Log";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -824,16 +804,17 @@
             // 
             this.tableLayoutPanel10.ColumnCount = 1;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel11, 0, 1);
-            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel9, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel11, 0, 2);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel9, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 2;
+            this.tableLayoutPanel10.RowCount = 3;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(926, 503);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(926, 479);
             this.tableLayoutPanel10.TabIndex = 1;
             // 
             // tableLayoutPanel11
@@ -850,12 +831,12 @@
             this.tableLayoutPanel11.Controls.Add(this.txtSendGraphCommand2, 1, 1);
             this.tableLayoutPanel11.Controls.Add(this.txtDecodeValue2, 3, 1);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 254);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 267);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 2;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(920, 246);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(920, 209);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // chrtLoggingData2
@@ -875,7 +856,7 @@
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Series1";
             this.chrtLoggingData2.Series.Add(series1);
-            this.chrtLoggingData2.Size = new System.Drawing.Size(914, 210);
+            this.chrtLoggingData2.Size = new System.Drawing.Size(914, 173);
             this.chrtLoggingData2.TabIndex = 0;
             this.chrtLoggingData2.Text = "chart1";
             // 
@@ -883,7 +864,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 216);
+            this.label8.Location = new System.Drawing.Point(3, 179);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 30);
             this.label8.TabIndex = 1;
@@ -894,7 +875,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(400, 216);
+            this.label9.Location = new System.Drawing.Point(400, 179);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 30);
             this.label9.TabIndex = 2;
@@ -904,7 +885,7 @@
             // txtSendGraphCommand2
             // 
             this.txtSendGraphCommand2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSendGraphCommand2.Location = new System.Drawing.Point(53, 219);
+            this.txtSendGraphCommand2.Location = new System.Drawing.Point(53, 182);
             this.txtSendGraphCommand2.Name = "txtSendGraphCommand2";
             this.txtSendGraphCommand2.Size = new System.Drawing.Size(341, 20);
             this.txtSendGraphCommand2.TabIndex = 3;
@@ -912,7 +893,7 @@
             // txtDecodeValue2
             // 
             this.txtDecodeValue2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDecodeValue2.Location = new System.Drawing.Point(475, 219);
+            this.txtDecodeValue2.Location = new System.Drawing.Point(475, 182);
             this.txtDecodeValue2.Name = "txtDecodeValue2";
             this.txtDecodeValue2.Size = new System.Drawing.Size(341, 20);
             this.txtDecodeValue2.TabIndex = 4;
@@ -933,12 +914,12 @@
             this.tableLayoutPanel9.Controls.Add(this.txtDecodeValue1, 3, 1);
             this.tableLayoutPanel9.Controls.Add(this.chkBoxLogValue, 4, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 53);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(920, 245);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(920, 208);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
             // chrtLoggingData1
@@ -958,7 +939,7 @@
             series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series2.Name = "Series1";
             this.chrtLoggingData1.Series.Add(series2);
-            this.chrtLoggingData1.Size = new System.Drawing.Size(914, 209);
+            this.chrtLoggingData1.Size = new System.Drawing.Size(914, 172);
             this.chrtLoggingData1.TabIndex = 0;
             this.chrtLoggingData1.Text = "chart1";
             this.chrtLoggingData1.Click += new System.EventHandler(this.chrtLoggingData1_Click);
@@ -967,7 +948,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(3, 215);
+            this.label6.Location = new System.Drawing.Point(3, 178);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 30);
             this.label6.TabIndex = 1;
@@ -978,7 +959,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(400, 215);
+            this.label7.Location = new System.Drawing.Point(400, 178);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 30);
             this.label7.TabIndex = 2;
@@ -988,7 +969,7 @@
             // txtSendGraphCommand1
             // 
             this.txtSendGraphCommand1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSendGraphCommand1.Location = new System.Drawing.Point(53, 218);
+            this.txtSendGraphCommand1.Location = new System.Drawing.Point(53, 181);
             this.txtSendGraphCommand1.Name = "txtSendGraphCommand1";
             this.txtSendGraphCommand1.Size = new System.Drawing.Size(341, 20);
             this.txtSendGraphCommand1.TabIndex = 3;
@@ -996,7 +977,7 @@
             // txtDecodeValue1
             // 
             this.txtDecodeValue1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDecodeValue1.Location = new System.Drawing.Point(475, 218);
+            this.txtDecodeValue1.Location = new System.Drawing.Point(475, 181);
             this.txtDecodeValue1.Name = "txtDecodeValue1";
             this.txtDecodeValue1.Size = new System.Drawing.Size(341, 20);
             this.txtDecodeValue1.TabIndex = 4;
@@ -1007,7 +988,7 @@
             this.chkBoxLogValue.Appearance = System.Windows.Forms.Appearance.Button;
             this.chkBoxLogValue.AutoSize = true;
             this.chkBoxLogValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkBoxLogValue.Location = new System.Drawing.Point(822, 218);
+            this.chkBoxLogValue.Location = new System.Drawing.Point(822, 181);
             this.chkBoxLogValue.Name = "chkBoxLogValue";
             this.chkBoxLogValue.Size = new System.Drawing.Size(95, 24);
             this.chkBoxLogValue.TabIndex = 5;
@@ -1016,16 +997,62 @@
             this.chkBoxLogValue.UseVisualStyleBackColor = true;
             this.chkBoxLogValue.CheckedChanged += new System.EventHandler(this.chkBoxLogValue_CheckedChanged);
             // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 3;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
+            this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 1;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(920, 44);
+            this.tableLayoutPanel12.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(111, 44);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Time per sample (mS):";
+            // 
+            // chkGraphSelection
+            // 
+            this.chkGraphSelection.AutoSize = true;
+            this.chkGraphSelection.Checked = true;
+            this.chkGraphSelection.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGraphSelection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkGraphSelection.Location = new System.Drawing.Point(521, 3);
+            this.chkGraphSelection.Name = "chkGraphSelection";
+            this.chkGraphSelection.Size = new System.Drawing.Size(396, 38);
+            this.chkGraphSelection.TabIndex = 1;
+            this.chkGraphSelection.Text = "Both the graphs";
+            this.chkGraphSelection.UseVisualStyleBackColor = true;
+            // 
+            // txtTimerSpeed
+            // 
+            this.txtTimerSpeed.Location = new System.Drawing.Point(120, 3);
+            this.txtTimerSpeed.Name = "txtTimerSpeed";
+            this.txtTimerSpeed.Size = new System.Drawing.Size(100, 20);
+            this.txtTimerSpeed.TabIndex = 2;
+            // 
             // tmrSendAllCommands
             // 
             this.tmrSendAllCommands.Tick += new System.EventHandler(this.tmrSendAllCommands_Tick);
             // 
-
             // tmrLog
             // 
-            this.tmrLog.Interval = 1000;
+            this.tmrLog.Interval = 500;
             this.tmrLog.Tick += new System.EventHandler(this.tmrLog_Tick);
-
+            // 
             // mnustrForm
             // 
             this.mnustrForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1049,16 +1076,15 @@
             this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.terminalToolStripMenuItemImportTerminalpp});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.importToolStripMenuItem.Text = "Import";
             // 
             // terminalToolStripMenuItemImportTerminalpp
             // 
             this.terminalToolStripMenuItemImportTerminalpp.Name = "terminalToolStripMenuItemImportTerminalpp";
-            this.terminalToolStripMenuItemImportTerminalpp.Size = new System.Drawing.Size(180, 22);
+            this.terminalToolStripMenuItemImportTerminalpp.Size = new System.Drawing.Size(136, 22);
             this.terminalToolStripMenuItemImportTerminalpp.Text = "Terminal++";
             this.terminalToolStripMenuItemImportTerminalpp.Click += new System.EventHandler(this.terminalToolStripMenuItemImportTerminalpp_Click);
-
             // 
             // MainForm
             // 
@@ -1100,7 +1126,6 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).EndInit();
-
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
@@ -1109,13 +1134,10 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData1)).EndInit();
-
-            this.groupBox4.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
             this.mnustrForm.ResumeLayout(false);
             this.mnustrForm.PerformLayout();
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1193,7 +1215,10 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem terminalToolStripMenuItemImportTerminalpp;
-
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox chkGraphSelection;
+        private System.Windows.Forms.TextBox txtTimerSpeed;
     }
 }
 
