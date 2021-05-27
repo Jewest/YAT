@@ -209,10 +209,10 @@ namespace YAT
                 else
                 {
 
-                    text = text.Replace("\r", "");
-                    text = text.Replace("\n", "");
+                    string filtered = text.Replace("\r", "");
+                    filtered = filtered.Replace("\n", "");
 
-                    AddToLog(text, Direction.Receiving);
+                    AddToLog(filtered, Direction.Receiving);
                 }
 
                 int count = 0;
@@ -1474,6 +1474,7 @@ namespace YAT
         private void chrtLoggingData1_Click(object sender, EventArgs e)
         {
 
+        }
         private void chkShowSend_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -1586,6 +1587,11 @@ namespace YAT
             }
 
 
+
+        }
+
+        private void chkShowHeaderTimer_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }
