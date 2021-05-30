@@ -1490,10 +1490,10 @@ namespace YAT
             }
         }
 
-        private void chrtLoggingData1_Click(object sender, EventArgs e)
-        {
+  
 
-        }
+
+     
         private void chkShowSend_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -1609,9 +1609,64 @@ namespace YAT
 
         }
 
-        private void chkShowHeaderTimer_CheckedChanged(object sender, EventArgs e)
-        {
+        private Chart m_lastChartClicked = null;
 
+        private void CopyGraphToClipBoardAll(object sender, EventArgs e)
+        {
+            // build the string
+
+            //m_dataTableLog.ToString
+           
+            //.SetText("String to be copied to Clipboard");
+
+            string dataExport = "";
+
+            if(m_lastChartClicked is not null)
+            {
+                DataPointCollection graphPoints = m_lastChartClicked.Series[0].Points;
+
+                if(graphPoints.Count > 0)
+                {
+                    dataExport += graphPoints.ElementAt(0).YValues[0].ToString();
+                }
+
+                for(int counter = 1; counter < graphPoints.Count; counter++)
+                {
+                    dataExport += "\r\n";
+                    dataExport += graphPoints.ElementAt(counter).YValues[0].ToString();                    
+                }
+
+            }
+            if (dataExport.Length > 0)
+            {
+                System.Windows.Forms.Clipboard.SetText(dataExport);
+            }
+        }
+
+
+        void HandleGraphClick(Chart chart, MouseEventArgs e)
+        {
+            //check for right mouse click
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+
+                MenuItem item3 = cm.MenuItems.Add("Copy to clipboard");
+                item3.Click += CopyGraphToClipBoardAll;
+
+                cm.Show(chart, e.Location);
+                m_lastChartClicked = chart;
+            }
+        }
+
+        private void chrtLoggingData1_MouseClick(object sender, MouseEventArgs e)
+        {
+            HandleGraphClick(chrtLoggingData1, e);
+        }
+
+        private void chrtLoggingData2_MouseClick(object sender, MouseEventArgs e)
+        {
+            HandleGraphClick(chrtLoggingData2, e);
         }
     }
 
@@ -1620,6 +1675,9 @@ namespace YAT
     {
         public static string ToCSV(this DataTable dtDataTable, string seperator)
         {
+            Stopwatch timer = new Stopwatch();
+
+            timer.Start();
             string csvString = "";
              //headers    
              for (int i = 0; i < dtDataTable.Columns.Count; i++)
@@ -1631,9 +1689,12 @@ namespace YAT
                  }
              }
              csvString +=  "\r\n";
-             foreach (DataRow dr in dtDataTable.Rows)
+            string rowString = "";
+
+            foreach (DataRow dr in dtDataTable.Rows)
              {
-                 for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                
+                for (int i = 0; i < dtDataTable.Columns.Count; i++)
                  {
                      if (!Convert.IsDBNull(dr[i]))
                      {
@@ -1641,20 +1702,36 @@ namespace YAT
                          if (value.Contains(seperator))
                          {
                              value = String.Format("\"{0}\"", value);
-                            csvString += value;
+                            
                          }
-                         else
-                         {
-                            csvString += dr[i].ToString();                            
-                         }
+
+                        rowString += value;                         
                      }
                      if (i < dtDataTable.Columns.Count - 1)
                      {
-                        csvString += seperator;
+                        rowString += seperator;
                     }
                  }
-                 csvString += "\r\n";
+                
+                rowString += "\r\n";
+
+                if(rowString.Length > 8096)
+                {
+                    csvString += rowString;
+                    rowString = "";
+                }
+
              }
+
+            if (rowString.Length > 0)
+            {
+                csvString += rowString;
+            }
+
+
+
+
+            Debug.Print("timing:" +  timer.ElapsedMilliseconds.ToString());
 
             return csvString;
         }

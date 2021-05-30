@@ -787,7 +787,6 @@
             this.chkShowHeaderTimer.TabIndex = 8;
             this.chkShowHeaderTimer.Text = "Show header timer";
             this.chkShowHeaderTimer.UseVisualStyleBackColor = true;
-            this.chkShowHeaderTimer.CheckedChanged += new System.EventHandler(this.chkShowHeaderTimer_CheckedChanged);
             // 
             // tabPage2
             // 
@@ -859,6 +858,7 @@
             this.chrtLoggingData2.Size = new System.Drawing.Size(914, 173);
             this.chrtLoggingData2.TabIndex = 0;
             this.chrtLoggingData2.Text = "chart1";
+            this.chrtLoggingData2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chrtLoggingData2_MouseClick);
             // 
             // label8
             // 
@@ -942,7 +942,7 @@
             this.chrtLoggingData1.Size = new System.Drawing.Size(914, 172);
             this.chrtLoggingData1.TabIndex = 0;
             this.chrtLoggingData1.Text = "chart1";
-            this.chrtLoggingData1.Click += new System.EventHandler(this.chrtLoggingData1_Click);
+            this.chrtLoggingData1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chrtLoggingData1_MouseClick);
             // 
             // label6
             // 
@@ -1043,6 +1043,7 @@
             this.txtTimerSpeed.Name = "txtTimerSpeed";
             this.txtTimerSpeed.Size = new System.Drawing.Size(100, 20);
             this.txtTimerSpeed.TabIndex = 2;
+            this.txtTimerSpeed.Text = "1000";
             // 
             // tmrSendAllCommands
             // 
@@ -1082,7 +1083,7 @@
             // terminalToolStripMenuItemImportTerminalpp
             // 
             this.terminalToolStripMenuItemImportTerminalpp.Name = "terminalToolStripMenuItemImportTerminalpp";
-            this.terminalToolStripMenuItemImportTerminalpp.Size = new System.Drawing.Size(136, 22);
+            this.terminalToolStripMenuItemImportTerminalpp.Size = new System.Drawing.Size(135, 22);
             this.terminalToolStripMenuItemImportTerminalpp.Text = "Terminal++";
             this.terminalToolStripMenuItemImportTerminalpp.Click += new System.EventHandler(this.terminalToolStripMenuItemImportTerminalpp_Click);
             // 
