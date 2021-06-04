@@ -1720,6 +1720,11 @@ namespace YAT
             tableLayoutPanelGraphShowHide.PerformLayout();
 
         }
+
+        private void chrtLoggingData1_AxisViewChanged(object sender, ViewEventArgs e)
+        {
+
+        }
     }
 
 

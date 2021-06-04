@@ -30,10 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -840,17 +838,18 @@
             // 
             // chrtLoggingData2
             // 
+            chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea1.AxisY.IsStartedFromZero = false;
+            chartArea1.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea1.AxisY2.IsStartedFromZero = false;
             chartArea1.Name = "ChartArea1";
             this.chrtLoggingData2.ChartAreas.Add(chartArea1);
             this.tableLayoutPanelChart2.SetColumnSpan(this.chrtLoggingData2, 5);
             this.chrtLoggingData2.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chrtLoggingData2.Legends.Add(legend1);
             this.chrtLoggingData2.Location = new System.Drawing.Point(3, 3);
             this.chrtLoggingData2.Name = "chrtLoggingData2";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
             series1.MarkerSize = 10;
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Series1";
@@ -925,17 +924,18 @@
             // 
             // chrtLoggingData1
             // 
+            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisY.IsStartedFromZero = false;
+            chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisY2.IsStartedFromZero = false;
             chartArea2.Name = "ChartArea1";
             this.chrtLoggingData1.ChartAreas.Add(chartArea2);
             this.tableLayoutPanel9.SetColumnSpan(this.chrtLoggingData1, 5);
             this.chrtLoggingData1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chrtLoggingData1.Legends.Add(legend2);
             this.chrtLoggingData1.Location = new System.Drawing.Point(3, 3);
             this.chrtLoggingData1.Name = "chrtLoggingData1";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
             series2.MarkerSize = 10;
             series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series2.Name = "Series1";
@@ -944,6 +944,7 @@
             this.chrtLoggingData1.Size = new System.Drawing.Size(914, 172);
             this.chrtLoggingData1.TabIndex = 0;
             this.chrtLoggingData1.Text = "chart1";
+            this.chrtLoggingData1.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chrtLoggingData1_AxisViewChanged);
             this.chrtLoggingData1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chrtLoggingData1_MouseClick);
             // 
             // label6
