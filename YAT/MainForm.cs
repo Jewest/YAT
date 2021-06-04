@@ -1559,10 +1559,8 @@ namespace YAT
         private void CopyLogToClipBoardAll(object sender, EventArgs e)
         {
             // build the string
-
-            //m_dataTableLog.ToString
             System.Windows.Forms.Clipboard.SetText(m_dataTableLog.ToCSV(";"));
-            //System.Windows.Forms.Clipboard.SetText("String to be copied to Clipboard");
+            MessageBox.Show(this, "Copy to clipboard completed");
         }
 
         private void CopyLogToClipBoardOnlyData(object sender, EventArgs e)
@@ -1573,12 +1571,10 @@ namespace YAT
             copyVersion.Columns.Remove(copyVersion.Columns[0]);
 
             System.Windows.Forms.Clipboard.SetText(copyVersion.ToCSV(";"));
+            MessageBox.Show(this, "Copy to clipboard completed");
         }
 
-        private void dataGridViewLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+   
 
         private void terminalToolStripMenuItemImportTerminalpp_Click(object sender, EventArgs e)
         {
@@ -1677,6 +1673,11 @@ namespace YAT
             if (dataExport.Length > 0)
             {
                 System.Windows.Forms.Clipboard.SetText(dataExport);
+                MessageBox.Show(this, "Copy to clipboard completed");
+            }
+            else
+            {
+                MessageBox.Show(this, "No data to copy to clipboard");
             }
         }
 
