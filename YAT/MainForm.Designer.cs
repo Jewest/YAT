@@ -85,8 +85,8 @@
             this.chkShowSend = new System.Windows.Forms.CheckBox();
             this.chkShowHeaderTimer = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelGraphShowHide = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelChart2 = new System.Windows.Forms.TableLayoutPanel();
             this.chrtLoggingData2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -131,8 +131,8 @@
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.tableLayoutPanel10.SuspendLayout();
-            this.tableLayoutPanel11.SuspendLayout();
+            this.tableLayoutPanelGraphShowHide.SuspendLayout();
+            this.tableLayoutPanelChart2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData2)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData1)).BeginInit();
@@ -790,7 +790,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.tableLayoutPanel10);
+            this.tabPage2.Controls.Add(this.tableLayoutPanelGraphShowHide);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -799,50 +799,50 @@
             this.tabPage2.Text = "Log";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel10
+            // tableLayoutPanelGraphShowHide
             // 
-            this.tableLayoutPanel10.ColumnCount = 1;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel11, 0, 2);
-            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel9, 0, 1);
-            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel12, 0, 0);
-            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 3;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(926, 479);
-            this.tableLayoutPanel10.TabIndex = 1;
+            this.tableLayoutPanelGraphShowHide.ColumnCount = 1;
+            this.tableLayoutPanelGraphShowHide.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelGraphShowHide.Controls.Add(this.tableLayoutPanelChart2, 0, 2);
+            this.tableLayoutPanelGraphShowHide.Controls.Add(this.tableLayoutPanel9, 0, 1);
+            this.tableLayoutPanelGraphShowHide.Controls.Add(this.tableLayoutPanel12, 0, 0);
+            this.tableLayoutPanelGraphShowHide.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelGraphShowHide.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelGraphShowHide.Name = "tableLayoutPanelGraphShowHide";
+            this.tableLayoutPanelGraphShowHide.RowCount = 3;
+            this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelGraphShowHide.Size = new System.Drawing.Size(926, 479);
+            this.tableLayoutPanelGraphShowHide.TabIndex = 1;
             // 
-            // tableLayoutPanel11
+            // tableLayoutPanelChart2
             // 
-            this.tableLayoutPanel11.ColumnCount = 5;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanel11.Controls.Add(this.chrtLoggingData2, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.label8, 0, 1);
-            this.tableLayoutPanel11.Controls.Add(this.label9, 2, 1);
-            this.tableLayoutPanel11.Controls.Add(this.txtSendGraphCommand2, 1, 1);
-            this.tableLayoutPanel11.Controls.Add(this.txtDecodeValue2, 3, 1);
-            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 267);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 2;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(920, 209);
-            this.tableLayoutPanel11.TabIndex = 1;
+            this.tableLayoutPanelChart2.ColumnCount = 5;
+            this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanelChart2.Controls.Add(this.chrtLoggingData2, 0, 0);
+            this.tableLayoutPanelChart2.Controls.Add(this.label8, 0, 1);
+            this.tableLayoutPanelChart2.Controls.Add(this.label9, 2, 1);
+            this.tableLayoutPanelChart2.Controls.Add(this.txtSendGraphCommand2, 1, 1);
+            this.tableLayoutPanelChart2.Controls.Add(this.txtDecodeValue2, 3, 1);
+            this.tableLayoutPanelChart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelChart2.Location = new System.Drawing.Point(3, 267);
+            this.tableLayoutPanelChart2.Name = "tableLayoutPanelChart2";
+            this.tableLayoutPanelChart2.RowCount = 2;
+            this.tableLayoutPanelChart2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelChart2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelChart2.Size = new System.Drawing.Size(920, 209);
+            this.tableLayoutPanelChart2.TabIndex = 1;
             // 
             // chrtLoggingData2
             // 
             chartArea1.Name = "ChartArea1";
             this.chrtLoggingData2.ChartAreas.Add(chartArea1);
-            this.tableLayoutPanel11.SetColumnSpan(this.chrtLoggingData2, 5);
+            this.tableLayoutPanelChart2.SetColumnSpan(this.chrtLoggingData2, 5);
             this.chrtLoggingData2.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chrtLoggingData2.Legends.Add(legend1);
@@ -1038,6 +1038,7 @@
             this.chkGraphSelection.TabIndex = 1;
             this.chkGraphSelection.Text = "Both the graphs";
             this.chkGraphSelection.UseVisualStyleBackColor = true;
+            this.chkGraphSelection.CheckedChanged += new System.EventHandler(this.chkGraphSelection_CheckedChanged);
             // 
             // txtTimerSpeed
             // 
@@ -1130,9 +1131,9 @@
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tableLayoutPanel10.ResumeLayout(false);
-            this.tableLayoutPanel11.ResumeLayout(false);
-            this.tableLayoutPanel11.PerformLayout();
+            this.tableLayoutPanelGraphShowHide.ResumeLayout(false);
+            this.tableLayoutPanelChart2.ResumeLayout(false);
+            this.tableLayoutPanelChart2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtLoggingData2)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
@@ -1204,8 +1205,8 @@
         private System.Windows.Forms.TextBox txtSendGraphCommand1;
         private System.Windows.Forms.TextBox txtDecodeValue1;
         private System.Windows.Forms.CheckBox chkBoxLogValue;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGraphShowHide;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelChart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chrtLoggingData2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;

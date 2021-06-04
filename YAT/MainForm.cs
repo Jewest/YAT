@@ -1479,11 +1479,16 @@ namespace YAT
 
                                     if(currentChart.ChartAreas[0].AxisX.Maximum < nowValue)
                                     {
-                                        if (currentChart == chrtLoggingData2)
+                                        if ((currentChart == chrtLoggingData2) && (chkGraphSelection.Checked == true))
                                         {
                                             chrtLoggingData1.ChartAreas[0].AxisX.Maximum = currentTime.AddSeconds(10).ToOADate();
                                             chrtLoggingData2.ChartAreas[0].AxisX.Maximum = currentTime.AddSeconds(10).ToOADate();
                                         }
+                                        else if ((currentChart == chrtLoggingData1) && (chkGraphSelection.Checked == false))
+                                        {
+                                            chrtLoggingData1.ChartAreas[0].AxisX.Maximum = currentTime.AddSeconds(10).ToOADate();
+                                        }
+
                                     }
 
                                     
@@ -1699,6 +1704,21 @@ namespace YAT
         private void chrtLoggingData2_MouseClick(object sender, MouseEventArgs e)
         {
             HandleGraphClick(chrtLoggingData2, e);
+        }
+
+        private void chkGraphSelection_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkGraphSelection.Checked == true)
+            {
+
+                tableLayoutPanelGraphShowHide.RowStyles[2].Height = 50;
+            }
+            else
+            {
+                tableLayoutPanelGraphShowHide.RowStyles[2].Height = 0;
+            }
+            tableLayoutPanelGraphShowHide.PerformLayout();
+
         }
     }
 
