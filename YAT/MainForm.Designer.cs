@@ -854,6 +854,7 @@
             series1.MarkerSize = 10;
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Series1";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             this.chrtLoggingData2.Series.Add(series1);
             this.chrtLoggingData2.Size = new System.Drawing.Size(914, 173);
             this.chrtLoggingData2.TabIndex = 0;
@@ -938,6 +939,7 @@
             series2.MarkerSize = 10;
             series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series2.Name = "Series1";
+            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             this.chrtLoggingData1.Series.Add(series2);
             this.chrtLoggingData1.Size = new System.Drawing.Size(914, 172);
             this.chrtLoggingData1.TabIndex = 0;

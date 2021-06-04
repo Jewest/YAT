@@ -1371,12 +1371,13 @@ namespace YAT
         {
             //clear the points
             chrtLoggingData1.Series[0].Points.Clear();
-            chrtLoggingData1.ChartAreas[0].AxisX.Maximum = 10;
+            chrtLoggingData1.ChartAreas[0].AxisX.Maximum = 0;
             chrtLoggingData1.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            
 
 
             chrtLoggingData2.Series[0].Points.Clear();
-            chrtLoggingData2.ChartAreas[0].AxisX.Maximum = 10;
+            chrtLoggingData2.ChartAreas[0].AxisX.Maximum = 0;
             chrtLoggingData2.ChartAreas[0].AxisY.IsStartedFromZero = false;
         }
 
@@ -1408,7 +1409,7 @@ namespace YAT
             }
             //clear the data
             m_unusedData = "";
-            
+            m_useHighTekst = true;
         }
 
         bool m_useHighTekst = true;
@@ -1454,15 +1455,46 @@ namespace YAT
                                 try
                                 {
                                     value = double.Parse(data, CultureInfo.InvariantCulture);
-
                                     // add point to the chart
-                                    currentChart.Series[0].Points.AddY(value);
+                                    //currentChart.Series[0].Points.AddY(value);
 
-                                    if(currentChart.Series[0].Points.Count > currentChart.ChartAreas[0].AxisX.Maximum)
+
+                                    DateTime currentTime = DateTime.Now;
+                                    double nowValue = currentTime.ToOADate();
+
+                                    if(currentChart.Series[0].Points.Count == 0)
                                     {
-                                        currentChart.ChartAreas[0].AxisX.Maximum += 10;
+                                        currentChart.ChartAreas[0].AxisX.Maximum = nowValue;
+
+                                        if (currentChart == chrtLoggingData1)
+                                        {
+                                            chrtLoggingData1.ChartAreas[0].AxisX.Minimum = nowValue;
+                                            chrtLoggingData2.ChartAreas[0].AxisX.Minimum = nowValue;
+                                        }
+                                        currentChart.ChartAreas[0].AxisX.LabelStyle.Format = "hh:mm:ss";
+                                        
                                     }
 
+                                    currentChart.Series[0].Points.AddXY(nowValue,  value);
+
+                                    if(currentChart.ChartAreas[0].AxisX.Maximum < nowValue)
+                                    {
+                                        if (currentChart == chrtLoggingData2)
+                                        {
+                                            chrtLoggingData1.ChartAreas[0].AxisX.Maximum = currentTime.AddSeconds(10).ToOADate();
+                                            chrtLoggingData2.ChartAreas[0].AxisX.Maximum = currentTime.AddSeconds(10).ToOADate();
+                                        }
+                                    }
+
+                                    
+                                   
+                                    /*
+
+                                     if (currentChart.Series[0].Points.Count > currentChart.ChartAreas[0].AxisX.Maximum)
+                                     {
+                                         currentChart.ChartAreas[0].AxisX.Maximum += 10;
+                                     }
+                                    */
                                 }
                                 catch(Exception)
                                 {
