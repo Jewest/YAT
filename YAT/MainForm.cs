@@ -111,6 +111,7 @@ namespace YAT
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+            dataGridViewLog.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             // hide the 3th collumn, as this is only an index
             dataGridViewLog.Columns[2].Visible = false;
 
@@ -1723,6 +1724,11 @@ namespace YAT
         }
 
         private void chrtLoggingData1_AxisViewChanged(object sender, ViewEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
