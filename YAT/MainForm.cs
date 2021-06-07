@@ -637,8 +637,21 @@ namespace YAT
             }
             else if (isSaveAS == true)
             {
+
+
+
                 saveFile.FileName = Path.GetFileName(m_filename);
-                saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
+
+                if (m_filename.Length > 0)
+                {
+
+                    saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
+
+                }
+                else
+                {
+                    saveFile.InitialDirectory = Application.StartupPath;
+                }
                 if (saveFile.ShowDialog() == DialogResult.OK)
                 {
                     saveData = true;
