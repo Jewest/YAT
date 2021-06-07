@@ -126,13 +126,13 @@ namespace YAT
         {
             tabMacro.TabPages.Clear();
             m_ConfiguredMacro.Clear();
-            m_filename = "";
+            UpdateFileName("");
 
             tabMacro.TabPages.Add(m_tabPagePlus);
             tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", false);
 
             AddMacroToPanel(GetCurrentSelectedTab(), true);
-            UpdateButtonsAndStatus(true);
+            UpdateButtonsAndStatus(true);            
         }
 
         private enum Direction
@@ -642,16 +642,25 @@ namespace YAT
 
                 saveFile.FileName = Path.GetFileName(m_filename);
 
+                //check the file length
                 if (m_filename.Length > 0)
                 {
-
-                    saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
-
+                    try
+                    {
+                        saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
+                    }
+                    catch(Exception) 
+                    {
+                        //set the startup dir, in case of exception
+                        saveFile.InitialDirectory = Application.StartupPath;
+                    }
                 }
                 else
                 {
+                    //set the startup dir
                     saveFile.InitialDirectory = Application.StartupPath;
                 }
+
                 if (saveFile.ShowDialog() == DialogResult.OK)
                 {
                     saveData = true;
