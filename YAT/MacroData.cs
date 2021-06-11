@@ -109,6 +109,7 @@ namespace YAT
         public event EventHandler RemoveMe;
         public event EventHandler SetFocusBeforeMe;
         public event EventHandler SetFocusAfterMe;
+        public event EventHandler CloneMe;
 
         private void txtCommand_TextChanged(object sender, EventArgs e)
         {
@@ -167,6 +168,10 @@ namespace YAT
                 MenuItem item3 = cm.MenuItems.Add("Insert Before");
                 item3.Click += Item_InsertBefore;
 
+                MenuItem item4 = cm.MenuItems.Add("Clone");
+                item4.Click += Item_Clone;
+
+
                 MenuItem item = cm.MenuItems.Add("Remove");
                 item.Click += Item_Click;
 
@@ -218,6 +223,13 @@ namespace YAT
             // remove this element
             InsertBeforeMe?.Invoke(this, e);
         }
+
+        private void Item_Clone(object sender, EventArgs e)
+        {
+            // remove this element
+            CloneMe?.Invoke(this, e);
+        }
+
 
         private void chkSendCommand_MouseDown(object sender, MouseEventArgs e)
         {

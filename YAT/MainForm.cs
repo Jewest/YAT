@@ -442,6 +442,34 @@ namespace YAT
 				}
             }
 		}
+
+        public void MacroElementCloneMe(object sender, EventArgs e)
+        {
+            int index = GetCurrentSelectedTab();
+
+            if (index < m_ConfiguredMacro.Count)
+            {
+                MacroTab tab = m_ConfiguredMacro[index];
+
+                for (Int32 counter = 0; counter < tab.elements.Count; counter++)
+                {
+                    if (tab.elements[counter] is MacroData)
+                    {
+                        if (((MacroData)tab.elements[counter]) == ((MacroData)sender))
+                        {
+                            MacroData data = CreateNewMacro();
+                            data.CloneSettings((MacroData)sender);
+
+                            tab.elements.Insert(counter, data);
+
+                            UpdateGrid(index);
+                            counter++;
+                        }
+                    }
+                }
+            }
+        }
+
         private void btnLoadMacro_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -719,12 +747,6 @@ namespace YAT
             return foundItem;
         }
 
-
-       // private TableLayoutPanel GetTableLayoutPanelOnCurrentTab()
-        //{            
-            //return GetTableLayoutPanelOnTab(tabMacro.SelectedIndex); 
-        //}
-
         private List<MacroData> GetMacroLayoutOnCurrentTab()
         {
             return m_ConfiguredMacro[tabMacro.SelectedIndex].elements;
@@ -736,6 +758,7 @@ namespace YAT
             myobject.Datachanged += MacroElementChanged;
             myobject.RemoveMe += MacroElementRemoveMe;
             myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
+            myobject.CloneMe += MacroElementCloneMe;
             myobject.SetFocusAfterMe += MacroSetFocusAfter;
             myobject.SetFocusBeforeMe += MacroSetFocusBefore;
             return myobject;
@@ -748,6 +771,7 @@ namespace YAT
             myobject.Datachanged += MacroElementChanged;
             myobject.RemoveMe += MacroElementRemoveMe;
             myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
+            myobject.CloneMe += MacroElementCloneMe;
             myobject.SetFocusAfterMe += MacroSetFocusAfter;
             myobject.SetFocusBeforeMe += MacroSetFocusBefore;
             return myobject;
@@ -1250,8 +1274,6 @@ namespace YAT
         {
             CheckConfigurationAndSave();
         }
-
-
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
         {
