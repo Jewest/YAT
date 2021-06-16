@@ -125,12 +125,16 @@ namespace YAT
         void SetupDefaultTab()
         {
             tabMacro.TabPages.Clear();
+
+            
+
+
             m_ConfiguredMacro.Clear();
             UpdateFileName("");
 
             tabMacro.TabPages.Add(m_tabPagePlus);
             tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", false);
-
+            
             AddMacroToPanel(GetCurrentSelectedTab(), true);
             UpdateButtonsAndStatus(true);            
         }
@@ -332,29 +336,40 @@ namespace YAT
 
         private void UpdateGrid(int indexValue)
         {
-            TableLayoutPanel layout = GetTableLayoutPanelOnTab(indexValue);
+            TableLayoutPanel layoutPage = GetTableLayoutPanelOnTab(indexValue);
 
-            if (layout != null)
-            {   
-                layout.Visible = false;
-                layout.SuspendLayout();
-                layout.Controls.Clear();
-
-                layout.ColumnCount = 3;
-                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0F));
-                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
-                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 75));
-
+            if (layoutPage != null)
+            {
+                layoutPage.Visible = false;
+                layoutPage.SuspendLayout();
+                layoutPage.Controls.Clear();
+                
                 MacroData[] elements = m_ConfiguredMacro[indexValue].elements.ToArray();
 
-                layout.RowCount = elements.Length;
-
-                for (int counter = 0; counter < layout.RowCount; counter++)
+                layoutPage.RowCount = elements.Length;
+                layoutPage.ColumnCount = 1;
+                layoutPage.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0F));
+                
+                for (int counter = 0; counter < layoutPage.RowCount; counter++)
                 {
+
+                    TableLayoutPanel layout = new TableLayoutPanel();
+                    layout.Height = 32;
+                    layout.ColumnCount = 3;
+                    layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0F));
+                    layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
+                    layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 75));
+                    layout.BorderStyle = System.Windows.Forms.BorderStyle.None  ;
+                   
+                    layout.Dock = DockStyle.Fill;
 
                     // layout.Controls.Add(elements[counter], 0, counter);                    
                     TextBox localTxtBox = new TextBox();
                     localTxtBox.Dock = DockStyle.Fill;
+
+                    Padding local = localTxtBox.Margin;
+                    local.Top = 5;
+                    localTxtBox.Margin = local;
 
                     CheckBox chkBox = new CheckBox();
                     chkBox.Dock = DockStyle.Fill;
@@ -364,25 +379,45 @@ namespace YAT
                     btnSend.Text = "Send";
                     btnSend.Dock = DockStyle.Fill;
 
-                    layout.Controls.Add(localTxtBox, 0, counter);                    
-                    layout.Controls.Add(btnSend, 1, counter);
-                    layout.Controls.Add(chkBox, 2, counter);
 
+                    if (counter % 4 == 1)
+                    {
+                        //layout.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+
+                        localTxtBox.BackColor = Color.LightSteelBlue;
+                        //chkBox.BackColor = Color.LightBlue;
+                        //btnSend.BackColor = Color.LightBlue;
+                    }
+                    else if (counter % 4 == 3)
+                    {
+                        //layout.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+                        localTxtBox.BackColor = Color.LightGray;
+                        //chkBox.BackColor = Color.LightGray;
+                        //btnSend.BackColor = Color.LightGray;
+                    }
+
+
+
+                    layout.Controls.Add(localTxtBox, 0, 0);                    
+                    layout.Controls.Add(btnSend, 1, 0);
+                    layout.Controls.Add(chkBox, 2, 0);
+                    
+                    layoutPage.Controls.Add(layout,0,counter);
                     elements[counter].AttachTo(btnSend, chkBox, localTxtBox);
 
                 }
 
-                layout.RowCount = layout.RowCount + 1;
+                layoutPage.RowCount = layoutPage.RowCount + 1;
                 Button button = CreateAddOneButton();
-                layout.Controls.Add(button, 0, layout.RowCount-1);
-                layout.SetColumnSpan(button, 1);
+                layoutPage.Controls.Add(button, 0, layoutPage.RowCount-1);
+                layoutPage.SetColumnSpan(button, 1);
 
                 button = CreateAddTenButton();
-                layout.Controls.Add(button, 1, layout.RowCount - 1);
-                layout.SetColumnSpan(button, 2);
+                layoutPage.Controls.Add(button, 1, layoutPage.RowCount - 1);
+                layoutPage.SetColumnSpan(button, 2);
 
-                layout.ResumeLayout();
-                layout.Visible = true;                
+                layoutPage.ResumeLayout();
+                layoutPage.Visible = true;                
             }
 
         }
@@ -879,7 +914,7 @@ namespace YAT
             tbPanel.Dock = DockStyle.Fill;
             tbPanel.VerticalScroll.Visible = true;
             tbPanel.AutoScroll = true;
-            
+                        
             tbPanel.BringToFront();
 
             MacroTab newElement = new MacroTab();
@@ -899,6 +934,9 @@ namespace YAT
             {
                 tabMacro.TabPages.Add(tp);
             }
+
+            // make the correct back ground
+            tp.UseVisualStyleBackColor = false;
 
             return tp;      
          }

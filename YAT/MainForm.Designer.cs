@@ -412,7 +412,6 @@
             this.tabPage1.Size = new System.Drawing.Size(932, 485);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Commands";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
@@ -795,7 +794,6 @@
             this.tabPage2.Size = new System.Drawing.Size(932, 485);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Log";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelGraphShowHide
             // 
