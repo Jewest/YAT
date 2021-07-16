@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
@@ -101,6 +103,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.chkGraphSelection = new System.Windows.Forms.CheckBox();
             this.txtTimerSpeed = new System.Windows.Forms.TextBox();
+            this.btnClearGraphs = new System.Windows.Forms.Button();
             this.tmrSendAllCommands = new System.Windows.Forms.Timer(this.components);
             this.tmrLog = new System.Windows.Forms.Timer(this.components);
             this.mnustrForm = new System.Windows.Forms.MenuStrip();
@@ -746,15 +749,30 @@
             // 
             this.dataGridViewLog.AllowUserToAddRows = false;
             this.dataGridViewLog.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel4.SetColumnSpan(this.dataGridViewLog, 4);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewLog.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewLog.Location = new System.Drawing.Point(3, 33);
             this.dataGridViewLog.Name = "dataGridViewLog";
             this.dataGridViewLog.ReadOnly = true;
             this.dataGridViewLog.Size = new System.Drawing.Size(466, 394);
-            this.dataGridViewLog.TabIndex = 6;
-            this.dataGridViewLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLog_CellContentClick);
+            this.dataGridViewLog.TabIndex = 6;            
             this.dataGridViewLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewLog_CellFormatting);
             this.dataGridViewLog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewLog_MouseClick);
             // 
@@ -806,7 +824,7 @@
             this.tableLayoutPanelGraphShowHide.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanelGraphShowHide.Name = "tableLayoutPanelGraphShowHide";
             this.tableLayoutPanelGraphShowHide.RowCount = 3;
-            this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelGraphShowHide.Size = new System.Drawing.Size(926, 479);
@@ -826,12 +844,12 @@
             this.tableLayoutPanelChart2.Controls.Add(this.txtSendGraphCommand2, 1, 1);
             this.tableLayoutPanelChart2.Controls.Add(this.txtDecodeValue2, 3, 1);
             this.tableLayoutPanelChart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelChart2.Location = new System.Drawing.Point(3, 267);
+            this.tableLayoutPanelChart2.Location = new System.Drawing.Point(3, 262);
             this.tableLayoutPanelChart2.Name = "tableLayoutPanelChart2";
             this.tableLayoutPanelChart2.RowCount = 2;
             this.tableLayoutPanelChart2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelChart2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelChart2.Size = new System.Drawing.Size(920, 209);
+            this.tableLayoutPanelChart2.Size = new System.Drawing.Size(920, 214);
             this.tableLayoutPanelChart2.TabIndex = 1;
             // 
             // chrtLoggingData2
@@ -853,7 +871,7 @@
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             this.chrtLoggingData2.Series.Add(series1);
-            this.chrtLoggingData2.Size = new System.Drawing.Size(914, 173);
+            this.chrtLoggingData2.Size = new System.Drawing.Size(914, 178);
             this.chrtLoggingData2.TabIndex = 0;
             this.chrtLoggingData2.Text = "chart1";
             this.chrtLoggingData2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chrtLoggingData2_MouseClick);
@@ -862,7 +880,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 179);
+            this.label8.Location = new System.Drawing.Point(3, 184);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 30);
             this.label8.TabIndex = 1;
@@ -873,7 +891,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(400, 179);
+            this.label9.Location = new System.Drawing.Point(400, 184);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 30);
             this.label9.TabIndex = 2;
@@ -883,7 +901,7 @@
             // txtSendGraphCommand2
             // 
             this.txtSendGraphCommand2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSendGraphCommand2.Location = new System.Drawing.Point(53, 182);
+            this.txtSendGraphCommand2.Location = new System.Drawing.Point(53, 187);
             this.txtSendGraphCommand2.Name = "txtSendGraphCommand2";
             this.txtSendGraphCommand2.Size = new System.Drawing.Size(341, 20);
             this.txtSendGraphCommand2.TabIndex = 3;
@@ -891,7 +909,7 @@
             // txtDecodeValue2
             // 
             this.txtDecodeValue2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDecodeValue2.Location = new System.Drawing.Point(475, 182);
+            this.txtDecodeValue2.Location = new System.Drawing.Point(475, 187);
             this.txtDecodeValue2.Name = "txtDecodeValue2";
             this.txtDecodeValue2.Size = new System.Drawing.Size(341, 20);
             this.txtDecodeValue2.TabIndex = 4;
@@ -912,12 +930,12 @@
             this.tableLayoutPanel9.Controls.Add(this.txtDecodeValue1, 3, 1);
             this.tableLayoutPanel9.Controls.Add(this.chkBoxLogValue, 4, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 53);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 43);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(920, 208);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(920, 213);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
             // chrtLoggingData1
@@ -939,17 +957,16 @@
             series2.Name = "Series1";
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             this.chrtLoggingData1.Series.Add(series2);
-            this.chrtLoggingData1.Size = new System.Drawing.Size(914, 172);
+            this.chrtLoggingData1.Size = new System.Drawing.Size(914, 177);
             this.chrtLoggingData1.TabIndex = 0;
-            this.chrtLoggingData1.Text = "chart1";
-            this.chrtLoggingData1.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chrtLoggingData1_AxisViewChanged);
+            this.chrtLoggingData1.Text = "chart1";            
             this.chrtLoggingData1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chrtLoggingData1_MouseClick);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(3, 178);
+            this.label6.Location = new System.Drawing.Point(3, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 30);
             this.label6.TabIndex = 1;
@@ -960,7 +977,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(400, 178);
+            this.label7.Location = new System.Drawing.Point(400, 183);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 30);
             this.label7.TabIndex = 2;
@@ -970,7 +987,7 @@
             // txtSendGraphCommand1
             // 
             this.txtSendGraphCommand1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSendGraphCommand1.Location = new System.Drawing.Point(53, 181);
+            this.txtSendGraphCommand1.Location = new System.Drawing.Point(53, 186);
             this.txtSendGraphCommand1.Name = "txtSendGraphCommand1";
             this.txtSendGraphCommand1.Size = new System.Drawing.Size(341, 20);
             this.txtSendGraphCommand1.TabIndex = 3;
@@ -978,7 +995,7 @@
             // txtDecodeValue1
             // 
             this.txtDecodeValue1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDecodeValue1.Location = new System.Drawing.Point(475, 181);
+            this.txtDecodeValue1.Location = new System.Drawing.Point(475, 186);
             this.txtDecodeValue1.Name = "txtDecodeValue1";
             this.txtDecodeValue1.Size = new System.Drawing.Size(341, 20);
             this.txtDecodeValue1.TabIndex = 4;
@@ -989,7 +1006,7 @@
             this.chkBoxLogValue.Appearance = System.Windows.Forms.Appearance.Button;
             this.chkBoxLogValue.AutoSize = true;
             this.chkBoxLogValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkBoxLogValue.Location = new System.Drawing.Point(822, 181);
+            this.chkBoxLogValue.Location = new System.Drawing.Point(822, 186);
             this.chkBoxLogValue.Name = "chkBoxLogValue";
             this.chkBoxLogValue.Size = new System.Drawing.Size(95, 24);
             this.chkBoxLogValue.TabIndex = 5;
@@ -1000,19 +1017,22 @@
             // 
             // tableLayoutPanel12
             // 
-            this.tableLayoutPanel12.ColumnCount = 3;
+            this.tableLayoutPanel12.ColumnCount = 5;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
+            this.tableLayoutPanel12.Controls.Add(this.btnClearGraphs, 4, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(920, 44);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(920, 34);
             this.tableLayoutPanel12.TabIndex = 2;
             // 
             // label10
@@ -1021,9 +1041,10 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 44);
+            this.label10.Size = new System.Drawing.Size(111, 34);
             this.label10.TabIndex = 0;
             this.label10.Text = "Time per sample (mS):";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // chkGraphSelection
             // 
@@ -1031,9 +1052,9 @@
             this.chkGraphSelection.Checked = true;
             this.chkGraphSelection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkGraphSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkGraphSelection.Location = new System.Drawing.Point(521, 3);
+            this.chkGraphSelection.Location = new System.Drawing.Point(336, 3);
             this.chkGraphSelection.Name = "chkGraphSelection";
-            this.chkGraphSelection.Size = new System.Drawing.Size(396, 38);
+            this.chkGraphSelection.Size = new System.Drawing.Size(210, 28);
             this.chkGraphSelection.TabIndex = 1;
             this.chkGraphSelection.Text = "Both the graphs";
             this.chkGraphSelection.UseVisualStyleBackColor = true;
@@ -1041,11 +1062,23 @@
             // 
             // txtTimerSpeed
             // 
+            this.txtTimerSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTimerSpeed.Location = new System.Drawing.Point(120, 3);
             this.txtTimerSpeed.Name = "txtTimerSpeed";
-            this.txtTimerSpeed.Size = new System.Drawing.Size(100, 20);
+            this.txtTimerSpeed.Size = new System.Drawing.Size(210, 20);
             this.txtTimerSpeed.TabIndex = 2;
             this.txtTimerSpeed.Text = "1000";
+            // 
+            // btnClearGraphs
+            // 
+            this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClearGraphs.Location = new System.Drawing.Point(767, 3);
+            this.btnClearGraphs.Name = "btnClearGraphs";
+            this.btnClearGraphs.Size = new System.Drawing.Size(150, 28);
+            this.btnClearGraphs.TabIndex = 3;
+            this.btnClearGraphs.Text = "Clear graph(s)";
+            this.btnClearGraphs.UseVisualStyleBackColor = true;
+            this.btnClearGraphs.Click += new System.EventHandler(this.btnClearGraphs_Click);
             // 
             // tmrSendAllCommands
             // 
@@ -1222,6 +1255,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox chkGraphSelection;
         private System.Windows.Forms.TextBox txtTimerSpeed;
+        private System.Windows.Forms.Button btnClearGraphs;
     }
 }
 

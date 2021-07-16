@@ -119,6 +119,7 @@ namespace YAT
             dataGridViewLog.ColumnHeadersVisible = true;
             dataGridViewLog.RowHeadersVisible = false;
 
+            chkGraphSelection.CheckState = CheckState.Unchecked;
 
         }
 
@@ -1449,17 +1450,23 @@ namespace YAT
             }
         }
 
+        void ClearGraphs()
+        {
+            chrtLoggingData1.Series[0].Points.Clear();
+            chrtLoggingData2.Series[0].Points.Clear();
+        }
 
         void SetupLoggingGraph()
         {
             //clear the points
-            chrtLoggingData1.Series[0].Points.Clear();
+            ClearGraphs();
+
             chrtLoggingData1.ChartAreas[0].AxisX.Maximum = 0;
             chrtLoggingData1.ChartAreas[0].AxisY.IsStartedFromZero = false;
             
 
 
-            chrtLoggingData2.Series[0].Points.Clear();
+            
             chrtLoggingData2.ChartAreas[0].AxisX.Maximum = 0;
             chrtLoggingData2.ChartAreas[0].AxisY.IsStartedFromZero = false;
         }
@@ -1805,14 +1812,9 @@ namespace YAT
 
         }
 
-        private void chrtLoggingData1_AxisViewChanged(object sender, ViewEventArgs e)
+        private void btnClearGraphs_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void dataGridViewLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            ClearGraphs();
         }
     }
 
