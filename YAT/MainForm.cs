@@ -1771,6 +1771,27 @@ namespace YAT
             }
         }
 
+        private void SaveToPNGFile(object sender, EventArgs e)
+        {
+            if (m_lastChartClicked is not null)
+            {
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.InitialDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+                saveFile.RestoreDirectory = true;
+                saveFile.Filter = "PNG (*.png)|*.PNG";
+
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        m_lastChartClicked.SaveImage(saveFile.FileName, ChartImageFormat.Png);
+                    } catch(Exception)
+                    {
+                        MessageBox.Show("Exception during saving, please try again");
+                    }
+                }
+            }
+        }
 
         void HandleGraphClick(Chart chart, MouseEventArgs e)
         {
@@ -1779,13 +1800,18 @@ namespace YAT
             {
                 ContextMenu cm = new ContextMenu();
 
-                MenuItem item3 = cm.MenuItems.Add("Copy to clipboard");
+                MenuItem item3 = cm.MenuItems.Add("Copy data to clipboard");
                 item3.Click += CopyGraphToClipBoardAll;
+
+                MenuItem itemSaveToFile = cm.MenuItems.Add("Save to png file");
+                itemSaveToFile.Click += SaveToPNGFile;
 
                 cm.Show(chart, e.Location);
                 m_lastChartClicked = chart;
             }
         }
+
+       
 
         private void chrtLoggingData1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1816,6 +1842,7 @@ namespace YAT
         {
             ClearGraphs();
         }
+
     }
 
 
