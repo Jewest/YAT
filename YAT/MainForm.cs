@@ -54,9 +54,10 @@ namespace YAT
             cboBaudRate.Items.Clear();
 
             cboBaudRate.Items.Add(19200);
+            cboBaudRate.Items.Add(57600);
             cboBaudRate.Items.Add(115200);
             cboBaudRate.Items.Add(921600);
-            cboBaudRate.SelectedIndex = 1;
+            cboBaudRate.SelectedIndex = 2;
 
             //set the callback
             m_serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);

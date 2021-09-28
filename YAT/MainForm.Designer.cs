@@ -430,7 +430,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Size = new System.Drawing.Size(926, 479);
-            this.splitContainer1.SplitterDistance = 444;
+            this.splitContainer1.SplitterDistance = 443;
             this.splitContainer1.TabIndex = 7;
             // 
             // groupBox2
@@ -440,7 +440,7 @@
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.MinimumSize = new System.Drawing.Size(250, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(444, 479);
+            this.groupBox2.Size = new System.Drawing.Size(443, 479);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Commands";
@@ -452,7 +452,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(438, 460);
+            this.panel1.Size = new System.Drawing.Size(437, 460);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -481,7 +481,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 460);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(437, 460);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tabMacro
@@ -491,7 +491,7 @@
             this.tabMacro.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.tabMacro.Name = "tabMacro";
             this.tabMacro.SelectedIndex = 0;
-            this.tabMacro.Size = new System.Drawing.Size(435, 354);
+            this.tabMacro.Size = new System.Drawing.Size(434, 354);
             this.tabMacro.TabIndex = 5;
             this.tabMacro.SelectedIndexChanged += new System.EventHandler(this.tabMacro_SelectedIndexChanged);
             this.tabMacro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabMacro_MouseDown);
@@ -513,15 +513,15 @@
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(438, 30);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(437, 30);
             this.tableLayoutPanel5.TabIndex = 12;
             // 
             // btnRemoveTab
             // 
             this.btnRemoveTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveTab.Location = new System.Drawing.Point(295, 3);
+            this.btnRemoveTab.Location = new System.Drawing.Point(293, 3);
             this.btnRemoveTab.Name = "btnRemoveTab";
-            this.btnRemoveTab.Size = new System.Drawing.Size(140, 24);
+            this.btnRemoveTab.Size = new System.Drawing.Size(141, 24);
             this.btnRemoveTab.TabIndex = 11;
             this.btnRemoveTab.Text = "Remove tab";
             this.btnRemoveTab.UseVisualStyleBackColor = true;
@@ -530,9 +530,9 @@
             // btnRenameTab
             // 
             this.btnRenameTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRenameTab.Location = new System.Drawing.Point(149, 3);
+            this.btnRenameTab.Location = new System.Drawing.Point(148, 3);
             this.btnRenameTab.Name = "btnRenameTab";
-            this.btnRenameTab.Size = new System.Drawing.Size(140, 24);
+            this.btnRenameTab.Size = new System.Drawing.Size(139, 24);
             this.btnRenameTab.TabIndex = 10;
             this.btnRenameTab.Text = "Rename tab";
             this.btnRenameTab.UseVisualStyleBackColor = true;
@@ -543,7 +543,7 @@
             this.btnDuplicateTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDuplicateTab.Location = new System.Drawing.Point(3, 3);
             this.btnDuplicateTab.Name = "btnDuplicateTab";
-            this.btnDuplicateTab.Size = new System.Drawing.Size(140, 24);
+            this.btnDuplicateTab.Size = new System.Drawing.Size(139, 24);
             this.btnDuplicateTab.TabIndex = 9;
             this.btnDuplicateTab.Text = "Duplicate tab";
             this.btnDuplicateTab.UseVisualStyleBackColor = true;
@@ -555,7 +555,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tableLayoutPanel7.Controls.Add(this.cboTimerSendSelected, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.btnSendAll, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.chkSelectAll, 3, 0);
@@ -565,7 +565,7 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(438, 30);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(437, 30);
             this.tableLayoutPanel7.TabIndex = 13;
             // 
             // cboTimerSendSelected
@@ -575,14 +575,14 @@
             this.cboTimerSendSelected.FormattingEnabled = true;
             this.cboTimerSendSelected.Location = new System.Drawing.Point(3, 3);
             this.cboTimerSendSelected.Name = "cboTimerSendSelected";
-            this.cboTimerSendSelected.Size = new System.Drawing.Size(124, 21);
+            this.cboTimerSendSelected.Size = new System.Drawing.Size(123, 21);
             this.cboTimerSendSelected.TabIndex = 14;
             this.cboTimerSendSelected.SelectedIndexChanged += new System.EventHandler(this.cboTimerSendSelected_SelectedIndexChanged);
             // 
             // btnSendAll
             // 
             this.btnSendAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSendAll.Location = new System.Drawing.Point(263, 3);
+            this.btnSendAll.Location = new System.Drawing.Point(261, 3);
             this.btnSendAll.Name = "btnSendAll";
             this.btnSendAll.Size = new System.Drawing.Size(84, 24);
             this.btnSendAll.TabIndex = 13;
@@ -594,9 +594,9 @@
             // 
             this.chkSelectAll.AutoSize = true;
             this.chkSelectAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkSelectAll.Location = new System.Drawing.Point(353, 3);
+            this.chkSelectAll.Location = new System.Drawing.Point(351, 3);
             this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(82, 24);
+            this.chkSelectAll.Size = new System.Drawing.Size(83, 24);
             this.chkSelectAll.TabIndex = 12;
             this.chkSelectAll.Text = "Select all";
             this.chkSelectAll.UseVisualStyleBackColor = true;
@@ -619,7 +619,7 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(438, 30);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(437, 30);
             this.tableLayoutPanel8.TabIndex = 14;
             // 
             // btnSaveMacro
@@ -649,7 +649,7 @@
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnNew.Location = new System.Drawing.Point(330, 3);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(105, 24);
+            this.btnNew.Size = new System.Drawing.Size(104, 24);
             this.btnNew.TabIndex = 3;
             this.btnNew.Text = "Clear configuration";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -673,7 +673,7 @@
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(478, 479);
+            this.groupBox3.Size = new System.Drawing.Size(479, 479);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reply";
@@ -684,7 +684,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel4.Controls.Add(this.btnClearLog, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblCountTerminator, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 2, 0);
@@ -699,7 +699,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(472, 460);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(473, 460);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // btnClearLog
@@ -719,7 +719,7 @@
             this.lblCountTerminator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCountTerminator.Location = new System.Drawing.Point(421, 0);
             this.lblCountTerminator.Name = "lblCountTerminator";
-            this.lblCountTerminator.Size = new System.Drawing.Size(48, 30);
+            this.lblCountTerminator.Size = new System.Drawing.Size(49, 30);
             this.lblCountTerminator.TabIndex = 3;
             this.lblCountTerminator.Text = "0";
             this.lblCountTerminator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -771,8 +771,9 @@
             this.dataGridViewLog.Location = new System.Drawing.Point(3, 33);
             this.dataGridViewLog.Name = "dataGridViewLog";
             this.dataGridViewLog.ReadOnly = true;
-            this.dataGridViewLog.Size = new System.Drawing.Size(466, 394);
-            this.dataGridViewLog.TabIndex = 6;            
+            this.dataGridViewLog.RowHeadersWidth = 62;
+            this.dataGridViewLog.Size = new System.Drawing.Size(467, 394);
+            this.dataGridViewLog.TabIndex = 6;
             this.dataGridViewLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewLog_CellFormatting);
             this.dataGridViewLog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewLog_MouseClick);
             // 
@@ -837,7 +838,7 @@
             this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanelChart2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanelChart2.Controls.Add(this.chrtLoggingData2, 0, 0);
             this.tableLayoutPanelChart2.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanelChart2.Controls.Add(this.label9, 2, 1);
@@ -891,7 +892,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(400, 184);
+            this.label9.Location = new System.Drawing.Point(398, 184);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 30);
             this.label9.TabIndex = 2;
@@ -903,15 +904,15 @@
             this.txtSendGraphCommand2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSendGraphCommand2.Location = new System.Drawing.Point(53, 187);
             this.txtSendGraphCommand2.Name = "txtSendGraphCommand2";
-            this.txtSendGraphCommand2.Size = new System.Drawing.Size(341, 20);
+            this.txtSendGraphCommand2.Size = new System.Drawing.Size(339, 20);
             this.txtSendGraphCommand2.TabIndex = 3;
             // 
             // txtDecodeValue2
             // 
             this.txtDecodeValue2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDecodeValue2.Location = new System.Drawing.Point(475, 187);
+            this.txtDecodeValue2.Location = new System.Drawing.Point(473, 187);
             this.txtDecodeValue2.Name = "txtDecodeValue2";
-            this.txtDecodeValue2.Size = new System.Drawing.Size(341, 20);
+            this.txtDecodeValue2.Size = new System.Drawing.Size(339, 20);
             this.txtDecodeValue2.TabIndex = 4;
             this.txtDecodeValue2.Text = "(-?\\d+(.\\d+)?)";
             // 
@@ -922,7 +923,7 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel9.Controls.Add(this.chrtLoggingData1, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.label6, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.label7, 2, 1);
@@ -959,7 +960,7 @@
             this.chrtLoggingData1.Series.Add(series2);
             this.chrtLoggingData1.Size = new System.Drawing.Size(914, 177);
             this.chrtLoggingData1.TabIndex = 0;
-            this.chrtLoggingData1.Text = "chart1";            
+            this.chrtLoggingData1.Text = "chart1";
             this.chrtLoggingData1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chrtLoggingData1_MouseClick);
             // 
             // label6
@@ -977,7 +978,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(400, 183);
+            this.label7.Location = new System.Drawing.Point(398, 183);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 30);
             this.label7.TabIndex = 2;
@@ -989,15 +990,15 @@
             this.txtSendGraphCommand1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSendGraphCommand1.Location = new System.Drawing.Point(53, 186);
             this.txtSendGraphCommand1.Name = "txtSendGraphCommand1";
-            this.txtSendGraphCommand1.Size = new System.Drawing.Size(341, 20);
+            this.txtSendGraphCommand1.Size = new System.Drawing.Size(339, 20);
             this.txtSendGraphCommand1.TabIndex = 3;
             // 
             // txtDecodeValue1
             // 
             this.txtDecodeValue1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDecodeValue1.Location = new System.Drawing.Point(475, 186);
+            this.txtDecodeValue1.Location = new System.Drawing.Point(473, 186);
             this.txtDecodeValue1.Name = "txtDecodeValue1";
-            this.txtDecodeValue1.Size = new System.Drawing.Size(341, 20);
+            this.txtDecodeValue1.Size = new System.Drawing.Size(339, 20);
             this.txtDecodeValue1.TabIndex = 4;
             this.txtDecodeValue1.Text = "(-?\\d+(.\\d+)?)";
             // 
@@ -1006,9 +1007,9 @@
             this.chkBoxLogValue.Appearance = System.Windows.Forms.Appearance.Button;
             this.chkBoxLogValue.AutoSize = true;
             this.chkBoxLogValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkBoxLogValue.Location = new System.Drawing.Point(822, 186);
+            this.chkBoxLogValue.Location = new System.Drawing.Point(818, 186);
             this.chkBoxLogValue.Name = "chkBoxLogValue";
-            this.chkBoxLogValue.Size = new System.Drawing.Size(95, 24);
+            this.chkBoxLogValue.Size = new System.Drawing.Size(99, 24);
             this.chkBoxLogValue.TabIndex = 5;
             this.chkBoxLogValue.Text = "Log Value";
             this.chkBoxLogValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1022,7 +1023,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
@@ -1052,9 +1053,9 @@
             this.chkGraphSelection.Checked = true;
             this.chkGraphSelection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkGraphSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkGraphSelection.Location = new System.Drawing.Point(336, 3);
+            this.chkGraphSelection.Location = new System.Drawing.Point(334, 3);
             this.chkGraphSelection.Name = "chkGraphSelection";
-            this.chkGraphSelection.Size = new System.Drawing.Size(210, 28);
+            this.chkGraphSelection.Size = new System.Drawing.Size(208, 28);
             this.chkGraphSelection.TabIndex = 1;
             this.chkGraphSelection.Text = "Both the graphs";
             this.chkGraphSelection.UseVisualStyleBackColor = true;
@@ -1065,16 +1066,16 @@
             this.txtTimerSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTimerSpeed.Location = new System.Drawing.Point(120, 3);
             this.txtTimerSpeed.Name = "txtTimerSpeed";
-            this.txtTimerSpeed.Size = new System.Drawing.Size(210, 20);
+            this.txtTimerSpeed.Size = new System.Drawing.Size(208, 20);
             this.txtTimerSpeed.TabIndex = 2;
             this.txtTimerSpeed.Text = "1000";
             // 
             // btnClearGraphs
             // 
             this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearGraphs.Location = new System.Drawing.Point(767, 3);
+            this.btnClearGraphs.Location = new System.Drawing.Point(761, 3);
             this.btnClearGraphs.Name = "btnClearGraphs";
-            this.btnClearGraphs.Size = new System.Drawing.Size(150, 28);
+            this.btnClearGraphs.Size = new System.Drawing.Size(156, 28);
             this.btnClearGraphs.TabIndex = 3;
             this.btnClearGraphs.Text = "Clear graph(s)";
             this.btnClearGraphs.UseVisualStyleBackColor = true;
@@ -1091,10 +1092,12 @@
             // 
             // mnustrForm
             // 
+            this.mnustrForm.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mnustrForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.mnustrForm.Location = new System.Drawing.Point(0, 0);
             this.mnustrForm.Name = "mnustrForm";
+            this.mnustrForm.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
             this.mnustrForm.Size = new System.Drawing.Size(946, 24);
             this.mnustrForm.TabIndex = 7;
             this.mnustrForm.Text = "menuStrip1";
@@ -1104,7 +1107,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // importToolStripMenuItem
