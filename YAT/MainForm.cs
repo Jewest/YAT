@@ -51,7 +51,7 @@ namespace YAT
         private void Form1_Shown(Object sender, EventArgs e)
         {
             //set the correct name and version
-            this.Text = System.Windows.Forms.Application.ProductName + "# " + System.Windows.Forms.Application.ProductVersion;
+            this.Text = System.Windows.Forms.Application.ProductName + " " + System.Windows.Forms.Application.ProductVersion;
 
             cboBaudRate.Items.Clear();
 
@@ -642,7 +642,7 @@ namespace YAT
 
         private void UpdateTitleBar()
         {
-            this.Text = System.Windows.Forms.Application.ProductName + "# " + System.Windows.Forms.Application.ProductVersion;
+            this.Text = System.Windows.Forms.Application.ProductName + " " + System.Windows.Forms.Application.ProductVersion;
 
             this.Text += " - ";
             
@@ -1354,7 +1354,7 @@ namespace YAT
         {
             if (m_configurationIsDirty == true)
             {
-                if (MessageBox.Show("Configuration changed, do you want to save?", System.Windows.Forms.Application.ProductName + "#", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Configuration changed, do you want to save?", System.Windows.Forms.Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     btnSaveMacro.PerformClick();
                 }
