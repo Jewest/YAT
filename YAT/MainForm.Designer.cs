@@ -71,6 +71,7 @@
             this.btnSendAll = new System.Windows.Forms.Button();
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnImportMacro = new System.Windows.Forms.Button();
             this.btnSaveMacro = new System.Windows.Forms.Button();
             this.btnLoadMacro = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -604,15 +605,17 @@
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.ColumnCount = 4;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tableLayoutPanel8.Controls.Add(this.btnSaveMacro, 0, 0);
+            this.tableLayoutPanel8.ColumnCount = 5;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0005F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0005F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.99851F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0005F));
+            this.tableLayoutPanel8.Controls.Add(this.btnImportMacro, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnSaveMacro, 2, 0);
             this.tableLayoutPanel8.Controls.Add(this.btnLoadMacro, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.btnNew, 3, 0);
-            this.tableLayoutPanel8.Controls.Add(this.btnSaveAs, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnNew, 4, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnSaveAs, 3, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
@@ -622,12 +625,23 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(437, 30);
             this.tableLayoutPanel8.TabIndex = 14;
             // 
+            // btnImportMacro
+            // 
+            this.btnImportMacro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImportMacro.Location = new System.Drawing.Point(90, 3);
+            this.btnImportMacro.Name = "btnImportMacro";
+            this.btnImportMacro.Size = new System.Drawing.Size(81, 24);
+            this.btnImportMacro.TabIndex = 5;
+            this.btnImportMacro.Text = "Import";
+            this.btnImportMacro.UseVisualStyleBackColor = true;
+            this.btnImportMacro.Click += new System.EventHandler(this.btnImportMacro_Click);
+            // 
             // btnSaveMacro
             // 
             this.btnSaveMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveMacro.Location = new System.Drawing.Point(112, 3);
+            this.btnSaveMacro.Location = new System.Drawing.Point(177, 3);
             this.btnSaveMacro.Name = "btnSaveMacro";
-            this.btnSaveMacro.Size = new System.Drawing.Size(103, 24);
+            this.btnSaveMacro.Size = new System.Drawing.Size(81, 24);
             this.btnSaveMacro.TabIndex = 2;
             this.btnSaveMacro.Text = "Save";
             this.btnSaveMacro.UseVisualStyleBackColor = true;
@@ -638,7 +652,7 @@
             this.btnLoadMacro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLoadMacro.Location = new System.Drawing.Point(3, 3);
             this.btnLoadMacro.Name = "btnLoadMacro";
-            this.btnLoadMacro.Size = new System.Drawing.Size(103, 24);
+            this.btnLoadMacro.Size = new System.Drawing.Size(81, 24);
             this.btnLoadMacro.TabIndex = 1;
             this.btnLoadMacro.Text = "Load";
             this.btnLoadMacro.UseVisualStyleBackColor = true;
@@ -647,9 +661,9 @@
             // btnNew
             // 
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNew.Location = new System.Drawing.Point(330, 3);
+            this.btnNew.Location = new System.Drawing.Point(351, 3);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(104, 24);
+            this.btnNew.Size = new System.Drawing.Size(83, 24);
             this.btnNew.TabIndex = 3;
             this.btnNew.Text = "Clear configuration";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -658,9 +672,9 @@
             // btnSaveAs
             // 
             this.btnSaveAs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveAs.Location = new System.Drawing.Point(221, 3);
+            this.btnSaveAs.Location = new System.Drawing.Point(264, 3);
             this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.Size = new System.Drawing.Size(103, 24);
+            this.btnSaveAs.Size = new System.Drawing.Size(81, 24);
             this.btnSaveAs.TabIndex = 4;
             this.btnSaveAs.Text = "Save as";
             this.btnSaveAs.UseVisualStyleBackColor = true;
@@ -1023,7 +1037,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
@@ -1053,9 +1067,9 @@
             this.chkGraphSelection.Checked = true;
             this.chkGraphSelection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkGraphSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkGraphSelection.Location = new System.Drawing.Point(329, 3);
+            this.chkGraphSelection.Location = new System.Drawing.Point(327, 3);
             this.chkGraphSelection.Name = "chkGraphSelection";
-            this.chkGraphSelection.Size = new System.Drawing.Size(203, 28);
+            this.chkGraphSelection.Size = new System.Drawing.Size(201, 28);
             this.chkGraphSelection.TabIndex = 1;
             this.chkGraphSelection.Text = "Both the graphs";
             this.chkGraphSelection.UseVisualStyleBackColor = true;
@@ -1066,16 +1080,16 @@
             this.txtTimerSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTimerSpeed.Location = new System.Drawing.Point(120, 3);
             this.txtTimerSpeed.Name = "txtTimerSpeed";
-            this.txtTimerSpeed.Size = new System.Drawing.Size(203, 20);
+            this.txtTimerSpeed.Size = new System.Drawing.Size(201, 20);
             this.txtTimerSpeed.TabIndex = 2;
             this.txtTimerSpeed.Text = "1000";
             // 
             // btnClearGraphs
             // 
             this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearGraphs.Location = new System.Drawing.Point(746, 3);
+            this.btnClearGraphs.Location = new System.Drawing.Point(741, 3);
             this.btnClearGraphs.Name = "btnClearGraphs";
-            this.btnClearGraphs.Size = new System.Drawing.Size(171, 28);
+            this.btnClearGraphs.Size = new System.Drawing.Size(176, 28);
             this.btnClearGraphs.TabIndex = 3;
             this.btnClearGraphs.Text = "Clear graph(s)";
             this.btnClearGraphs.UseVisualStyleBackColor = true;
@@ -1259,6 +1273,7 @@
         private System.Windows.Forms.CheckBox chkGraphSelection;
         private System.Windows.Forms.TextBox txtTimerSpeed;
         private System.Windows.Forms.Button btnClearGraphs;
+        private System.Windows.Forms.Button btnImportMacro;
     }
 }
 
