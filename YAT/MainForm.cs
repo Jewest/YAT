@@ -1133,6 +1133,14 @@ namespace YAT
                     toSend = toSend.Replace("\n", "");
 
                     AddToLog(toSend, Direction.Sending);
+
+                    for(int timerCounter = 0; timerCounter < 3; timerCounter++)
+                    {
+                        System.Threading.Thread.Sleep(100);
+                        Application.DoEvents();
+                    }
+
+                    
                 } catch
                 {
                     UpdateButtonsAndStatus(false);
@@ -1151,6 +1159,8 @@ namespace YAT
                 {
                     if (macroDataList.Count > 0)
                     {
+                        btnClearLog.PerformClick();
+
                         for (Int32 counter = 0; counter < macroDataList.Count; counter++)
                         {
                             if (macroDataList[counter] is not null)
@@ -1464,9 +1474,6 @@ namespace YAT
 
             chrtLoggingData1.ChartAreas[0].AxisX.Maximum = 0;
             chrtLoggingData1.ChartAreas[0].AxisY.IsStartedFromZero = false;
-            
-
-
             
             chrtLoggingData2.ChartAreas[0].AxisX.Maximum = 0;
             chrtLoggingData2.ChartAreas[0].AxisY.IsStartedFromZero = false;
@@ -1841,7 +1848,19 @@ namespace YAT
 
         private void btnClearGraphs_Click(object sender, EventArgs e)
         {
+            bool toggleTimer = chkBoxLogValue.Checked;
+
+            if (toggleTimer == true)
+            {
+                chkBoxLogValue.Checked = false;
+            }
+
             ClearGraphs();
+
+            if (toggleTimer == true)
+            {
+                chkBoxLogValue.Checked = true;
+            }
         }
 
     }

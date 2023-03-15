@@ -89,6 +89,7 @@ namespace YAT
             {
                 //send the data now
                 Program.g_mainView.SendCommand(m_command);
+                
             }
         }
 
