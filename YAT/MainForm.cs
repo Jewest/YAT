@@ -506,7 +506,7 @@ namespace YAT
             }
         }
 
-        private void btnLoadMacro_Click(object sender, EventArgs e)
+        private void LoadFileFromDisk(bool clearOldTabPages)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -527,38 +527,46 @@ namespace YAT
                         {
                             //remove the current elements
                             tabMacro.SuspendLayout();
-                            tabMacro.TabPages.Clear();
-                            m_ConfiguredMacro.Clear();
+                            if (clearOldTabPages == true)
+                            {
+                                tabMacro.TabPages.Clear();
+                                m_ConfiguredMacro.Clear();
+                            }
+                            else
+                            {
+                                // remove the tab+ from the tab pages
+                                tabMacro.TabPages.Remove(m_tabPagePlus);
+                            }
 
                             XmlReaderSettings settings = new XmlReaderSettings();
                             settings.Async = false;
-                            
+
                             // Insert code to read the stream here.
                             XmlReader reader = XmlReader.Create(myStream, settings);
-                                                        
-                            while (reader.Read())
+
+                            while (reader.Read() == true)
                             {
                                 switch (reader.NodeType)
                                 {
                                     case XmlNodeType.Element:
-                                        switch(reader.Name)
+                                        switch (reader.Name)
                                         {
-                                            case "Tab":                                                
+                                            case "Tab":
                                                 // create a new tab
                                                 CreateNewAndAddTabPage(reader.GetAttribute("Name"), true);
-                                                
+
                                                 break;
                                             case "Macro":
                                                 //add to the last one
-                                                MacroData macroSetting = AddMacroToPanel(tabMacro.TabPages.Count - 1,false);
-                                                macroSetting.ReadXml(reader);                                                
+                                                MacroData macroSetting = AddMacroToPanel(tabMacro.TabPages.Count - 1, false);
+                                                macroSetting.ReadXml(reader);
                                                 break;
                                             default:
                                                 Console.WriteLine("Start Element {0}", reader.Name);
                                                 break;
                                         }
 
-                                        
+
                                         break;
                                     case XmlNodeType.Text:
                                         Console.WriteLine("Text Node: {0}", reader.Value);
@@ -572,14 +580,14 @@ namespace YAT
                                         break;
                                 }
                             }
-                            
+
                             //close the stream
                             reader.Close();
 
                             tabMacro.TabPages.Add(m_tabPagePlus);
                             tabMacro.SelectedIndex = 0;
-                            
-                            for(int counter = 0; counter < tabMacro.TabPages.Count - 1; counter++)
+
+                            for (int counter = 0; counter < tabMacro.TabPages.Count - 1; counter++)
                             {
                                 UpdateGrid(counter);
                             }
@@ -594,8 +602,16 @@ namespace YAT
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }                
+                }
             }
+        }
+
+
+
+
+        private void btnLoadMacro_Click(object sender, EventArgs e)
+        {
+            LoadFileFromDisk(true);
         }
 
         private void UpdateTitleBar()
@@ -1132,6 +1148,14 @@ namespace YAT
                     toSend = toSend.Replace("\n", "");
 
                     AddToLog(toSend, Direction.Sending);
+
+                    for(int timerCounter = 0; timerCounter < 3; timerCounter++)
+                    {
+                        System.Threading.Thread.Sleep(100);
+                        Application.DoEvents();
+                    }
+
+                    
                 } catch
                 {
                     UpdateButtonsAndStatus(false);
@@ -1150,6 +1174,8 @@ namespace YAT
                 {
                     if (macroDataList.Count > 0)
                     {
+                        btnClearLog.PerformClick();
+
                         for (Int32 counter = 0; counter < macroDataList.Count; counter++)
                         {
                             if (macroDataList[counter] is not null)
@@ -1463,9 +1489,6 @@ namespace YAT
 
             chrtLoggingData1.ChartAreas[0].AxisX.Maximum = 0;
             chrtLoggingData1.ChartAreas[0].AxisY.IsStartedFromZero = false;
-            
-
-
             
             chrtLoggingData2.ChartAreas[0].AxisX.Maximum = 0;
             chrtLoggingData2.ChartAreas[0].AxisY.IsStartedFromZero = false;
@@ -1840,9 +1863,25 @@ namespace YAT
 
         private void btnClearGraphs_Click(object sender, EventArgs e)
         {
+            bool toggleTimer = chkBoxLogValue.Checked;
+
+            if (toggleTimer == true)
+            {
+                chkBoxLogValue.Checked = false;
+            }
+
             ClearGraphs();
+
+            if (toggleTimer == true)
+            {
+                chkBoxLogValue.Checked = true;
+            }
         }
 
+        private void btnImportMacro_Click(object sender, EventArgs e)
+        {
+            LoadFileFromDisk(false);
+        }
     }
 
 
