@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using YAT.View;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace YAT
 {
@@ -49,7 +51,7 @@ namespace YAT
         private void Form1_Shown(Object sender, EventArgs e)
         {
             //set the correct name and version
-            this.Text = Application.ProductName + " " + Application.ProductVersion;
+            this.Text = System.Windows.Forms.Application.ProductName + " " + System.Windows.Forms.Application.ProductVersion;
 
             cboBaudRate.Items.Clear();
 
@@ -67,9 +69,7 @@ namespace YAT
 
 
             cboCommandTerminator.Items.Clear();
-
-
-            cboCommandTerminator.Items.Clear();
+                        
             object[] list =
                 {
                 new ComboBoxItem<string>("None", ""),
@@ -188,6 +188,17 @@ namespace YAT
         // the text property on a TextBox control.  
         delegate void StringArgReturningVoidDelegate(char[] text);
 
+
+        private string m_bufferedString = "";
+
+        private void InsertStrippedInLog(string data)
+        {
+            string filtered = data.Replace("\r", "");
+            filtered = filtered.Replace("\n", "");
+
+            AddToLog(filtered, Direction.Receiving);
+        }
+
         private void UpdateReceivedInfo(char[] data)
         {
             if (dataGridViewLog.InvokeRequired == true)
@@ -213,28 +224,43 @@ namespace YAT
                 else
                 {
                     string text = new string(data);
-                    string filtered = text.Replace("\r", "");
-                    filtered = filtered.Replace("\n", "");
 
-                    AddToLog(filtered, Direction.Receiving);
-                }
-
-                int count = 0;
-
-                /*
-                char[] testchars = txtOutput.Text.ToCharArray();
-                char testChar = '\n';
-                int length = testchars.Length;
-                for (int counter = length - 1; counter >= 0; counter--)
-                {
-                    if (testchars[counter] == testChar)
+                    if (chkWaitForTerminator.Checked == true)
                     {
-                        count++;
+                        //append the text
+                        m_bufferedString += text;
+                        //check if we need to add the sring
+                        if (m_bufferedString.Contains(GetTerminationString()) == true)
+                        {
+                            
+                            string[] subs = m_bufferedString.Split(GetTerminationString().ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+                           
+
+                            if (subs.Count() > 1)
+                            {
+
+                                for (int index = 0; index < subs.Count() - 1; index++)
+                                {
+                                    InsertStrippedInLog(subs[index]);
+                                }
+
+                                m_bufferedString = subs[subs.Count() - 1];
+                            }
+                            else
+                            {
+                                InsertStrippedInLog(subs[0]);
+                                m_bufferedString = "";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        InsertStrippedInLog(text);                        
                     }
                 }
-                */
 
-                lblCountTerminator.Text = count.ToString();
+                lblCountTerminator.Text = "0";
 
                 if (m_useHighTekst == true)
                 {
@@ -616,7 +642,7 @@ namespace YAT
 
         private void UpdateTitleBar()
         {
-            this.Text = Application.ProductName + " " + Application.ProductVersion;
+            this.Text = System.Windows.Forms.Application.ProductName + " " + System.Windows.Forms.Application.ProductVersion;
 
             this.Text += " - ";
             
@@ -732,13 +758,13 @@ namespace YAT
                     catch(Exception) 
                     {
                         //set the startup dir, in case of exception
-                        saveFile.InitialDirectory = Application.StartupPath;
+                        saveFile.InitialDirectory = System.Windows.Forms.Application.StartupPath;
                     }
                 }
                 else
                 {
                     //set the startup dir
-                    saveFile.InitialDirectory = Application.StartupPath;
+                    saveFile.InitialDirectory = System.Windows.Forms.Application.StartupPath;
                 }
 
                 if (saveFile.ShowDialog() == DialogResult.OK)
@@ -1152,7 +1178,7 @@ namespace YAT
                     for(int timerCounter = 0; timerCounter < 3; timerCounter++)
                     {
                         System.Threading.Thread.Sleep(100);
-                        Application.DoEvents();
+                        System.Windows.Forms.Application.DoEvents();
                     }
 
                     
@@ -1328,7 +1354,7 @@ namespace YAT
         {
             if (m_configurationIsDirty == true)
             {
-                if (MessageBox.Show("Configuration changed, do you want to save?", Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Configuration changed, do you want to save?", System.Windows.Forms.Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     btnSaveMacro.PerformClick();
                 }
@@ -1640,15 +1666,6 @@ namespace YAT
             }
         }
 
-  
-
-
-     
-        private void chkShowSend_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridViewLog_MouseClick(object sender, MouseEventArgs e)
         {
             //check for right mouse click
@@ -1881,6 +1898,16 @@ namespace YAT
         private void btnImportMacro_Click(object sender, EventArgs e)
         {
             LoadFileFromDisk(false);
+        }
+
+        private void dataGridViewLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cboCommandTerminator_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
