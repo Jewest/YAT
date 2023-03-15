@@ -186,27 +186,24 @@ namespace YAT
 
         // This delegate enables asynchronous calls for setting  
         // the text property on a TextBox control.  
-        delegate void StringArgReturningVoidDelegate(string text);
+        delegate void StringArgReturningVoidDelegate(char[] text);
 
-        private void UpdateReceivedInfo(string text)
+        private void UpdateReceivedInfo(char[] data)
         {
             if (dataGridViewLog.InvokeRequired == true)
             {
                 StringArgReturningVoidDelegate d = new StringArgReturningVoidDelegate(UpdateReceivedInfo);
-                this.Invoke(d, new object[] { text });
+                this.Invoke(d, new object[] { data });
             }
             else
             {
-
                 if (cboDecodeType.SelectedIndex == 1)
                 {
-                    char[] arrayChars = text.ToCharArray();
                     string addData = "";
                     // add 
-                    for (int counter = 0; counter < arrayChars.Length; counter++)
+                    for (int counter = 0; counter < data.Length; counter++)
                     {
-                        int value = arrayChars[counter];
-
+                        int value = data[counter];
                         addData += " 0x";
                         addData += value.ToString("X2");
                     }
@@ -215,7 +212,7 @@ namespace YAT
                 }
                 else
                 {
-
+                    string text = new string(data);
                     string filtered = text.Replace("\r", "");
                     filtered = filtered.Replace("\n", "");
 
@@ -241,13 +238,11 @@ namespace YAT
 
                 if (m_useHighTekst == true)
                 {
-                    DecodeToLoggingGraph(text,chrtLoggingData1);
+                    DecodeToLoggingGraph(new string(data), chrtLoggingData1);
                 }
                 else
                 {
-                    
-                        DecodeToLoggingGraph(text, chrtLoggingData2);
-                   
+                    DecodeToLoggingGraph(new string(data), chrtLoggingData2);
                 }
             }
         }
@@ -255,9 +250,13 @@ namespace YAT
         //callback for the serial port
         private void dataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string data = m_serialPort.ReadExisting();
+            byte[] data = new byte[256];
+            int bytesRead = m_serialPort.Read(data, 0, data.Length);
             
-            UpdateReceivedInfo(data);
+            // convert to char array
+            char[] charData = new char[bytesRead];
+            Array.Copy(data, charData, bytesRead);
+            UpdateReceivedInfo(charData);
 
             if(chkBoxLogValue.Checked == true)
             {
