@@ -73,9 +73,9 @@ namespace YAT
             object[] list =
                 {
                 new ComboBoxItem<string>("None", ""),
-                new ComboBoxItem<string>("CR", "\n"),
+                new ComboBoxItem<string>("CR (0xA)", "\n"),
                 new ComboBoxItem<string>("CR + LF", "\r\n"),
-                new ComboBoxItem<string>("LF", "\r"),
+                new ComboBoxItem<string>("LF (0xD)", "\r"),
             };
 
             cboCommandTerminator.Items.AddRange(list);
