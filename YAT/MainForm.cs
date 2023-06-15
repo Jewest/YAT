@@ -1349,21 +1349,35 @@ namespace YAT
             }
         }
 
-
-        void CheckConfigurationAndSave()
+        // return true when handled the saving correct
+        bool CheckConfigurationAndSave()
         {
+            bool savingIsCorrect = true;
             if (m_configurationIsDirty == true)
             {
-                if (MessageBox.Show("Configuration changed, do you want to save?", System.Windows.Forms.Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DialogResult dialogResult = MessageBox.Show("Configuration changed, do you want to save?", System.Windows.Forms.Application.ProductName, MessageBoxButtons.YesNoCancel);
+
+                if (dialogResult == DialogResult.Yes)
                 {
                     btnSaveMacro.PerformClick();
                 }
+                else if (dialogResult == DialogResult.Cancel)
+                {
+                    savingIsCorrect = false;
+                }
+
             }
+
+            return savingIsCorrect;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CheckConfigurationAndSave();
+            if(CheckConfigurationAndSave() == false)
+            {
+                // cancel the closing
+                e.Cancel = true;
+            }
         }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
@@ -1390,8 +1404,10 @@ namespace YAT
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            CheckConfigurationAndSave();
-            SetupDefaultTab();
+            if (CheckConfigurationAndSave() == true)
+            {
+                SetupDefaultTab();
+            }
         }
 
         private void btnSaveAs_Click(object sender, EventArgs e)
@@ -1906,6 +1922,11 @@ namespace YAT
         }
 
         private void cboCommandTerminator_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }
