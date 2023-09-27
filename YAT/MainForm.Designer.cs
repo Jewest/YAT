@@ -558,7 +558,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel7.Controls.Add(this.cboTimerSendSelected, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.btnSendAll, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.chkSelectAll, 3, 0);
@@ -706,7 +706,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel4.Controls.Add(this.chkWaitForTerminator, 4, 2);
             this.tableLayoutPanel4.Controls.Add(this.btnClearLog, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblCountTerminator, 7, 0);
@@ -851,7 +851,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(932, 485);
+            this.tabPage2.Size = new System.Drawing.Size(1032, 509);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Log";
             // 
@@ -869,7 +869,7 @@
             this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelGraphShowHide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelGraphShowHide.Size = new System.Drawing.Size(926, 479);
+            this.tableLayoutPanelGraphShowHide.Size = new System.Drawing.Size(1026, 503);
             this.tableLayoutPanelGraphShowHide.TabIndex = 1;
             // 
             // tableLayoutPanelChart2
@@ -886,12 +886,12 @@
             this.tableLayoutPanelChart2.Controls.Add(this.txtSendGraphCommand2, 1, 1);
             this.tableLayoutPanelChart2.Controls.Add(this.txtDecodeValue2, 3, 1);
             this.tableLayoutPanelChart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelChart2.Location = new System.Drawing.Point(3, 262);
+            this.tableLayoutPanelChart2.Location = new System.Drawing.Point(3, 274);
             this.tableLayoutPanelChart2.Name = "tableLayoutPanelChart2";
             this.tableLayoutPanelChart2.RowCount = 2;
             this.tableLayoutPanelChart2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelChart2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelChart2.Size = new System.Drawing.Size(920, 214);
+            this.tableLayoutPanelChart2.Size = new System.Drawing.Size(1020, 226);
             this.tableLayoutPanelChart2.TabIndex = 1;
             // 
             // chrtLoggingData2
@@ -913,7 +913,7 @@
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             this.chrtLoggingData2.Series.Add(series1);
-            this.chrtLoggingData2.Size = new System.Drawing.Size(914, 178);
+            this.chrtLoggingData2.Size = new System.Drawing.Size(1014, 190);
             this.chrtLoggingData2.TabIndex = 0;
             this.chrtLoggingData2.Text = "chart1";
             this.chrtLoggingData2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chrtLoggingData2_MouseClick);
@@ -922,7 +922,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 184);
+            this.label8.Location = new System.Drawing.Point(3, 196);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 30);
             this.label8.TabIndex = 1;
@@ -933,7 +933,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(398, 184);
+            this.label9.Location = new System.Drawing.Point(448, 196);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 30);
             this.label9.TabIndex = 2;
@@ -943,17 +943,17 @@
             // txtSendGraphCommand2
             // 
             this.txtSendGraphCommand2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSendGraphCommand2.Location = new System.Drawing.Point(53, 187);
+            this.txtSendGraphCommand2.Location = new System.Drawing.Point(53, 199);
             this.txtSendGraphCommand2.Name = "txtSendGraphCommand2";
-            this.txtSendGraphCommand2.Size = new System.Drawing.Size(339, 20);
+            this.txtSendGraphCommand2.Size = new System.Drawing.Size(389, 20);
             this.txtSendGraphCommand2.TabIndex = 3;
             // 
             // txtDecodeValue2
             // 
             this.txtDecodeValue2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDecodeValue2.Location = new System.Drawing.Point(473, 187);
+            this.txtDecodeValue2.Location = new System.Drawing.Point(523, 199);
             this.txtDecodeValue2.Name = "txtDecodeValue2";
-            this.txtDecodeValue2.Size = new System.Drawing.Size(339, 20);
+            this.txtDecodeValue2.Size = new System.Drawing.Size(389, 20);
             this.txtDecodeValue2.TabIndex = 4;
             this.txtDecodeValue2.Text = "(-?\\d+(.\\d+)?)";
             // 
@@ -977,7 +977,7 @@
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(920, 213);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1020, 225);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
             // chrtLoggingData1
@@ -999,7 +999,7 @@
             series2.Name = "Series1";
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             this.chrtLoggingData1.Series.Add(series2);
-            this.chrtLoggingData1.Size = new System.Drawing.Size(914, 177);
+            this.chrtLoggingData1.Size = new System.Drawing.Size(1014, 189);
             this.chrtLoggingData1.TabIndex = 0;
             this.chrtLoggingData1.Text = "chart1";
             this.chrtLoggingData1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chrtLoggingData1_MouseClick);
@@ -1008,7 +1008,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(3, 183);
+            this.label6.Location = new System.Drawing.Point(3, 195);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 30);
             this.label6.TabIndex = 1;
@@ -1019,7 +1019,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(398, 183);
+            this.label7.Location = new System.Drawing.Point(448, 195);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 30);
             this.label7.TabIndex = 2;
@@ -1029,17 +1029,17 @@
             // txtSendGraphCommand1
             // 
             this.txtSendGraphCommand1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSendGraphCommand1.Location = new System.Drawing.Point(53, 186);
+            this.txtSendGraphCommand1.Location = new System.Drawing.Point(53, 198);
             this.txtSendGraphCommand1.Name = "txtSendGraphCommand1";
-            this.txtSendGraphCommand1.Size = new System.Drawing.Size(339, 20);
+            this.txtSendGraphCommand1.Size = new System.Drawing.Size(389, 20);
             this.txtSendGraphCommand1.TabIndex = 3;
             // 
             // txtDecodeValue1
             // 
             this.txtDecodeValue1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDecodeValue1.Location = new System.Drawing.Point(473, 186);
+            this.txtDecodeValue1.Location = new System.Drawing.Point(523, 198);
             this.txtDecodeValue1.Name = "txtDecodeValue1";
-            this.txtDecodeValue1.Size = new System.Drawing.Size(339, 20);
+            this.txtDecodeValue1.Size = new System.Drawing.Size(389, 20);
             this.txtDecodeValue1.TabIndex = 4;
             this.txtDecodeValue1.Text = "(-?\\d+(.\\d+)?)";
             // 
@@ -1048,7 +1048,7 @@
             this.chkBoxLogValue.Appearance = System.Windows.Forms.Appearance.Button;
             this.chkBoxLogValue.AutoSize = true;
             this.chkBoxLogValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkBoxLogValue.Location = new System.Drawing.Point(818, 186);
+            this.chkBoxLogValue.Location = new System.Drawing.Point(918, 198);
             this.chkBoxLogValue.Name = "chkBoxLogValue";
             this.chkBoxLogValue.Size = new System.Drawing.Size(99, 24);
             this.chkBoxLogValue.TabIndex = 5;
@@ -1064,7 +1064,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 183F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
@@ -1074,7 +1074,7 @@
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(920, 34);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(1020, 34);
             this.tableLayoutPanel12.TabIndex = 2;
             // 
             // label10
@@ -1094,9 +1094,9 @@
             this.chkGraphSelection.Checked = true;
             this.chkGraphSelection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkGraphSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkGraphSelection.Location = new System.Drawing.Point(326, 3);
+            this.chkGraphSelection.Location = new System.Drawing.Point(358, 3);
             this.chkGraphSelection.Name = "chkGraphSelection";
-            this.chkGraphSelection.Size = new System.Drawing.Size(200, 28);
+            this.chkGraphSelection.Size = new System.Drawing.Size(232, 28);
             this.chkGraphSelection.TabIndex = 1;
             this.chkGraphSelection.Text = "Both the graphs";
             this.chkGraphSelection.UseVisualStyleBackColor = true;
@@ -1107,16 +1107,16 @@
             this.txtTimerSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTimerSpeed.Location = new System.Drawing.Point(120, 3);
             this.txtTimerSpeed.Name = "txtTimerSpeed";
-            this.txtTimerSpeed.Size = new System.Drawing.Size(200, 20);
+            this.txtTimerSpeed.Size = new System.Drawing.Size(232, 20);
             this.txtTimerSpeed.TabIndex = 2;
             this.txtTimerSpeed.Text = "1000";
             // 
             // btnClearGraphs
             // 
             this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearGraphs.Location = new System.Drawing.Point(738, 3);
+            this.btnClearGraphs.Location = new System.Drawing.Point(833, 3);
             this.btnClearGraphs.Name = "btnClearGraphs";
-            this.btnClearGraphs.Size = new System.Drawing.Size(179, 28);
+            this.btnClearGraphs.Size = new System.Drawing.Size(184, 28);
             this.btnClearGraphs.TabIndex = 3;
             this.btnClearGraphs.Text = "Clear graph(s)";
             this.btnClearGraphs.UseVisualStyleBackColor = true;
@@ -1178,6 +1178,7 @@
             this.Name = "MainForm";
             this.Text = "Yat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
