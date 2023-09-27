@@ -1130,6 +1130,13 @@ namespace YAT
             if (m_serialPort.IsOpen == true)
             {
 
+                if (chkAddLengthHeader.Checked == true)
+                {
+                    // add length header
+                    int length = command.Length;
+                    command = length.ToString("D2") + command;
+
+                }
                 if (m_ToSendList.Count() > 0)
                 {
                     m_ToSendList.Enqueue(command);
@@ -1916,20 +1923,6 @@ namespace YAT
             LoadFileFromDisk(false);
         }
 
-        private void dataGridViewLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void cboCommandTerminator_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 
 
