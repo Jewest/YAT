@@ -56,10 +56,11 @@ namespace YAT
             cboBaudRate.Items.Clear();
 
             cboBaudRate.Items.Add(19200);
+            cboBaudRate.Items.Add(38400);
             cboBaudRate.Items.Add(57600);
             cboBaudRate.Items.Add(115200);
             cboBaudRate.Items.Add(921600);
-            cboBaudRate.SelectedIndex = 2;
+            cboBaudRate.SelectedIndex = 3;
 
             //set the callback
             m_serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
@@ -229,17 +230,13 @@ namespace YAT
                     {
                         //append the text
                         m_bufferedString += text;
-                        //check if we need to add the sring
+                        //check if we need to add the string
                         if (m_bufferedString.Contains(GetTerminationString()) == true)
                         {
-                            
                             string[] subs = m_bufferedString.Split(GetTerminationString().ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-
-                           
 
                             if (subs.Count() > 1)
                             {
-
                                 for (int index = 0; index < subs.Count() - 1; index++)
                                 {
                                     InsertStrippedInLog(subs[index]);
@@ -249,7 +246,10 @@ namespace YAT
                             }
                             else
                             {
-                                InsertStrippedInLog(subs[0]);
+                                if (subs.Count() > 0)
+                                {
+                                    InsertStrippedInLog(subs[0]);
+                                }
                                 m_bufferedString = "";
                             }
                         }
