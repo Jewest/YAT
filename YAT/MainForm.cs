@@ -12,6 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -47,7 +48,7 @@ namespace YAT
         private bool m_configurationIsDirty = false;
         private List<MacroTab> m_ConfiguredMacro = new List<MacroTab>();
         private System.Data.DataTable m_dataTableLog = new DataTable();
-
+        private SerialDataReceivedEventHandler m_serialDataReceivedEventHandler = null;
         private void Form1_Shown(Object sender, EventArgs e)
         {
             //set the correct name and version
@@ -63,14 +64,15 @@ namespace YAT
             cboBaudRate.SelectedIndex = 3;
 
             //set the callback
-            m_serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
+            m_serialDataReceivedEventHandler = new SerialDataReceivedEventHandler(dataReceived);
+            
 
             //remove the current items
             ScanForSerialPorts();
 
 
             cboCommandTerminator.Items.Clear();
-                        
+
             object[] list =
                 {
                 new ComboBoxItem<string>("None", ""),
@@ -129,7 +131,7 @@ namespace YAT
         {
             tabMacro.TabPages.Clear();
 
-            
+
 
 
             m_ConfiguredMacro.Clear();
@@ -137,9 +139,9 @@ namespace YAT
 
             tabMacro.TabPages.Add(m_tabPagePlus);
             tabMacro.SelectedTab = CreateNewAndAddTabPage("Default", false);
-            
+
             AddMacroToPanel(GetCurrentSelectedTab(), true);
-            UpdateButtonsAndStatus(true);            
+            UpdateButtonsAndStatus(true);
         }
 
         private enum Direction
@@ -205,7 +207,7 @@ namespace YAT
             if (dataGridViewLog.InvokeRequired == true)
             {
                 StringArgReturningVoidDelegate d = new StringArgReturningVoidDelegate(UpdateReceivedInfo);
-                this.Invoke(d, new object[] { data });
+                this.BeginInvoke(d, new object[] { data });
             }
             else
             {
@@ -256,7 +258,7 @@ namespace YAT
                     }
                     else
                     {
-                        InsertStrippedInLog(text);                        
+                        InsertStrippedInLog(text);
                     }
                 }
 
@@ -278,16 +280,11 @@ namespace YAT
         {
             byte[] data = new byte[256];
             int bytesRead = m_serialPort.Read(data, 0, data.Length);
-            
+
             // convert to char array
             char[] charData = new char[bytesRead];
             Array.Copy(data, charData, bytesRead);
             UpdateReceivedInfo(charData);
-
-            if(chkBoxLogValue.Checked == true)
-            {
-
-            }
         }
 
         public void MacroElementChanged(object sender, EventArgs e)
@@ -314,26 +311,26 @@ namespace YAT
 
         public void MacroSetFocusBefore(object sender, EventArgs e)
         {
-            if(sender is MacroData)
+            if (sender is MacroData)
             {
                 MacroTab tab = GetCurrentMacroTab();
 
-                if(tab is not null)
+                if (tab is not null)
                 {
                     int index = tab.elements.IndexOf((MacroData)sender);
 
-                    if(index > 0)
+                    if (index > 0)
                     {
                         index--;
                     }
 
-                    if(index >= 0)
+                    if (index >= 0)
                     {
                         tab.elements[index].SetFocusToTextBox();
                     }
                 }
 
-                
+
             }
         }
 
@@ -347,7 +344,7 @@ namespace YAT
                 {
                     int index = tab.elements.IndexOf((MacroData)sender);
 
-                    if ((index >= 0) && (index < tab.elements.Count-1))
+                    if ((index >= 0) && (index < tab.elements.Count - 1))
                     {
                         index++;
                     }
@@ -370,13 +367,13 @@ namespace YAT
                 layoutPage.Visible = false;
                 layoutPage.SuspendLayout();
                 layoutPage.Controls.Clear();
-                
+
                 MacroData[] elements = m_ConfiguredMacro[indexValue].elements.ToArray();
 
                 layoutPage.RowCount = elements.Length;
                 layoutPage.ColumnCount = 1;
                 layoutPage.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0F));
-                
+
                 for (int counter = 0; counter < layoutPage.RowCount; counter++)
                 {
 
@@ -386,8 +383,8 @@ namespace YAT
                     layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0F));
                     layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
                     layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 75));
-                    layout.BorderStyle = System.Windows.Forms.BorderStyle.None  ;
-                   
+                    layout.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
                     layout.Dock = DockStyle.Fill;
 
                     // layout.Controls.Add(elements[counter], 0, counter);                    
@@ -425,18 +422,18 @@ namespace YAT
 
 
 
-                    layout.Controls.Add(localTxtBox, 0, 0);                    
+                    layout.Controls.Add(localTxtBox, 0, 0);
                     layout.Controls.Add(btnSend, 1, 0);
                     layout.Controls.Add(chkBox, 2, 0);
-                    
-                    layoutPage.Controls.Add(layout,0,counter);
+
+                    layoutPage.Controls.Add(layout, 0, counter);
                     elements[counter].AttachTo(btnSend, chkBox, localTxtBox);
 
                 }
 
                 layoutPage.RowCount = layoutPage.RowCount + 1;
                 Button button = CreateAddOneButton();
-                layoutPage.Controls.Add(button, 0, layoutPage.RowCount-1);
+                layoutPage.Controls.Add(button, 0, layoutPage.RowCount - 1);
                 layoutPage.SetColumnSpan(button, 1);
 
                 button = CreateAddTenButton();
@@ -444,7 +441,7 @@ namespace YAT
                 layoutPage.SetColumnSpan(button, 2);
 
                 layoutPage.ResumeLayout();
-                layoutPage.Visible = true;                
+                layoutPage.Visible = true;
             }
 
         }
@@ -453,7 +450,7 @@ namespace YAT
         public void MacroElementRemoveMe(object sender, EventArgs e)
         {
             //test the object
-            if(sender is MacroData)
+            if (sender is MacroData)
             {
                 int index = GetCurrentSelectedTab();
 
@@ -474,10 +471,10 @@ namespace YAT
 
 
                             //set the counter to the max
-                            
+
                         }
-                    }                   
-                }             
+                    }
+                }
             }
         }
 
@@ -496,14 +493,14 @@ namespace YAT
                         if (((MacroData)tab.elements[counter]) == ((MacroData)sender))
                         {
                             tab.elements.Insert(counter, CreateNewMacro());
-                           
+
                             UpdateGrid(index);
                             counter++;
                         }
                     }
-				}
+                }
             }
-		}
+        }
 
         public void MacroElementCloneMe(object sender, EventArgs e)
         {
@@ -645,13 +642,13 @@ namespace YAT
             this.Text = System.Windows.Forms.Application.ProductName + " " + System.Windows.Forms.Application.ProductVersion;
 
             this.Text += " - ";
-            
+
             if (Path.GetFileName(m_filename).Length > 0)
             {
                 this.Text += Path.GetFileName(m_filename);
             }
-            
-            if (m_configurationIsDirty== true)
+
+            if (m_configurationIsDirty == true)
             {
                 this.Text += "*";
             }
@@ -668,8 +665,8 @@ namespace YAT
 
         void SaveFileInStream(Stream myStream)
         {
-            if(myStream != null)
-            {                
+            if (myStream != null)
+            {
                 XmlWriterSettings settings = new XmlWriterSettings();
                 settings.Indent = true;
                 settings.OmitXmlDeclaration = true;
@@ -691,9 +688,9 @@ namespace YAT
                         //foreach(macro macroSetting in panel.Controls)
                         for (Int32 counter = 0; counter < foundtab.elements.Count; counter++)
                         {
-                            foundtab.elements[counter].WriteXml(writer);                                
+                            foundtab.elements[counter].WriteXml(writer);
                         }
-  
+
 
                         //XmlWriter
                         writer.WriteEndElement();
@@ -708,18 +705,18 @@ namespace YAT
 
         void BackUpCurrentFile(string pathAndFilename)
         {
-            if(File.Exists(pathAndFilename))
+            if (File.Exists(pathAndFilename))
             {
                 string backupFolder = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "Backup");
 
                 //check if the dir is existing
-                if(Directory.Exists(backupFolder) == false)
+                if (Directory.Exists(backupFolder) == false)
                 {
                     Directory.CreateDirectory(backupFolder);
                 }
 
                 // the directory now exists
-                string newFile = Path.GetFileNameWithoutExtension(pathAndFilename) + "_" + DateTime.Now.ToString("s")  + Path.GetExtension(pathAndFilename);
+                string newFile = Path.GetFileNameWithoutExtension(pathAndFilename) + "_" + DateTime.Now.ToString("s") + Path.GetExtension(pathAndFilename);
 
                 newFile = newFile.Replace(":", "_");
 
@@ -755,7 +752,7 @@ namespace YAT
                     {
                         saveFile.InitialDirectory = Path.GetDirectoryName(m_filename);
                     }
-                    catch(Exception) 
+                    catch (Exception)
                     {
                         //set the startup dir, in case of exception
                         saveFile.InitialDirectory = System.Windows.Forms.Application.StartupPath;
@@ -804,7 +801,7 @@ namespace YAT
         }
 
 
-        private  int GetCurrentSelectedTab()
+        private int GetCurrentSelectedTab()
         {
             return tabMacro.SelectedIndex;
         }
@@ -845,7 +842,7 @@ namespace YAT
 
         private MacroData CreateNewMacro()
         {
-            MacroData myobject = new MacroData();            
+            MacroData myobject = new MacroData();
             myobject.Datachanged += MacroElementChanged;
             myobject.RemoveMe += MacroElementRemoveMe;
             myobject.InsertBeforeMe += MacroElementInsertBeforeMe;
@@ -857,7 +854,7 @@ namespace YAT
 
         private MacroData AddMacroToPanel(int index, bool updateView)
         {
-            MacroData myobject =null;
+            MacroData myobject = null;
 
             if (index < m_ConfiguredMacro.Count)
             {
@@ -866,7 +863,7 @@ namespace YAT
                 m_ConfiguredMacro[index].elements.Add(myobject);
             }
 
-            if(updateView == true)
+            if (updateView == true)
             {
                 UpdateGrid(index);
             }
@@ -876,7 +873,7 @@ namespace YAT
 
         private void AddElements(int count)
         {
-            for(int counter = 0; counter < count -1; counter++)
+            for (int counter = 0; counter < count - 1; counter++)
             {
                 AddMacroToPanel(GetCurrentSelectedTab(), false);
             }
@@ -932,9 +929,9 @@ namespace YAT
         {
             Button macroAddButton = new Button();
             macroAddButton.Click += new System.EventHandler(this.btnNewMacro_Click);
-            macroAddButton.Dock = DockStyle.Fill;            
+            macroAddButton.Dock = DockStyle.Fill;
             macroAddButton.Height = 30;
-            macroAddButton.Text = "+1";                
+            macroAddButton.Text = "+1";
             return macroAddButton;
         }
 
@@ -950,14 +947,14 @@ namespace YAT
 
         private TabPage CreateNewAndAddTabPage(string nameTab, bool appendToEnd)
         {
-            
+
             TabPage tp = new TabPage(nameTab);
             //FlowLayoutPanel fl_panel = new FlowLayoutPanel();
             TableLayoutPanel tbPanel = new TableLayoutPanel();
             tbPanel.Dock = DockStyle.Fill;
             tbPanel.VerticalScroll.Visible = true;
             tbPanel.AutoScroll = true;
-                        
+
             tbPanel.BringToFront();
 
             MacroTab newElement = new MacroTab();
@@ -981,8 +978,8 @@ namespace YAT
             // make the correct back ground
             tp.UseVisualStyleBackColor = false;
 
-            return tp;      
-         }
+            return tp;
+        }
 
 
         private void btnRenameTab_Click(object sender, EventArgs e)
@@ -992,7 +989,7 @@ namespace YAT
             string newName = getNewName.GetNewName(tabMacro.SelectedTab.Text);
 
             //check the length
-            if(newName.Length > 0)
+            if (newName.Length > 0)
             {
                 //copy the new name
                 tabMacro.SelectedTab.Text = newName;
@@ -1006,7 +1003,7 @@ namespace YAT
             //check for at least one tab
             if (tabMacro.TabCount > 1)
             {
-                if (MessageBox.Show(this, "Are you sure you want to remove \"" +  tabMacro.SelectedTab.Text + "\"?", "Remove tab", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(this, "Are you sure you want to remove \"" + tabMacro.SelectedTab.Text + "\"?", "Remove tab", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     m_ConfiguredMacro.RemoveAt(tabMacro.SelectedIndex);
                     //remove the selected tab
@@ -1024,9 +1021,10 @@ namespace YAT
         private void btnConnect_Click(object sender, EventArgs e)
         {
             //connect with the serial port
-            if(m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen)
             {
-                m_serialPort.Close();                
+                m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
+                m_serialPort.Close();
             }
 
 
@@ -1034,16 +1032,17 @@ namespace YAT
             {
                 //get the data from the combo port
                 m_serialPort.PortName = cboSerialPorts.SelectedItem.ToString();
-                m_serialPort.BaudRate = Convert.ToInt32(cboBaudRate.SelectedItem.ToString());                
+                m_serialPort.BaudRate = Convert.ToInt32(cboBaudRate.SelectedItem.ToString());
                 try
                 {
                     m_serialPort.Open();
+                    m_serialPort.DataReceived += m_serialDataReceivedEventHandler;
                 }
                 catch (Exception exp)
                 {
                     MessageBox.Show(exp.Message);
                 }
-                
+
             }
 
             //update the info
@@ -1053,13 +1052,13 @@ namespace YAT
 
         private void UpdateButtonsAndStatus(bool changeTimer)
         {
-            if(m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen)
             {
-                ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString());            
+                ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString());
             }
             else
             {
-                ReportConnectionStatus("Disconnected");            
+                ReportConnectionStatus("Disconnected");
             }
 
             btnDisconnect.Enabled = m_serialPort.IsOpen;
@@ -1070,13 +1069,15 @@ namespace YAT
                 cboTimerSendSelected.SelectedIndex = 0;
             }
             cboTimerSendSelected.Enabled = m_serialPort.IsOpen;
-        }        
+        }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            if(m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen)
             {
-                m_serialPort.Close();
+                // wait till delegate is finished
+                m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
+                m_serialPort.Close();  
             }
             //update the view
             UpdateButtonsAndStatus(false);
