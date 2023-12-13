@@ -84,8 +84,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cboDecodeType = new System.Windows.Forms.ComboBox();
             this.dataGridViewLog = new System.Windows.Forms.DataGridView();
-            this.chkShowSend = new System.Windows.Forms.CheckBox();
             this.chkShowHeaderTimer = new System.Windows.Forms.CheckBox();
+            this.chkShowSend = new System.Windows.Forms.CheckBox();
+            this.chkAddLengthHeader = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelGraphShowHide = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelChart2 = new System.Windows.Forms.TableLayoutPanel();
@@ -365,7 +366,6 @@
             this.cboCommandTerminator.Name = "cboCommandTerminator";
             this.cboCommandTerminator.Size = new System.Drawing.Size(437, 21);
             this.cboCommandTerminator.TabIndex = 0;
-            this.cboCommandTerminator.SelectedIndexChanged += new System.EventHandler(this.cboCommandTerminator_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -706,15 +706,16 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel4.Controls.Add(this.chkWaitForTerminator, 4, 2);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel4.Controls.Add(this.chkWaitForTerminator, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.btnClearLog, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblCountTerminator, 7, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 6, 0);
             this.tableLayoutPanel4.Controls.Add(this.cboDecodeType, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.dataGridViewLog, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.chkShowHeaderTimer, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.chkShowSend, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.chkShowHeaderTimer, 2, 2);
+            this.tableLayoutPanel4.Controls.Add(this.chkAddLengthHeader, 4, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -732,9 +733,9 @@
             this.chkWaitForTerminator.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tableLayoutPanel4.SetColumnSpan(this.chkWaitForTerminator, 2);
             this.chkWaitForTerminator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkWaitForTerminator.Location = new System.Drawing.Point(283, 457);
+            this.chkWaitForTerminator.Location = new System.Drawing.Point(267, 457);
             this.chkWaitForTerminator.Name = "chkWaitForTerminator";
-            this.chkWaitForTerminator.Size = new System.Drawing.Size(134, 24);
+            this.chkWaitForTerminator.Size = new System.Drawing.Size(126, 24);
             this.chkWaitForTerminator.TabIndex = 9;
             this.chkWaitForTerminator.Text = "Terminator check";
             this.chkWaitForTerminator.UseVisualStyleBackColor = true;
@@ -745,7 +746,7 @@
             this.btnClearLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClearLog.Location = new System.Drawing.Point(3, 3);
             this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(204, 24);
+            this.btnClearLog.Size = new System.Drawing.Size(192, 24);
             this.btnClearLog.TabIndex = 2;
             this.btnClearLog.Text = "Clear";
             this.btnClearLog.UseVisualStyleBackColor = true;
@@ -755,9 +756,9 @@
             // 
             this.lblCountTerminator.AutoSize = true;
             this.lblCountTerminator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCountTerminator.Location = new System.Drawing.Point(473, 0);
+            this.lblCountTerminator.Location = new System.Drawing.Point(449, 0);
             this.lblCountTerminator.Name = "lblCountTerminator";
-            this.lblCountTerminator.Size = new System.Drawing.Size(50, 30);
+            this.lblCountTerminator.Size = new System.Drawing.Size(74, 30);
             this.lblCountTerminator.TabIndex = 3;
             this.lblCountTerminator.Text = "0";
             this.lblCountTerminator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -766,7 +767,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(423, 0);
+            this.label4.Location = new System.Drawing.Point(399, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 30);
             this.label4.TabIndex = 4;
@@ -779,9 +780,9 @@
             this.cboDecodeType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboDecodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDecodeType.FormattingEnabled = true;
-            this.cboDecodeType.Location = new System.Drawing.Point(213, 3);
+            this.cboDecodeType.Location = new System.Drawing.Point(201, 3);
             this.cboDecodeType.Name = "cboDecodeType";
-            this.cboDecodeType.Size = new System.Drawing.Size(204, 21);
+            this.cboDecodeType.Size = new System.Drawing.Size(192, 21);
             this.cboDecodeType.TabIndex = 5;
             // 
             // dataGridViewLog
@@ -813,9 +814,22 @@
             this.dataGridViewLog.RowHeadersWidth = 62;
             this.dataGridViewLog.Size = new System.Drawing.Size(520, 418);
             this.dataGridViewLog.TabIndex = 6;
-            this.dataGridViewLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLog_CellContentClick);
             this.dataGridViewLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewLog_CellFormatting);
             this.dataGridViewLog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewLog_MouseClick);
+            // 
+            // chkShowHeaderTimer
+            // 
+            this.chkShowHeaderTimer.AutoSize = true;
+            this.chkShowHeaderTimer.Checked = true;
+            this.chkShowHeaderTimer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tableLayoutPanel4.SetColumnSpan(this.chkShowHeaderTimer, 2);
+            this.chkShowHeaderTimer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkShowHeaderTimer.Location = new System.Drawing.Point(135, 457);
+            this.chkShowHeaderTimer.Name = "chkShowHeaderTimer";
+            this.chkShowHeaderTimer.Size = new System.Drawing.Size(126, 24);
+            this.chkShowHeaderTimer.TabIndex = 8;
+            this.chkShowHeaderTimer.Text = "Show header timer";
+            this.chkShowHeaderTimer.UseVisualStyleBackColor = true;
             // 
             // chkShowSend
             // 
@@ -826,24 +840,22 @@
             this.chkShowSend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkShowSend.Location = new System.Drawing.Point(3, 457);
             this.chkShowSend.Name = "chkShowSend";
-            this.chkShowSend.Size = new System.Drawing.Size(134, 24);
+            this.chkShowSend.Size = new System.Drawing.Size(126, 24);
             this.chkShowSend.TabIndex = 7;
             this.chkShowSend.Text = "Show send command";
             this.chkShowSend.UseVisualStyleBackColor = true;
             // 
-            // chkShowHeaderTimer
+            // chkAddLengthHeader
             // 
-            this.chkShowHeaderTimer.AutoSize = true;
-            this.chkShowHeaderTimer.Checked = true;
-            this.chkShowHeaderTimer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tableLayoutPanel4.SetColumnSpan(this.chkShowHeaderTimer, 2);
-            this.chkShowHeaderTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkShowHeaderTimer.Location = new System.Drawing.Point(143, 457);
-            this.chkShowHeaderTimer.Name = "chkShowHeaderTimer";
-            this.chkShowHeaderTimer.Size = new System.Drawing.Size(134, 24);
-            this.chkShowHeaderTimer.TabIndex = 8;
-            this.chkShowHeaderTimer.Text = "Show header timer";
-            this.chkShowHeaderTimer.UseVisualStyleBackColor = true;
+            this.chkAddLengthHeader.AutoSize = true;
+            this.tableLayoutPanel4.SetColumnSpan(this.chkAddLengthHeader, 2);
+            this.chkAddLengthHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkAddLengthHeader.Location = new System.Drawing.Point(399, 457);
+            this.chkAddLengthHeader.Name = "chkAddLengthHeader";
+            this.chkAddLengthHeader.Size = new System.Drawing.Size(124, 24);
+            this.chkAddLengthHeader.TabIndex = 10;
+            this.chkAddLengthHeader.Text = "Add length header";
+            this.chkAddLengthHeader.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -1064,7 +1076,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
@@ -1094,9 +1106,9 @@
             this.chkGraphSelection.Checked = true;
             this.chkGraphSelection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkGraphSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkGraphSelection.Location = new System.Drawing.Point(358, 3);
+            this.chkGraphSelection.Location = new System.Drawing.Point(356, 3);
             this.chkGraphSelection.Name = "chkGraphSelection";
-            this.chkGraphSelection.Size = new System.Drawing.Size(232, 28);
+            this.chkGraphSelection.Size = new System.Drawing.Size(230, 28);
             this.chkGraphSelection.TabIndex = 1;
             this.chkGraphSelection.Text = "Both the graphs";
             this.chkGraphSelection.UseVisualStyleBackColor = true;
@@ -1107,16 +1119,16 @@
             this.txtTimerSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTimerSpeed.Location = new System.Drawing.Point(120, 3);
             this.txtTimerSpeed.Name = "txtTimerSpeed";
-            this.txtTimerSpeed.Size = new System.Drawing.Size(232, 20);
+            this.txtTimerSpeed.Size = new System.Drawing.Size(230, 20);
             this.txtTimerSpeed.TabIndex = 2;
             this.txtTimerSpeed.Text = "1000";
             // 
             // btnClearGraphs
             // 
             this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearGraphs.Location = new System.Drawing.Point(833, 3);
+            this.btnClearGraphs.Location = new System.Drawing.Point(828, 3);
             this.btnClearGraphs.Name = "btnClearGraphs";
-            this.btnClearGraphs.Size = new System.Drawing.Size(184, 28);
+            this.btnClearGraphs.Size = new System.Drawing.Size(189, 28);
             this.btnClearGraphs.TabIndex = 3;
             this.btnClearGraphs.Text = "Clear graph(s)";
             this.btnClearGraphs.UseVisualStyleBackColor = true;
@@ -1178,7 +1190,6 @@
             this.Name = "MainForm";
             this.Text = "Yat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -1303,6 +1314,7 @@
         private System.Windows.Forms.Button btnClearGraphs;
         private System.Windows.Forms.Button btnAppendMacro;
         private System.Windows.Forms.CheckBox chkWaitForTerminator;
+        private System.Windows.Forms.CheckBox chkAddLengthHeader;
     }
 }
 
