@@ -180,9 +180,7 @@ namespace YAT
 
             if (dataGridViewLog.Rows[m_dataTableLog.Rows.Count - 1].Displayed == false)
             {
-
-                dataGridViewLog.FirstDisplayedScrollingRowIndex = m_dataTableLog.Rows.Count - 1;
-
+                dataGridViewLog.FirstDisplayedScrollingRowIndex = dataGridViewLog.RowCount - 1;
             }
 
         }
