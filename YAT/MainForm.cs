@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Globalization;
@@ -1589,6 +1590,7 @@ namespace YAT
             }
         }
         string m_unusedData = "";
+        const int MAX_NUMBER_OF_POINT_DOTTED_LINE = 5000;
         private void DecodeToLoggingGraph(string dataToDecode, Chart currentChart)
         {
             if (chkBoxLogValue.Checked == true)
@@ -1645,17 +1647,17 @@ namespace YAT
                                             chrtLoggingData1.ChartAreas[0].AxisX.Maximum = currentTime.AddSeconds(10).ToOADate();
                                         }
 
+                                        if((currentChart.Series[0].Points.Count > MAX_NUMBER_OF_POINT_DOTTED_LINE) && (currentChart.Series[0].ChartType == System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line))                                                 
+                                        {
+                                            currentChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                                        }
+                                        else if((currentChart.Series[0].ChartType ==  System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine) && (currentChart.Series[0].Points.Count < MAX_NUMBER_OF_POINT_DOTTED_LINE))
+                                        {
+                                            currentChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                                        }
+
                                     }
 
-                                    
-                                   
-                                    /*
-
-                                     if (currentChart.Series[0].Points.Count > currentChart.ChartAreas[0].AxisX.Maximum)
-                                     {
-                                         currentChart.ChartAreas[0].AxisX.Maximum += 10;
-                                     }
-                                    */
                                 }
                                 catch(Exception)
                                 {
