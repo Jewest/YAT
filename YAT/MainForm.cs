@@ -1181,14 +1181,7 @@ namespace YAT
                     toSend = toSend.Replace("\r", "");
                     toSend = toSend.Replace("\n", "");
 
-                    AddToLog(toSend, Direction.Sending);
-                    /*
-                    for(int timerCounter = 0; timerCounter < 3; timerCounter++)
-                    {
-                        System.Threading.Thread.Sleep(100);
-                        System.Windows.Forms.Application.DoEvents();
-                    }
-                    */
+                    AddToLog(toSend, Direction.Sending);                   
                     
                 } catch
                 {
