@@ -276,8 +276,10 @@ namespace YAT
         //callback for the serial port
         private void dataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            byte[] data = new byte[m_serialPort.BytesToRead];
-            int bytesRead = m_serialPort.Read(data, 0, data.Length);
+            SerialPort spL = (SerialPort)sender;
+
+            byte[] data = new byte[spL.BytesToRead];
+            int bytesRead = spL.Read(data, 0, data.Length);
 
             // convert to char array
             char[] charData = new char[bytesRead];
@@ -1179,14 +1181,7 @@ namespace YAT
                     toSend = toSend.Replace("\r", "");
                     toSend = toSend.Replace("\n", "");
 
-                    AddToLog(toSend, Direction.Sending);
-
-                    for(int timerCounter = 0; timerCounter < 3; timerCounter++)
-                    {
-                        System.Threading.Thread.Sleep(100);
-                        System.Windows.Forms.Application.DoEvents();
-                    }
-
+                    AddToLog(toSend, Direction.Sending);                   
                     
                 } catch
                 {
