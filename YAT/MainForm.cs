@@ -1629,7 +1629,7 @@ namespace YAT
                                             chrtLoggingData1.ChartAreas[0].AxisX.Minimum = nowValue;
                                             chrtLoggingData2.ChartAreas[0].AxisX.Minimum = nowValue;
                                         }
-                                        currentChart.ChartAreas[0].AxisX.LabelStyle.Format = "hh:mm:ss";
+                                        currentChart.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm:ss";
                                         
                                     }
 
