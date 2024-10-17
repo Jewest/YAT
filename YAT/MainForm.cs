@@ -100,6 +100,7 @@ namespace YAT
             cboDecodeType.Items.Clear();
             cboDecodeType.Items.Add("Ascii");
             cboDecodeType.Items.Add("Hex");
+            cboDecodeType.Items.Add("Ascii + Hex");
             cboDecodeType.SelectedIndex = 0;
 
             SetupDefaultTab();
@@ -222,6 +223,23 @@ namespace YAT
                     }
 
                     AddToLog(addData, Direction.Receiving);
+                }
+                else if (cboDecodeType.SelectedIndex == 2)
+                {
+                    string addData = "";
+                    string binData = "";
+                    // add 
+                    for (int counter = 0; counter < data.Length; counter++)
+                    {
+                        int value = data[counter];
+                        addData += data[counter];
+
+                        binData += "0x";
+                        binData += value.ToString("X2");
+                        binData += " ";
+                    }
+
+                    AddToLog(addData + "\n" + binData, Direction.Receiving);
                 }
                 else
                 {
@@ -1919,6 +1937,10 @@ namespace YAT
             LoadFileFromDisk(false);
         }
 
+        private void cboDecodeType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
