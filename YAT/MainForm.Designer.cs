@@ -281,6 +281,7 @@
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(94, 21);
             this.cboBaudRate.TabIndex = 44;
+            this.cboBaudRate.SelectedIndexChanged += new System.EventHandler(this.cboBaudRate_SelectedIndexChanged);
             // 
             // btnDisconnect
             // 
@@ -784,11 +785,13 @@
             this.cboDecodeType.Name = "cboDecodeType";
             this.cboDecodeType.Size = new System.Drawing.Size(192, 21);
             this.cboDecodeType.TabIndex = 5;
+            this.cboDecodeType.SelectedIndexChanged += new System.EventHandler(this.cboDecodeType_SelectedIndexChanged);
             // 
             // dataGridViewLog
             // 
             this.dataGridViewLog.AllowUserToAddRows = false;
             this.dataGridViewLog.AllowUserToDeleteRows = false;
+            this.dataGridViewLog.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -805,7 +808,7 @@
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewLog.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewLog.Location = new System.Drawing.Point(3, 33);
@@ -1076,7 +1079,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 207F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
@@ -1095,9 +1098,9 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 34);
+            this.label10.Size = new System.Drawing.Size(109, 34);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Time per sample (mS):";
+            this.label10.Text = "Time per sample (ms):";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // chkGraphSelection
@@ -1106,9 +1109,9 @@
             this.chkGraphSelection.Checked = true;
             this.chkGraphSelection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkGraphSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkGraphSelection.Location = new System.Drawing.Point(355, 3);
+            this.chkGraphSelection.Location = new System.Drawing.Point(350, 3);
             this.chkGraphSelection.Name = "chkGraphSelection";
-            this.chkGraphSelection.Size = new System.Drawing.Size(229, 28);
+            this.chkGraphSelection.Size = new System.Drawing.Size(226, 28);
             this.chkGraphSelection.TabIndex = 1;
             this.chkGraphSelection.Text = "Both the graphs";
             this.chkGraphSelection.UseVisualStyleBackColor = true;
@@ -1117,18 +1120,18 @@
             // txtTimerSpeed
             // 
             this.txtTimerSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTimerSpeed.Location = new System.Drawing.Point(120, 3);
+            this.txtTimerSpeed.Location = new System.Drawing.Point(118, 3);
             this.txtTimerSpeed.Name = "txtTimerSpeed";
-            this.txtTimerSpeed.Size = new System.Drawing.Size(229, 20);
+            this.txtTimerSpeed.Size = new System.Drawing.Size(226, 20);
             this.txtTimerSpeed.TabIndex = 2;
             this.txtTimerSpeed.Text = "1000";
             // 
             // btnClearGraphs
             // 
             this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearGraphs.Location = new System.Drawing.Point(824, 3);
+            this.btnClearGraphs.Location = new System.Drawing.Point(814, 3);
             this.btnClearGraphs.Name = "btnClearGraphs";
-            this.btnClearGraphs.Size = new System.Drawing.Size(193, 28);
+            this.btnClearGraphs.Size = new System.Drawing.Size(203, 28);
             this.btnClearGraphs.TabIndex = 3;
             this.btnClearGraphs.Text = "Clear graph(s)";
             this.btnClearGraphs.UseVisualStyleBackColor = true;
