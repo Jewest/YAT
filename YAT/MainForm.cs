@@ -239,6 +239,9 @@ namespace YAT
                         binData += " ";
                     }
 
+                    addData = addData.Replace("\n", "<0xA>");
+                    addData = addData.Replace("\r", "<0xD>");
+
                     AddToLog(addData + "\n" + binData, Direction.Receiving);
                 }
                 else
@@ -1940,6 +1943,15 @@ namespace YAT
         private void cboDecodeType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboBaudRate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_serialPort.IsOpen == true)
+            {
+                btnDisconnect.PerformClick();
+                btnConnect.PerformClick();
+            }
         }
     }
 

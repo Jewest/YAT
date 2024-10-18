@@ -281,6 +281,7 @@
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(94, 21);
             this.cboBaudRate.TabIndex = 44;
+            this.cboBaudRate.SelectedIndexChanged += new System.EventHandler(this.cboBaudRate_SelectedIndexChanged);
             // 
             // btnDisconnect
             // 
