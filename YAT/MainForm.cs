@@ -45,7 +45,8 @@ namespace YAT
         }
 
         private SerialPort m_serialPort = new SerialPort();
-        private TcpClient m_lanClient = new TcpClient(); 
+        private TcpClient m_lanClient = null; // default start with null pointer
+        private CancellationTokenSource m_cancelTokensource;  // Token for stopping listener
         private Queue<string> m_ToSendList = new Queue<string>();
         private TabPage m_tabPagePlus = new TabPage("  +");
         private string m_filename = "";
@@ -1052,9 +1053,10 @@ namespace YAT
                 m_serialPort.Close();
             }
 
-            if (m_lanClient.Connected == true)
+            if (IsLanConnected() == true)
             {
-                m_lanClient.Close();
+                m_cancelTokensource?.Cancel(); // Stop listening loop
+                m_lanClient?.Close();
             }
 
         }
@@ -1086,21 +1088,38 @@ namespace YAT
 
         }
 
+        private bool IsLanConnected()
+        {
+            bool isConnected = false;
+            if (m_lanClient != null)
+            {
+                isConnected = m_lanClient.Connected;
+            }
+            return isConnected;
+        }
+
+
         private void UpdateButtonsAndStatus(bool changeTimer)
         {
             if (m_serialPort.IsOpen == true)
             {
                 ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString());
             }
+            else if(m_lanClient?.Connected == true)
+            {
+                ReportConnectionStatus("Connected: " +m_lanClient.ToString());
+            }
             else
             {
                 ReportConnectionStatus("Disconnected");
             }
 
+
+
             btnDisconnect.Enabled = m_serialPort.IsOpen;
-            btnDisconnectLan.Enabled = m_lanClient.Connected;
+            btnDisconnectLan.Enabled = IsLanConnected();
             btnConnect.Enabled = !m_serialPort.IsOpen;
-            btnConnectLan.Enabled = !m_lanClient.Connected;
+            btnConnectLan.Enabled = !IsLanConnected();
             btnSendAll.Enabled = m_serialPort.IsOpen;
             if (changeTimer == true)
             {
@@ -1166,16 +1185,19 @@ namespace YAT
 
         public void SendCommand(string command)
         {
+
+            if (chkAddLengthHeader.Checked == true)
+            {
+                // add length header
+                int length = command.Length;
+                command = length.ToString("D2") + command;
+
+            }
+
             if (m_serialPort.IsOpen == true)
             {
 
-                if (chkAddLengthHeader.Checked == true)
-                {
-                    // add length header
-                    int length = command.Length;
-                    command = length.ToString("D2") + command;
-
-                }
+               
                 if (m_ToSendList.Count() > 0)
                 {
                     m_ToSendList.Enqueue(command);
@@ -1193,6 +1215,11 @@ namespace YAT
                 }
 
             }
+            else if(IsLanConnected() == true)
+            {
+                WriteStringToLan(command);
+            }
+
         }
 
         private string GetTerminationString()
@@ -1205,6 +1232,29 @@ namespace YAT
                 terminator = cast.Value;
             }
             return terminator;
+        }
+
+        private void WriteStringToLan(string command)
+        {
+            if(IsLanConnected() == true)
+            {
+                string toSend = txtBoxPreFix.Text + command + GetTerminationString();
+                try
+                {
+                    byte[] data = Encoding.UTF8.GetBytes(toSend);
+                    NetworkStream stream = m_lanClient.GetStream();
+                    stream.Write(data, 0, data.Length);
+
+                    toSend = toSend.Replace("\r", "");
+                    toSend = toSend.Replace("\n", "");
+
+                    AddToLog(toSend, Direction.Sending);
+                }
+                catch
+                {
+                    UpdateButtonsAndStatus(false);
+                }
+            }
         }
 
         private void WriteStringToSerial(string command)
@@ -1974,14 +2024,58 @@ namespace YAT
         {
             CloseAllPorts();
 
-            m_lanClient.Connect(txtLanIPAddress.Text, int.Parse(txtLanPort.Text));
+            try
+            {
+                m_lanClient = new TcpClient(txtLanIPAddress.Text, int.Parse(txtLanPort.Text));                
+                m_cancelTokensource = new CancellationTokenSource();
+                Task.Run(() => ListenForData(m_cancelTokensource.Token)); // Start listening in background
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+
             
+            //update the info
+            UpdateButtonsAndStatus(false);
+
 
         }
+           
+
+        private async Task ListenForData(CancellationToken token)
+        {
+            try
+            {
+                using (NetworkStream stream = m_lanClient.GetStream())
+                {
+                    byte[] buffer = new byte[1024];
+
+                    while (!token.IsCancellationRequested)
+                    {
+                        int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, token);
+                        if (bytesRead > 0)
+                        {
+                            // convert to char array
+                            char[] charData = new char[bytesRead];
+                            Array.Copy(buffer, charData, bytesRead);
+                            UpdateReceivedInfo(charData);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Listener stopped: " + ex.Message);
+            }
+        }
+
+
 
         private void btnDisconnectLan_Click(object sender, EventArgs e)
         {
             CloseAllPorts();
+            UpdateButtonsAndStatus(false);
         }
 
     }
