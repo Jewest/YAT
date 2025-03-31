@@ -10,7 +10,9 @@ using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -43,6 +45,7 @@ namespace YAT
         }
 
         private SerialPort m_serialPort = new SerialPort();
+        private TcpClient m_lanClient = new TcpClient(); 
         private Queue<string> m_ToSendList = new Queue<string>();
         private TabPage m_tabPagePlus = new TabPage("  +");
         private string m_filename = "";
@@ -1040,15 +1043,25 @@ namespace YAT
             toolStripCurrentStatusLabel.Text = status;
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
+        private void CloseAllPorts()
         {
             //connect with the serial port
-            if (m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen == true)
             {
                 m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
                 m_serialPort.Close();
             }
 
+            if (m_lanClient.Connected == true)
+            {
+                m_lanClient.Close();
+            }
+
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            CloseAllPorts();
 
             if (cboSerialPorts.SelectedItem != null)
             {
@@ -1058,6 +1071,7 @@ namespace YAT
                 try
                 {
                     m_serialPort.Open();
+                    // register handler
                     m_serialPort.DataReceived += m_serialDataReceivedEventHandler;
                 }
                 catch (Exception exp)
@@ -1074,7 +1088,7 @@ namespace YAT
 
         private void UpdateButtonsAndStatus(bool changeTimer)
         {
-            if (m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen == true)
             {
                 ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString());
             }
@@ -1084,7 +1098,9 @@ namespace YAT
             }
 
             btnDisconnect.Enabled = m_serialPort.IsOpen;
+            btnDisconnectLan.Enabled = m_lanClient.Connected;
             btnConnect.Enabled = !m_serialPort.IsOpen;
+            btnConnectLan.Enabled = !m_lanClient.Connected;
             btnSendAll.Enabled = m_serialPort.IsOpen;
             if (changeTimer == true)
             {
@@ -1095,7 +1111,7 @@ namespace YAT
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            if (m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen == true)
             {
                 // wait till delegate is finished
                 m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
@@ -1953,6 +1969,21 @@ namespace YAT
                 btnConnect.PerformClick();
             }
         }
+
+        private void btnConnectLan_Click(object sender, EventArgs e)
+        {
+            CloseAllPorts();
+
+            m_lanClient.Connect(txtLanIPAddress.Text, int.Parse(txtLanPort.Text));
+            
+
+        }
+
+        private void btnDisconnectLan_Click(object sender, EventArgs e)
+        {
+            CloseAllPorts();
+        }
+
     }
 
 
