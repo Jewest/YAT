@@ -2061,12 +2061,42 @@ namespace YAT
                             Array.Copy(buffer, charData, bytesRead);
                             UpdateReceivedInfo(charData);
                         }
+                        else
+                        {
+                            if (m_lanClient.Available == 0)
+                            {
+                                
+                                CloseAllPorts();
+
+                                if (InvokeRequired)
+                                {
+                                    Invoke(new Action(() =>
+                                    {
+
+                                        UpdateReceivedInfo(("Other side closed port" + GetTerminationString()).ToCharArray());
+                                        //update the info
+                                        UpdateButtonsAndStatus(false);
+                                    }));
+                                }
+                            }
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Listener stopped: " + ex.Message);
+                CloseAllPorts();
+
+                if (InvokeRequired)
+                {
+                    Invoke(new Action(() =>
+                    {
+                        UpdateReceivedInfo(("Other side closed port" + GetTerminationString()).ToCharArray());
+                        //update the info
+                        UpdateButtonsAndStatus(false);
+                    }));
+                }
             }
         }
 
