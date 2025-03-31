@@ -1107,7 +1107,7 @@ namespace YAT
             }
             else if(m_lanClient?.Connected == true)
             {
-                ReportConnectionStatus("Connected: " +m_lanClient.ToString());
+                ReportConnectionStatus("Connected: " + m_lanClient.Client.RemoteEndPoint.ToString());
             }
             else
             {
@@ -2088,14 +2088,17 @@ namespace YAT
                 Console.WriteLine("Listener stopped: " + ex.Message);
                 CloseAllPorts();
 
-                if (InvokeRequired)
+                if (InvokeRequired == true)
                 {
-                    Invoke(new Action(() =>
+                    if (m_lanClient.Connected == true)  
                     {
-                        UpdateReceivedInfo(("Other side closed port" + GetTerminationString()).ToCharArray());
-                        //update the info
-                        UpdateButtonsAndStatus(false);
-                    }));
+                        Invoke(new Action(() =>
+                        {
+                            UpdateReceivedInfo(("Other side closed port" + GetTerminationString()).ToCharArray());
+                            //update the info
+                            UpdateButtonsAndStatus(false);
+                        }));
+                    }
                 }
             }
         }

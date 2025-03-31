@@ -175,11 +175,10 @@
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1046, 676);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
@@ -208,7 +207,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.groupBox4, 2);
             this.groupBox4.Controls.Add(this.tableLayoutPanel3);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 123);
+            this.groupBox4.Location = new System.Drawing.Point(3, 93);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1040, 44);
             this.groupBox4.TabIndex = 8;
@@ -280,10 +279,10 @@
             this.tabctl.Controls.Add(this.tabPage1);
             this.tabctl.Controls.Add(this.tabPage2);
             this.tabctl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabctl.Location = new System.Drawing.Point(3, 173);
+            this.tabctl.Location = new System.Drawing.Point(3, 143);
             this.tabctl.Name = "tabctl";
             this.tabctl.SelectedIndex = 0;
-            this.tabctl.Size = new System.Drawing.Size(1040, 475);
+            this.tabctl.Size = new System.Drawing.Size(1040, 505);
             this.tabctl.TabIndex = 9;
             // 
             // tabPage1
@@ -292,7 +291,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1032, 449);
+            this.tabPage1.Size = new System.Drawing.Size(1032, 479);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Commands";
             // 
@@ -309,7 +308,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Size = new System.Drawing.Size(1026, 443);
+            this.splitContainer1.Size = new System.Drawing.Size(1026, 473);
             this.splitContainer1.SplitterDistance = 490;
             this.splitContainer1.TabIndex = 7;
             // 
@@ -320,7 +319,7 @@
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.MinimumSize = new System.Drawing.Size(250, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(490, 443);
+            this.groupBox2.Size = new System.Drawing.Size(490, 473);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Commands";
@@ -332,7 +331,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 424);
+            this.panel1.Size = new System.Drawing.Size(484, 454);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -361,7 +360,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 424);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 454);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tabMacro
@@ -371,7 +370,7 @@
             this.tabMacro.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.tabMacro.Name = "tabMacro";
             this.tabMacro.SelectedIndex = 0;
-            this.tabMacro.Size = new System.Drawing.Size(481, 318);
+            this.tabMacro.Size = new System.Drawing.Size(481, 348);
             this.tabMacro.TabIndex = 5;
             this.tabMacro.SelectedIndexChanged += new System.EventHandler(this.tabMacro_SelectedIndexChanged);
             this.tabMacro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabMacro_MouseDown);
@@ -387,7 +386,7 @@
             this.tableLayoutPanel5.Controls.Add(this.btnRenameTab, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnDuplicateTab, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 394);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 424);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
@@ -571,7 +570,7 @@
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(532, 443);
+            this.groupBox3.Size = new System.Drawing.Size(532, 473);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reply";
@@ -603,7 +602,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(526, 424);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(526, 454);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // chkWaitForTerminator
@@ -613,7 +612,7 @@
             this.chkWaitForTerminator.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tableLayoutPanel4.SetColumnSpan(this.chkWaitForTerminator, 2);
             this.chkWaitForTerminator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkWaitForTerminator.Location = new System.Drawing.Point(267, 397);
+            this.chkWaitForTerminator.Location = new System.Drawing.Point(267, 427);
             this.chkWaitForTerminator.Name = "chkWaitForTerminator";
             this.chkWaitForTerminator.Size = new System.Drawing.Size(126, 24);
             this.chkWaitForTerminator.TabIndex = 9;
@@ -695,7 +694,7 @@
             this.dataGridViewLog.Name = "dataGridViewLog";
             this.dataGridViewLog.ReadOnly = true;
             this.dataGridViewLog.RowHeadersWidth = 62;
-            this.dataGridViewLog.Size = new System.Drawing.Size(520, 358);
+            this.dataGridViewLog.Size = new System.Drawing.Size(520, 388);
             this.dataGridViewLog.TabIndex = 6;
             this.dataGridViewLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewLog_CellFormatting);
             this.dataGridViewLog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewLog_MouseClick);
@@ -707,7 +706,7 @@
             this.chkShowHeaderTimer.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tableLayoutPanel4.SetColumnSpan(this.chkShowHeaderTimer, 2);
             this.chkShowHeaderTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkShowHeaderTimer.Location = new System.Drawing.Point(135, 397);
+            this.chkShowHeaderTimer.Location = new System.Drawing.Point(135, 427);
             this.chkShowHeaderTimer.Name = "chkShowHeaderTimer";
             this.chkShowHeaderTimer.Size = new System.Drawing.Size(126, 24);
             this.chkShowHeaderTimer.TabIndex = 8;
@@ -721,7 +720,7 @@
             this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tableLayoutPanel4.SetColumnSpan(this.chkShowSend, 2);
             this.chkShowSend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkShowSend.Location = new System.Drawing.Point(3, 397);
+            this.chkShowSend.Location = new System.Drawing.Point(3, 427);
             this.chkShowSend.Name = "chkShowSend";
             this.chkShowSend.Size = new System.Drawing.Size(126, 24);
             this.chkShowSend.TabIndex = 7;
@@ -733,7 +732,7 @@
             this.chkAddLengthHeader.AutoSize = true;
             this.tableLayoutPanel4.SetColumnSpan(this.chkAddLengthHeader, 2);
             this.chkAddLengthHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkAddLengthHeader.Location = new System.Drawing.Point(399, 397);
+            this.chkAddLengthHeader.Location = new System.Drawing.Point(399, 427);
             this.chkAddLengthHeader.Name = "chkAddLengthHeader";
             this.chkAddLengthHeader.Size = new System.Drawing.Size(124, 24);
             this.chkAddLengthHeader.TabIndex = 10;
@@ -959,7 +958,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 221F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
@@ -1009,9 +1008,9 @@
             // btnClearGraphs
             // 
             this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearGraphs.Location = new System.Drawing.Point(802, 3);
+            this.btnClearGraphs.Location = new System.Drawing.Point(801, 3);
             this.btnClearGraphs.Name = "btnClearGraphs";
-            this.btnClearGraphs.Size = new System.Drawing.Size(215, 28);
+            this.btnClearGraphs.Size = new System.Drawing.Size(216, 28);
             this.btnClearGraphs.TabIndex = 3;
             this.btnClearGraphs.Text = "Clear graph(s)";
             this.btnClearGraphs.UseVisualStyleBackColor = true;
@@ -1026,7 +1025,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1040, 114);
+            this.tabControl1.Size = new System.Drawing.Size(1040, 84);
             this.tabControl1.TabIndex = 10;
             // 
             // tabSerial
@@ -1035,7 +1034,7 @@
             this.tabSerial.Location = new System.Drawing.Point(4, 22);
             this.tabSerial.Name = "tabSerial";
             this.tabSerial.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSerial.Size = new System.Drawing.Size(1032, 88);
+            this.tabSerial.Size = new System.Drawing.Size(1032, 58);
             this.tabSerial.TabIndex = 0;
             this.tabSerial.Text = "Serial";
             this.tabSerial.UseVisualStyleBackColor = true;
@@ -1048,7 +1047,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1026, 82);
+            this.groupBox1.Size = new System.Drawing.Size(1026, 52);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Com settings";
@@ -1079,7 +1078,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1020, 63);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1020, 33);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // label5
@@ -1186,7 +1185,7 @@
             this.tabLan.Location = new System.Drawing.Point(4, 22);
             this.tabLan.Name = "tabLan";
             this.tabLan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLan.Size = new System.Drawing.Size(1032, 88);
+            this.tabLan.Size = new System.Drawing.Size(1032, 58);
             this.tabLan.TabIndex = 1;
             this.tabLan.Text = "Lan";
             this.tabLan.UseVisualStyleBackColor = true;
@@ -1197,7 +1196,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1026, 82);
+            this.groupBox5.Size = new System.Drawing.Size(1026, 52);
             this.groupBox5.TabIndex = 51;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Lan settings";
@@ -1206,13 +1205,13 @@
             // 
             this.tableLayoutPanel10.ColumnCount = 8;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00016F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.00013F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00079F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99828F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00079F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.00063F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.99862F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.00063F));
             this.tableLayoutPanel10.Controls.Add(this.label11, 2, 0);
             this.tableLayoutPanel10.Controls.Add(this.btnConnectLan, 5, 0);
             this.tableLayoutPanel10.Controls.Add(this.btnDisconnectLan, 7, 0);
@@ -1227,17 +1226,17 @@
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(1020, 63);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(1020, 33);
             this.tableLayoutPanel10.TabIndex = 2;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(229, 0);
+            this.label11.Location = new System.Drawing.Point(214, 0);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(96, 30);
+            this.label11.Size = new System.Drawing.Size(56, 30);
             this.label11.TabIndex = 45;
             this.label11.Text = "Port:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1246,10 +1245,10 @@
             // 
             this.btnConnectLan.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnConnectLan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnConnectLan.Location = new System.Drawing.Point(487, 0);
+            this.btnConnectLan.Location = new System.Drawing.Point(534, 0);
             this.btnConnectLan.Margin = new System.Windows.Forms.Padding(0);
             this.btnConnectLan.Name = "btnConnectLan";
-            this.btnConnectLan.Size = new System.Drawing.Size(177, 30);
+            this.btnConnectLan.Size = new System.Drawing.Size(162, 30);
             this.btnConnectLan.TabIndex = 1;
             this.btnConnectLan.Text = "Connect";
             this.btnConnectLan.UseVisualStyleBackColor = true;
@@ -1258,10 +1257,10 @@
             // btnDisconnectLan
             // 
             this.btnDisconnectLan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisconnectLan.Location = new System.Drawing.Point(841, 0);
+            this.btnDisconnectLan.Location = new System.Drawing.Point(857, 0);
             this.btnDisconnectLan.Margin = new System.Windows.Forms.Padding(0);
             this.btnDisconnectLan.Name = "btnDisconnectLan";
-            this.btnDisconnectLan.Size = new System.Drawing.Size(179, 30);
+            this.btnDisconnectLan.Size = new System.Drawing.Size(163, 30);
             this.btnDisconnectLan.TabIndex = 46;
             this.btnDisconnectLan.Text = "Disconnect";
             this.btnDisconnectLan.UseVisualStyleBackColor = true;
@@ -1271,9 +1270,9 @@
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox2.Location = new System.Drawing.Point(667, 3);
+            this.checkBox2.Location = new System.Drawing.Point(699, 3);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(171, 24);
+            this.checkBox2.Size = new System.Drawing.Size(155, 24);
             this.checkBox2.TabIndex = 47;
             this.checkBox2.Text = "Auto reconnect";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -1282,9 +1281,9 @@
             // txtLanPort
             // 
             this.txtLanPort.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLanPort.Location = new System.Drawing.Point(330, 3);
+            this.txtLanPort.Location = new System.Drawing.Point(275, 3);
             this.txtLanPort.Name = "txtLanPort";
-            this.txtLanPort.Size = new System.Drawing.Size(54, 20);
+            this.txtLanPort.Size = new System.Drawing.Size(156, 20);
             this.txtLanPort.TabIndex = 48;
             this.txtLanPort.Text = "27531";
             this.txtLanPort.WordWrap = false;
@@ -1305,7 +1304,7 @@
             this.txtLanIPAddress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtLanIPAddress.Location = new System.Drawing.Point(53, 3);
             this.txtLanIPAddress.Name = "txtLanIPAddress";
-            this.txtLanIPAddress.Size = new System.Drawing.Size(171, 20);
+            this.txtLanIPAddress.Size = new System.Drawing.Size(156, 20);
             this.txtLanIPAddress.TabIndex = 50;
             this.txtLanIPAddress.Text = "192.168.1.200";
             // 
