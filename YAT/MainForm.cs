@@ -10,7 +10,9 @@ using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -43,6 +45,8 @@ namespace YAT
         }
 
         private SerialPort m_serialPort = new SerialPort();
+        private TcpClient m_lanClient = null; // default start with null pointer
+        private CancellationTokenSource m_cancelTokensource;  // Token for stopping listener
         private Queue<string> m_ToSendList = new Queue<string>();
         private TabPage m_tabPagePlus = new TabPage("  +");
         private string m_filename = "";
@@ -85,17 +89,7 @@ namespace YAT
             cboCommandTerminator.Items.AddRange(list);
             cboCommandTerminator.SelectedIndex = 2;
 
-            cboTimerSendSelected.Items.Clear();
-            object[] listTimer =
-               {
-                new ComboBoxItem<int>("No Timer", 0),
-                new ComboBoxItem<int>("1 Hz int.", 1000),
-                new ComboBoxItem<int>("2 Hz int", 500),
-                new ComboBoxItem<int>("5 Hz int", 200),
-                new ComboBoxItem<int>("2 Sec int.", 2000),
-                new ComboBoxItem<int>("5 Sec int.", 5000),
-            };
-            cboTimerSendSelected.Items.AddRange(listTimer);
+            numUpDownTiming.Value = 1000;
 
             cboDecodeType.Items.Clear();
             cboDecodeType.Items.Add("Ascii");
@@ -1040,15 +1034,26 @@ namespace YAT
             toolStripCurrentStatusLabel.Text = status;
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
+        private void CloseAllPorts()
         {
             //connect with the serial port
-            if (m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen == true)
             {
                 m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
                 m_serialPort.Close();
             }
 
+            if (IsLanConnected() == true)
+            {
+                m_cancelTokensource?.Cancel(); // Stop listening loop
+                m_lanClient?.Close();
+            }
+
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            CloseAllPorts();
 
             if (cboSerialPorts.SelectedItem != null)
             {
@@ -1058,6 +1063,7 @@ namespace YAT
                 try
                 {
                     m_serialPort.Open();
+                    // register handler
                     m_serialPort.DataReceived += m_serialDataReceivedEventHandler;
                 }
                 catch (Exception exp)
@@ -1072,37 +1078,58 @@ namespace YAT
 
         }
 
+        private bool IsLanConnected()
+        {
+            bool isConnected = false;
+            if (m_lanClient != null)
+            {
+                isConnected = m_lanClient.Connected;
+            }
+            return isConnected;
+        }
+
+
         private void UpdateButtonsAndStatus(bool changeTimer)
         {
-            if (m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen == true)
             {
                 ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString());
+            }
+            else if(m_lanClient?.Connected == true)
+            {
+                ReportConnectionStatus("Connected: " + m_lanClient.Client.RemoteEndPoint.ToString());
             }
             else
             {
                 ReportConnectionStatus("Disconnected");
             }
 
+
+
             btnDisconnect.Enabled = m_serialPort.IsOpen;
+            btnDisconnectLan.Enabled = IsLanConnected();
             btnConnect.Enabled = !m_serialPort.IsOpen;
-            btnSendAll.Enabled = m_serialPort.IsOpen;
+            btnConnectLan.Enabled = !IsLanConnected();
+            btnSendAll.Enabled = m_serialPort.IsOpen || IsLanConnected();
             if (changeTimer == true)
-            {
-                cboTimerSendSelected.SelectedIndex = 0;
+            {                
+                chkboxTimer.Checked = false;
             }
-            cboTimerSendSelected.Enabled = m_serialPort.IsOpen;
+            numUpDownTiming.Enabled = m_serialPort.IsOpen || IsLanConnected();
+            chkboxTimer.Enabled = numUpDownTiming.Enabled;
+
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            if (m_serialPort.IsOpen)
+            if (m_serialPort.IsOpen == true)
             {
                 // wait till delegate is finished
                 m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
                 m_serialPort.Close();  
             }
             //update the view
-            UpdateButtonsAndStatus(false);
+            UpdateButtonsAndStatus(true);
         }
 
         void ReportDataDirty()
@@ -1150,16 +1177,19 @@ namespace YAT
 
         public void SendCommand(string command)
         {
+
+            if (chkAddLengthHeader.Checked == true)
+            {
+                // add length header
+                int length = command.Length;
+                command = length.ToString("D2") + command;
+
+            }
+
             if (m_serialPort.IsOpen == true)
             {
 
-                if (chkAddLengthHeader.Checked == true)
-                {
-                    // add length header
-                    int length = command.Length;
-                    command = length.ToString("D2") + command;
-
-                }
+               
                 if (m_ToSendList.Count() > 0)
                 {
                     m_ToSendList.Enqueue(command);
@@ -1177,6 +1207,11 @@ namespace YAT
                 }
 
             }
+            else if(IsLanConnected() == true)
+            {
+                WriteStringToLan(command);
+            }
+
         }
 
         private string GetTerminationString()
@@ -1189,6 +1224,29 @@ namespace YAT
                 terminator = cast.Value;
             }
             return terminator;
+        }
+
+        private void WriteStringToLan(string command)
+        {
+            if(IsLanConnected() == true)
+            {
+                string toSend = txtBoxPreFix.Text + command + GetTerminationString();
+                try
+                {
+                    byte[] data = Encoding.UTF8.GetBytes(toSend);
+                    NetworkStream stream = m_lanClient.GetStream();
+                    stream.Write(data, 0, data.Length);
+
+                    toSend = toSend.Replace("\r", "");
+                    toSend = toSend.Replace("\n", "");
+
+                    AddToLog(toSend, Direction.Sending);
+                }
+                catch
+                {
+                    UpdateButtonsAndStatus(false);
+                }
+            }
         }
 
         private void WriteStringToSerial(string command)
@@ -1216,7 +1274,7 @@ namespace YAT
         {
             List<MacroData> macroDataList = GetMacroLayoutOnCurrentTab();
 
-            if (m_serialPort.IsOpen == true)
+            if ((m_serialPort.IsOpen == true) || (IsLanConnected() == true))
             {
 
                 if (macroDataList != null)
@@ -1254,56 +1312,28 @@ namespace YAT
             lblCountTerminator.Text = "0";
         }
 
-        private void cboTimerSendSelected_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            if(cboTimerSendSelected.SelectedIndex == 0)
-            {
-                tmrSendAllCommands.Enabled = false;
-            }
-            else
-            {
-                tmrSendAllCommands.Enabled = false;
-
-                if (cboTimerSendSelected.SelectedItem is ComboBoxItem<int>)
-                {
-                    ComboBoxItem<int> cast = cboTimerSendSelected.SelectedItem as ComboBoxItem<int>;
-
-                    tmrSendAllCommands.Interval = cast.Value;
-                }
-
-
-                tmrSendAllCommands.Enabled = true;
-            }
-        }
-
+       
         private int m_tabCounter = -1;
         private int m_lastMacroIndex = 0;
 
         private void FindNextElementAndUpdateVar()
         {
             bool foundItem = false;
+            int loopCounter = 0;
 
-            while(foundItem == false)
+            while ((foundItem == false) && (loopCounter < 100))
             {
-               
+                loopCounter++;
                 if (m_tabCounter == -1)
                 {
                     if(m_ConfiguredMacro.Count > 0)
                     {
                         m_tabCounter++;
-                    }
-                    else
-                    {
-                        // done 
-                        foundItem = true;
-                    }
+                    }                   
                 }
                 else if(m_tabCounter >= m_ConfiguredMacro.Count)
                 {
-                    m_tabCounter = -1;
-                    // done 
-                    foundItem = true;
+                    m_tabCounter = -1;                   
                 }
                 else if (m_lastMacroIndex >= m_ConfiguredMacro[m_tabCounter].elements.Count)
                 {
@@ -1331,8 +1361,8 @@ namespace YAT
 
         private void tmrSendAllCommands_Tick(object sender, EventArgs e)
         {
-            if (m_serialPort.IsOpen == true)
-            {
+            if ((m_serialPort.IsOpen == true) || (IsLanConnected() == true))
+                {
                 if (m_tabCounter == -1)
                 {
                     //only show when the end user wants to
@@ -1580,7 +1610,7 @@ namespace YAT
             {
                 if (tmrSendAllCommands.Enabled == true)
                 {
-                    cboTimerSendSelected.SelectedIndex = 0;
+                   chkboxTimer.Enabled = true;
                 }
 
                 SetupLoggingGraph();
@@ -1593,8 +1623,8 @@ namespace YAT
         bool m_useHighTekst = true;
 
         private void tmrLog_Tick(object sender, EventArgs e)
-        {
-            if (m_serialPort.IsOpen == false)
+        {            
+            if ((m_serialPort.IsOpen == false) && (IsLanConnected() == false))
             {
                 chkBoxLogValue.Checked = false;
             }
@@ -1951,6 +1981,118 @@ namespace YAT
             {
                 btnDisconnect.PerformClick();
                 btnConnect.PerformClick();
+            }
+        }
+
+        private void btnConnectLan_Click(object sender, EventArgs e)
+        {
+            CloseAllPorts();
+
+            try
+            {
+                m_lanClient = new TcpClient(txtLanIPAddress.Text, int.Parse(txtLanPort.Text));                
+                m_cancelTokensource = new CancellationTokenSource();
+                Task.Run(() => ListenForData(m_cancelTokensource.Token)); // Start listening in background
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+
+            
+            //update the info
+            UpdateButtonsAndStatus(false);
+
+
+        }
+           
+
+        private async Task ListenForData(CancellationToken token)
+        {
+            try
+            {
+                using (NetworkStream stream = m_lanClient.GetStream())
+                {
+                    byte[] buffer = new byte[1024];
+
+                    while (!token.IsCancellationRequested)
+                    {
+                        int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, token);
+                        if (bytesRead > 0)
+                        {
+                            // convert to char array
+                            char[] charData = new char[bytesRead];
+                            Array.Copy(buffer, charData, bytesRead);
+                            UpdateReceivedInfo(charData);
+                        }
+                        else
+                        {
+                            if (m_lanClient.Available == 0)
+                            {
+                                
+                                CloseAllPorts();
+
+                                if (InvokeRequired)
+                                {
+                                    Invoke(new Action(() =>
+                                    {
+
+                                        UpdateReceivedInfo(("Other side closed port" + GetTerminationString()).ToCharArray());
+                                        //update the info
+                                        UpdateButtonsAndStatus(false);
+                                    }));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Listener stopped: " + ex.Message);
+                CloseAllPorts();
+
+                if (InvokeRequired == true)
+                {
+                    if (m_lanClient.Connected == true)  
+                    {
+                        Invoke(new Action(() =>
+                        {
+                            UpdateReceivedInfo(("Other side closed port" + GetTerminationString()).ToCharArray());
+                            //update the info
+                            UpdateButtonsAndStatus(false);
+                        }));
+                    }
+                }
+            }
+        }
+
+
+
+        private void btnDisconnectLan_Click(object sender, EventArgs e)
+        {
+            CloseAllPorts();
+            UpdateButtonsAndStatus(true);
+        }
+
+        private void chkboxTimer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkboxTimer.Checked == true)
+            {
+                tmrSendAllCommands.Interval = (int)numUpDownTiming.Value;               
+            }
+            
+            tmrSendAllCommands.Enabled = chkboxTimer.Checked;
+
+        }
+
+        private void numUpDownTiming_ValueChanged(object sender, EventArgs e)
+        {
+            if (chkboxTimer.Checked == true)
+            {
+                tmrSendAllCommands.Enabled = false;
+                tmrSendAllCommands.Interval = (int)numUpDownTiming.Value;
+                tmrSendAllCommands.Enabled = true;
             }
         }
     }

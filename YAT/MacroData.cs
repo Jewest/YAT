@@ -78,13 +78,7 @@ namespace YAT
         }
 
         public void SendIfChecked()
-        {
-            /*
-             if ((m_valueChecked == true) && (btnSend is not null))
-             {
-                 btnSend.PerformClick();
-             }
-            */
+        {           
             if (m_valueChecked == true)
             {
                 //send the data now

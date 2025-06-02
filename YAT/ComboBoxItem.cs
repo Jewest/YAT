@@ -1,6 +1,4 @@
-﻿using System;
-
-public class ComboBoxItem<T>
+﻿public class ComboBoxItem<T>
 {
     private string Text { get; set; }
     public T Value { get; set; }
