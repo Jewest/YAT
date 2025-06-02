@@ -89,17 +89,7 @@ namespace YAT
             cboCommandTerminator.Items.AddRange(list);
             cboCommandTerminator.SelectedIndex = 2;
 
-            cboTimerSendSelected.Items.Clear();
-            object[] listTimer =
-               {
-                new ComboBoxItem<int>("No Timer", 0),
-                new ComboBoxItem<int>("1 Hz int.", 1000),
-                new ComboBoxItem<int>("2 Hz int", 500),
-                new ComboBoxItem<int>("5 Hz int", 200),
-                new ComboBoxItem<int>("2 Sec int.", 2000),
-                new ComboBoxItem<int>("5 Sec int.", 5000),
-            };
-            cboTimerSendSelected.Items.AddRange(listTimer);
+            numUpDownTiming.Value = 1000;
 
             cboDecodeType.Items.Clear();
             cboDecodeType.Items.Add("Ascii");
@@ -1120,12 +1110,14 @@ namespace YAT
             btnDisconnectLan.Enabled = IsLanConnected();
             btnConnect.Enabled = !m_serialPort.IsOpen;
             btnConnectLan.Enabled = !IsLanConnected();
-            btnSendAll.Enabled = m_serialPort.IsOpen;
+            btnSendAll.Enabled = m_serialPort.IsOpen || IsLanConnected();
             if (changeTimer == true)
-            {
-                cboTimerSendSelected.SelectedIndex = 0;
+            {                
+                chkboxTimer.Checked = false;
             }
-            cboTimerSendSelected.Enabled = m_serialPort.IsOpen;
+            numUpDownTiming.Enabled = m_serialPort.IsOpen || IsLanConnected();
+            chkboxTimer.Enabled = numUpDownTiming.Enabled;
+
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -1137,7 +1129,7 @@ namespace YAT
                 m_serialPort.Close();  
             }
             //update the view
-            UpdateButtonsAndStatus(false);
+            UpdateButtonsAndStatus(true);
         }
 
         void ReportDataDirty()
@@ -1282,7 +1274,7 @@ namespace YAT
         {
             List<MacroData> macroDataList = GetMacroLayoutOnCurrentTab();
 
-            if (m_serialPort.IsOpen == true)
+            if ((m_serialPort.IsOpen == true) || (IsLanConnected() == true))
             {
 
                 if (macroDataList != null)
@@ -1320,56 +1312,28 @@ namespace YAT
             lblCountTerminator.Text = "0";
         }
 
-        private void cboTimerSendSelected_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            if(cboTimerSendSelected.SelectedIndex == 0)
-            {
-                tmrSendAllCommands.Enabled = false;
-            }
-            else
-            {
-                tmrSendAllCommands.Enabled = false;
-
-                if (cboTimerSendSelected.SelectedItem is ComboBoxItem<int>)
-                {
-                    ComboBoxItem<int> cast = cboTimerSendSelected.SelectedItem as ComboBoxItem<int>;
-
-                    tmrSendAllCommands.Interval = cast.Value;
-                }
-
-
-                tmrSendAllCommands.Enabled = true;
-            }
-        }
-
+       
         private int m_tabCounter = -1;
         private int m_lastMacroIndex = 0;
 
         private void FindNextElementAndUpdateVar()
         {
             bool foundItem = false;
+            int loopCounter = 0;
 
-            while(foundItem == false)
+            while ((foundItem == false) && (loopCounter < 100))
             {
-               
+                loopCounter++;
                 if (m_tabCounter == -1)
                 {
                     if(m_ConfiguredMacro.Count > 0)
                     {
                         m_tabCounter++;
-                    }
-                    else
-                    {
-                        // done 
-                        foundItem = true;
-                    }
+                    }                   
                 }
                 else if(m_tabCounter >= m_ConfiguredMacro.Count)
                 {
-                    m_tabCounter = -1;
-                    // done 
-                    foundItem = true;
+                    m_tabCounter = -1;                   
                 }
                 else if (m_lastMacroIndex >= m_ConfiguredMacro[m_tabCounter].elements.Count)
                 {
@@ -1397,8 +1361,8 @@ namespace YAT
 
         private void tmrSendAllCommands_Tick(object sender, EventArgs e)
         {
-            if (m_serialPort.IsOpen == true)
-            {
+            if ((m_serialPort.IsOpen == true) || (IsLanConnected() == true))
+                {
                 if (m_tabCounter == -1)
                 {
                     //only show when the end user wants to
@@ -1646,7 +1610,7 @@ namespace YAT
             {
                 if (tmrSendAllCommands.Enabled == true)
                 {
-                    cboTimerSendSelected.SelectedIndex = 0;
+                   chkboxTimer.Enabled = true;
                 }
 
                 SetupLoggingGraph();
@@ -2108,9 +2072,29 @@ namespace YAT
         private void btnDisconnectLan_Click(object sender, EventArgs e)
         {
             CloseAllPorts();
-            UpdateButtonsAndStatus(false);
+            UpdateButtonsAndStatus(true);
         }
 
+        private void chkboxTimer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkboxTimer.Checked == true)
+            {
+                tmrSendAllCommands.Interval = (int)numUpDownTiming.Value;               
+            }
+            
+            tmrSendAllCommands.Enabled = chkboxTimer.Checked;
+
+        }
+
+        private void numUpDownTiming_ValueChanged(object sender, EventArgs e)
+        {
+            if (chkboxTimer.Checked == true)
+            {
+                tmrSendAllCommands.Enabled = false;
+                tmrSendAllCommands.Interval = (int)numUpDownTiming.Value;
+                tmrSendAllCommands.Enabled = true;
+            }
+        }
     }
 
 
