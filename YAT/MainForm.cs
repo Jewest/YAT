@@ -1623,8 +1623,8 @@ namespace YAT
         bool m_useHighTekst = true;
 
         private void tmrLog_Tick(object sender, EventArgs e)
-        {
-            if (m_serialPort.IsOpen == false)
+        {            
+            if ((m_serialPort.IsOpen == false) && (IsLanConnected() == false))
             {
                 chkBoxLogValue.Checked = false;
             }

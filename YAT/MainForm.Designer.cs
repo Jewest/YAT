@@ -126,6 +126,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terminalToolStripMenuItemImportTerminalpp = new System.Windows.Forms.ToolStripMenuItem();
+            this.label13 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -432,15 +433,17 @@
             // 
             // tableLayoutPanel7
             // 
-            this.tableLayoutPanel7.ColumnCount = 4;
+            this.tableLayoutPanel7.ColumnCount = 5;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel7.Controls.Add(this.btnSendAll, 2, 0);
-            this.tableLayoutPanel7.Controls.Add(this.chkSelectAll, 3, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btnSendAll, 3, 0);
+            this.tableLayoutPanel7.Controls.Add(this.chkSelectAll, 4, 0);
             this.tableLayoutPanel7.Controls.Add(this.numUpDownTiming, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.chkboxTimer, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label13, 2, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 40);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
@@ -481,7 +484,7 @@
             0,
             0,
             0});
-            this.numUpDownTiming.Location = new System.Drawing.Point(155, 3);
+            this.numUpDownTiming.Location = new System.Drawing.Point(130, 3);
             this.numUpDownTiming.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -493,7 +496,7 @@
             0,
             0});
             this.numUpDownTiming.Name = "numUpDownTiming";
-            this.numUpDownTiming.Size = new System.Drawing.Size(146, 20);
+            this.numUpDownTiming.Size = new System.Drawing.Size(121, 20);
             this.numUpDownTiming.TabIndex = 15;
             this.numUpDownTiming.Value = new decimal(new int[] {
             100,
@@ -508,7 +511,7 @@
             this.chkboxTimer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkboxTimer.Location = new System.Drawing.Point(3, 3);
             this.chkboxTimer.Name = "chkboxTimer";
-            this.chkboxTimer.Size = new System.Drawing.Size(146, 24);
+            this.chkboxTimer.Size = new System.Drawing.Size(121, 24);
             this.chkboxTimer.TabIndex = 16;
             this.chkboxTimer.Text = "Timer";
             this.chkboxTimer.UseVisualStyleBackColor = true;
@@ -991,7 +994,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
@@ -1041,9 +1044,9 @@
             // btnClearGraphs
             // 
             this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearGraphs.Location = new System.Drawing.Point(787, 3);
+            this.btnClearGraphs.Location = new System.Drawing.Point(786, 3);
             this.btnClearGraphs.Name = "btnClearGraphs";
-            this.btnClearGraphs.Size = new System.Drawing.Size(230, 28);
+            this.btnClearGraphs.Size = new System.Drawing.Size(231, 28);
             this.btnClearGraphs.TabIndex = 3;
             this.btnClearGraphs.Text = "Clear graph(s)";
             this.btnClearGraphs.UseVisualStyleBackColor = true;
@@ -1391,6 +1394,17 @@
             this.terminalToolStripMenuItemImportTerminalpp.Text = "Terminal++";
             this.terminalToolStripMenuItemImportTerminalpp.Click += new System.EventHandler(this.terminalToolStripMenuItemImportTerminalpp_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(257, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 30);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "ms";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1549,6 +1563,7 @@
         private System.Windows.Forms.CheckBox chkSelectAll;
         private System.Windows.Forms.NumericUpDown numUpDownTiming;
         private System.Windows.Forms.CheckBox chkboxTimer;
+        private System.Windows.Forms.Label label13;
     }
 }
 
