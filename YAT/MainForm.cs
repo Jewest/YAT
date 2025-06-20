@@ -1128,6 +1128,10 @@ namespace YAT
                 m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
                 m_serialPort.Close();  
             }
+            else if (m_lanClient?.Connected == true)
+            {
+                m_lanClient.Close();
+            }
             //update the view
             UpdateButtonsAndStatus(true);
         }

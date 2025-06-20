@@ -61,6 +61,7 @@
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.numUpDownTiming = new System.Windows.Forms.NumericUpDown();
             this.chkboxTimer = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAppendMacro = new System.Windows.Forms.Button();
             this.btnSaveMacro = new System.Windows.Forms.Button();
@@ -126,7 +127,6 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terminalToolStripMenuItemImportTerminalpp = new System.Windows.Forms.ToolStripMenuItem();
-            this.label13 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -516,6 +516,17 @@
             this.chkboxTimer.Text = "Timer";
             this.chkboxTimer.UseVisualStyleBackColor = true;
             this.chkboxTimer.CheckedChanged += new System.EventHandler(this.chkboxTimer_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(257, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 30);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "ms";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel8
             // 
@@ -994,7 +1005,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33111F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
             this.tableLayoutPanel12.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.chkGraphSelection, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTimerSpeed, 1, 0);
@@ -1024,9 +1035,9 @@
             this.chkGraphSelection.Checked = true;
             this.chkGraphSelection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkGraphSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkGraphSelection.Location = new System.Drawing.Point(341, 3);
+            this.chkGraphSelection.Location = new System.Drawing.Point(340, 3);
             this.chkGraphSelection.Name = "chkGraphSelection";
-            this.chkGraphSelection.Size = new System.Drawing.Size(217, 28);
+            this.chkGraphSelection.Size = new System.Drawing.Size(216, 28);
             this.chkGraphSelection.TabIndex = 1;
             this.chkGraphSelection.Text = "Both the graphs";
             this.chkGraphSelection.UseVisualStyleBackColor = true;
@@ -1037,16 +1048,16 @@
             this.txtTimerSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTimerSpeed.Location = new System.Drawing.Point(118, 3);
             this.txtTimerSpeed.Name = "txtTimerSpeed";
-            this.txtTimerSpeed.Size = new System.Drawing.Size(217, 20);
+            this.txtTimerSpeed.Size = new System.Drawing.Size(216, 20);
             this.txtTimerSpeed.TabIndex = 2;
             this.txtTimerSpeed.Text = "1000";
             // 
             // btnClearGraphs
             // 
             this.btnClearGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearGraphs.Location = new System.Drawing.Point(786, 3);
+            this.btnClearGraphs.Location = new System.Drawing.Point(784, 3);
             this.btnClearGraphs.Name = "btnClearGraphs";
-            this.btnClearGraphs.Size = new System.Drawing.Size(231, 28);
+            this.btnClearGraphs.Size = new System.Drawing.Size(233, 28);
             this.btnClearGraphs.TabIndex = 3;
             this.btnClearGraphs.Text = "Clear graph(s)";
             this.btnClearGraphs.UseVisualStyleBackColor = true;
@@ -1393,17 +1404,6 @@
             this.terminalToolStripMenuItemImportTerminalpp.Size = new System.Drawing.Size(136, 22);
             this.terminalToolStripMenuItemImportTerminalpp.Text = "Terminal++";
             this.terminalToolStripMenuItemImportTerminalpp.Click += new System.EventHandler(this.terminalToolStripMenuItemImportTerminalpp_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(257, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 30);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "ms";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
