@@ -1031,10 +1031,33 @@ namespace YAT
                 }
             }
         }
+        private enum ReportStatusType
+        { 
+            GeneralInfo,
+            Warning,
 
-        private void ReportConnectionStatus(string status)
+        }
+
+        private void ReportConnectionStatus(string status, ReportStatusType infoType)
         {
             toolStripCurrentStatusLabel.Text = status;
+
+            switch (infoType)
+            {
+                case ReportStatusType.GeneralInfo:
+                    toolStripCurrentStatusLabel.BackColor = SystemColors.Control;
+                    toolStripCurrentStatusLabel.ForeColor = SystemColors.ControlText;
+                    break;
+                case ReportStatusType.Warning:
+                    toolStripCurrentStatusLabel.BackColor = Color.Orange;
+                    toolStripCurrentStatusLabel.ForeColor = Color.White;
+                    break;
+                default: 
+                    break;
+
+            }
+
+
         }
 
         private void CloseAllPorts()
@@ -1123,15 +1146,15 @@ namespace YAT
         {
             if (m_serialPort.IsOpen == true)
             {
-                ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString());
+                ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString(),ReportStatusType.GeneralInfo);
             }
             else if(m_lanClient?.Connected == true)
             {
-                ReportConnectionStatus("Connected: " + m_lanClient.Client.RemoteEndPoint.ToString());
+                ReportConnectionStatus("Connected: " + m_lanClient.Client.RemoteEndPoint.ToString(), ReportStatusType.GeneralInfo);
             }
             else
             {
-                ReportConnectionStatus("Disconnected");
+                ReportConnectionStatus("Disconnected", ReportStatusType.Warning);
             }
 
 
