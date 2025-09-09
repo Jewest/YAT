@@ -17,11 +17,13 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using YAT.View;
 using static System.Net.Mime.MediaTypeNames;
+using Timer = System.Windows.Forms.Timer;
 
 namespace YAT
 {
@@ -45,6 +47,7 @@ namespace YAT
         }
 
         private SerialPort m_serialPort = new SerialPort();
+        private Timer m_healthCheckSerialPortTimer = null;
         private TcpClient m_lanClient = null; // default start with null pointer
         private CancellationTokenSource m_cancelTokensource;  // Token for stopping listener
         private Queue<string> m_ToSendList = new Queue<string>();
@@ -1028,10 +1031,33 @@ namespace YAT
                 }
             }
         }
+        private enum ReportStatusType
+        { 
+            GeneralInfo,
+            Warning,
 
-        private void ReportConnectionStatus(string status)
+        }
+
+        private void ReportConnectionStatus(string status, ReportStatusType infoType)
         {
             toolStripCurrentStatusLabel.Text = status;
+
+            switch (infoType)
+            {
+                case ReportStatusType.GeneralInfo:
+                    toolStripCurrentStatusLabel.BackColor = SystemColors.Control;
+                    toolStripCurrentStatusLabel.ForeColor = SystemColors.ControlText;
+                    break;
+                case ReportStatusType.Warning:
+                    toolStripCurrentStatusLabel.BackColor = Color.Orange;
+                    toolStripCurrentStatusLabel.ForeColor = Color.White;
+                    break;
+                default: 
+                    break;
+
+            }
+
+
         }
 
         private void CloseAllPorts()
@@ -1039,8 +1065,14 @@ namespace YAT
             //connect with the serial port
             if (m_serialPort.IsOpen == true)
             {
-                m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
+                m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;               
                 m_serialPort.Close();
+            }
+
+            if (m_healthCheckSerialPortTimer != null)
+            {
+                m_healthCheckSerialPortTimer.Enabled = false;
+                m_healthCheckSerialPortTimer = null;
             }
 
             if (IsLanConnected() == true)
@@ -1050,6 +1082,7 @@ namespace YAT
             }
 
         }
+
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
@@ -1065,6 +1098,10 @@ namespace YAT
                     m_serialPort.Open();
                     // register handler
                     m_serialPort.DataReceived += m_serialDataReceivedEventHandler;
+                    m_healthCheckSerialPortTimer = new Timer();
+                    m_healthCheckSerialPortTimer.Tick += OnTimedEventCheckSerialPortPresent;
+                    m_healthCheckSerialPortTimer.Interval = 1000;
+                    m_healthCheckSerialPortTimer.Start();
                 }
                 catch (Exception exp)
                 {
@@ -1076,6 +1113,22 @@ namespace YAT
             //update the info
             UpdateButtonsAndStatus(false);
 
+        }
+
+        private void OnTimedEventCheckSerialPortPresent(object sender, EventArgs e)
+        {
+            try
+            {
+                // Attempt to access a property. This will throw an exception if the port is gone.
+                if(m_serialPort.IsOpen == false)
+                {
+                    btnDisconnect.PerformClick();
+                }
+            }
+            catch (IOException)
+            {
+                btnDisconnect.PerformClick();
+            }
         }
 
         private bool IsLanConnected()
@@ -1093,15 +1146,15 @@ namespace YAT
         {
             if (m_serialPort.IsOpen == true)
             {
-                ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString());
+                ReportConnectionStatus("Connected: " + m_serialPort.PortName + ", " + m_serialPort.BaudRate.ToString() + ", " + m_serialPort.DataBits.ToString() + ", " + m_serialPort.Parity.ToString() + ", " + m_serialPort.StopBits.ToString(),ReportStatusType.GeneralInfo);
             }
             else if(m_lanClient?.Connected == true)
             {
-                ReportConnectionStatus("Connected: " + m_lanClient.Client.RemoteEndPoint.ToString());
+                ReportConnectionStatus("Connected: " + m_lanClient.Client.RemoteEndPoint.ToString(), ReportStatusType.GeneralInfo);
             }
             else
             {
-                ReportConnectionStatus("Disconnected");
+                ReportConnectionStatus("Disconnected", ReportStatusType.Warning);
             }
 
 
@@ -1121,17 +1174,9 @@ namespace YAT
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
-        {
-            if (m_serialPort.IsOpen == true)
-            {
-                // wait till delegate is finished
-                m_serialPort.DataReceived -= m_serialDataReceivedEventHandler;
-                m_serialPort.Close();  
-            }
-            else if (m_lanClient?.Connected == true)
-            {
-                m_lanClient.Close();
-            }
+        {            
+            CloseAllPorts();
+
             //update the view
             UpdateButtonsAndStatus(true);
         }
